@@ -30,15 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.materialSwitch_UI = new MaterialSkin.Controls.MaterialSwitch();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel_RightTop = new MetroFramework.Controls.MetroPanel();
             this.materialButton_log = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_setting = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_curveimage = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_analyzedata = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_outimage = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_LoadData = new MaterialSkin.Controls.MaterialButton();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel_RightIcon = new MetroFramework.Controls.MetroPanel();
             this.materialButton_forward = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_return = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_save = new MaterialSkin.Controls.MaterialButton();
@@ -48,59 +47,43 @@
             this.materialButton_fakeColor = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_imageChange = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_changeFormSize = new MaterialSkin.Controls.MaterialButton();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btnStartUpToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.materialButton_miniAnalyze = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_roiAnalyze = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_dotcounts = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_acidAnalyze = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_correction = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_imageProcess = new MaterialSkin.Controls.MaterialButton();
-            this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
-            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.metroPanel1.SuspendLayout();
-            this.metroPanel2.SuspendLayout();
+            this.materialCard_LeftBtn = new MaterialSkin.Controls.MaterialCard();
+            this.CompanyIcon_pictureBox = new System.Windows.Forms.PictureBox();
+            this.DataProcess_panel = new System.Windows.Forms.Panel();
+            this.btnStartUpToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.metroPanel_RightTop.SuspendLayout();
+            this.metroPanel_RightIcon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyIcon_pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // materialSwitch_UI
+            // metroPanel_RightTop
             // 
-            this.materialSwitch_UI.AutoSize = true;
-            this.materialSwitch_UI.Depth = 0;
-            this.materialSwitch_UI.Location = new System.Drawing.Point(853, 97);
-            this.materialSwitch_UI.Margin = new System.Windows.Forms.Padding(0);
-            this.materialSwitch_UI.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialSwitch_UI.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSwitch_UI.Name = "materialSwitch_UI";
-            this.materialSwitch_UI.Ripple = true;
-            this.materialSwitch_UI.Size = new System.Drawing.Size(195, 37);
-            this.materialSwitch_UI.TabIndex = 11;
-            this.materialSwitch_UI.Text = "Dark / Light Theme";
-            this.materialSwitch_UI.UseVisualStyleBackColor = true;
-            this.materialSwitch_UI.CheckedChanged += new System.EventHandler(this.materialSwitch_UI_CheckedChanged);
-            // 
-            // metroPanel1
-            // 
-            this.metroPanel1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.metroPanel1.Controls.Add(this.materialButton_log);
-            this.metroPanel1.Controls.Add(this.materialButton_setting);
-            this.metroPanel1.Controls.Add(this.materialButton_curveimage);
-            this.metroPanel1.Controls.Add(this.materialButton_analyzedata);
-            this.metroPanel1.Controls.Add(this.materialButton_outimage);
-            this.metroPanel1.Controls.Add(this.materialButton_LoadData);
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 7;
-            this.metroPanel1.Location = new System.Drawing.Point(172, 24);
-            this.metroPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(712, 32);
-            this.metroPanel1.TabIndex = 12;
-            this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroPanel1.UseCustomBackColor = true;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 7;
+            this.metroPanel_RightTop.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.metroPanel_RightTop.Controls.Add(this.materialButton_log);
+            this.metroPanel_RightTop.Controls.Add(this.materialButton_setting);
+            this.metroPanel_RightTop.Controls.Add(this.materialButton_curveimage);
+            this.metroPanel_RightTop.Controls.Add(this.materialButton_analyzedata);
+            this.metroPanel_RightTop.Controls.Add(this.materialButton_outimage);
+            this.metroPanel_RightTop.Controls.Add(this.materialButton_LoadData);
+            this.metroPanel_RightTop.HorizontalScrollbarBarColor = true;
+            this.metroPanel_RightTop.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel_RightTop.HorizontalScrollbarSize = 7;
+            this.metroPanel_RightTop.Location = new System.Drawing.Point(172, 24);
+            this.metroPanel_RightTop.Margin = new System.Windows.Forms.Padding(2);
+            this.metroPanel_RightTop.Name = "metroPanel_RightTop";
+            this.metroPanel_RightTop.Size = new System.Drawing.Size(712, 32);
+            this.metroPanel_RightTop.TabIndex = 12;
+            this.metroPanel_RightTop.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel_RightTop.UseCustomBackColor = true;
+            this.metroPanel_RightTop.VerticalScrollbarBarColor = true;
+            this.metroPanel_RightTop.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel_RightTop.VerticalScrollbarSize = 7;
             // 
             // materialButton_log
             // 
@@ -141,6 +124,7 @@
             this.materialButton_setting.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton_setting.UseAccentColor = false;
             this.materialButton_setting.UseVisualStyleBackColor = true;
+            this.materialButton_setting.Click += new System.EventHandler(this.materialButton_setting_Click);
             // 
             // materialButton_curveimage
             // 
@@ -221,35 +205,36 @@
             this.materialButton_LoadData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton_LoadData.UseAccentColor = false;
             this.materialButton_LoadData.UseVisualStyleBackColor = true;
+            this.materialButton_LoadData.Click += new System.EventHandler(this.materialButton_LoadData_Click);
             // 
-            // metroPanel2
+            // metroPanel_RightIcon
             // 
-            this.metroPanel2.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel2.Controls.Add(this.materialButton_forward);
-            this.metroPanel2.Controls.Add(this.materialButton_return);
-            this.metroPanel2.Controls.Add(this.materialButton_save);
-            this.metroPanel2.Controls.Add(this.materialButton_inverse);
-            this.metroPanel2.Controls.Add(this.materialButton_resetImage);
-            this.metroPanel2.Controls.Add(this.materialButton_imageInfo);
-            this.metroPanel2.Controls.Add(this.materialButton_fakeColor);
-            this.metroPanel2.Controls.Add(this.materialButton_imageChange);
-            this.metroPanel2.Controls.Add(this.materialButton_changeFormSize);
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 7;
-            this.metroPanel2.Location = new System.Drawing.Point(172, 58);
-            this.metroPanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(712, 31);
-            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroPanel2.TabIndex = 13;
-            this.metroPanel2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroPanel2.UseCustomBackColor = true;
-            this.metroPanel2.UseStyleColors = true;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 7;
+            this.metroPanel_RightIcon.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.metroPanel_RightIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_forward);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_return);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_save);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_inverse);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_resetImage);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_imageInfo);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_fakeColor);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_imageChange);
+            this.metroPanel_RightIcon.Controls.Add(this.materialButton_changeFormSize);
+            this.metroPanel_RightIcon.HorizontalScrollbarBarColor = true;
+            this.metroPanel_RightIcon.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel_RightIcon.HorizontalScrollbarSize = 7;
+            this.metroPanel_RightIcon.Location = new System.Drawing.Point(172, 58);
+            this.metroPanel_RightIcon.Margin = new System.Windows.Forms.Padding(2);
+            this.metroPanel_RightIcon.Name = "metroPanel_RightIcon";
+            this.metroPanel_RightIcon.Size = new System.Drawing.Size(712, 31);
+            this.metroPanel_RightIcon.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroPanel_RightIcon.TabIndex = 13;
+            this.metroPanel_RightIcon.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel_RightIcon.UseCustomBackColor = true;
+            this.metroPanel_RightIcon.UseStyleColors = true;
+            this.metroPanel_RightIcon.VerticalScrollbarBarColor = true;
+            this.metroPanel_RightIcon.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel_RightIcon.VerticalScrollbarSize = 7;
             // 
             // materialButton_forward
             // 
@@ -434,16 +419,6 @@
             this.materialButton_changeFormSize.UseVisualStyleBackColor = false;
             this.materialButton_changeFormSize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_changeFormSize_MouseMove);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "導出.png");
-            this.imageList1.Images.SetKeyName(1, "分析.png");
-            this.imageList1.Images.SetKeyName(2, "风控.png");
-            this.imageList1.Images.SetKeyName(3, "计数器.png");
-            this.imageList1.Images.SetKeyName(4, "胶原蛋白.png");
-            // 
             // materialButton_miniAnalyze
             // 
             this.materialButton_miniAnalyze.AutoSize = false;
@@ -568,41 +543,36 @@
             this.materialButton_imageProcess.UseAccentColor = false;
             this.materialButton_imageProcess.UseVisualStyleBackColor = false;
             // 
-            // materialDivider3
+            // materialCard_LeftBtn
             // 
-            this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("materialDivider3.BackgroundImage")));
-            this.materialDivider3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.materialDivider3.Depth = 0;
-            this.materialDivider3.Location = new System.Drawing.Point(3, 27);
-            this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider3.Name = "materialDivider3";
-            this.materialDivider3.Size = new System.Drawing.Size(166, 68);
-            this.materialDivider3.TabIndex = 2;
-            this.materialDivider3.Text = "Title";
+            this.materialCard_LeftBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard_LeftBtn.Depth = 0;
+            this.materialCard_LeftBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard_LeftBtn.Location = new System.Drawing.Point(3, 97);
+            this.materialCard_LeftBtn.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard_LeftBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard_LeftBtn.Name = "materialCard_LeftBtn";
+            this.materialCard_LeftBtn.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard_LeftBtn.Size = new System.Drawing.Size(166, 482);
+            this.materialCard_LeftBtn.TabIndex = 15;
             // 
-            // materialDivider1
+            // CompanyIcon_pictureBox
             // 
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(3, 97);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(166, 482);
-            this.materialDivider1.TabIndex = 0;
-            this.materialDivider1.Text = "materialDivider1";
+            this.CompanyIcon_pictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CompanyIcon_pictureBox.BackgroundImage")));
+            this.CompanyIcon_pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CompanyIcon_pictureBox.Location = new System.Drawing.Point(3, 25);
+            this.CompanyIcon_pictureBox.Name = "CompanyIcon_pictureBox";
+            this.CompanyIcon_pictureBox.Size = new System.Drawing.Size(163, 67);
+            this.CompanyIcon_pictureBox.TabIndex = 16;
+            this.CompanyIcon_pictureBox.TabStop = false;
             // 
-            // materialLabel2
+            // DataProcess_panel
             // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(478, 295);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(134, 19);
-            this.materialLabel2.TabIndex = 14;
-            this.materialLabel2.Text = "Background Image";
+            this.DataProcess_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DataProcess_panel.Location = new System.Drawing.Point(173, 98);
+            this.DataProcess_panel.Name = "DataProcess_panel";
+            this.DataProcess_panel.Size = new System.Drawing.Size(875, 480);
+            this.DataProcess_panel.TabIndex = 17;
             // 
             // MainForm
             // 
@@ -611,43 +581,41 @@
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(1058, 582);
-            this.Controls.Add(this.materialLabel2);
-            this.Controls.Add(this.metroPanel2);
-            this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.materialSwitch_UI);
+            this.Controls.Add(this.DataProcess_panel);
+            this.Controls.Add(this.CompanyIcon_pictureBox);
+            this.Controls.Add(this.metroPanel_RightIcon);
+            this.Controls.Add(this.metroPanel_RightTop);
             this.Controls.Add(this.materialButton_correction);
             this.Controls.Add(this.materialButton_dotcounts);
             this.Controls.Add(this.materialButton_miniAnalyze);
             this.Controls.Add(this.materialButton_roiAnalyze);
             this.Controls.Add(this.materialButton_acidAnalyze);
             this.Controls.Add(this.materialButton_imageProcess);
-            this.Controls.Add(this.materialDivider3);
-            this.Controls.Add(this.materialDivider1);
+            this.Controls.Add(this.materialCard_LeftBtn);
             this.DrawerAutoHide = false;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.Text = "MainForm";
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
-            this.metroPanel2.ResumeLayout(false);
-            this.metroPanel2.PerformLayout();
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
+            this.metroPanel_RightTop.ResumeLayout(false);
+            this.metroPanel_RightTop.PerformLayout();
+            this.metroPanel_RightIcon.ResumeLayout(false);
+            this.metroPanel_RightIcon.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyIcon_pictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialSwitch materialSwitch_UI;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroPanel metroPanel_RightTop;
+        private MetroFramework.Controls.MetroPanel metroPanel_RightIcon;
         private MaterialSkin.Controls.MaterialButton materialButton_LoadData;
         private MaterialSkin.Controls.MaterialButton materialButton_log;
         private MaterialSkin.Controls.MaterialButton materialButton_setting;
         private MaterialSkin.Controls.MaterialButton materialButton_curveimage;
         private MaterialSkin.Controls.MaterialButton materialButton_analyzedata;
         private MaterialSkin.Controls.MaterialButton materialButton_outimage;
-        private System.Windows.Forms.ImageList imageList1;
         private MaterialSkin.Controls.MaterialButton materialButton_changeFormSize;
         private MaterialSkin.Controls.MaterialButton materialButton_forward;
         private MaterialSkin.Controls.MaterialButton materialButton_return;
@@ -657,15 +625,15 @@
         private MaterialSkin.Controls.MaterialButton materialButton_imageInfo;
         private MaterialSkin.Controls.MaterialButton materialButton_fakeColor;
         private MaterialSkin.Controls.MaterialButton materialButton_imageChange;
-        private System.Windows.Forms.ToolTip btnStartUpToolTip;
         private MaterialSkin.Controls.MaterialButton materialButton_miniAnalyze;
         private MaterialSkin.Controls.MaterialButton materialButton_roiAnalyze;
         private MaterialSkin.Controls.MaterialButton materialButton_dotcounts;
         private MaterialSkin.Controls.MaterialButton materialButton_acidAnalyze;
         private MaterialSkin.Controls.MaterialButton materialButton_correction;
         private MaterialSkin.Controls.MaterialButton materialButton_imageProcess;
-        private MaterialSkin.Controls.MaterialDivider materialDivider3;
-        private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialCard materialCard_LeftBtn;
+        private System.Windows.Forms.PictureBox CompanyIcon_pictureBox;
+        private System.Windows.Forms.Panel DataProcess_panel;
+        private System.Windows.Forms.ToolTip btnStartUpToolTip;
     }
 }
