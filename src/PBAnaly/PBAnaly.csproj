@@ -113,7 +113,7 @@
 
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
-
+    </EmbeddedResource>
     <EmbeddedResource Include="testAlgForm.resx">
       <DependentUpon>testAlgForm.cs</DependentUpon>
 
