@@ -33,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -46,6 +47,9 @@
     </Reference>
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="PBBiologyAlg">
+      <HintPath>..\x64\Release\PBBiologyAlg.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataProcessForm.Designer.cs">
+      <DependentUpon>DataProcessForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,12 +79,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
+    <Compile Include="SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DataProcessForm.resx">
+      <DependentUpon>DataProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+
     <Compile Include="testAlgForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="testAlgForm.Designer.cs">
       <DependentUpon>testAlgForm.cs</DependentUpon>
     </Compile>
+
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,8 +110,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+
+    <EmbeddedResource Include="SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+
     <EmbeddedResource Include="testAlgForm.resx">
       <DependentUpon>testAlgForm.cs</DependentUpon>
+
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
