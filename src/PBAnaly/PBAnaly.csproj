@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -78,6 +79,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +89,14 @@
     <EmbeddedResource Include="DataProcessForm.resx">
       <DependentUpon>DataProcessForm.cs</DependentUpon>
     </EmbeddedResource>
+
+    <Compile Include="testAlgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testAlgForm.Designer.cs">
+      <DependentUpon>testAlgForm.cs</DependentUpon>
+    </Compile>
+
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,8 +110,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
+
+    <EmbeddedResource Include="testAlgForm.resx">
+      <DependentUpon>testAlgForm.cs</DependentUpon>
+
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -116,6 +131,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PBBiologyVC\PBBiologyVC.vcxproj">
+      <Project>{c1dd8a06-7351-4c8d-bd7f-b2be76bb3903}</Project>
+      <Name>PBBiologyVC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenCvSharp4">
+      <Version>4.10.0.20240616</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.Extensions">
+      <Version>4.10.0.20240616</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.runtime.win">
+      <Version>4.10.0.20240616</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
