@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using PBAnaly.Module;
 using System;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace PBAnaly
     {
         private MaterialSkinManager materialSkinManager;
         private SettingForm settingForm;
+
         private int FormGenerate_X;
         private int FormGenerate_Y;
 
@@ -202,20 +204,40 @@ namespace PBAnaly
 
         private void materialButton_LoadData_Click(object sender, EventArgs e)
         {
-            DataProcessForm frmEmbed = new DataProcessForm(materialSkinManager);
+            string selectedFilePath = "";
+            // 弹出选择图像的框
+            #region 打开图片
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "TIF Files (*.tif)|*.tif|All files (*.*)|*.*";  // 设置文件筛选器
+            openFileDialog.Title = "Select a TIF File";  // 设置对话框标题
 
-            if (frmEmbed != null)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //frmEmbed.FormBorderStyle = FormBorderStyle.None;  //  无边框
-                frmEmbed.TopLevel = false;  //  不是最顶层窗体
-                DataProcess_panel.Controls.Add(frmEmbed);   //  添加到 Panel中
-
-                FormGenerate_X = FormGenerate_X + 15;
-                FormGenerate_Y = FormGenerate_Y + 15;
-
-                frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
-                frmEmbed.Show();      //  显示
+                // 获取选中的文件路径
+                selectedFilePath = openFileDialog.FileName;
+                
             }
+
+            #endregion
+            if (selectedFilePath != "") 
+            {
+                DataProcessForm frmEmbed = new DataProcessForm(materialSkinManager, selectedFilePath);
+
+                if (frmEmbed != null)
+                {
+                    //frmEmbed.FormBorderStyle = FormBorderStyle.None;  //  无边框
+                    frmEmbed.TopLevel = false;  //  不是最顶层窗体
+                    DataProcess_panel.Controls.Add(frmEmbed);   //  添加到 Panel中
+
+                    FormGenerate_X = FormGenerate_X + 15;
+                    FormGenerate_Y = FormGenerate_Y + 15;
+
+                    frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
+                    frmEmbed.Show();      //  显示
+                    PBAnalyCommMannager.processForm = frmEmbed;
+                }
+            }
+           
         }
 
         private void materialButton_setting_Click(object sender, EventArgs e)
@@ -235,6 +257,22 @@ namespace PBAnaly
 
             settingForm.Dispose();
             settingForm = null;
+        }
+
+        private void materialButton_curveimage_Click(object sender, EventArgs e)
+        {
+            if (PBAnalyCommMannager.processcurveAlg()) 
+            {
+               
+            }
+        }
+
+        private void materialButton_analyzedata_Click(object sender, EventArgs e)
+        {
+            if (PBAnalyCommMannager.band_info == null) return;
+            PBAnaly.UI.AnalyzeDataForm analyzeDataForm = new UI.AnalyzeDataForm(PBAnalyCommMannager.band_info);
+            analyzeDataForm.TopMost = true;
+            analyzeDataForm.Show();
         }
     }
 }

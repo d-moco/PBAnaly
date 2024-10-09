@@ -43,16 +43,9 @@ namespace PBBiologyVC {
 			ydata = gcnew  List<float>();
 			xdata = gcnew List<float>();
 			band_point = gcnew List<List<int>^>(3); 
-			Minfo = gcnew List<MolecularInfoVC^>(0);
+			Minfo = gcnew List<MolecularInfoVC^>(1);
 			
-			for (int i = 0; i < 3; i++)
-			{
-				List<int>^ bandPos = gcnew List<int>(3); 
-				bandPos->Add(0); 
-				bandPos->Add(0); 
-				bandPos->Add(0);
-				band_point->Add(bandPos);
-			}
+		
 		}
 	};
 
@@ -63,12 +56,14 @@ namespace PBBiologyVC {
 		~PBBiology();
 
 	public:
-		List<RectVC^>^ getProteinRectVC(unsigned char* mat,unsigned short width,unsigned short height);
-		List<_band_info^>^ getProteinBandsVC(unsigned char* mat, unsigned short width, unsigned short height, List<RectVC^>^ lanes);
-		void adjustBands(List<_band_info^>^ bands, int range);
-		void molecularWeightResult(List<RectVC^>^ lanes, List<_band_info^>^ bands);;
+		List<RectVC^>^ getProteinRectVC(System::Byte* mat,unsigned short width,unsigned short height);
+		void getProteinBandsVC(System::Byte* mat,int bit, unsigned short width, unsigned short height, List<RectVC^>^ lanes, List<_band_info^>^% band);
+		List<_band_info^>^ adjustBands(List<_band_info^>^ bands, int range);
+		void molecularWeightResult(List<RectVC^>^% lanes, List<_band_info^>^% bands);
 	private:
 		PBLane* pblane;
+		void _band_infoToBand_Info(std::vector<BandInfo>& dst, List<_band_info^>^ src);
+		void band_InfoTo_band_info(std::vector<BandInfo> src, List<_band_info^>^% results);
 	};
 }
 

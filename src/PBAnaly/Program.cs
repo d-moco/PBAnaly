@@ -11,10 +11,10 @@ namespace PBAnaly
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+           // Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
-            Application.Run(new testAlgForm());
+            Application.Run(new MainForm());
+            //Application.Run(new testAlgForm());
         }
     }
 }

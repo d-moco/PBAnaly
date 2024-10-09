@@ -38,20 +38,24 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialFloatingActionButton_Plus = new MaterialSkin.Controls.MaterialFloatingActionButton();
             this.materialFloatingActionButton_Minus = new MaterialSkin.Controls.MaterialFloatingActionButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.PictureBoxpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Control_panel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PictureBoxpanel
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.PictureBoxpanel, 2);
             this.PictureBoxpanel.Controls.Add(this.pictureBox1);
-            this.PictureBoxpanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PictureBoxpanel.Location = new System.Drawing.Point(3, 24);
+            this.PictureBoxpanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBoxpanel.Location = new System.Drawing.Point(0, 0);
+            this.PictureBoxpanel.Margin = new System.Windows.Forms.Padding(0);
             this.PictureBoxpanel.Name = "PictureBoxpanel";
-            this.PictureBoxpanel.Size = new System.Drawing.Size(311, 224);
+            this.PictureBoxpanel.Size = new System.Drawing.Size(311, 221);
             this.PictureBoxpanel.TabIndex = 0;
             // 
             // pictureBox1
@@ -60,19 +64,21 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(311, 224);
+            this.pictureBox1.Size = new System.Drawing.Size(311, 221);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // Control_panel
             // 
             this.Control_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tableLayoutPanel1.SetColumnSpan(this.Control_panel, 2);
             this.Control_panel.Controls.Add(this.panel2);
             this.Control_panel.Controls.Add(this.panel1);
-            this.Control_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Control_panel.Location = new System.Drawing.Point(3, 254);
+            this.Control_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Control_panel.Location = new System.Drawing.Point(3, 224);
             this.Control_panel.Name = "Control_panel";
-            this.Control_panel.Size = new System.Drawing.Size(311, 41);
+            this.Control_panel.Size = new System.Drawing.Size(305, 44);
             this.Control_panel.TabIndex = 1;
             // 
             // panel2
@@ -81,7 +87,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(121, 37);
+            this.panel2.Size = new System.Drawing.Size(121, 40);
             this.panel2.TabIndex = 1;
             // 
             // materialButton_Load
@@ -97,7 +103,7 @@
             this.materialButton_Load.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_Load.Name = "materialButton_Load";
             this.materialButton_Load.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_Load.Size = new System.Drawing.Size(121, 37);
+            this.materialButton_Load.Size = new System.Drawing.Size(121, 40);
             this.materialButton_Load.TabIndex = 0;
             this.materialButton_Load.Text = "Load";
             this.materialButton_Load.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -110,9 +116,9 @@
             this.panel1.Controls.Add(this.materialFloatingActionButton_Plus);
             this.panel1.Controls.Add(this.materialFloatingActionButton_Minus);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(128, 0);
+            this.panel1.Location = new System.Drawing.Point(156, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(179, 37);
+            this.panel1.Size = new System.Drawing.Size(145, 40);
             this.panel1.TabIndex = 0;
             // 
             // materialLabel1
@@ -156,13 +162,29 @@
             this.materialFloatingActionButton_Minus.Text = "materialFloatingActionButton1";
             this.materialFloatingActionButton_Minus.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.Control_panel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.PictureBoxpanel, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(311, 271);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
             // DataProcessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(317, 298);
-            this.Controls.Add(this.Control_panel);
-            this.Controls.Add(this.PictureBoxpanel);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Name = "DataProcessForm";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
@@ -174,6 +196,7 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -189,5 +212,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialFloatingActionButton materialFloatingActionButton_Plus;
         private MaterialSkin.Controls.MaterialFloatingActionButton materialFloatingActionButton_Minus;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

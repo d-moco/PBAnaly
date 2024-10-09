@@ -420,6 +420,17 @@ vector<std::array<int, 3>> PBLane::get_top_point(vector<unsigned char> rbuf, int
 	{
 		if (rbuf[filterPoint[i]] - rbuf[filterPoint[i - 1]] > limit && rbuf[filterPoint[i]] - rbuf[filterPoint[i + 1]] > limit)
 		{
+			int len_left = filterPoint[i] - filterPoint[i - 1];
+			int len_right = filterPoint[i + 1] - filterPoint[i];
+			if (len_left > len_right && len_left / len_right >= 3)
+			{
+				filterPoint[i - 1] = filterPoint[i] - len_right * 3;
+			}
+			else if (len_right > len_left && len_right / len_left >= 3)
+			{
+				filterPoint[i + 1] = filterPoint[i] + len_left * 3;
+			}
+
 			topPoint.push_back({ filterPoint[i],filterPoint[i - 1],filterPoint[i + 1] });
 		}
 	}
