@@ -145,6 +145,7 @@
             this.materialButton_curveimage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton_curveimage.UseAccentColor = false;
             this.materialButton_curveimage.UseVisualStyleBackColor = true;
+            this.materialButton_curveimage.Click += new System.EventHandler(this.materialButton_curveimage_Click);
             // 
             // materialButton_analyzedata
             // 
@@ -165,6 +166,7 @@
             this.materialButton_analyzedata.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton_analyzedata.UseAccentColor = false;
             this.materialButton_analyzedata.UseVisualStyleBackColor = true;
+            this.materialButton_analyzedata.Click += new System.EventHandler(this.materialButton_analyzedata_Click);
             // 
             // materialButton_outimage
             // 
@@ -597,6 +599,7 @@
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.metroPanel_RightTop.ResumeLayout(false);
             this.metroPanel_RightTop.PerformLayout();
