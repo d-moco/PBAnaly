@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataProcessForm.cs" />
+    <Compile Include="DataProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataProcessForm.Designer.cs">
       <DependentUpon>DataProcessForm.cs</DependentUpon>
     </Compile>
@@ -59,7 +61,9 @@
     <Compile Include="LaneChartForm.Designer.cs">
       <DependentUpon>LaneChartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
