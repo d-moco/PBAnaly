@@ -27,6 +27,9 @@
     <ClInclude Include="include\PBType.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\PBColony.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBBiology.cpp">
@@ -36,6 +39,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\PBLane.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PBColony.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
