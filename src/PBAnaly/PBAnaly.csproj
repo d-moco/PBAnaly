@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B9CEF793-3D50-48A7-8B1A-3F121ECABE12}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PBAnaly</RootNamespace>
+    <AssemblyName>PBAnaly</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>GS-Analy.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataProcessForm.Designer.cs">
+      <DependentUpon>DataProcessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LaneChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaneChartForm.Designer.cs">
+      <DependentUpon>LaneChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ImageProcess.cs" />
+    <Compile Include="Module\ImageToolMannage.cs" />
+    <Compile Include="Module\PBAnalyCommMannager.cs" />
+    <Compile Include="Module\util.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Read_Write_Log.cs" />
+    <Compile Include="SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignInForm.Designer.cs">
+      <DependentUpon>SignInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AnalyzeDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AnalyzeDataForm.Designer.cs">
+      <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\colorbarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\colorbarControl.Designer.cs">
+      <DependentUpon>colorbarControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ImagePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ImagePanel.Designer.cs">
+      <DependentUpon>ImagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ImagePanelUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ImagePanelUser.Designer.cs">
+      <DependentUpon>ImagePanelUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ImageToolPaletteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ImageToolPaletteForm.Designer.cs">
+      <DependentUpon>ImageToolPaletteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RowMergeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\RowMergeView.designer.cs">
+      <DependentUpon>RowMergeView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DataProcessForm.resx">
+      <DependentUpon>DataProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="testAlgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testAlgForm.Designer.cs">
+      <DependentUpon>testAlgForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="LaneChartForm.resx">
+      <DependentUpon>LaneChartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignInForm.resx">
+      <DependentUpon>SignInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testAlgForm.resx">
+      <DependentUpon>testAlgForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AnalyzeDataForm.resx">
+      <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\colorbarControl.resx">
+      <DependentUpon>colorbarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ImagePanel.resx">
+      <DependentUpon>ImagePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ImagePanelUser.resx">
+      <DependentUpon>ImagePanelUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ImageToolPaletteForm.resx">
+      <DependentUpon>ImageToolPaletteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RowMergeView.resx">
+      <DependentUpon>RowMergeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AntdUI">
+      <Version>1.6.14</Version>
+    </PackageReference>
+    <PackageReference Include="Aspose.PDF">
+      <Version>24.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialSkin">
+      <Version>0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialSkin.2">
+      <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="MetroModernUI">
+      <Version>1.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyModel">
+      <Version>8.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
+      <Version>8.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="MiniExcel">
+      <Version>1.34.2</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4">
+      <Version>4.10.0.20240616</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.Extensions">
+      <Version>4.10.0.20240616</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.runtime.win">
+      <Version>4.10.0.20240616</Version>
+    </PackageReference>
+    <PackageReference Include="ReaLTaiizor">
+      <Version>3.8.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="ScottPlot">
+      <Version>5.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="ScottPlot.WinForms">
+      <Version>5.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="SixLabors.ImageSharp">
+      <Version>2.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="SunnyUI">
+      <Version>3.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.DiagnosticSource">
+      <Version>8.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.AccessControl">
+      <Version>6.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Encodings.Web">
+      <Version>8.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PBBiologyVC\PBBiologyVC.vcxproj">
+      <Project>{c1dd8a06-7351-4c8d-bd7f-b2be76bb3903}</Project>
+      <Name>PBBiologyVC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roi-select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yto-icon-X-transit_time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom-in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\保存.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\壁纸.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\饼干.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\波形设置-未选中.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\波形图.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\窗口最大化_操作_jurassic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\蛋白质-01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\導出.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\返回前台.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\分析.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\风控.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\黑白平衡.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\计数器.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\胶原蛋白.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\控制窗口.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\前台.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图片管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\圖片_20240731174523.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\執行日誌紀錄.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\重置.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\重组蛋白-CAR-T靶点蛋白.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\主页面-图像编辑-正反片.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\放大.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\缩小.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\保存图片.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\全屏.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\线段.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GS-Analy.ico" />
+    <None Include="Resources\线段 %281%29.png" />
+    <None Include="Resources\魔术棒,魔法,魔术,一键.png" />
+    <None Include="Resources\圆形.png" />
+    <None Include="Resources\10矩形.png" />
+    <None Include="Resources\Gray.png" />
+    <None Include="Resources\YellowHot_1.bmp" />
+    <None Include="Resources\YellowHot_0.bmp" />
+    <None Include="Resources\Pseudo_1.bmp" />
+    <None Include="Resources\Pseudo_0.bmp" />
+    <None Include="Resources\EtBr_1.bmp" />
+    <None Include="Resources\EtBr_0.bmp" />
+    <None Include="Resources\Black_Yley_1.bmp" />
+    <None Include="Resources\Black_Yley_0.bmp" />
+    <None Include="Resources\Black_SDS_1.bmp" />
+    <None Include="Resources\Black_SDS_0.bmp" />
+    <None Include="Resources\Black_Red_1.bmp" />
+    <None Include="Resources\Black_Red_0.bmp" />
+    <None Include="Resources\Black_Green_1.bmp" />
+    <None Include="Resources\Black_Green_0.bmp" />
+    <None Include="Resources\Black_Blue_1.bmp" />
+    <None Include="Resources\Black_Blue_0.bmp" />
+    <None Include="Resources\京仪科技定稿_画板 1 副本2.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
