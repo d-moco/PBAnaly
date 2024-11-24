@@ -94,6 +94,7 @@ namespace PBAnaly.Module
             return new System.Drawing.Point(realX, realY);
         }
 
+
         public static System.Drawing.Rectangle GetRealImageRectangle(PictureBox pictureBox, System.Drawing.Rectangle mouseRectangle)
         {
             if (pictureBox.Image == null)

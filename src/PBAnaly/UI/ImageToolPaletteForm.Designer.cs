@@ -484,10 +484,9 @@
             // collapseItem2
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
-            this.collapseItem2.Expand = true;
-            this.collapseItem2.Location = new System.Drawing.Point(19, 338);
+            this.collapseItem2.Location = new System.Drawing.Point(-331, -113);
             this.collapseItem2.Name = "collapseItem2";
-            this.collapseItem2.Size = new System.Drawing.Size(329, 113);
+            this.collapseItem2.Size = new System.Drawing.Size(331, 113);
             this.collapseItem2.TabIndex = 1;
             this.collapseItem2.Text = "ROI工具";
             // 
@@ -511,7 +510,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(329, 113);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(331, 113);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // hpb_wand
@@ -521,7 +520,7 @@
             this.hpb_wand.Location = new System.Drawing.Point(105, 3);
             this.hpb_wand.Name = "hpb_wand";
             this.hpb_wand.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_wand.Size = new System.Drawing.Size(28, 28);
+            this.hpb_wand.Size = new System.Drawing.Size(28, 27);
             this.hpb_wand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hpb_wand.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hpb_wand.TabIndex = 13;
@@ -536,7 +535,7 @@
             this.hpb_xianduan.Location = new System.Drawing.Point(71, 3);
             this.hpb_xianduan.Name = "hpb_xianduan";
             this.hpb_xianduan.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_xianduan.Size = new System.Drawing.Size(28, 28);
+            this.hpb_xianduan.Size = new System.Drawing.Size(28, 27);
             this.hpb_xianduan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hpb_xianduan.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hpb_xianduan.TabIndex = 12;
@@ -551,7 +550,7 @@
             this.hpb_circe.Location = new System.Drawing.Point(37, 3);
             this.hpb_circe.Name = "hpb_circe";
             this.hpb_circe.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_circe.Size = new System.Drawing.Size(28, 28);
+            this.hpb_circe.Size = new System.Drawing.Size(28, 27);
             this.hpb_circe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hpb_circe.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hpb_circe.TabIndex = 11;
@@ -565,7 +564,7 @@
             this.hpb_rect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_rect.Image = global::PBAnaly.Properties.Resources._10矩形;
             this.hpb_rect.Location = new System.Drawing.Point(2, 2);
-            this.hpb_rect.Margin = new System.Windows.Forms.Padding(2);
+            this.hpb_rect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.hpb_rect.Name = "hpb_rect";
             this.hpb_rect.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hpb_rect.Size = new System.Drawing.Size(30, 30);
@@ -589,7 +588,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(323, 73);
+            this.panel2.Size = new System.Drawing.Size(325, 73);
             this.panel2.TabIndex = 14;
             this.panel2.Text = "panel2";
             // 
@@ -710,7 +709,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.cll_panel);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ImageToolPaletteForm";

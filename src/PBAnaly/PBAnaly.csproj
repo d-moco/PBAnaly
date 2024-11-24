@@ -87,6 +87,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Module\BioanalysisMannage.cs" />
     <Compile Include="Module\ImageProcess.cs" />
     <Compile Include="Module\ImageToolMannage.cs" />
     <Compile Include="Module\PBAnalyCommMannager.cs" />
@@ -111,6 +112,18 @@
     </Compile>
     <Compile Include="UI\AnalyzeDataForm.Designer.cs">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BioanalyImagePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BioanalyImagePanel.Designer.cs">
+      <DependentUpon>BioanalyImagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BioanayImagePaletteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BioanayImagePaletteForm.Designer.cs">
+      <DependentUpon>BioanayImagePaletteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\colorbarControl.cs">
       <SubType>UserControl</SubType>
@@ -184,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AnalyzeDataForm.resx">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BioanalyImagePanel.resx">
+      <DependentUpon>BioanalyImagePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BioanayImagePaletteForm.resx">
+      <DependentUpon>BioanayImagePaletteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\colorbarControl.resx">
       <DependentUpon>colorbarControl.cs</DependentUpon>

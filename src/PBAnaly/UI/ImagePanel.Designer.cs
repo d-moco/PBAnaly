@@ -308,24 +308,22 @@
             // 
             this.pl_bg_image.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
             this.pl_bg_image.Controls.Add(this.pb_image);
-            this.pl_bg_image.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pl_bg_image.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.pl_bg_image.Location = new System.Drawing.Point(4, 4);
             this.pl_bg_image.Margin = new System.Windows.Forms.Padding(0);
             this.pl_bg_image.Name = "pl_bg_image";
             this.pl_bg_image.Padding = new System.Windows.Forms.Padding(5);
-            this.pl_bg_image.Size = new System.Drawing.Size(288, 261);
+            this.pl_bg_image.Size = new System.Drawing.Size(237, 181);
             this.pl_bg_image.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.pl_bg_image.TabIndex = 1;
             this.pl_bg_image.Text = "panel1";
             // 
             // pb_image
             // 
-            this.pb_image.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb_image.Location = new System.Drawing.Point(5, 5);
             this.pb_image.Margin = new System.Windows.Forms.Padding(0);
             this.pb_image.Name = "pb_image";
-            this.pb_image.Size = new System.Drawing.Size(278, 251);
+            this.pb_image.Size = new System.Drawing.Size(180, 124);
             this.pb_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_image.TabIndex = 0;
             this.pb_image.TabStop = false;

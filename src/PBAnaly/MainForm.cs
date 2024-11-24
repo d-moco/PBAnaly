@@ -31,87 +31,12 @@ namespace PBAnaly
 
         private string color_bar = "YellowHot";
         System.Windows.Forms.TableLayoutPanel tlp_main_images;
-        
+
+        private Dictionary<string ,BioanalysisMannage> bioanalysisMannages = new Dictionary<string, BioanalysisMannage>();
    
         bool isRun = false;
         private Thread thread;
-        private void runThread() 
-        {
-            //while (isRun)
-            //{
-                
-            //    int index = 0;
-            //    foreach (var item in ImageToolMannage.imageDataPath)
-            //    {
-            //        if (index == 0)
-            //        {
-            //            if (pb_image1.InvokeRequired) 
-            //            {
-            //                pb_image1.Invoke(new Action(() => pb_image1.Image = item.Value.pictureBox));
-            //            }
-                       
-                     
-            //        }
-            //        else if (index == 1)
-            //        {
-            //            if (pb_image2.InvokeRequired)
-            //            {
-            //                pb_image2.Invoke(new Action(() => pb_image2.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //        else if (index == 2)
-            //        {
-            //            if (pb_image3.InvokeRequired)
-            //            {
-            //                pb_image3.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //        else if (index == 3)
-            //        {
-            //            if (pb_image4.InvokeRequired)
-            //            {
-            //                pb_image4.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //        else if (index == 4)
-            //        {
-            //            if (pb_image5.InvokeRequired)
-            //            {
-            //                pb_image5.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //        else if (index == 5)
-            //        {
-            //            if (pb_image6.InvokeRequired)
-            //            {
-            //                pb_image6.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //        else if (index == 6)
-            //        {
-            //            if (pb_image7.InvokeRequired)
-            //            {
-            //                pb_image7.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //        else if (index == 7)
-            //        {
-            //            if (pb_image8.InvokeRequired)
-            //            {
-            //                pb_image8.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //        else if (index == 8)
-            //        {
-            //            if (pb_image9.InvokeRequired)
-            //            {
-            //                pb_image9.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //            }
-            //        }
-            //    }
-            //    Thread.Sleep(200);
-            //}
-        }
+       
         public MainForm(LoginForm InnerloginForm, Autholity autholity, string UserID)
         {
             InitializeComponent();
@@ -154,246 +79,8 @@ namespace PBAnaly
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;   // Theme 属性用来设置整体的主题
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.Indigo700, TextShade.WHITE);    // ColorScheme 属性来设置配色方案
         }
-        public void SetPic(Bitmap p) 
-        {
-          
-            int index = 0;
-
-            //foreach (var item in ImageToolMannage.imageDataPath)
-            //{
-            //    if (index == 0)
-            //    {
-            //        var camera = item.Value.GetImage();
-            //        pb_image1.Image = util.ConvertRgb24ImageToBitmap(camera);
-                    
-            //        pb_image1.Refresh();
-
-            //    }
-            //    else if (index == 1)
-            //    {
-            //        pb_image2.Invoke(new Action(() => pb_image2.Image = item.Value.pictureBox));
-            //    }
-            //    else if (index == 2)
-            //    {
-            //        pb_image3.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //    }
-            //    else if (index == 3)
-            //    {
-            //        pb_image4.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //    }
-            //    else if (index == 4)
-            //    {
-            //        pb_image5.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //    }
-            //    else if (index == 5)
-            //    {
-            //        if (pb_image6.InvokeRequired)
-            //        {
-            //            pb_image6.Invoke(new Action(() => pb_image6.Image = item.Value.pictureBox));
-            //        }
-            //    }
-            //    else if (index == 6)
-            //    {
-            //        pb_image7.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //    }
-            //    else if (index == 7)
-            //    {
-            //        pb_image8.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //    }
-            //    else if (index == 8)
-            //    {
-            //        pb_image9.Invoke(new Action(() => pb_image9.Image = item.Value.pictureBox));
-            //    }
-            //    index++;
-            //}
-        }
-        private void initPanel() 
-        {
-            //BeginUpdate(tl_right_main_view);
-           
-            //tl_right_main_view.RowCount = 1;
-            //tl_right_main_view.ColumnCount = 1;
-
-            //tl_right_main_view.Controls.Clear();
-            
-           
-
-            //if (isGridView)
-            //{
-            //    pl_right.Controls.Clear();
-            //    itpf = new COMMImageToolPaletteForm(this);
-            //    itpf.TopLevel = false;
-            //    itpf.Dock = DockStyle.Fill;
-            //    pb_colorbar = new PictureBox();
-            //    pb_colorbar.SizeMode = PictureBoxSizeMode.StretchImage;
-                
-            //    tl_right_main_view.RowCount = 1;
-            //    tl_right_main_view.ColumnCount = 2;
-            //    tl_right_main_view.RowStyles.Clear();
-            //    tl_right_main_view.ColumnStyles.Clear();
-
-            //    tl_right_main_view.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100f));
-            //    tl_right_main_view.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100f));
-            //    pb_lists.Clear();
-            //    tlp_main_images = new TableLayoutPanel();
-            //    tl_right_main_view.Controls.Add(tlp_main_images,0,0);
-            //    tl_right_main_view.Controls.Add(pb_colorbar, 1,0);
-            //    pb_colorbar.Dock = DockStyle.Fill;
-            //    pl_right.Controls.Add(itpf);
-            //    pb_colorbar.Show();
-            //    pb_colorbar.Dock = DockStyle.Fill;
-            //    itpf.Show();
-            //    tlp_main_images.Dock = DockStyle.Fill;
-                
-            //    int capCount = ImageToolMannage.imageDataPath.Count;
-            //    int rows = (int)Math.Ceiling(Math.Sqrt(capCount));
-            //    int cols = (int)Math.Ceiling((double)capCount / rows);
-            //    if (capCount == 1) 
-            //    {
-            //        rows = 1;
-            //        cols = 0;
-            //    }
-            //    else if (capCount == 2)
-            //    {
-            //        rows = 1;
-            //        cols = 2;
-            //    }
-            //    else if ( capCount == 3)
-            //    {
-            //        rows = 1;
-            //        cols = capCount;
-            //    }
-            //    else if (capCount == 4)
-            //    {
-            //        rows = 2;
-            //        cols = 2;
-            //    }
-            //    else if (capCount > 4 && capCount <= 6)
-            //    {
-            //        rows = 2;
-            //        cols = 3;
-            //    }
-            //    else if (capCount > 6 && capCount <= 9)
-            //    {
-            //        rows = 3;
-            //        cols = 3;
-            //    }
-
-
-            //    tlp_main_images.RowCount = rows;
-            //    tlp_main_images.ColumnCount = cols;
-
-            //    tlp_main_images.RowStyles.Clear();
-            //    tlp_main_images.ColumnStyles.Clear();
-            //    for (int i = 0; i < rows; i++)
-            //    {
-            //        tlp_main_images.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / rows));
-            //    }
-            //    for (int i = 0; i < cols; i++)
-            //    {
-            //        tlp_main_images.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / cols));
-            //    }
-
-            //    int index = 0;
-            //    int r = 0;
-            //    int c = 0;
-            //    foreach (var item in ImageToolMannage.imageDataPath)
-            //    {
-            //        if (index == 0)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image1, c, r);
-            //            pb_image1.Dock = DockStyle.Fill;
-            //            pb_image1.Show();
-            //        }
-            //        else if(index == 1)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image2, c, r);
-            //            pb_image2.Dock = DockStyle.Fill;
-            //            pb_image2.Show();
-            //        }
-            //        else if (index == 2)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image3, c, r);
-            //            pb_image3.Dock = DockStyle.Fill;
-            //            pb_image3.Show();
-            //        }
-            //        else if (index == 3)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image4, c, r);
-            //            pb_image4.Dock = DockStyle.Fill;
-            //            pb_image4.Show();
-            //        }
-            //        else if (index == 4)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image5, c, r);
-            //            pb_image5.Dock = DockStyle.Fill;
-            //            pb_image5.Show();
-            //        }
-            //        else if (index == 5)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image6, c, r);
-            //            pb_image6.Dock = DockStyle.Fill;
-            //            pb_image6.Show();
-            //        }
-            //        else if (index == 6)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image7, c, r);
-            //            pb_image7.Dock = DockStyle.Fill;
-            //            pb_image7.Show();
-            //        }
-            //        else if (index == 7)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image8, c, r);
-            //            pb_image8.Dock = DockStyle.Fill;
-            //            pb_image8.Show();
-            //        }
-            //        else if (index == 8)
-            //        {
-            //            tlp_main_images.Controls.Add(pb_image9, c, r);
-            //            pb_image9.Dock = DockStyle.Fill;
-            //            pb_image9.Show();
-            //        }
-            //        c++;
-            //        if (c >= cols)
-            //        {
-            //            r++;
-            //            c = 0;
-            //        }
-            //        index++;
-            //    }
-               
-            //    isRun = true;
-            //    thread = new Thread(runThread);
-            //    thread.IsBackground = true;
-            //    thread.Start();
-            //}
-            //else 
-            //{
-            //    isRun = false;
-            //    tl_right_main_view.Controls.Add(DataProcess_panel);
-            //    DataProcess_panel.Dock = DockStyle.Fill;
-
-            //    foreach (var frmEmbed in ImageToolMannage.imageDataPath.Values)
-            //    {
-            //        if (frmEmbed != null)
-            //        {
-            //            frmEmbed.TopLevel = false;
-            //            DataProcess_panel.Controls.Add(frmEmbed);
-            //            //FormGenerate_X = FormGenerate_X + 15;
-            //            //FormGenerate_Y = FormGenerate_Y + 15;
-            //            frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
-            //            frmEmbed.Show();      //  显示
-            //            frmEmbed.BringToFront();
-            //            frmEmbed.initPicturebox();
-
-
-
-
-            //        }
-            //    }
-            //}
-            //EndUpdate(tl_right_main_view);
-        }
+       
+       
 
         private void materialButton_changeFormSize_MouseMove(object sender, MouseEventArgs e)
         {
@@ -621,31 +308,40 @@ namespace PBAnaly
             #endregion
             if (selectedFilePath != "")
             {
-                if (ImageToolMannage.imageDataPath.TryGetValue(selectedFilePath, out var value)) 
+                //if (ImageToolMannage.imageDataPath.TryGetValue(selectedFilePath, out var value)) 
+                //{
+                //    return;
+                //}
+
+                if (bioanalysisMannages.TryGetValue(selectedFilePath, out var value))
                 {
                     return;
                 }
+                BioanalysisMannage bioanalysisMannage = new BioanalysisMannage(selectedFilePath, pl_right);
+
+                DataProcess_panel.Controls.Add(bioanalysisMannage.GetImagePanel);
+                bioanalysisMannage.GetImagePanel.BringToFront();
+                bioanalysisMannages[selectedFilePath] = bioanalysisMannage;
 
 
+                //ImagePanel frmEmbed = new ImagePanel(selectedFilePath, pl_right);
+                //ImageToolMannage.imageDataPath[selectedFilePath] = frmEmbed;
 
-                ImagePanel frmEmbed = new ImagePanel(selectedFilePath, pl_right);
-                ImageToolMannage.imageDataPath[selectedFilePath] = frmEmbed;
+                //if (frmEmbed != null)
+                //{
+                //    frmEmbed.TopLevel = false;
+                //    DataProcess_panel.Controls.Add(frmEmbed);
+                //    FormGenerate_X = FormGenerate_X + 15;
+                //    FormGenerate_Y = FormGenerate_Y + 15;
+                //    frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
+                //    frmEmbed.Show();      //  显示
+                //    frmEmbed.BringToFront();
 
-                if (frmEmbed != null) 
-                {
-                    frmEmbed.TopLevel = false;
-                    DataProcess_panel.Controls.Add(frmEmbed);
-                    FormGenerate_X = FormGenerate_X + 15;
-                    FormGenerate_Y = FormGenerate_Y + 15;
-                    frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
-                    frmEmbed.Show();      //  显示
-                    frmEmbed.BringToFront();
-                    
-                    //frmEmbed.RefreshUI();
-                    
+                //    //frmEmbed.RefreshUI();
 
-                }
-                initPanel();
+
+                //}
+                //initPanel();
 
 
             }

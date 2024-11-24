@@ -1372,7 +1372,8 @@ namespace PBAnaly.UI
             {
                 saveFileDialog.Title = "保存Panel图像";
                 saveFileDialog.Filter = "PNG 图片|*.png|JPEG 图片|*.jpg|BMP 图片|*.bmp";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                if (saveFileDialog.ShowDialog() 
+                    == DialogResult.OK)
                 {
                     // 根据文件扩展名选择格式
                     System.Drawing.Imaging.ImageFormat format = System.Drawing.Imaging.ImageFormat.Bmp;
