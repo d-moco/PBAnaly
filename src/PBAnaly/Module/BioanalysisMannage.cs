@@ -1,4 +1,6 @@
-﻿using Aspose.Pdf.AI;
+﻿using AntdUI;
+using Aspose.Pdf.AI;
+using Aspose.Pdf.Drawing;
 using PBAnaly.UI;
 using ScottPlot.Panels;
 using ScottPlot.Plottables;
@@ -7,7 +9,9 @@ using SixLabors.ImageSharp.PixelFormats;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -19,6 +23,7 @@ namespace PBAnaly.Module
     /// </summary>
     public class BioanalysisMannage
     {
+        #region 结构体
         public struct AlgAttribute
         {
             public int brightness;
@@ -38,6 +43,7 @@ namespace PBAnaly.Module
 
             public int colorIndex;
         }
+        #endregion
         #region 变量
         private string path;
         private string mark_path;
@@ -72,6 +78,16 @@ namespace PBAnaly.Module
         private System.Drawing.Point mouseDownPosition;
         private System.Drawing.Point pictureBoxStartPosition;
 
+        private const int CircleRadius = 5;
+        private bool lineOn =false;
+        private bool drawLine = false;
+        private System.Drawing.Point startPoint = new System.Drawing.Point(-10, 0);
+        private System.Drawing.Point endPoint = new System.Drawing.Point(-10, 0);
+
+
+        private bool isStartCircleDragged, isEndCircleDragged;
+      
+        
         #endregion
         #endregion
 
@@ -349,10 +365,12 @@ namespace PBAnaly.Module
             imagePanel.image_pl.Paint += Image_pl_Paint;
 
 
+            imagePaletteForm.hpb_line.Click += Hpb_line_Click;
 
         }
 
         
+
         private void ReadTif() 
         {
             string[] tifFiles = Directory.GetFiles(path, "*.tif", SearchOption.TopDirectoryOnly);
@@ -473,6 +491,7 @@ namespace PBAnaly.Module
 
                             break;
                     }
+                    UpdateImages();
                 }));
 
             }
@@ -498,9 +517,28 @@ namespace PBAnaly.Module
 
                         break;
                 }
-
+                UpdateImages();
             }
         }
+
+        private void UpdateImages()
+        {
+            if (algAttribute.scientificON)
+            {
+
+                imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n color scale\n min=" + util.GetscientificNotation(algAttribute.colorMinValue) + "\n max=" + util.GetscientificNotation(algAttribute.colorValue);
+            }
+            else
+            {
+                imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n color scale\n min=" + algAttribute.colorMinValue.ToString() + "\n max=" + algAttribute.colorValue.ToString();
+            }
+
+        }
+
+        
+        
+      
+        
         #endregion
 
 
@@ -571,21 +609,57 @@ namespace PBAnaly.Module
         #region imagepanel
         private void Image_pl_Paint(object sender, PaintEventArgs e)
         {
-           
+            Graphics g = e.Graphics;
+
+            // 绘制直线
+            if ((startPoint != System.Drawing.Point.Empty && endPoint != System.Drawing.Point.Empty))
+            {
+                var srart = ImageProcess.ConvertRealToPictureBox(startPoint, imagePanel.image_pl);
+                var end = ImageProcess.ConvertRealToPictureBox(endPoint, imagePanel.image_pl);
+                g.DrawLine(Pens.Red, srart, end);
+
+                // 绘制起点和终点的圆圈
+                ImageProcess.DrawCircle(g, srart, CircleRadius, Pens.Blue, Brushes.LightBlue);
+                ImageProcess.DrawCircle(g, end, CircleRadius, Pens.Blue, Brushes.LightBlue);
+            }
         }
 
         private void Image_pl_MouseUp(object sender, MouseEventArgs e)
         {
-            if (isDragging && e.Button == MouseButtons.Left) 
+            System.Drawing.Point readLoction = ImageProcess.GetRealImageCoordinates(imagePanel.image_pl, e.Location);
+            if (isDragging && e.Button == MouseButtons.Left)
             {
                 imagePanel.pl_bg_panel.Cursor = Cursors.Default;
+                isDragging = false;
             }
+            else if ((drawLine && e.Button == MouseButtons.Left) || (isStartCircleDragged || isEndCircleDragged))
+            {
+                drawLine = false;
+                lineOn = false;
+                isStartCircleDragged = false;
+                isEndCircleDragged = false;
+                imagePanel.image_pl.Invalidate();
+
+                // 计算距离
+                double deltaX = endPoint.X - startPoint.X;
+                double deltaY = endPoint.Y - startPoint.Y;
+                var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+                imagePaletteForm.flb_act_mm.Text = value.ToString() + " mm";
+                imagePaletteForm.flb_act_mm.Refresh();
+            }
+            
 
         }
 
         private void Image_pl_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDragging && e.Button == MouseButtons.Left) 
+            System.Drawing.Point readLoction = ImageProcess.ConvertPictureBoxToReal(e.Location, imagePanel.image_pl);
+            if (lineOn && drawLine)
+            {
+                endPoint = readLoction; // 更新终点位置
+                imagePanel.image_pl.Invalidate(); // 触发重绘
+            }
+            else if (isDragging && e.Button == MouseButtons.Left)
             {
                 int deltaX = e.X - mouseDownPosition.X;
                 int deltaY = e.Y - mouseDownPosition.Y;
@@ -605,6 +679,26 @@ namespace PBAnaly.Module
                         imagePanel.pl_bg_panel.Top = imagePanel.pl_panel_image.ClientSize.Height - imagePanel.pl_bg_panel.Height;
                 }
             }
+            else if (isStartCircleDragged)
+            {
+                startPoint = readLoction;
+                
+                imagePanel.image_pl.Invalidate();
+            }
+            else if (isEndCircleDragged)
+            {
+                endPoint = readLoction;
+                imagePanel.image_pl.Invalidate();
+            }
+            else if (ImageProcess.IsNearCorner(readLoction,startPoint,CircleRadius) || ImageProcess.IsNearCorner(readLoction, endPoint, CircleRadius))
+            {
+                imagePanel.image_pl.Cursor = Cursors.Hand;
+            }
+            
+            else
+            {
+                imagePanel.image_pl.Cursor = Cursors.Default;
+            }
         }
 
         private void Image_pl_DoubleClick(object sender, System.EventArgs e)
@@ -614,15 +708,54 @@ namespace PBAnaly.Module
 
         private void Image_pl_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && imagePanel.IsImageLargerThanPanel()) 
+            System.Drawing.Point readLoction = ImageProcess.ConvertPictureBoxToReal( e.Location, imagePanel.image_pl);
+            if (e.Button == MouseButtons.Left)
             {
-                isDragging = true;
-                mouseDownPosition = e.Location;
-                pictureBoxStartPosition = imagePanel.pl_bg_panel.Location;
-                imagePanel.pl_bg_panel.Cursor = Cursors.Hand;
+                if (lineOn)
+                {
+                    drawLine = true;
+                    startPoint = readLoction;
+                }
+                else if (imagePanel.IsImageLargerThanPanel())
+                {
+                    isDragging = true;
+                    mouseDownPosition = e.Location;
+                    pictureBoxStartPosition = imagePanel.pl_bg_panel.Location;
+                    imagePanel.pl_bg_panel.Cursor = Cursors.Hand;
+                }
+                else if (ImageProcess.IsNearCorner(readLoction, startPoint, CircleRadius))
+                {
+
+                    isStartCircleDragged = true;
+
+
+                }
+                else if (ImageProcess.IsNearCorner(readLoction, endPoint, CircleRadius))
+                {
+                    isEndCircleDragged = true;
+
+                }
             }
+            else if (e.Button == MouseButtons.Right) 
+            {
+                if (ImageProcess.IsPointOnLine(readLoction,startPoint,endPoint,CircleRadius))
+                {
+                    startPoint = new System.Drawing.Point(-10, 0);
+                    endPoint = new System.Drawing.Point(-10, 0);
+                    imagePanel.image_pl.Invalidate();
+                    imagePaletteForm.flb_act_mm.Text = ("0");
+                    imagePaletteForm.flb_act_mm.Refresh();
+                }
+            }
+            
         }
 
+        #endregion
+        #region imagePaletteForm
+        private void Hpb_line_Click(object sender, EventArgs e)
+        {
+            lineOn = true;
+        }
         #endregion
         #endregion
         #region 对外接口

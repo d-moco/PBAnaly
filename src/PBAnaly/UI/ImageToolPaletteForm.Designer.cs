@@ -119,9 +119,9 @@
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 181F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 193F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(329, 207);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -131,7 +131,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(323, 175);
+            this.panel1.Size = new System.Drawing.Size(323, 187);
             this.panel1.TabIndex = 0;
             this.panel1.Text = "panel1";
             // 
@@ -172,10 +172,10 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(323, 175);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(323, 187);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // foxLabel8
@@ -187,7 +187,7 @@
             this.foxLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel8.Location = new System.Drawing.Point(3, 130);
             this.foxLabel8.Name = "foxLabel8";
-            this.foxLabel8.Size = new System.Drawing.Size(267, 14);
+            this.foxLabel8.Size = new System.Drawing.Size(267, 13);
             this.foxLabel8.TabIndex = 34;
             this.foxLabel8.Text = "Color Rable";
             // 
@@ -465,7 +465,7 @@
             "RGB",
             "Pseudo",
             "Gray"});
-            this.cb_colortable.Location = new System.Drawing.Point(3, 150);
+            this.cb_colortable.Location = new System.Drawing.Point(3, 149);
             this.cb_colortable.Name = "cb_colortable";
             this.cb_colortable.Size = new System.Drawing.Size(84, 20);
             this.cb_colortable.TabIndex = 35;
@@ -474,19 +474,20 @@
             // pb_bgimage
             // 
             this.pb_bgimage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb_bgimage.Location = new System.Drawing.Point(90, 147);
+            this.pb_bgimage.Location = new System.Drawing.Point(90, 146);
             this.pb_bgimage.Margin = new System.Windows.Forms.Padding(0);
             this.pb_bgimage.Name = "pb_bgimage";
-            this.pb_bgimage.Size = new System.Drawing.Size(183, 20);
+            this.pb_bgimage.Size = new System.Drawing.Size(183, 25);
             this.pb_bgimage.TabIndex = 36;
             this.pb_bgimage.TabStop = false;
             // 
             // collapseItem2
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
-            this.collapseItem2.Location = new System.Drawing.Point(-331, -113);
+            this.collapseItem2.Expand = true;
+            this.collapseItem2.Location = new System.Drawing.Point(19, 338);
             this.collapseItem2.Name = "collapseItem2";
-            this.collapseItem2.Size = new System.Drawing.Size(331, 113);
+            this.collapseItem2.Size = new System.Drawing.Size(329, 113);
             this.collapseItem2.TabIndex = 1;
             this.collapseItem2.Text = "ROI工具";
             // 
@@ -510,7 +511,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(331, 113);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(329, 113);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // hpb_wand
@@ -564,7 +565,7 @@
             this.hpb_rect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_rect.Image = global::PBAnaly.Properties.Resources._10矩形;
             this.hpb_rect.Location = new System.Drawing.Point(2, 2);
-            this.hpb_rect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.hpb_rect.Margin = new System.Windows.Forms.Padding(2);
             this.hpb_rect.Name = "hpb_rect";
             this.hpb_rect.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hpb_rect.Size = new System.Drawing.Size(30, 30);
@@ -588,7 +589,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(325, 73);
+            this.panel2.Size = new System.Drawing.Size(323, 73);
             this.panel2.TabIndex = 14;
             this.panel2.Text = "panel2";
             // 
@@ -709,7 +710,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.cll_panel);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ImageToolPaletteForm";
@@ -759,7 +760,6 @@
         private System.Windows.Forms.NumericUpDown nud_color_max;
         private System.Windows.Forms.NumericUpDown nud_brightness;
         private System.Windows.Forms.NumericUpDown nud_opacity;
-        private ReaLTaiizor.Controls.FoxLabel flb_act_mm;
         private ReaLTaiizor.Controls.FoxLabel foxLabel8;
         private System.Windows.Forms.ComboBox cb_colortable;
         private System.Windows.Forms.PictureBox pb_bgimage;
@@ -776,5 +776,6 @@
         private ReaLTaiizor.Controls.FoxLabel foxLabel5;
         private ReaLTaiizor.Controls.FoxTextBox ftb_w;
         private ReaLTaiizor.Controls.FoxButton fb_fixSetting;
+        public ReaLTaiizor.Controls.FoxLabel flb_act_mm;
     }
 }

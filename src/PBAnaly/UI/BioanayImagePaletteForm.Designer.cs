@@ -52,6 +52,9 @@
             this.collapseItem2 = new AntdUI.CollapseItem();
             this.cb_colortable = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.nud_colorMax = new System.Windows.Forms.NumericUpDown();
+            this.nud_colorMin = new System.Windows.Forms.NumericUpDown();
+            this.nud_opacity = new System.Windows.Forms.NumericUpDown();
             this.nud_brightness = new System.Windows.Forms.NumericUpDown();
             this.dtb_colorMax = new ReaLTaiizor.Controls.DungeonTrackBar();
             this.dtb_colorMin = new ReaLTaiizor.Controls.DungeonTrackBar();
@@ -63,9 +66,6 @@
             this.collapseItem1 = new AntdUI.CollapseItem();
             this.cll_panel = new AntdUI.Collapse();
             this.collapseItem3 = new AntdUI.CollapseItem();
-            this.nud_opacity = new System.Windows.Forms.NumericUpDown();
-            this.nud_colorMin = new System.Windows.Forms.NumericUpDown();
-            this.nud_colorMax = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.hpb_line)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hpb_wand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hpb_xianduan)).BeginInit();
@@ -75,15 +75,15 @@
             this.panel2.SuspendLayout();
             this.collapseItem2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_brightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_bgimage)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.collapseItem1.SuspendLayout();
             this.cll_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).BeginInit();
             this.SuspendLayout();
             // 
             // fb_fixSetting
@@ -464,6 +464,30 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(260, 272);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
+            // nud_colorMax
+            // 
+            this.nud_colorMax.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nud_colorMax.Location = new System.Drawing.Point(213, 108);
+            this.nud_colorMax.Name = "nud_colorMax";
+            this.nud_colorMax.Size = new System.Drawing.Size(44, 21);
+            this.nud_colorMax.TabIndex = 51;
+            // 
+            // nud_colorMin
+            // 
+            this.nud_colorMin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nud_colorMin.Location = new System.Drawing.Point(213, 79);
+            this.nud_colorMin.Name = "nud_colorMin";
+            this.nud_colorMin.Size = new System.Drawing.Size(44, 21);
+            this.nud_colorMin.TabIndex = 50;
+            // 
+            // nud_opacity
+            // 
+            this.nud_opacity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nud_opacity.Location = new System.Drawing.Point(213, 32);
+            this.nud_opacity.Name = "nud_opacity";
+            this.nud_opacity.Size = new System.Drawing.Size(44, 21);
+            this.nud_opacity.TabIndex = 45;
+            // 
             // nud_brightness
             // 
             this.nud_brightness.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -643,30 +667,6 @@
             this.collapseItem3.TabIndex = 3;
             this.collapseItem3.Text = "collapseItem3";
             // 
-            // nud_opacity
-            // 
-            this.nud_opacity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_opacity.Location = new System.Drawing.Point(213, 32);
-            this.nud_opacity.Name = "nud_opacity";
-            this.nud_opacity.Size = new System.Drawing.Size(44, 21);
-            this.nud_opacity.TabIndex = 45;
-            // 
-            // nud_colorMin
-            // 
-            this.nud_colorMin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_colorMin.Location = new System.Drawing.Point(213, 79);
-            this.nud_colorMin.Name = "nud_colorMin";
-            this.nud_colorMin.Size = new System.Drawing.Size(44, 21);
-            this.nud_colorMin.TabIndex = 50;
-            // 
-            // nud_colorMax
-            // 
-            this.nud_colorMax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_colorMax.Location = new System.Drawing.Point(213, 108);
-            this.nud_colorMax.Name = "nud_colorMax";
-            this.nud_colorMax.Size = new System.Drawing.Size(44, 21);
-            this.nud_colorMax.TabIndex = 51;
-            // 
             // BioanayImagePaletteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -686,15 +686,15 @@
             this.panel2.ResumeLayout(false);
             this.collapseItem2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_brightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_bgimage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.collapseItem1.ResumeLayout(false);
             this.cll_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -708,13 +708,11 @@
         private ReaLTaiizor.Controls.FoxTextBox ftb_w;
         private ReaLTaiizor.Controls.FoxLabel foxLabel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private ReaLTaiizor.Controls.FoxLabel flb_act_mm;
         private ReaLTaiizor.Controls.FoxLabel foxLabel9;
         private ReaLTaiizor.Controls.FoxLabel foxLabel6;
         private ReaLTaiizor.Controls.FoxLabel foxLabel2;
         private ReaLTaiizor.Controls.FoxLabel foxLabel3;
         private ReaLTaiizor.Controls.FoxLabel foxLabel1;
-        private ReaLTaiizor.Controls.HopePictureBox hpb_line;
         private System.Windows.Forms.PictureBox pb_bgimage;
         private ReaLTaiizor.Controls.FoxLabel foxLabel4;
         private ReaLTaiizor.Controls.HopePictureBox hpb_wand;
@@ -739,5 +737,7 @@
         public System.Windows.Forms.NumericUpDown nud_opacity;
         public System.Windows.Forms.NumericUpDown nud_brightness;
         public System.Windows.Forms.ComboBox cb_colortable;
+        public ReaLTaiizor.Controls.HopePictureBox hpb_line;
+        public ReaLTaiizor.Controls.FoxLabel flb_act_mm;
     }
 }

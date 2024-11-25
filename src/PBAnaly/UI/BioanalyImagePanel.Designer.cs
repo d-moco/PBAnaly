@@ -46,7 +46,9 @@
             this.image_pr = new AntdUI.Image3D();
             this.pl_panel_image = new AntdUI.Panel();
             this.pl_bg_panel = new AntdUI.Panel();
-            this.image_pl = new AntdUI.Image3D();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.lb_wh = new AntdUI.Label();
+            this.image_pl = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,6 +57,8 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.pl_panel_image.SuspendLayout();
             this.pl_bg_panel.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_pl)).BeginInit();
             this.SuspendLayout();
             // 
             // windowBar1
@@ -220,7 +224,7 @@
             this.lb_size.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lb_size.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lb_size.Location = new System.Drawing.Point(0, 0);
-            this.lb_size.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.lb_size.Margin = new System.Windows.Forms.Padding(0);
             this.lb_size.Name = "lb_size";
             this.lb_size.Size = new System.Drawing.Size(352, 13);
             this.lb_size.TabIndex = 0;
@@ -232,8 +236,8 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.tableLayoutPanel2.Controls.Add(this.image_pr, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.pl_panel_image, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 49);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -248,9 +252,9 @@
             this.image_pr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.image_pr.Duration = 0;
             this.image_pr.ImageFit = AntdUI.TFit.Fill;
-            this.image_pr.Location = new System.Drawing.Point(289, 3);
+            this.image_pr.Location = new System.Drawing.Point(3, 3);
             this.image_pr.Name = "image_pr";
-            this.image_pr.Size = new System.Drawing.Size(60, 237);
+            this.image_pr.Size = new System.Drawing.Size(60, 175);
             this.image_pr.Speed = 1;
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";
@@ -275,17 +279,42 @@
             this.pl_bg_panel.TabIndex = 0;
             this.pl_bg_panel.Text = "panel4";
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.lb_wh, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.image_pr, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(286, 0);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(66, 243);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // lb_wh
+            // 
+            this.lb_wh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_wh.Font = new System.Drawing.Font("隶书", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_wh.Location = new System.Drawing.Point(3, 184);
+            this.lb_wh.Name = "lb_wh";
+            this.lb_wh.Size = new System.Drawing.Size(60, 56);
+            this.lb_wh.TabIndex = 3;
+            this.lb_wh.Text = "Color Scale\r\nMin = 1\r\nMax= 2";
+            this.lb_wh.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // image_pl
             // 
             this.image_pl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.image_pl.Duration = 0;
-            this.image_pl.ImageFit = AntdUI.TFit.Fill;
             this.image_pl.Location = new System.Drawing.Point(0, 0);
             this.image_pl.Name = "image_pl";
             this.image_pl.Size = new System.Drawing.Size(223, 185);
-            this.image_pl.Speed = 1;
+            this.image_pl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.image_pl.TabIndex = 0;
-            this.image_pl.Text = "image3D1";
+            this.image_pl.TabStop = false;
             // 
             // BioanalyImagePanel
             // 
@@ -309,6 +338,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pl_panel_image.ResumeLayout(false);
             this.pl_bg_panel.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.image_pl)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,7 +363,9 @@
         public AntdUI.Avatar ava_zoom_out;
         public AntdUI.Avatar ava__zoom_in;
         public AntdUI.Panel pl_bg_panel;
-        public AntdUI.Image3D image_pl;
         public AntdUI.Panel pl_panel_image;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        public AntdUI.Label lb_wh;
+        public System.Windows.Forms.PictureBox image_pl;
     }
 }

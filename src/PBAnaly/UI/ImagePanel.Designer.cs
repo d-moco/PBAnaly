@@ -39,12 +39,12 @@
             this.cb_scientific = new ReaLTaiizor.Controls.CheckBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tlpanl_image_bar = new System.Windows.Forms.TableLayoutPanel();
-            this.pb_coloarbar_image = new System.Windows.Forms.PictureBox();
             this.pl_image = new ReaLTaiizor.Controls.Panel();
             this.pl_bg_image = new ReaLTaiizor.Controls.Panel();
             this.pb_image = new System.Windows.Forms.PictureBox();
             this.lb_wh = new AntdUI.Label();
             this.lb_modename = new AntdUI.Label();
+            this.pb_coloarbar_image = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.mlb_bottomLabel = new ReaLTaiizor.Controls.MoonLabel();
             this.tableLayoutPanel1.SuspendLayout();
@@ -55,10 +55,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.hpb_zoom_out)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tlpanl_image_bar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_coloarbar_image)).BeginInit();
             this.pl_image.SuspendLayout();
             this.pl_bg_image.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_coloarbar_image)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -262,31 +262,20 @@
             this.tableLayoutPanel3.SetColumnSpan(this.tlpanl_image_bar, 2);
             this.tlpanl_image_bar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.56546F));
             this.tlpanl_image_bar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.43454F));
-            this.tlpanl_image_bar.Controls.Add(this.pb_coloarbar_image, 1, 1);
             this.tlpanl_image_bar.Controls.Add(this.pl_image, 0, 0);
             this.tlpanl_image_bar.Controls.Add(this.lb_wh, 1, 2);
             this.tlpanl_image_bar.Controls.Add(this.lb_modename, 1, 0);
+            this.tlpanl_image_bar.Controls.Add(this.pb_coloarbar_image, 1, 1);
             this.tlpanl_image_bar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpanl_image_bar.Location = new System.Drawing.Point(0, 0);
             this.tlpanl_image_bar.Margin = new System.Windows.Forms.Padding(0);
             this.tlpanl_image_bar.Name = "tlpanl_image_bar";
             this.tlpanl_image_bar.RowCount = 3;
-            this.tlpanl_image_bar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tlpanl_image_bar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tlpanl_image_bar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpanl_image_bar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tlpanl_image_bar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tlpanl_image_bar.Size = new System.Drawing.Size(359, 273);
             this.tlpanl_image_bar.TabIndex = 2;
-            // 
-            // pb_coloarbar_image
-            // 
-            this.pb_coloarbar_image.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb_coloarbar_image.Location = new System.Drawing.Point(300, 26);
-            this.pb_coloarbar_image.Margin = new System.Windows.Forms.Padding(0);
-            this.pb_coloarbar_image.Name = "pb_coloarbar_image";
-            this.pb_coloarbar_image.Size = new System.Drawing.Size(59, 150);
-            this.pb_coloarbar_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_coloarbar_image.TabIndex = 1;
-            this.pb_coloarbar_image.TabStop = false;
             // 
             // pl_image
             // 
@@ -330,11 +319,10 @@
             // 
             // lb_wh
             // 
-            this.lb_wh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lb_wh.Font = new System.Drawing.Font("隶书", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_wh.Location = new System.Drawing.Point(303, 179);
+            this.lb_wh.Location = new System.Drawing.Point(303, 212);
             this.lb_wh.Name = "lb_wh";
-            this.lb_wh.Size = new System.Drawing.Size(53, 91);
+            this.lb_wh.Size = new System.Drawing.Size(53, 27);
             this.lb_wh.TabIndex = 2;
             this.lb_wh.Text = "Color Scale\r\nMin = 1\r\nMax= 2";
             this.lb_wh.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -344,9 +332,19 @@
             this.lb_modename.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lb_modename.Location = new System.Drawing.Point(303, 3);
             this.lb_modename.Name = "lb_modename";
-            this.lb_modename.Size = new System.Drawing.Size(53, 20);
+            this.lb_modename.Size = new System.Drawing.Size(53, 48);
             this.lb_modename.TabIndex = 3;
             this.lb_modename.Text = "";
+            // 
+            // pb_coloarbar_image
+            // 
+            this.pb_coloarbar_image.Location = new System.Drawing.Point(300, 54);
+            this.pb_coloarbar_image.Margin = new System.Windows.Forms.Padding(0);
+            this.pb_coloarbar_image.Name = "pb_coloarbar_image";
+            this.pb_coloarbar_image.Size = new System.Drawing.Size(59, 73);
+            this.pb_coloarbar_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_coloarbar_image.TabIndex = 1;
+            this.pb_coloarbar_image.TabStop = false;
             // 
             // tableLayoutPanel4
             // 
@@ -403,10 +401,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.hpb_zoom_out)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tlpanl_image_bar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_coloarbar_image)).EndInit();
             this.pl_image.ResumeLayout(false);
             this.pl_bg_image.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_coloarbar_image)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);

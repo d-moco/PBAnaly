@@ -13,6 +13,7 @@ using OpenCvSharp;
 using SixLabors.ImageSharp.Advanced;
 using System.Runtime.InteropServices;
 using Sunny.UI.Win32;
+using System.Net;
 
 
 namespace PBAnaly.Module
@@ -157,6 +158,133 @@ namespace PBAnaly.Module
             return new System.Drawing.Rectangle(picBoxTopLeft.X, picBoxTopLeft.Y,
                                  picBoxBottomRight.X - picBoxTopLeft.X,
                                  picBoxBottomRight.Y - picBoxTopLeft.Y);
+        }
+
+
+        private static System.Drawing.Rectangle GetImageRectangle(PictureBox pictureBox)
+        {
+            var container = pictureBox.ClientRectangle;
+            var image = pictureBox.Image;
+            if (image == null)
+                return System.Drawing.Rectangle.Empty;
+
+            var imageSize = image.Size;
+            var fitSize = new System.Drawing.Rectangle(0, 0, container.Width, container.Height);
+
+            switch (pictureBox.SizeMode)
+            {
+                case PictureBoxSizeMode.Normal:
+                case PictureBoxSizeMode.AutoSize:
+                    fitSize.Size = imageSize;
+                    break;
+                case PictureBoxSizeMode.StretchImage:
+                    break;
+                case PictureBoxSizeMode.CenterImage:
+                    fitSize.X = (container.Width - imageSize.Width) / 2;
+                    fitSize.Y = (container.Height - imageSize.Height) / 2;
+                    fitSize.Size = imageSize;
+                    break;
+                case PictureBoxSizeMode.Zoom:
+                    float r = Math.Min((float)container.Width / imageSize.Width, (float)container.Height / imageSize.Height);
+                    fitSize.Width = (int)(imageSize.Width * r);
+                    fitSize.Height = (int)(imageSize.Height * r);
+                    fitSize.X = (container.Width - fitSize.Width) / 2;
+                    fitSize.Y = (container.Height - fitSize.Height) / 2;
+                    break;
+            }
+            return fitSize;
+        }
+        public static System.Drawing.Point ConvertRealToPictureBox(System.Drawing.Point realPoint, PictureBox pictureBox)
+        {
+            var rect = GetImageRectangle(pictureBox);
+            var scaleX = (float)rect.Width / pictureBox.Image.Width;
+            var scaleY = (float)rect.Height / pictureBox.Image.Height;
+            return new System.Drawing.Point((int)(realPoint.X * scaleX) + rect.Left, (int)(realPoint.Y * scaleY) + rect.Top);
+        }
+
+        public static System.Drawing.Rectangle ConvertRealRectangleToPictureBox(System.Drawing.Rectangle realRect, PictureBox pictureBox)
+        {
+            var topLeft = ConvertRealToPictureBox(new System.Drawing.Point(realRect.Left, realRect.Top), pictureBox);
+            var bottomRight = ConvertRealToPictureBox(new System.Drawing.Point(realRect.Right, realRect.Bottom), pictureBox);
+            return new System.Drawing.Rectangle(topLeft.X, topLeft.Y, bottomRight.X - topLeft.X, bottomRight.Y - topLeft.Y);
+        }
+
+        public static System.Drawing.Point ConvertPictureBoxToReal(System.Drawing.Point pictureBoxPoint, PictureBox pictureBox)
+        {
+            var rect = GetImageRectangle(pictureBox);
+            var scaleX = pictureBox.Image.Width / (float)rect.Width;
+            var scaleY = pictureBox.Image.Height / (float)rect.Height;
+            var x = (int)((pictureBoxPoint.X - rect.Left) * scaleX);
+            var y = (int)((pictureBoxPoint.Y - rect.Top) * scaleY);
+            return new System.Drawing.Point(x, y);
+        }
+
+        public static System.Drawing.Rectangle ConvertPictureBoxRectangleToReal(System.Drawing.Rectangle pictureBoxRect, PictureBox pictureBox)
+        {
+            var topLeft = ConvertPictureBoxToReal(new System.Drawing.Point(pictureBoxRect.Left, pictureBoxRect.Top), pictureBox);
+            var bottomRight = ConvertPictureBoxToReal(new System.Drawing.Point(pictureBoxRect.Right, pictureBoxRect.Bottom), pictureBox);
+            return new System.Drawing.Rectangle(topLeft.X, topLeft.Y, bottomRight.X - topLeft.X, bottomRight.Y - topLeft.Y);
+        }
+
+
+        public static bool IsNearCorner(System.Drawing.Point point, System.Drawing.Point corner, int tolerance)
+        {
+            return Math.Abs(point.X - corner.X) <= tolerance && Math.Abs(point.Y - corner.Y) <= tolerance;
+        }
+
+        public static void DrawCircle(Graphics g, System.Drawing.Point center, int radius, Pen pen, Brush brush)
+        {
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            g.FillEllipse(brush, rect);
+            g.DrawEllipse(pen, rect);
+        }
+
+        public static bool IsPointInCircle(System.Drawing.Point point, System.Drawing.Point circle,int CircleRadius)
+        {
+            double distance = Math.Sqrt(Math.Pow(point.X - circle.X, 2) + Math.Pow(point.Y - circle.Y, 2));
+            return distance <= CircleRadius;
+        }
+
+        public static bool IsPointOnLine(System.Drawing.Point point, System.Drawing.Point start, System.Drawing.Point end,int CircleRadius)
+        {
+
+            // 使用线段的最小距离判断点是否在线段上
+            double distance = DistanceToLine(point, start, end);
+            return distance <= CircleRadius; // 如果距离小于等于圆圈半径，认为在线段上
+        }
+
+        public static double DistanceToLine(System.Drawing.Point p, System.Drawing.Point p1, System.Drawing.Point p2)
+        {
+            double A = p.X - p1.X;
+            double B = p.Y - p1.Y;
+            double C = p2.X - p1.X;
+            double D = p2.Y - p1.Y;
+
+            double dot = A * C + B * D;
+            double lenSq = C * C + D * D;
+            double param = (lenSq != 0) ? dot / lenSq : -1;
+
+            double xx, yy;
+
+            if (param < 0)
+            {
+                xx = p1.X;
+                yy = p1.Y;
+            }
+            else if (param > 1)
+            {
+                xx = p2.X;
+                yy = p2.Y;
+            }
+            else
+            {
+                xx = p1.X + param * C;
+                yy = p1.Y + param * D;
+            }
+
+            double dx = p.X - xx;
+            double dy = p.Y - yy;
+            return Math.Sqrt(dx * dx + dy * dy);
         }
     }
 
