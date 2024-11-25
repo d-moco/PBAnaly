@@ -60,6 +60,7 @@
             this.flowLayoutPanel1 = new AntdUI.In.FlowLayoutPanel();
             this.flowLayoutPanel2 = new AntdUI.In.FlowLayoutPanel();
             this.pl_right = new ReaLTaiizor.Controls.Panel();
+            this.thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             this.metroPanel_RightTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyIcon_pictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -650,6 +651,16 @@
             this.pl_right.TabIndex = 20;
             this.pl_right.Text = "panel1";
             // 
+            // thunderLabel1
+            // 
+            this.thunderLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.thunderLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.thunderLabel1.Location = new System.Drawing.Point(9, 5);
+            this.thunderLabel1.Name = "thunderLabel1";
+            this.thunderLabel1.Size = new System.Drawing.Size(200, 16);
+            this.thunderLabel1.TabIndex = 19;
+            this.thunderLabel1.Text = "PBAnaly v0.1.0";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -657,6 +668,7 @@
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(1103, 608);
+            this.Controls.Add(this.thunderLabel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DrawerAutoHide = false;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
@@ -710,5 +722,6 @@
         private ReaLTaiizor.Controls.Panel pl_right;
         private System.Windows.Forms.TableLayoutPanel tl_right_main_view;
         private ReaLTaiizor.Controls.Panel DataProcess_panel;
+        private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
     }
 }
