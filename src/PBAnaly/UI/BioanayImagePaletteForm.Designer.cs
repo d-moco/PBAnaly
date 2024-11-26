@@ -42,12 +42,12 @@
             this.foxLabel1 = new ReaLTaiizor.Controls.FoxLabel();
             this.foxLabel4 = new ReaLTaiizor.Controls.FoxLabel();
             this.hpb_line = new ReaLTaiizor.Controls.HopePictureBox();
-            this.hpb_wand = new ReaLTaiizor.Controls.HopePictureBox();
-            this.hpb_xianduan = new ReaLTaiizor.Controls.HopePictureBox();
             this.ftb_r = new ReaLTaiizor.Controls.FoxTextBox();
-            this.hpb_rect = new ReaLTaiizor.Controls.HopePictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.hpb_circe = new ReaLTaiizor.Controls.HopePictureBox();
+            this.hpb_wand = new AntdUI.Avatar();
+            this.hpb_xianduan = new AntdUI.Avatar();
+            this.hpb_circe = new AntdUI.Avatar();
+            this.hpb_rect = new AntdUI.Avatar();
             this.panel2 = new AntdUI.Panel();
             this.collapseItem2 = new AntdUI.CollapseItem();
             this.cb_colortable = new System.Windows.Forms.ComboBox();
@@ -67,11 +67,7 @@
             this.cll_panel = new AntdUI.Collapse();
             this.collapseItem3 = new AntdUI.CollapseItem();
             ((System.ComponentModel.ISupportInitialize)(this.hpb_line)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_wand)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_xianduan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_rect)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_circe)).BeginInit();
             this.panel2.SuspendLayout();
             this.collapseItem2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -276,34 +272,6 @@
             this.hpb_line.TabStop = false;
             this.hpb_line.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // hpb_wand
-            // 
-            this.hpb_wand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hpb_wand.Image = global::PBAnaly.Properties.Resources.魔术棒_魔法_魔术_一键;
-            this.hpb_wand.Location = new System.Drawing.Point(105, 3);
-            this.hpb_wand.Name = "hpb_wand";
-            this.hpb_wand.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_wand.Size = new System.Drawing.Size(28, 27);
-            this.hpb_wand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hpb_wand.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hpb_wand.TabIndex = 13;
-            this.hpb_wand.TabStop = false;
-            this.hpb_wand.TextRenderingType = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            // 
-            // hpb_xianduan
-            // 
-            this.hpb_xianduan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hpb_xianduan.Image = global::PBAnaly.Properties.Resources.线段__1_;
-            this.hpb_xianduan.Location = new System.Drawing.Point(71, 3);
-            this.hpb_xianduan.Name = "hpb_xianduan";
-            this.hpb_xianduan.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_xianduan.Size = new System.Drawing.Size(28, 27);
-            this.hpb_xianduan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hpb_xianduan.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hpb_xianduan.TabIndex = 12;
-            this.hpb_xianduan.TabStop = false;
-            this.hpb_xianduan.TextRenderingType = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            // 
             // ftb_r
             // 
             this.ftb_r.BackColor = System.Drawing.Color.Transparent;
@@ -321,22 +289,6 @@
             this.ftb_r.Text = "10";
             this.ftb_r.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.ftb_r.UseSystemPasswordChar = false;
-            // 
-            // hpb_rect
-            // 
-            this.hpb_rect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hpb_rect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hpb_rect.Image = global::PBAnaly.Properties.Resources._10矩形;
-            this.hpb_rect.Location = new System.Drawing.Point(2, 2);
-            this.hpb_rect.Margin = new System.Windows.Forms.Padding(2);
-            this.hpb_rect.Name = "hpb_rect";
-            this.hpb_rect.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_rect.Size = new System.Drawing.Size(30, 30);
-            this.hpb_rect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hpb_rect.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hpb_rect.TabIndex = 10;
-            this.hpb_rect.TabStop = false;
-            this.hpb_rect.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // tableLayoutPanel3
             // 
@@ -361,19 +313,49 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(266, 113);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // hpb_wand
+            // 
+            this.hpb_wand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hpb_wand.Image = global::PBAnaly.Properties.Resources.魔术棒_魔法_魔术_一键;
+            this.hpb_wand.ImageFit = AntdUI.TFit.Contain;
+            this.hpb_wand.Location = new System.Drawing.Point(105, 3);
+            this.hpb_wand.Name = "hpb_wand";
+            this.hpb_wand.Size = new System.Drawing.Size(28, 28);
+            this.hpb_wand.TabIndex = 14;
+            this.hpb_wand.Text = "a";
+            // 
+            // hpb_xianduan
+            // 
+            this.hpb_xianduan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hpb_xianduan.Image = global::PBAnaly.Properties.Resources.线段__1_;
+            this.hpb_xianduan.ImageFit = AntdUI.TFit.Contain;
+            this.hpb_xianduan.Location = new System.Drawing.Point(71, 3);
+            this.hpb_xianduan.Name = "hpb_xianduan";
+            this.hpb_xianduan.Size = new System.Drawing.Size(28, 28);
+            this.hpb_xianduan.TabIndex = 13;
+            this.hpb_xianduan.Text = "a";
+            // 
             // hpb_circe
             // 
-            this.hpb_circe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hpb_circe.Image = global::PBAnaly.Properties.Resources.圆形1;
+            this.hpb_circe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hpb_circe.Image = global::PBAnaly.Properties.Resources.圆形;
+            this.hpb_circe.ImageFit = AntdUI.TFit.Contain;
             this.hpb_circe.Location = new System.Drawing.Point(37, 3);
             this.hpb_circe.Name = "hpb_circe";
-            this.hpb_circe.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_circe.Size = new System.Drawing.Size(28, 27);
-            this.hpb_circe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hpb_circe.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hpb_circe.TabIndex = 11;
-            this.hpb_circe.TabStop = false;
-            this.hpb_circe.TextRenderingType = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.hpb_circe.Size = new System.Drawing.Size(28, 28);
+            this.hpb_circe.TabIndex = 0;
+            this.hpb_circe.Text = "a";
+            // 
+            // hpb_rect
+            // 
+            this.hpb_rect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hpb_rect.Image = global::PBAnaly.Properties.Resources._10矩形;
+            this.hpb_rect.ImageFit = AntdUI.TFit.Contain;
+            this.hpb_rect.Location = new System.Drawing.Point(3, 3);
+            this.hpb_rect.Name = "hpb_rect";
+            this.hpb_rect.Size = new System.Drawing.Size(28, 28);
+            this.hpb_rect.TabIndex = 0;
+            this.hpb_rect.Text = "a";
             // 
             // panel2
             // 
@@ -396,7 +378,7 @@
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
             this.collapseItem2.Expand = true;
-            this.collapseItem2.Location = new System.Drawing.Point(19, 433);
+            this.collapseItem2.Location = new System.Drawing.Point(19, 99);
             this.collapseItem2.Name = "collapseItem2";
             this.collapseItem2.Size = new System.Drawing.Size(266, 113);
             this.collapseItem2.TabIndex = 1;
@@ -637,8 +619,7 @@
             // collapseItem1
             // 
             this.collapseItem1.Controls.Add(this.tableLayoutPanel1);
-            this.collapseItem1.Expand = true;
-            this.collapseItem1.Location = new System.Drawing.Point(19, 59);
+            this.collapseItem1.Location = new System.Drawing.Point(-266, -302);
             this.collapseItem1.Name = "collapseItem1";
             this.collapseItem1.Size = new System.Drawing.Size(266, 302);
             this.collapseItem1.TabIndex = 0;
@@ -661,7 +642,7 @@
             // collapseItem3
             // 
             this.collapseItem3.Expand = true;
-            this.collapseItem3.Location = new System.Drawing.Point(19, 618);
+            this.collapseItem3.Location = new System.Drawing.Point(19, 284);
             this.collapseItem3.Margin = new System.Windows.Forms.Padding(2);
             this.collapseItem3.Name = "collapseItem3";
             this.collapseItem3.Size = new System.Drawing.Size(266, 154);
@@ -679,11 +660,7 @@
             this.Name = "BioanayImagePaletteForm";
             this.Text = "BioanayImagePaletteForm";
             ((System.ComponentModel.ISupportInitialize)(this.hpb_line)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_wand)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_xianduan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_rect)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.hpb_circe)).EndInit();
             this.panel2.ResumeLayout(false);
             this.collapseItem2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -716,11 +693,8 @@
         private ReaLTaiizor.Controls.FoxLabel foxLabel1;
         private System.Windows.Forms.PictureBox pb_bgimage;
         private ReaLTaiizor.Controls.FoxLabel foxLabel4;
-        private ReaLTaiizor.Controls.HopePictureBox hpb_wand;
-        private ReaLTaiizor.Controls.HopePictureBox hpb_xianduan;
         private ReaLTaiizor.Controls.FoxTextBox ftb_r;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private ReaLTaiizor.Controls.HopePictureBox hpb_circe;
         private AntdUI.Panel panel2;
         private AntdUI.CollapseItem collapseItem2;
         private AntdUI.Panel panel1;
@@ -739,6 +713,9 @@
         public System.Windows.Forms.ComboBox cb_colortable;
         public ReaLTaiizor.Controls.HopePictureBox hpb_line;
         public ReaLTaiizor.Controls.FoxLabel flb_act_mm;
-        public ReaLTaiizor.Controls.HopePictureBox hpb_rect;
+        public AntdUI.Avatar hpb_circe;
+        public AntdUI.Avatar hpb_rect;
+        public AntdUI.Avatar hpb_xianduan;
+        public AntdUI.Avatar hpb_wand;
     }
 }

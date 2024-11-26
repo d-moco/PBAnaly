@@ -317,13 +317,13 @@ namespace PBAnaly
                 {
                     return;
                 }
-                BioanalysisMannage bioanalysisMannage = new BioanalysisMannage(selectedFilePath, pl_right);
+                BioanalysisMannage bioanalysisMannage = new BioanalysisMannage(selectedFilePath, pl_right, bioanalysisMannages);
 
                 DataProcess_panel.Controls.Add(bioanalysisMannage.GetImagePanel);
                 bioanalysisMannage.GetImagePanel.BringToFront();
-                bioanalysisMannages[selectedFilePath] = bioanalysisMannage;
 
 
+              
                 
 
 

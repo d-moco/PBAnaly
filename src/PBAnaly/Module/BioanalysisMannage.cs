@@ -1,7 +1,11 @@
 ﻿using AntdUI;
+using Aspose.Pdf;
 using Aspose.Pdf.AI;
 using Aspose.Pdf.Drawing;
+using MetroFramework.Drawing.Html;
+using OpenCvSharp.Flann;
 using PBAnaly.UI;
+using PBBiologyVC;
 using ScottPlot.Panels;
 using ScottPlot.Plottables;
 using SixLabors.ImageSharp;
@@ -12,6 +16,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Runtime.ConstrainedExecution;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -43,8 +48,21 @@ namespace PBAnaly.Module
 
             public int colorIndex;
         }
+
+        public struct RectAttribute 
+        {
+            public System.Drawing.Rectangle rect;
+            public Pseudo_infoVC pdinfovc;
+        }
+        private struct CirceAndInfo
+        {
+            public System.Drawing.Point center;
+            public System.Drawing.Point Radius { get; set; }
+            public Pseudo_infoVC pdinfovc;
+        }
         #endregion
         #region 变量
+        private Dictionary<string, BioanalysisMannage> bioanalysisMannages;
         private string path;
         private string mark_path;
         private string tif_marker_path;
@@ -84,17 +102,34 @@ namespace PBAnaly.Module
 
         private bool CircleOn = false;
         private bool rectOn = false;
-        private List<System.Drawing.Rectangle> rectangles = new List<System.Drawing.Rectangle>(); // 存储所有绘制完成的矩形
+        private bool isRecDragging = false;
+        private List<RectAttribute> rectangles = new List<RectAttribute>(); // 存储所有绘制完成的矩形
         private System.Drawing.Rectangle? currentRectangle = null; // 当前正在绘制的矩形
         private System.Drawing.Point leftTopPoint; // 矩形左上角的起始点
         private bool drawRect = false; // 是否正在绘制
+        private System.Drawing.Point recDragStart;
+        private System.Drawing.Rectangle recDragRect;
+        private RectAttribute rectOriginalRect;
+        private int rectDragStartIndex = -1;
+
+        private bool drawCircle = false;//是否绘制圆
+        private bool isCirDragging = false;
+        private List<CirceAndInfo> CircleAndInfoList = new List<CirceAndInfo>();
+        private System.Drawing.Point cirDragStart;
+        private System.Drawing.Point circleCenter;
+        private System.Drawing.Point circleRadio;
+        private int cirDragStartIndex = -1;
+        private CirceAndInfo cireOriginalCire;
+
         private System.Drawing.Point startPoint = new System.Drawing.Point(-10, 0);
         private System.Drawing.Point endPoint = new System.Drawing.Point(-10, 0);
 
 
         private bool isStartCircleDragged, isEndCircleDragged;
-      
-        
+
+        private enum Corner { None,TopLeft,TopRight,BottomLeft,BottomRight,drawMouse}
+
+        private Corner rectActiveCorner = Corner.None;
         #endregion
         #endregion
 
@@ -266,7 +301,7 @@ namespace PBAnaly.Module
         #endregion
         #endregion
 
-        public BioanalysisMannage(string _path, ReaLTaiizor.Controls.Panel _pl_right) 
+        public BioanalysisMannage(string _path, ReaLTaiizor.Controls.Panel _pl_right, Dictionary<string, BioanalysisMannage> bioanalysisMannages) 
         {
             isUpdateAlg = false;
             this.pl_right = _pl_right;
@@ -313,6 +348,10 @@ namespace PBAnaly.Module
             algThread.Start();
 
             isUpdateAlg = true;// 开始可以更新算法
+
+
+            bioanalysisMannages[_path] = this;
+            this.bioanalysisMannages = bioanalysisMannages;
         }
 
         #region 方法
@@ -376,11 +415,15 @@ namespace PBAnaly.Module
             imagePaletteForm.hpb_line.Click += Hpb_line_Click;
 
             imagePanel.wdb_title.MouseDown += Wdb_title_Click;
-
+            imagePanel.FormClosing += ImagePanel_FormClosing;
+            imagePanel.FormClosed += ImagePanel_FormClosed;
             imagePaletteForm.hpb_rect.Click += hpb_rect_Click;
+            imagePaletteForm.hpb_circe.Click += Hpb_circe_Click;
+
+
         }
 
-       
+        
 
         private void ReadTif() 
         {
@@ -547,8 +590,89 @@ namespace PBAnaly.Module
         }
 
 
+        private bool IsPointInRectangles(System.Drawing.Point point, List<RectAttribute> rectangles,out Corner cner,out RectAttribute curRect,out int index) 
+        {
+            curRect = new RectAttribute();  
+            cner = Corner.None;
+            index = 0;
+            foreach (var rect in rectangles)
+            {
 
+                System.Drawing.Point topLeft = new System.Drawing.Point(rect.rect.Left, rect.rect.Top);
+                System.Drawing.Point topRight = new System.Drawing.Point(rect.rect.Right, rect.rect.Top);
+                System.Drawing.Point bottomLeft = new System.Drawing.Point(rect.rect.Left, rect.rect.Bottom);
+                System.Drawing.Point bottomRight = new System.Drawing.Point(rect.rect.Right, rect.rect.Bottom);
 
+                if (ImageProcess.IsNearCorner(point,new System.Drawing.Point(rect.rect.Left,rect.rect.Top),CircleRadius)) 
+                {
+                    imagePanel.image_pl.Cursor = Cursors.SizeNWSE;
+                    cner = Corner.TopLeft;
+                    curRect = rect;
+                    return true;
+                }
+                else if (ImageProcess.IsNearCorner(point, new System.Drawing.Point(rect.rect.Right, rect.rect.Top), CircleRadius))
+                {
+                    imagePanel.image_pl.Cursor = Cursors.SizeNESW;
+                    cner = Corner.TopRight;
+                    curRect = rect;
+                    return true;
+                }
+                else if (ImageProcess.IsNearCorner(point, new System.Drawing.Point(rect.rect.Left, rect.rect.Bottom), CircleRadius))
+                {
+                    imagePanel.image_pl.Cursor = Cursors.SizeNESW;
+                    cner = Corner.BottomLeft;
+                    curRect = rect;
+                    return true;
+                }
+                else if (ImageProcess.IsNearCorner(point, new System.Drawing.Point(rect.rect.Right, rect.rect.Bottom), CircleRadius))
+                {
+                    imagePanel.image_pl.Cursor = Cursors.SizeNWSE;
+                    cner = Corner.BottomRight;
+                    curRect = rect;
+                    return true;
+                }
+
+                else if (rect.rect.Contains(point)) 
+                {
+                    imagePanel.image_pl.Cursor = Cursors.SizeAll;
+                    cner = Corner.drawMouse;
+                    curRect = rect;
+                    return true;
+                }
+                index++;
+
+            }
+            return false;
+        }
+        // 判断点是否在圆圈内
+        private bool IsPointInCircle(System.Drawing.Point point, List<CirceAndInfo> circleCenter ,out Corner cner, out CirceAndInfo curRect, out int index)
+        {
+            cner = Corner.None;
+            curRect = new CirceAndInfo();
+            index = 0;
+            foreach (var circle in circleCenter)
+            {
+                int radius = (int)Math.Sqrt(Math.Pow(circle.center.X - circle.Radius.X, 2) + Math.Pow(circle.center.Y - circle.Radius.Y, 2));
+                double distance = Math.Sqrt(Math.Pow(point.X - circle.center.X, 2) + Math.Pow(point.Y - circle.center.Y, 2));
+                if (ImageProcess.IsNearCorner(point, circle.Radius, CircleRadius)) 
+                {
+                    imagePanel.image_pl.Cursor = Cursors.SizeNESW;
+                    curRect = circle;
+                    cner = Corner.BottomLeft;
+                    return true;
+                }
+                else if (distance <= radius) 
+                {
+                    curRect = circle;
+                    cner = Corner.drawMouse;
+                    imagePanel.image_pl.Cursor = Cursors.SizeAll;
+                    return true;
+                }
+                index++;
+            }
+
+            return false;
+        }
 
         #endregion
 
@@ -639,61 +763,319 @@ namespace PBAnaly.Module
                 ImageProcess.DrawCircle(g, srart, CircleRadius, Pens.Blue, Brushes.LightBlue);
                 ImageProcess.DrawCircle(g, end, CircleRadius, Pens.Blue, Brushes.LightBlue);
             }
-            if(leftTopPoint != System.Drawing.Point.Empty)
+
+
+            int index = 0;
+            foreach (var rect in rectangles)
             {
-                // 绘制所有已绘制的矩形
-                foreach (var rect in rectangles)
+
+                System.Drawing.Rectangle p = rect.rect;
+                if (isRecDragging)
                 {
-                    e.Graphics.DrawRectangle(Pens.Blue, rect);
+                    if (index == rectDragStartIndex)
+                    {
+                        p = recDragRect;
+
+                    }
                 }
 
-                // 绘制当前正在绘制的矩形
+                var r = ImageProcess.ConvertRealRectangleToPictureBox(p, imagePanel.image_pl);
+                e.Graphics.DrawRectangle(Pens.Red, r);
+
+                System.Drawing.Point[] corners = new System.Drawing.Point[]
+                {
+                    new System.Drawing.Point(r.Left, r.Top), // 左上角
+                    new System.Drawing.Point(r.Right, r.Top), // 右上角
+                    new System.Drawing.Point(r.Left, r.Bottom), // 左下角
+                    new System.Drawing.Point(r.Right, r.Bottom) // 右下角
+                };
+                foreach (var item in corners)
+                {
+
+                    ImageProcess.DrawCircle(g, new System.Drawing.Point(item.X, item.Y), CircleRadius, Pens.Blue, Brushes.LightBlue);
+                }
+
+                if (!isRecDragging) 
+                {
+                    
+                    // 画标签
+                    if (rect.pdinfovc != null)
+                    {
+                        // 指向线的起点在矩形的顶部中心
+                        System.Drawing.Point centerTopPoint = new System.Drawing.Point(
+                            r.Left + r.Width / 2,
+                            r.Top
+                        );
+
+                        // 指向线的终点在矩形上方10像素
+                        System.Drawing.Point labelPoint = new System.Drawing.Point(
+                            centerTopPoint.X,
+                            centerTopPoint.Y - 10
+                        );
+                        // 画垂直的指向线
+                        g.DrawLine(Pens.Red, centerTopPoint, labelPoint);
+                        string labelText = "";
+                        if (algAttribute.scientificON)
+                        {
+
+
+                            labelText = $"ROI:{index+1},AOD:{util.GetscientificNotation(rect.pdinfovc.AOD)},IOD:{util.GetscientificNotation(rect.pdinfovc.IOD)}," +
+                                       $"\r\nmaxOD:{util.GetscientificNotation(rect.pdinfovc.maxOD)},minOD:{util.GetscientificNotation(rect.pdinfovc.minOD)},Count:{util.GetscientificNotation(rect.pdinfovc.Count)}";
+                        }
+                        else
+                        {
+                            labelText = $"ROI:{index + 1},AOD:{rect.pdinfovc.AOD},IOD:{rect.pdinfovc.IOD}," +
+                                       $"\r\nmaxOD:{rect.pdinfovc.maxOD},minOD:{rect.pdinfovc.minOD},Count:{rect.pdinfovc.Count}"; // 标签编号
+                        }
+
+                        Font font = new Font("Arial", 8); // 字体
+                        Brush brush = Brushes.Red; // 字体颜色
+                        g.DrawString(labelText, font, brush, labelPoint.X - 10, labelPoint.Y - 15);
+                    }
+                }
+                index++;
+            }
+
+            if (drawRect) 
+            {
                 if (currentRectangle.HasValue)
                 {
-                    e.Graphics.DrawRectangle(Pens.Red, currentRectangle.Value);
+                    var r = ImageProcess.ConvertRealRectangleToPictureBox(currentRectangle.Value, imagePanel.image_pl);
+                    e.Graphics.DrawRectangle(Pens.Red, r);
                 }
             }
+
+            index = 0;
+            foreach (var item in CircleAndInfoList)
+            {
+                var centerPoint = ImageProcess.ConvertRealToPictureBox(item.center, imagePanel.image_pl);
+                var radiusPoint = ImageProcess.ConvertRealToPictureBox(item.Radius, imagePanel.image_pl);
+                int radius = (int)Math.Sqrt(Math.Pow(centerPoint.X - radiusPoint.X, 2) + Math.Pow(centerPoint.Y - radiusPoint.Y, 2));
+                if (isCirDragging) 
+                {
+                    if (index == cirDragStartIndex) 
+                    {
+                        centerPoint = ImageProcess.ConvertRealToPictureBox(circleCenter, imagePanel.image_pl);
+                        radiusPoint = ImageProcess.ConvertRealToPictureBox(circleRadio, imagePanel.image_pl); ;
+                        radius = (int)Math.Sqrt(Math.Pow(centerPoint.X - radiusPoint.X, 2) + Math.Pow(centerPoint.Y - radiusPoint.Y, 2));
+                    }
+                   
+                }
+                
+                e.Graphics.DrawEllipse(Pens.Red, centerPoint.X - radius, centerPoint.Y - radius, radius * 2, radius * 2);
+                ImageProcess.DrawCircle(g, new System.Drawing.Point(radiusPoint.X, radiusPoint.Y), CircleRadius, Pens.Blue, Brushes.LightBlue);
+
+                if (!isCirDragging) 
+                {
+                    // 画标签
+                    if (item.pdinfovc != null)
+                    {
+                        // 指向线的终点在矩形上方10像素
+                        System.Drawing.Point labelPoint = new System.Drawing.Point(
+                            centerPoint.X,
+                            centerPoint.Y - radius - 10
+                        );
+                        // 画垂直的指向线
+                        g.DrawLine(Pens.Red, centerPoint, labelPoint);
+                        string labelText = "";
+                        if (algAttribute.scientificON)
+                        {
+
+
+                            labelText = $"ROI:{index + 1},AOD:{util.GetscientificNotation(item.pdinfovc.AOD)},IOD:{util.GetscientificNotation(item.pdinfovc.IOD)}," +
+                                       $"\r\nmaxOD:{util.GetscientificNotation(item.pdinfovc.maxOD)},minOD:{util.GetscientificNotation(item.pdinfovc.minOD)},Count:{util.GetscientificNotation(item.pdinfovc.Count)}";
+                        }
+                        else
+                        {
+                            labelText = $"ROI:{index + 1},AOD:{item.pdinfovc.AOD},IOD:{item.pdinfovc.IOD}," +
+                                       $"\r\nmaxOD:{item.pdinfovc.maxOD},minOD:{item.pdinfovc.minOD},Count:{item.pdinfovc.Count}"; // 标签编号
+                        }
+                        Font font = new Font("Arial", 8); // 字体
+                        Brush brush = Brushes.Red; // 字体颜色
+                        g.DrawString(labelText, font, brush, labelPoint.X - 10, labelPoint.Y - 15);
+                    }
+                }
+                index++;
+            }
+
+            if (drawCircle) 
+            {
+                var curCirRadioPoint = ImageProcess.ConvertRealToPictureBox(circleRadio, imagePanel.image_pl);
+                var curCirCenterPoint = ImageProcess.ConvertRealToPictureBox(circleCenter, imagePanel.image_pl);
+                int radius = (int)Math.Sqrt(Math.Pow(curCirCenterPoint.X - curCirRadioPoint.X, 2) + Math.Pow(curCirCenterPoint.Y - curCirRadioPoint.Y, 2));
+                e.Graphics.DrawEllipse(Pens.Red, curCirCenterPoint.X - radius, curCirCenterPoint.Y - radius, radius * 2, radius * 2);
+                ImageProcess.DrawCircle(g, new System.Drawing.Point(curCirRadioPoint.X, curCirRadioPoint.Y), CircleRadius, Pens.Blue, Brushes.LightBlue);
+            }
+          
             
         }
 
         private void Image_pl_MouseUp(object sender, MouseEventArgs e)
         {
             System.Drawing.Point readLoction = ImageProcess.GetRealImageCoordinates(imagePanel.image_pl, e.Location);
-            if (isDragging && e.Button == MouseButtons.Left)
-            {
-                imagePanel.pl_bg_panel.Cursor = Cursors.Default;
-                isDragging = false;
-            }
-            else if ((drawLine && e.Button == MouseButtons.Left) || (isStartCircleDragged || isEndCircleDragged))
-            {
-                drawLine = false;
-                lineOn = false;
-                isStartCircleDragged = false;
-                isEndCircleDragged = false;
-                imagePanel.image_pl.Invalidate();
 
-                // 计算距离
-                double deltaX = endPoint.X - startPoint.X;
-                double deltaY = endPoint.Y - startPoint.Y;
-                var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
-                imagePaletteForm.flb_act_mm.Text = value.ToString() + " mm";
-                imagePaletteForm.flb_act_mm.Refresh();
-            }
-            else if(drawRect && e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left) 
             {
-                if (drawRect && currentRectangle.HasValue)
+                if (isDragging)
                 {
-                    // 完成绘制并保存矩形
-                    rectangles.Add(currentRectangle.Value);
-                    currentRectangle = null;
-                    drawRect = false;
+                    imagePanel.pl_bg_panel.Cursor = Cursors.Default;
+                    isDragging = false;
                 }
+                else if ((drawLine) || (isStartCircleDragged || isEndCircleDragged))
+                {
+                    drawLine = false;
+                    lineOn = false;
+                    isStartCircleDragged = false;
+                    isEndCircleDragged = false;
+                    imagePanel.image_pl.Invalidate();
 
-                drawRect = false;
-                rectOn = false;
+                    // 计算距离
+                    double deltaX = endPoint.X - startPoint.X;
+                    double deltaY = endPoint.Y - startPoint.Y;
+                    var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+                    imagePaletteForm.flb_act_mm.Text = value.ToString() + " mm";
+                    imagePaletteForm.flb_act_mm.Refresh();
+                }
+                else if (drawRect)
+                {
+                    if (currentRectangle.HasValue)
+                    {
+                        RectAttribute rab = new RectAttribute();
+                        rab.rect = currentRectangle.Value;
 
-               
+                        // 计算光子数并展示出来
+                        float _max = algAttribute.colorValue;
+                        float _min = algAttribute.colorMinValue;
+                        Pseudo_infoVC curpdinfovc = null;
+                        unsafe
+                        {
+                            fixed (byte* pseu_16_byte_src = image_org_byte)
+                            {
+                                curpdinfovc = pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
+                                    _max, _min, currentRectangle.Value.X, currentRectangle.Value.Y, currentRectangle.Value.Width, currentRectangle.Value.Height);
+
+                            }
+                        }
+                        if (curpdinfovc != null)
+                            rab.pdinfovc = curpdinfovc;
+                        // 完成绘制并保存矩形
+                        rectangles.Add(rab);
+                        currentRectangle = null;
+                        drawRect = false;
+
+
+
+
+                        imagePanel.image_pl.Invalidate();
+                    }
+
+                    drawRect = false;
+                    rectOn = false;
+
+
+                }
+                else if (drawCircle && CircleOn)
+                {
+                    CirceAndInfo rab = new CirceAndInfo();
+                    rab.center = circleCenter;
+                    rab.Radius = circleRadio;
+
+                    if (CircleAndInfoList.Count == 0)
+                    {
+                        imagePaletteForm.CIRCLE_R = (int)Math.Sqrt(Math.Pow(rab.center.X - rab.Radius.X, 2) + Math.Pow(rab.center.Y - rab.Radius.Y, 2));
+
+                    }
+                    else
+                    {
+
+                        double angleInRadians = 90 * Math.PI / 180; // Convert degrees to radians
+                        double x = rab.center.X + imagePaletteForm.CIRCLE_R * Math.Cos(angleInRadians);
+                        double y = rab.center.Y + imagePaletteForm.CIRCLE_R * Math.Sin(angleInRadians);
+
+                        rab.Radius = new System.Drawing.Point((int)x, (int)y);
+                    }
+
+                    // 计算光子数并展示出来
+                    float _max = algAttribute.colorValue;
+                    float _min = algAttribute.colorMinValue;
+                    int radius = (int)Math.Sqrt(Math.Pow(rab.center.X - rab.Radius.X, 2) + Math.Pow(rab.center.Y - rab.Radius.Y, 2));
+                    Pseudo_infoVC curpdinfovc = null;
+                    unsafe
+                    {
+                        fixed (byte* pseu_16_byte_src = image_org_byte)
+                        {
+                            curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
+                                (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, rab.center.X, rab.center.Y, radius);
+
+                        }
+                    }
+                    if (curpdinfovc != null)
+                        rab.pdinfovc = curpdinfovc;
+                    // 完成绘制并保存矩形
+                    CircleAndInfoList.Add(rab);
+
+                    drawCircle = false;
+                    CircleOn = false;
+                    imagePanel.image_pl.Invalidate();
+
+
+                }
+                else if (isRecDragging)
+                {
+                    RectAttribute rattb = new RectAttribute();
+                    rattb.rect = recDragRect;
+                    // 计算光子数并展示出来
+                    float _max = algAttribute.colorValue;
+                    float _min = algAttribute.colorMinValue;
+                    Pseudo_infoVC curpdinfovc = null;
+                    unsafe
+                    {
+                        fixed (byte* pseu_16_byte_src = image_org_byte)
+                        {
+                            curpdinfovc = pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
+                                _max, _min, recDragRect.X, recDragRect.Y, recDragRect.Width, recDragRect.Height);
+
+                        }
+                    }
+                    if (curpdinfovc != null)
+                        rattb.pdinfovc = curpdinfovc;
+                    rectangles[rectDragStartIndex] = rattb;
+                    isRecDragging = false;
+                    rectActiveCorner = Corner.None;
+                    rectDragStartIndex = -1;
+
+                    imagePanel.image_pl.Invalidate();
+
+                }
+                else if (isCirDragging) 
+                {
+                    CirceAndInfo circeAndInfo = new CirceAndInfo();
+
+                    circeAndInfo.Radius = circleRadio;
+                    circeAndInfo.center = circleCenter;
+
+                    float _max = algAttribute.colorValue;
+                    float _min = algAttribute.colorMinValue;
+                    int radius = (int)Math.Sqrt(Math.Pow(circeAndInfo.center.X - circeAndInfo.Radius.X, 2) + Math.Pow(circeAndInfo.center.Y - circeAndInfo.Radius.Y, 2));
+                    Pseudo_infoVC curpdinfovc = null;
+                    unsafe
+                    {
+                        fixed (byte* pseu_16_byte_src = image_org_byte)
+                        {
+                            curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
+                                (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, circeAndInfo.center.X, circeAndInfo.center.Y, radius);
+
+                        }
+                    }
+                    circeAndInfo.pdinfovc = curpdinfovc;
+
+                    CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
+                    isCirDragging = false;
+                    cirDragStartIndex = -1;
+                    imagePanel.image_pl.Invalidate();
+                }
             }
+            
 
         }
 
@@ -704,6 +1086,22 @@ namespace PBAnaly.Module
             {
                 endPoint = readLoction; // 更新终点位置
                 imagePanel.image_pl.Invalidate(); // 触发重绘
+            }
+            else if (drawRect && e.Button == MouseButtons.Left)
+            {
+                // 动态调整矩形大小
+                int x = Math.Min(leftTopPoint.X, readLoction.X);
+                int y = Math.Min(leftTopPoint.Y, readLoction.Y);
+                int width = Math.Abs(readLoction.X - leftTopPoint.X);
+                int height = Math.Abs(readLoction.Y - leftTopPoint.Y);
+
+                currentRectangle = new System.Drawing.Rectangle(x, y, width, height);
+                imagePanel.image_pl.Invalidate(); // 触发重绘
+            }
+            else if (drawCircle && e.Button == MouseButtons.Left)
+            {
+                circleRadio = readLoction;
+                imagePanel.image_pl.Invalidate();
             }
             else if (isDragging && e.Button == MouseButtons.Left)
             {
@@ -725,10 +1123,93 @@ namespace PBAnaly.Module
                         imagePanel.pl_bg_panel.Top = imagePanel.pl_panel_image.ClientSize.Height - imagePanel.pl_bg_panel.Height;
                 }
             }
+            else if (ImageProcess.IsNearCorner(readLoction, startPoint, CircleRadius) || ImageProcess.IsNearCorner(readLoction, endPoint, CircleRadius))
+            {
+                imagePanel.image_pl.Cursor = Cursors.Hand;
+            }
+            else if (isRecDragging)
+            {
+                recDragRect = rectOriginalRect.rect;
+                switch (rectActiveCorner)
+                {
+                    case Corner.drawMouse:
+                        int offsetX = readLoction.X - recDragStart.X;
+                        int offsetY = readLoction.Y - recDragStart.Y;
+                        recDragRect.X += offsetX;
+                        recDragRect.Y += offsetY;
+
+                        break;
+                    case Corner.TopLeft:
+                        recDragRect.Width += recDragRect.X - readLoction.X;
+                        recDragRect.Height += recDragRect.Y - readLoction.Y;
+                        recDragRect.X = readLoction.X;
+                        recDragRect.Y = readLoction.Y;
+
+                        break;
+                    case Corner.TopRight:
+                        recDragRect.Width = readLoction.X - recDragRect.X;
+                        recDragRect.Height += recDragRect.Y - readLoction.Y;
+                        recDragRect.Y = readLoction.Y;
+
+                        break;
+                    case Corner.BottomLeft:
+                        recDragRect.Width += recDragRect.X - readLoction.X;
+                        recDragRect.Height = readLoction.Y - recDragRect.Y;
+                        recDragRect.X = readLoction.X;
+
+                        break;
+                    case Corner.BottomRight:
+                        recDragRect.Width = readLoction.X - recDragRect.X;
+                        recDragRect.Height = readLoction.Y - recDragRect.Y;
+
+                        break;
+                    default:
+                        break;
+                }
+                imagePanel.image_pl.Invalidate(); // 触发重绘
+            }
+            else if (isCirDragging) 
+            {
+                if (rectActiveCorner != Corner.None) 
+                {
+                    if (rectActiveCorner == Corner.drawMouse) 
+                    {
+                        // 计算鼠标位置与起始拖拽点的偏移量
+                        int offsetX = readLoction.X - cirDragStart.X;
+                        int offsetY = readLoction.Y - cirDragStart.Y;
+
+                        // 更新圆心位置
+                        circleCenter.X += offsetX;
+                        circleCenter.Y += offsetY;
+                        circleRadio.X += offsetX;
+                        circleRadio.Y += offsetY;
+
+                        // 重新设置起始拖拽点为当前鼠标位置，以便下一次计算
+                        cirDragStart = readLoction;
+                       
+
+                    }
+                    else
+                    {
+                        circleRadio = readLoction;
+                    }
+                }
+                imagePanel.image_pl.Invalidate();
+
+
+            }
+            else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index)) // 遍历是否在所有矩形或者角点附近
+            {
+
+            }
+            else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
+            {
+
+            }
             else if (isStartCircleDragged)
             {
                 startPoint = readLoction;
-                
+
                 imagePanel.image_pl.Invalidate();
             }
             else if (isEndCircleDragged)
@@ -736,23 +1217,7 @@ namespace PBAnaly.Module
                 endPoint = readLoction;
                 imagePanel.image_pl.Invalidate();
             }
-            else if (ImageProcess.IsNearCorner(readLoction,startPoint,CircleRadius) || ImageProcess.IsNearCorner(readLoction, endPoint, CircleRadius))
-            {
-                imagePanel.image_pl.Cursor = Cursors.Hand;
-            }
-            else if(drawRect && e.Button == MouseButtons.Left)
-            {
-                // 动态调整矩形大小
-                int x = Math.Min(leftTopPoint.X, e.X);
-                int y = Math.Min(leftTopPoint.Y, e.Y);
-                int width = Math.Abs(e.X - leftTopPoint.X);
-                int height = Math.Abs(e.Y - leftTopPoint.Y);
-
-                currentRectangle = new System.Drawing.Rectangle(x, y, width, height);
-                imagePanel.image_pl.Invalidate(); // 触发重绘
-            }
-            
-            else 
+            else
             {
                 imagePanel.image_pl.Cursor = Cursors.Default;
             }
@@ -773,6 +1238,20 @@ namespace PBAnaly.Module
                     drawLine = true;
                     startPoint = readLoction;
                 }
+                else if (rectOn)
+                {
+                    // 开始绘制新矩形
+                    drawRect = true;
+                    leftTopPoint = readLoction;
+                    currentRectangle = new System.Drawing.Rectangle(readLoction.X, readLoction.Y, 0, 0);
+                }
+                else if (CircleOn) 
+                {
+                    //开始绘制圆形
+                    drawCircle = true;
+                    circleRadio = readLoction;
+                    circleCenter = readLoction;
+                }
                 else if (imagePanel.IsImageLargerThanPanel())
                 {
                     isDragging = true;
@@ -792,12 +1271,31 @@ namespace PBAnaly.Module
                     isEndCircleDragged = true;
 
                 }
-                else if (rectOn)
+                else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
                 {
-                    // 开始绘制新矩形
-                    drawRect = true;
-                    leftTopPoint = e.Location;
-                    currentRectangle = new System.Drawing.Rectangle(e.X, e.Y, 0, 0);
+                    rectActiveCorner = cner1;
+                    if (rectActiveCorner != Corner.None)
+                    {
+                        isCirDragging = true;
+                        cirDragStart = readLoction;
+                        cireOriginalCire = curRect;
+                        circleCenter = curRect.center;
+                        circleRadio = curRect.Radius;
+                        cirDragStartIndex = index1;
+                    }
+
+                }
+                else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
+                {
+                    rectActiveCorner = cner;
+
+                    if (rectActiveCorner != Corner.None)
+                    {
+                        isRecDragging = true;
+                        recDragStart = readLoction;
+                        rectOriginalRect = cr;
+                        rectDragStartIndex = index;
+                    }
                 }
             }
             else if (e.Button == MouseButtons.Right) 
@@ -810,10 +1308,38 @@ namespace PBAnaly.Module
                     imagePaletteForm.flb_act_mm.Text = ("0");
                     imagePaletteForm.flb_act_mm.Refresh();
                 }
+                else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
+                {
+                    CircleAndInfoList.RemoveAt(index1);
+                    imagePanel.image_pl.Invalidate();
+                }
+                else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
+                {
+                    rectangles.RemoveAt(index);
+                    imagePanel.image_pl.Invalidate();
+                }
             }
             
         }
+        
 
+        private void ImagePanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.imagePaletteForm != null)
+            {
+                this.imagePaletteForm.Close();
+                this.imagePaletteForm.Dispose();
+                this.imagePaletteForm = null;
+            }
+            this.pl_right.Controls.Clear();
+
+        }
+
+        private void ImagePanel_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.bioanalysisMannages[path] = null;
+            this.bioanalysisMannages.Remove(path);
+        }
         #endregion
         #region imagePaletteForm
         private void Hpb_line_Click(object sender, EventArgs e)
@@ -824,6 +1350,10 @@ namespace PBAnaly.Module
         private void hpb_rect_Click(object sender, EventArgs e)
         {
             rectOn = true;
+        }
+        private void Hpb_circe_Click(object sender, EventArgs e)
+        {
+            CircleOn = true;
         }
         #endregion
         #endregion
