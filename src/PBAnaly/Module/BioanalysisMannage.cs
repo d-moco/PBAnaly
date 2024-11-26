@@ -81,6 +81,13 @@ namespace PBAnaly.Module
         private const int CircleRadius = 5;
         private bool lineOn =false;
         private bool drawLine = false;
+
+        private bool CircleOn = false;
+        private bool rectOn = false;
+        private List<System.Drawing.Rectangle> rectangles = new List<System.Drawing.Rectangle>(); // 存储所有绘制完成的矩形
+        private System.Drawing.Rectangle? currentRectangle = null; // 当前正在绘制的矩形
+        private System.Drawing.Point leftTopPoint; // 矩形左上角的起始点
+        private bool drawRect = false; // 是否正在绘制
         private System.Drawing.Point startPoint = new System.Drawing.Point(-10, 0);
         private System.Drawing.Point endPoint = new System.Drawing.Point(-10, 0);
 
@@ -355,6 +362,7 @@ namespace PBAnaly.Module
             imagePaletteForm.nud_colorMin.ValueChanged += Nud_colorMin_ValueChanged;
             imagePaletteForm.cb_colortable.SelectedIndexChanged += Cb_colortable_SelectedIndexChanged;
 
+            
 
             imagePanel.cb_scientific.CheckedChanged += Cb_scientific_CheckedChanged;
 
@@ -369,6 +377,7 @@ namespace PBAnaly.Module
 
             imagePanel.wdb_title.MouseDown += Wdb_title_Click;
 
+            imagePaletteForm.hpb_rect.Click += hpb_rect_Click;
         }
 
        
@@ -618,6 +627,7 @@ namespace PBAnaly.Module
         {
             Graphics g = e.Graphics;
 
+
             // 绘制直线
             if ((startPoint != System.Drawing.Point.Empty && endPoint != System.Drawing.Point.Empty))
             {
@@ -629,6 +639,21 @@ namespace PBAnaly.Module
                 ImageProcess.DrawCircle(g, srart, CircleRadius, Pens.Blue, Brushes.LightBlue);
                 ImageProcess.DrawCircle(g, end, CircleRadius, Pens.Blue, Brushes.LightBlue);
             }
+            if(leftTopPoint != System.Drawing.Point.Empty)
+            {
+                // 绘制所有已绘制的矩形
+                foreach (var rect in rectangles)
+                {
+                    e.Graphics.DrawRectangle(Pens.Blue, rect);
+                }
+
+                // 绘制当前正在绘制的矩形
+                if (currentRectangle.HasValue)
+                {
+                    e.Graphics.DrawRectangle(Pens.Red, currentRectangle.Value);
+                }
+            }
+            
         }
 
         private void Image_pl_MouseUp(object sender, MouseEventArgs e)
@@ -654,7 +679,21 @@ namespace PBAnaly.Module
                 imagePaletteForm.flb_act_mm.Text = value.ToString() + " mm";
                 imagePaletteForm.flb_act_mm.Refresh();
             }
-            
+            else if(drawRect && e.Button == MouseButtons.Left)
+            {
+                if (drawRect && currentRectangle.HasValue)
+                {
+                    // 完成绘制并保存矩形
+                    rectangles.Add(currentRectangle.Value);
+                    currentRectangle = null;
+                    drawRect = false;
+                }
+
+                drawRect = false;
+                rectOn = false;
+
+               
+            }
 
         }
 
@@ -701,8 +740,19 @@ namespace PBAnaly.Module
             {
                 imagePanel.image_pl.Cursor = Cursors.Hand;
             }
+            else if(drawRect && e.Button == MouseButtons.Left)
+            {
+                // 动态调整矩形大小
+                int x = Math.Min(leftTopPoint.X, e.X);
+                int y = Math.Min(leftTopPoint.Y, e.Y);
+                int width = Math.Abs(e.X - leftTopPoint.X);
+                int height = Math.Abs(e.Y - leftTopPoint.Y);
+
+                currentRectangle = new System.Drawing.Rectangle(x, y, width, height);
+                imagePanel.image_pl.Invalidate(); // 触发重绘
+            }
             
-            else
+            else 
             {
                 imagePanel.image_pl.Cursor = Cursors.Default;
             }
@@ -742,6 +792,13 @@ namespace PBAnaly.Module
                     isEndCircleDragged = true;
 
                 }
+                else if (rectOn)
+                {
+                    // 开始绘制新矩形
+                    drawRect = true;
+                    leftTopPoint = e.Location;
+                    currentRectangle = new System.Drawing.Rectangle(e.X, e.Y, 0, 0);
+                }
             }
             else if (e.Button == MouseButtons.Right) 
             {
@@ -762,6 +819,11 @@ namespace PBAnaly.Module
         private void Hpb_line_Click(object sender, EventArgs e)
         {
             lineOn = true;
+        }
+
+        private void hpb_rect_Click(object sender, EventArgs e)
+        {
+            rectOn = true;
         }
         #endregion
         #endregion

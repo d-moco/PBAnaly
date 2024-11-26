@@ -358,7 +358,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(268, 113);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(266, 113);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // hpb_circe
@@ -388,16 +388,17 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(262, 73);
+            this.panel2.Size = new System.Drawing.Size(260, 73);
             this.panel2.TabIndex = 14;
             this.panel2.Text = "panel2";
             // 
             // collapseItem2
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
-            this.collapseItem2.Location = new System.Drawing.Point(-268, -113);
+            this.collapseItem2.Expand = true;
+            this.collapseItem2.Location = new System.Drawing.Point(19, 433);
             this.collapseItem2.Name = "collapseItem2";
-            this.collapseItem2.Size = new System.Drawing.Size(268, 113);
+            this.collapseItem2.Size = new System.Drawing.Size(266, 113);
             this.collapseItem2.TabIndex = 1;
             this.collapseItem2.Text = "ROI工具";
             // 
@@ -660,7 +661,7 @@
             // collapseItem3
             // 
             this.collapseItem3.Expand = true;
-            this.collapseItem3.Location = new System.Drawing.Point(19, 473);
+            this.collapseItem3.Location = new System.Drawing.Point(19, 618);
             this.collapseItem3.Margin = new System.Windows.Forms.Padding(2);
             this.collapseItem3.Name = "collapseItem3";
             this.collapseItem3.Size = new System.Drawing.Size(266, 154);
@@ -718,7 +719,6 @@
         private ReaLTaiizor.Controls.HopePictureBox hpb_wand;
         private ReaLTaiizor.Controls.HopePictureBox hpb_xianduan;
         private ReaLTaiizor.Controls.FoxTextBox ftb_r;
-        private ReaLTaiizor.Controls.HopePictureBox hpb_rect;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private ReaLTaiizor.Controls.HopePictureBox hpb_circe;
         private AntdUI.Panel panel2;
@@ -739,5 +739,6 @@
         public System.Windows.Forms.ComboBox cb_colortable;
         public ReaLTaiizor.Controls.HopePictureBox hpb_line;
         public ReaLTaiizor.Controls.FoxLabel flb_act_mm;
+        public ReaLTaiizor.Controls.HopePictureBox hpb_rect;
     }
 }
