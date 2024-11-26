@@ -324,24 +324,7 @@ namespace PBAnaly
                 bioanalysisMannages[selectedFilePath] = bioanalysisMannage;
 
 
-                //ImagePanel frmEmbed = new ImagePanel(selectedFilePath, pl_right);
-                //ImageToolMannage.imageDataPath[selectedFilePath] = frmEmbed;
-
-                //if (frmEmbed != null)
-                //{
-                //    frmEmbed.TopLevel = false;
-                //    DataProcess_panel.Controls.Add(frmEmbed);
-                //    FormGenerate_X = FormGenerate_X + 15;
-                //    FormGenerate_Y = FormGenerate_Y + 15;
-                //    frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
-                //    frmEmbed.Show();      //  显示
-                //    frmEmbed.BringToFront();
-
-                //    //frmEmbed.RefreshUI();
-
-
-                //}
-                //initPanel();
+                
 
 
             }

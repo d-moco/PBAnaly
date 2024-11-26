@@ -367,9 +367,11 @@ namespace PBAnaly.Module
 
             imagePaletteForm.hpb_line.Click += Hpb_line_Click;
 
+            imagePanel.wdb_title.MouseDown += Wdb_title_Click;
+
         }
 
-        
+       
 
         private void ReadTif() 
         {
@@ -535,14 +537,19 @@ namespace PBAnaly.Module
 
         }
 
-        
-        
-      
-        
+
+
+
+
         #endregion
 
 
         #region 事件
+        private void Wdb_title_Click(object sender, EventArgs e)
+        {
+           this.pl_right.Controls.Clear();
+            this.pl_right.Controls.Add(this.imagePaletteForm);
+        }
         private void Cb_scientific_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {
             ScientificON = imagePanel.cb_scientific.Checked;
