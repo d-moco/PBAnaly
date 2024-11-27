@@ -1672,7 +1672,13 @@ namespace PBAnaly.Module
         public BioanalyImagePanel GetImagePanel 
         {
             get { return imagePanel; }
-       }
+        }
+
+        public void WindowAdaptive() 
+        {
+            imagePanel.WindowState = FormWindowState.Maximized;
+        }
+
         #endregion
     }
 }

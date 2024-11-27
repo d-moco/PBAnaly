@@ -396,127 +396,13 @@ namespace PBAnaly
         bool isGridView = false;
         private void materialButton_changeFormSize_Click(object sender, EventArgs e)
         {
-
-            //isGridView = isGridView == false ? true : false;
-            //initPanel();
-#if true
-            //var forms = ImageToolMannage.imageDataPath.Values.ToList();
-            //int formCount = forms.Count;
-
-            //int rows, columns;
-
-            //// 根据窗体数量确定布局
-            //if (formCount == 1)
-            //{
-            //    rows = 1;
-            //    columns = 1;
-            //}
-            //else if (formCount == 2)
-            //{
-            //    rows = 1;
-            //    columns = 2;
-            //}
-            //else if (formCount == 3)
-            //{
-            //    rows = 1;
-            //    columns = 3;
-            //}
-            //else if (formCount == 4)
-            //{
-            //    rows = 2;
-            //    columns = 2;
-            //}
-            //else if (formCount == 5)
-            //{
-            //    rows = 2;
-            //    columns = 3;
-            //}
-            //else if (formCount == 6)
-            //{
-            //    rows = 2;
-            //    columns = 3;
-            //}
-            //else // formCount >= 7
-            //{
-            //    rows = (int)Math.Ceiling(formCount / 2.0);
-            //    columns = 2;
-            //}
-
-            //// 计算每个窗体的大小
-            //int formWidth = DataProcess_panel.Width / columns;
-            //int formHeight = DataProcess_panel.Height / rows;
-
-            //// 清除 DataProcess_panel 中已有的控件
-            //DataProcess_panel.Controls.Clear();
-
-            //// 调整每个窗体的位置和大小
-            //for (int i = 0; i < formCount; i++)
-            //{
-            //    var form = forms[i];
-            //    PictureBox pictureBox = new PictureBox();
-            //    pictureBox.Image = form.GetPseuImage;
-
-
-            //    int row = i / columns;
-            //    int col = i % columns;
-
-
-            //    pictureBox.Bounds = new System.Drawing.Rectangle(col * formWidth, row * formHeight, formWidth, formHeight);
-
-            //    // 添加窗体到 Panel 中并显示
-            //    DataProcess_panel.Controls.Add(pictureBox);
-            //    pictureBox.Show();
-            //}
-            //COMMImageToolPaletteForm cOMMImageToolPaletteForm = new COMMImageToolPaletteForm(this);
-            //cOMMImageToolPaletteForm.TopLevel = false;
-            //cOMMImageToolPaletteForm.Dock = DockStyle.Fill;
-            //pl_right.Controls.Clear();
-            //pl_right.Controls.Add(cOMMImageToolPaletteForm);
-            //cOMMImageToolPaletteForm.Show();
-
-
-            int margin = 5;
-            int formCount = ImageToolMannage.imageDataPath.Count;
-            if (formCount == 0) return;
-
-            int columns = (int)Math.Ceiling(Math.Sqrt(formCount));
-            int rows = (int)Math.Ceiling((double)formCount / columns);
-
-            int formWidth = (DataProcess_panel.Width - (columns + 1) * margin) / columns;
-            int formHeight = (DataProcess_panel.Height - (rows + 1) * margin) / rows;
-
-            int totalWidth = columns * formWidth + (columns + 1) * margin;
-            int totalHeight = rows * formHeight + (rows + 1) * margin;
-            if (totalWidth > DataProcess_panel.Width)
+            if (bioanalysisMannages.Count == 1) 
             {
-                formWidth = (DataProcess_panel.Width - (columns + 1) * margin) / columns;
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.WindowAdaptive();
+                }
             }
-            if (totalHeight > DataProcess_panel.Height)
-            {
-                formHeight = (DataProcess_panel.Height - (rows + 1) * margin) / rows;
-            }
-            int index = 0;
-            foreach (var item in ImageToolMannage.imageDataPath)
-            {
-                int row = index / columns;
-                int col = index % columns;
-
-                int x = margin + col * (formWidth + margin);
-                int y = margin + row * (formHeight + margin);
-
-                var panel = item.Value;
-                panel.Size = new Size(formWidth, formHeight);
-                panel.Location = new System.Drawing.Point(x, y);
-                panel.TopLevel = false;
-                panel.FormBorderStyle = FormBorderStyle.None;
-                panel.Visible = true;
-                DataProcess_panel.Controls.Add(panel);
-                panel.Show();
-                panel.BringToFront();
-                index++;
-            }
-#endif
-
         }
     }
 }
