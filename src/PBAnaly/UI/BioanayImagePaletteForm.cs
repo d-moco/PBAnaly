@@ -25,18 +25,32 @@ namespace PBAnaly.UI
         #region 对外接口
         public int ROI_W
         {
-            get { return roi_w; }
-            set { roi_w = value; ftb_w.Text = roi_w.ToString(); }
+            get {
+                roi_w = Convert.ToInt32(dtb_w.Text.ToString());
+                return roi_w; 
+            }
+            set { roi_w = value; dtb_w.Text = roi_w.ToString(); }
         }
         public int ROI_H
         {
-            get { return roi_h; }
-            set { roi_h = value; ftb_h.Text = roi_h.ToString(); }
+            get {
+                roi_h = Convert.ToInt32(dtb_h.Text.ToString());
+                return roi_h;
+            }
+            set { roi_h = value; dtb_h.Text = roi_h.ToString(); }
         }
         public int CIRCLE_R
         {
-            get { return circle_r; }
-            set { circle_r = value; ftb_r.Text = circle_r.ToString(); }
+            get {
+                circle_r = Convert.ToInt32(dtb_r.Text.ToString());
+                return circle_r; 
+            }
+            set { circle_r = value; dtb_r.Text = circle_r.ToString(); }
+        }
+
+        public string SetInfo
+        {
+            set { flb_info.Text = value; flb_info.Refresh(); }
         }
         #endregion
     }

@@ -30,9 +30,7 @@
         {
             this.fb_fixSetting = new ReaLTaiizor.Controls.FoxButton();
             this.foxLabel7 = new ReaLTaiizor.Controls.FoxLabel();
-            this.ftb_h = new ReaLTaiizor.Controls.FoxTextBox();
             this.foxLabel5 = new ReaLTaiizor.Controls.FoxLabel();
-            this.ftb_w = new ReaLTaiizor.Controls.FoxTextBox();
             this.foxLabel8 = new ReaLTaiizor.Controls.FoxLabel();
             this.flb_act_mm = new ReaLTaiizor.Controls.FoxLabel();
             this.foxLabel9 = new ReaLTaiizor.Controls.FoxLabel();
@@ -42,13 +40,16 @@
             this.foxLabel1 = new ReaLTaiizor.Controls.FoxLabel();
             this.foxLabel4 = new ReaLTaiizor.Controls.FoxLabel();
             this.hpb_line = new ReaLTaiizor.Controls.HopePictureBox();
-            this.ftb_r = new ReaLTaiizor.Controls.FoxTextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.hpb_wand = new AntdUI.Avatar();
             this.hpb_xianduan = new AntdUI.Avatar();
             this.hpb_circe = new AntdUI.Avatar();
             this.hpb_rect = new AntdUI.Avatar();
             this.panel2 = new AntdUI.Panel();
+            this.dtb_r = new ReaLTaiizor.Controls.DreamTextBox();
+            this.dtb_h = new ReaLTaiizor.Controls.DreamTextBox();
+            this.dtb_w = new ReaLTaiizor.Controls.DreamTextBox();
+            this.flb_info = new ReaLTaiizor.Controls.FoxLabel();
             this.collapseItem2 = new AntdUI.CollapseItem();
             this.cb_colortable = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,7 +66,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.collapseItem1 = new AntdUI.CollapseItem();
             this.cll_panel = new AntdUI.Collapse();
-            this.collapseItem3 = new AntdUI.CollapseItem();
             ((System.ComponentModel.ISupportInitialize)(this.hpb_line)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -95,13 +95,12 @@
             this.fb_fixSetting.EnabledCalc = true;
             this.fb_fixSetting.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.fb_fixSetting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.fb_fixSetting.Location = new System.Drawing.Point(120, 30);
+            this.fb_fixSetting.Location = new System.Drawing.Point(137, 31);
             this.fb_fixSetting.Name = "fb_fixSetting";
             this.fb_fixSetting.OverColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.fb_fixSetting.Size = new System.Drawing.Size(59, 31);
             this.fb_fixSetting.TabIndex = 6;
             this.fb_fixSetting.Text = "修改";
-            this.fb_fixSetting.Visible = false;
             // 
             // foxLabel7
             // 
@@ -114,24 +113,6 @@
             this.foxLabel7.TabIndex = 4;
             this.foxLabel7.Text = "r=";
             // 
-            // ftb_h
-            // 
-            this.ftb_h.BackColor = System.Drawing.Color.Transparent;
-            this.ftb_h.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ftb_h.EnabledCalc = true;
-            this.ftb_h.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ftb_h.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.ftb_h.Location = new System.Drawing.Point(34, 28);
-            this.ftb_h.MaxLength = 32767;
-            this.ftb_h.MultiLine = false;
-            this.ftb_h.Name = "ftb_h";
-            this.ftb_h.ReadOnly = false;
-            this.ftb_h.Size = new System.Drawing.Size(75, 22);
-            this.ftb_h.TabIndex = 3;
-            this.ftb_h.Text = "20";
-            this.ftb_h.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ftb_h.UseSystemPasswordChar = false;
-            // 
             // foxLabel5
             // 
             this.foxLabel5.BackColor = System.Drawing.Color.Transparent;
@@ -142,24 +123,6 @@
             this.foxLabel5.Size = new System.Drawing.Size(26, 19);
             this.foxLabel5.TabIndex = 2;
             this.foxLabel5.Text = "h=";
-            // 
-            // ftb_w
-            // 
-            this.ftb_w.BackColor = System.Drawing.Color.Transparent;
-            this.ftb_w.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ftb_w.EnabledCalc = true;
-            this.ftb_w.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ftb_w.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.ftb_w.Location = new System.Drawing.Point(34, 0);
-            this.ftb_w.MaxLength = 32767;
-            this.ftb_w.MultiLine = false;
-            this.ftb_w.Name = "ftb_w";
-            this.ftb_w.ReadOnly = false;
-            this.ftb_w.Size = new System.Drawing.Size(75, 22);
-            this.ftb_w.TabIndex = 1;
-            this.ftb_w.Text = "20";
-            this.ftb_w.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ftb_w.UseSystemPasswordChar = false;
             // 
             // foxLabel8
             // 
@@ -177,12 +140,13 @@
             // flb_act_mm
             // 
             this.flb_act_mm.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.SetColumnSpan(this.flb_act_mm, 2);
             this.flb_act_mm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flb_act_mm.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flb_act_mm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.flb_act_mm.Location = new System.Drawing.Point(93, 137);
             this.flb_act_mm.Name = "flb_act_mm";
-            this.flb_act_mm.Size = new System.Drawing.Size(114, 23);
+            this.flb_act_mm.Size = new System.Drawing.Size(164, 23);
             this.flb_act_mm.TabIndex = 30;
             this.flb_act_mm.Text = "0 mm";
             // 
@@ -272,24 +236,6 @@
             this.hpb_line.TabStop = false;
             this.hpb_line.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // ftb_r
-            // 
-            this.ftb_r.BackColor = System.Drawing.Color.Transparent;
-            this.ftb_r.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ftb_r.EnabledCalc = true;
-            this.ftb_r.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ftb_r.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.ftb_r.Location = new System.Drawing.Point(151, 2);
-            this.ftb_r.MaxLength = 32767;
-            this.ftb_r.MultiLine = false;
-            this.ftb_r.Name = "ftb_r";
-            this.ftb_r.ReadOnly = false;
-            this.ftb_r.Size = new System.Drawing.Size(75, 22);
-            this.ftb_r.TabIndex = 5;
-            this.ftb_r.Text = "10";
-            this.ftb_r.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ftb_r.UseSystemPasswordChar = false;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
@@ -310,7 +256,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(266, 113);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(266, 182);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // hpb_wand
@@ -326,6 +272,7 @@
             // 
             // hpb_xianduan
             // 
+            this.hpb_xianduan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.hpb_xianduan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_xianduan.Image = global::PBAnaly.Properties.Resources.线段__1_;
             this.hpb_xianduan.ImageFit = AntdUI.TFit.Contain;
@@ -337,6 +284,7 @@
             // 
             // hpb_circe
             // 
+            this.hpb_circe.Cursor = System.Windows.Forms.Cursors.Hand;
             this.hpb_circe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_circe.Image = global::PBAnaly.Properties.Resources.圆形;
             this.hpb_circe.ImageFit = AntdUI.TFit.Contain;
@@ -348,6 +296,7 @@
             // 
             // hpb_rect
             // 
+            this.hpb_rect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.hpb_rect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_rect.Image = global::PBAnaly.Properties.Resources._10矩形;
             this.hpb_rect.ImageFit = AntdUI.TFit.Contain;
@@ -360,27 +309,89 @@
             // panel2
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.panel2, 5);
+            this.panel2.Controls.Add(this.dtb_r);
+            this.panel2.Controls.Add(this.dtb_h);
+            this.panel2.Controls.Add(this.dtb_w);
+            this.panel2.Controls.Add(this.flb_info);
             this.panel2.Controls.Add(this.fb_fixSetting);
-            this.panel2.Controls.Add(this.ftb_r);
             this.panel2.Controls.Add(this.foxLabel7);
-            this.panel2.Controls.Add(this.ftb_h);
             this.panel2.Controls.Add(this.foxLabel5);
-            this.panel2.Controls.Add(this.ftb_w);
             this.panel2.Controls.Add(this.foxLabel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(260, 73);
+            this.panel2.Size = new System.Drawing.Size(260, 142);
             this.panel2.TabIndex = 14;
             this.panel2.Text = "panel2";
+            // 
+            // dtb_r
+            // 
+            this.dtb_r.BackColor = System.Drawing.Color.Silver;
+            this.dtb_r.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dtb_r.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.dtb_r.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
+            this.dtb_r.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dtb_r.ColorD = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtb_r.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtb_r.ColorF = System.Drawing.Color.Black;
+            this.dtb_r.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.dtb_r.Location = new System.Drawing.Point(144, 5);
+            this.dtb_r.Name = "dtb_r";
+            this.dtb_r.Size = new System.Drawing.Size(80, 21);
+            this.dtb_r.TabIndex = 10;
+            this.dtb_r.Text = "10";
+            // 
+            // dtb_h
+            // 
+            this.dtb_h.BackColor = System.Drawing.Color.Silver;
+            this.dtb_h.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dtb_h.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.dtb_h.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
+            this.dtb_h.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dtb_h.ColorD = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtb_h.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtb_h.ColorF = System.Drawing.Color.Black;
+            this.dtb_h.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.dtb_h.Location = new System.Drawing.Point(35, 34);
+            this.dtb_h.Name = "dtb_h";
+            this.dtb_h.Size = new System.Drawing.Size(80, 21);
+            this.dtb_h.TabIndex = 9;
+            this.dtb_h.Text = "10";
+            // 
+            // dtb_w
+            // 
+            this.dtb_w.BackColor = System.Drawing.Color.Silver;
+            this.dtb_w.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dtb_w.ColorA = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.dtb_w.ColorB = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
+            this.dtb_w.ColorC = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dtb_w.ColorD = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtb_w.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtb_w.ColorF = System.Drawing.Color.Black;
+            this.dtb_w.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.dtb_w.Location = new System.Drawing.Point(34, 5);
+            this.dtb_w.Name = "dtb_w";
+            this.dtb_w.Size = new System.Drawing.Size(80, 21);
+            this.dtb_w.TabIndex = 8;
+            this.dtb_w.Text = "10";
+            // 
+            // flb_info
+            // 
+            this.flb_info.BackColor = System.Drawing.Color.Transparent;
+            this.flb_info.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.flb_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
+            this.flb_info.Location = new System.Drawing.Point(1, 101);
+            this.flb_info.Name = "flb_info";
+            this.flb_info.Size = new System.Drawing.Size(223, 19);
+            this.flb_info.TabIndex = 7;
             // 
             // collapseItem2
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
             this.collapseItem2.Expand = true;
-            this.collapseItem2.Location = new System.Drawing.Point(19, 99);
+            this.collapseItem2.Location = new System.Drawing.Point(19, 433);
             this.collapseItem2.Name = "collapseItem2";
-            this.collapseItem2.Size = new System.Drawing.Size(266, 113);
+            this.collapseItem2.Size = new System.Drawing.Size(266, 182);
             this.collapseItem2.TabIndex = 1;
             this.collapseItem2.Text = "ROI工具";
             // 
@@ -619,7 +630,8 @@
             // collapseItem1
             // 
             this.collapseItem1.Controls.Add(this.tableLayoutPanel1);
-            this.collapseItem1.Location = new System.Drawing.Point(-266, -302);
+            this.collapseItem1.Expand = true;
+            this.collapseItem1.Location = new System.Drawing.Point(19, 59);
             this.collapseItem1.Name = "collapseItem1";
             this.collapseItem1.Size = new System.Drawing.Size(266, 302);
             this.collapseItem1.TabIndex = 0;
@@ -632,22 +644,11 @@
             this.cll_panel.HeaderBg = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.cll_panel.Items.Add(this.collapseItem1);
             this.cll_panel.Items.Add(this.collapseItem2);
-            this.cll_panel.Items.Add(this.collapseItem3);
             this.cll_panel.Location = new System.Drawing.Point(0, 0);
             this.cll_panel.Name = "cll_panel";
             this.cll_panel.Size = new System.Drawing.Size(304, 495);
             this.cll_panel.TabIndex = 1;
             this.cll_panel.Text = "fed";
-            // 
-            // collapseItem3
-            // 
-            this.collapseItem3.Expand = true;
-            this.collapseItem3.Location = new System.Drawing.Point(19, 284);
-            this.collapseItem3.Margin = new System.Windows.Forms.Padding(2);
-            this.collapseItem3.Name = "collapseItem3";
-            this.collapseItem3.Size = new System.Drawing.Size(266, 154);
-            this.collapseItem3.TabIndex = 3;
-            this.collapseItem3.Text = "collapseItem3";
             // 
             // BioanayImagePaletteForm
             // 
@@ -662,6 +663,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hpb_line)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.collapseItem2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).EndInit();
@@ -678,12 +680,8 @@
         }
 
         #endregion
-
-        private ReaLTaiizor.Controls.FoxButton fb_fixSetting;
         private ReaLTaiizor.Controls.FoxLabel foxLabel7;
-        private ReaLTaiizor.Controls.FoxTextBox ftb_h;
         private ReaLTaiizor.Controls.FoxLabel foxLabel5;
-        private ReaLTaiizor.Controls.FoxTextBox ftb_w;
         private ReaLTaiizor.Controls.FoxLabel foxLabel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private ReaLTaiizor.Controls.FoxLabel foxLabel9;
@@ -693,7 +691,6 @@
         private ReaLTaiizor.Controls.FoxLabel foxLabel1;
         private System.Windows.Forms.PictureBox pb_bgimage;
         private ReaLTaiizor.Controls.FoxLabel foxLabel4;
-        private ReaLTaiizor.Controls.FoxTextBox ftb_r;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private AntdUI.Panel panel2;
         private AntdUI.CollapseItem collapseItem2;
@@ -701,7 +698,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private AntdUI.CollapseItem collapseItem1;
         private AntdUI.Collapse cll_panel;
-        private AntdUI.CollapseItem collapseItem3;
         public ReaLTaiizor.Controls.DungeonTrackBar dtb_brightness;
         public ReaLTaiizor.Controls.DungeonTrackBar dtb_colorMax;
         public ReaLTaiizor.Controls.DungeonTrackBar dtb_colorMin;
@@ -717,5 +713,10 @@
         public AntdUI.Avatar hpb_rect;
         public AntdUI.Avatar hpb_xianduan;
         public AntdUI.Avatar hpb_wand;
+        private ReaLTaiizor.Controls.FoxLabel flb_info;
+        public ReaLTaiizor.Controls.FoxButton fb_fixSetting;
+        private ReaLTaiizor.Controls.DreamTextBox dtb_r;
+        private ReaLTaiizor.Controls.DreamTextBox dtb_h;
+        private ReaLTaiizor.Controls.DreamTextBox dtb_w;
     }
 }

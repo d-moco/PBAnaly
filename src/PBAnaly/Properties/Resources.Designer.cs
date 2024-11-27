@@ -463,6 +463,26 @@ namespace PBAnaly.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 数据报告 {
+            get {
+                object obj = ResourceManager.GetObject("数据报告", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 数据报告__1_ {
+            get {
+                object obj = ResourceManager.GetObject("数据报告 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 波形图 {
             get {
                 object obj = ResourceManager.GetObject("波形图", resourceCulture);

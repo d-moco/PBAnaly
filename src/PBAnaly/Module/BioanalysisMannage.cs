@@ -1,22 +1,12 @@
-﻿using AntdUI;
-using Aspose.Pdf;
-using Aspose.Pdf.AI;
-using Aspose.Pdf.Drawing;
-using MetroFramework.Drawing.Html;
-using OpenCvSharp.Flann;
+﻿using MiniExcelLibs;
 using PBAnaly.UI;
 using PBBiologyVC;
-using ScottPlot.Panels;
-using ScottPlot.Plottables;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Net;
-using System.Runtime.ConstrainedExecution;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -58,6 +48,11 @@ namespace PBAnaly.Module
         {
             public System.Drawing.Point center;
             public System.Drawing.Point Radius { get; set; }
+            public Pseudo_infoVC pdinfovc;
+        }
+        private struct PolygonAndInfo
+        {
+            public List<System.Drawing.Point> points;
             public Pseudo_infoVC pdinfovc;
         }
         #endregion
@@ -102,6 +97,7 @@ namespace PBAnaly.Module
 
         private bool CircleOn = false;
         private bool rectOn = false;
+        private bool linepolygonON = false;
         private bool isRecDragging = false;
         private List<RectAttribute> rectangles = new List<RectAttribute>(); // 存储所有绘制完成的矩形
         private System.Drawing.Rectangle? currentRectangle = null; // 当前正在绘制的矩形
@@ -120,6 +116,12 @@ namespace PBAnaly.Module
         private System.Drawing.Point circleRadio;
         private int cirDragStartIndex = -1;
         private CirceAndInfo cireOriginalCire;
+
+        private bool drawpolygon = false;
+        private List<PolygonAndInfo> PolygonAndInfoList = new List<PolygonAndInfo>();
+        private PolygonAndInfo curPolygonAndInfoList = new PolygonAndInfo();
+        private System.Drawing.Point curStartPolygonPoint = new System.Drawing.Point(0, 0);
+        private System.Drawing.Point curPolygonPoint = new System.Drawing.Point(0, 0);
 
         private System.Drawing.Point startPoint = new System.Drawing.Point(-10, 0);
         private System.Drawing.Point endPoint = new System.Drawing.Point(-10, 0);
@@ -211,15 +213,15 @@ namespace PBAnaly.Module
                     if (algAttribute.colorValue > imagePaletteForm.nud_colorMin.Value)
                     {
                         
-                        imagePaletteForm.nud_colorMin.Maximum = algAttribute.colorValue;
-                        imagePaletteForm.dtb_colorMin.Maximum = algAttribute.colorValue;
+                        imagePaletteForm.nud_colorMin.Maximum = algAttribute.colorValue - 1;
+                        imagePaletteForm.dtb_colorMin.Maximum = algAttribute.colorValue - 1;
                         fix = true;
                     }
                     else if(algAttribute.colorValue < imagePaletteForm.nud_colorMin.Value)
                     {
-                        imagePaletteForm.nud_colorMin.Maximum = algAttribute.colorValue;
-                        imagePaletteForm.dtb_colorMin.Maximum = algAttribute.colorValue;
-                        imagePaletteForm.nud_colorMin.Value = algAttribute.colorValue;
+                        imagePaletteForm.nud_colorMin.Maximum = algAttribute.colorValue - 1;
+                        imagePaletteForm.dtb_colorMin.Maximum = algAttribute.colorValue - 1;
+                        imagePaletteForm.nud_colorMin.Value = algAttribute.colorValue - 1;
                         fix |= true;
                     }
 
@@ -331,7 +333,7 @@ namespace PBAnaly.Module
 
             algAttribute. colorValue = 65534;
             algAttribute. colorMinValue = 5999;
-            algAttribute. colorMin = 0;
+            algAttribute. colorMin = 2;
             algAttribute. colorMax = 65535;
 
             algAttribute.scientificON = false;
@@ -383,10 +385,10 @@ namespace PBAnaly.Module
             imagePaletteForm.nud_colorMax.Minimum= algAttribute.colorMin;
             imagePaletteForm.nud_colorMax.Value= algAttribute.colorValue;
 
-            imagePaletteForm.dtb_colorMin.Maximum = algAttribute.colorMin;
-            imagePaletteForm.dtb_colorMin.Maximum = algAttribute.colorValue;
-            imagePaletteForm.dtb_colorMin.Value = algAttribute.colorValue;
-            imagePaletteForm.nud_colorMin.Maximum = algAttribute.colorValue;
+            imagePaletteForm.dtb_colorMin.Maximum = algAttribute.colorValue-1;
+            imagePaletteForm.dtb_colorMin.Value = algAttribute.colorMinValue;
+            imagePaletteForm.dtb_colorMin.Minimum = 0;
+            imagePaletteForm.nud_colorMin.Maximum = algAttribute.colorValue-1;
             imagePaletteForm.nud_colorMin.Minimum = algAttribute.colorMin;
             imagePaletteForm.nud_colorMin.Value= algAttribute.colorMinValue;
             imagePaletteForm.cb_colortable.SelectedIndex = algAttribute.colorIndex;
@@ -417,9 +419,11 @@ namespace PBAnaly.Module
             imagePanel.wdb_title.MouseDown += Wdb_title_Click;
             imagePanel.FormClosing += ImagePanel_FormClosing;
             imagePanel.FormClosed += ImagePanel_FormClosed;
+            imagePanel.ava_saveReport.Click += Ava_saveReport_Click;
             imagePaletteForm.hpb_rect.Click += hpb_rect_Click;
             imagePaletteForm.hpb_circe.Click += Hpb_circe_Click;
-
+            imagePaletteForm.hpb_xianduan.Click += Hpb_xianduan_Click;
+            imagePaletteForm.fb_fixSetting.Click += Fb_fixSetting_Click;
 
         }
 
@@ -673,7 +677,27 @@ namespace PBAnaly.Module
 
             return false;
         }
+        private bool IsPointInPolygon(System.Drawing.Point testPoint, PolygonAndInfo polygon)
+        {
+            if (polygon.points == null) return false; ;
+            var points = polygon.points;
+            bool result = false;
+            int j = points.Count - 1; // The last vertex is the 'previous' one to the first
 
+            for (int i = 0; i < points.Count; i++)
+            {
+                if (points[i].Y < testPoint.Y && points[j].Y >= testPoint.Y || points[j].Y < testPoint.Y && points[i].Y >= testPoint.Y)
+                {
+                    if (points[i].X + (testPoint.Y - points[i].Y) / (points[j].Y - points[i].Y) * (points[j].X - points[i].X) < testPoint.X)
+                    {
+                        result = !result;
+                    }
+                }
+                j = i; // j is previous vertex to i
+            }
+
+            return result;
+        }
         #endregion
 
 
@@ -906,8 +930,75 @@ namespace PBAnaly.Module
                 e.Graphics.DrawEllipse(Pens.Red, curCirCenterPoint.X - radius, curCirCenterPoint.Y - radius, radius * 2, radius * 2);
                 ImageProcess.DrawCircle(g, new System.Drawing.Point(curCirRadioPoint.X, curCirRadioPoint.Y), CircleRadius, Pens.Blue, Brushes.LightBlue);
             }
-          
-            
+
+            index = 0;
+            if (PolygonAndInfoList != null)
+            {
+                int isStart = 0;
+                System.Drawing.Point point = new System.Drawing.Point();
+                foreach (var item1 in PolygonAndInfoList)
+                {
+                    foreach (var item in item1.points)
+                    {
+                        if (isStart == 0)
+                        {
+                            point = ImageProcess.ConvertRealToPictureBox( item,imagePanel.image_pl);
+                        }
+                        System.Drawing.Point curpoint = ImageProcess.ConvertRealToPictureBox(item, imagePanel.image_pl);
+                        ImageProcess.DrawCircle(g, curpoint, CircleRadius, Pens.Blue, Brushes.LightBlue);
+                        g.DrawLine(Pens.Red, curpoint, point);
+                        point = curpoint;
+                        isStart++;
+                    }
+
+                }
+
+                if (drawpolygon)
+                {
+
+                    point = ImageProcess.ConvertRealToPictureBox( curPolygonAndInfoList.points[curPolygonAndInfoList.points.Count - 1], imagePanel.image_pl);
+                    var p1 = ImageProcess.ConvertRealToPictureBox(curPolygonPoint, imagePanel.image_pl);
+                    g.DrawLine(Pens.Red, p1, point);
+                    foreach (var item in curPolygonAndInfoList.points)
+                    {
+                        if (isStart == 0)
+                        {
+                            point = ImageProcess.ConvertRealToPictureBox(item, imagePanel.image_pl);
+                        }
+                        System.Drawing.Point curpoint = ImageProcess.ConvertRealToPictureBox( item, imagePanel.image_pl);
+                        ImageProcess.DrawCircle(g, curpoint, CircleRadius, Pens.Blue, Brushes.LightBlue);
+                        g.DrawLine(Pens.Red, curpoint, point);
+                        point = curpoint;
+                        isStart++;
+                    }
+                }
+                else
+                {
+                    if (curPolygonAndInfoList.pdinfovc != null)
+                    {
+
+                        string labelText = "";
+                        if (algAttribute.scientificON)
+                        {
+
+
+                            labelText = $"ROI:{index+1},AOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.AOD)},IOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.IOD)}," +
+                                       $"\r\nmaxOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.maxOD)},minOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.minOD)},Count:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.Count)}";
+                        }
+                        else
+                        {
+                            labelText = $"ROI:{index + 1},AOD:{curPolygonAndInfoList.pdinfovc.AOD},IOD:{curPolygonAndInfoList.pdinfovc.IOD}," +
+                                       $"\r\nmaxOD:{curPolygonAndInfoList.pdinfovc.maxOD},minOD:{curPolygonAndInfoList.pdinfovc.minOD},Count:{curPolygonAndInfoList.pdinfovc.Count}"; // 标签编号
+                        }
+                        Font font = new Font("Arial", 8); // 字体
+                        Brush brush = Brushes.Red; // 字体颜色
+                        System.Drawing.Point curpoint = ImageProcess.ConvertRealToPictureBox( curPolygonAndInfoList.points[0], imagePanel.image_pl);
+                        g.DrawString(labelText, font, brush, curpoint.X - 10, curpoint.Y - 15);
+                    }
+                }
+                index++;
+            }
+
         }
 
         private void Image_pl_MouseUp(object sender, MouseEventArgs e)
@@ -958,14 +1049,11 @@ namespace PBAnaly.Module
                         }
                         if (curpdinfovc != null)
                             rab.pdinfovc = curpdinfovc;
+                        imagePaletteForm.SetInfo = "w:" + rab.rect.Width.ToString() + "h:" + rab.rect.Height.ToString();
                         // 完成绘制并保存矩形
                         rectangles.Add(rab);
                         currentRectangle = null;
                         drawRect = false;
-
-
-
-
                         imagePanel.image_pl.Invalidate();
                     }
 
@@ -980,25 +1068,13 @@ namespace PBAnaly.Module
                     rab.center = circleCenter;
                     rab.Radius = circleRadio;
 
-                    if (CircleAndInfoList.Count == 0)
-                    {
-                        imagePaletteForm.CIRCLE_R = (int)Math.Sqrt(Math.Pow(rab.center.X - rab.Radius.X, 2) + Math.Pow(rab.center.Y - rab.Radius.Y, 2));
-
-                    }
-                    else
-                    {
-
-                        double angleInRadians = 90 * Math.PI / 180; // Convert degrees to radians
-                        double x = rab.center.X + imagePaletteForm.CIRCLE_R * Math.Cos(angleInRadians);
-                        double y = rab.center.Y + imagePaletteForm.CIRCLE_R * Math.Sin(angleInRadians);
-
-                        rab.Radius = new System.Drawing.Point((int)x, (int)y);
-                    }
 
                     // 计算光子数并展示出来
                     float _max = algAttribute.colorValue;
                     float _min = algAttribute.colorMinValue;
                     int radius = (int)Math.Sqrt(Math.Pow(rab.center.X - rab.Radius.X, 2) + Math.Pow(rab.center.Y - rab.Radius.Y, 2));
+
+                    imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                     Pseudo_infoVC curpdinfovc = null;
                     unsafe
                     {
@@ -1039,7 +1115,9 @@ namespace PBAnaly.Module
                     }
                     if (curpdinfovc != null)
                         rattb.pdinfovc = curpdinfovc;
+
                     rectangles[rectDragStartIndex] = rattb;
+                    imagePaletteForm.SetInfo = "w:" + recDragRect.Width.ToString() + "h:" + recDragRect.Height.ToString();
                     isRecDragging = false;
                     rectActiveCorner = Corner.None;
                     rectDragStartIndex = -1;
@@ -1068,7 +1146,7 @@ namespace PBAnaly.Module
                         }
                     }
                     circeAndInfo.pdinfovc = curpdinfovc;
-
+                    imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                     CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
                     isCirDragging = false;
                     cirDragStartIndex = -1;
@@ -1101,6 +1179,11 @@ namespace PBAnaly.Module
             else if (drawCircle && e.Button == MouseButtons.Left)
             {
                 circleRadio = readLoction;
+                imagePanel.image_pl.Invalidate();
+            }
+            else if (drawpolygon && linepolygonON) 
+            {
+                curPolygonPoint = readLoction;
                 imagePanel.image_pl.Invalidate();
             }
             else if (isDragging && e.Button == MouseButtons.Left)
@@ -1168,11 +1251,11 @@ namespace PBAnaly.Module
                 }
                 imagePanel.image_pl.Invalidate(); // 触发重绘
             }
-            else if (isCirDragging) 
+            else if (isCirDragging)
             {
-                if (rectActiveCorner != Corner.None) 
+                if (rectActiveCorner != Corner.None)
                 {
-                    if (rectActiveCorner == Corner.drawMouse) 
+                    if (rectActiveCorner == Corner.drawMouse)
                     {
                         // 计算鼠标位置与起始拖拽点的偏移量
                         int offsetX = readLoction.X - cirDragStart.X;
@@ -1186,7 +1269,7 @@ namespace PBAnaly.Module
 
                         // 重新设置起始拖拽点为当前鼠标位置，以便下一次计算
                         cirDragStart = readLoction;
-                       
+
 
                     }
                     else
@@ -1225,7 +1308,55 @@ namespace PBAnaly.Module
 
         private void Image_pl_DoubleClick(object sender, System.EventArgs e)
         {
-            
+            if (linepolygonON && drawpolygon) 
+            {
+                
+                if (curPolygonAndInfoList.points != null)
+                {
+                    System.Drawing.Point firstPoint = curPolygonAndInfoList.points[0];
+                    System.Drawing.Point lastPoint = curPolygonAndInfoList.points[curPolygonAndInfoList.points.Count - 1];
+                    firstPoint = ImageProcess.ConvertRealToPictureBoxCoordinates(imagePanel.image_pl, firstPoint);
+                    lastPoint = ImageProcess.ConvertRealToPictureBoxCoordinates(imagePanel.image_pl, lastPoint);
+                    double deltaX = lastPoint.X - firstPoint.X;
+                    double deltaY = lastPoint.Y - firstPoint.Y;
+                    var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+                    if (value <= 5)
+                    {
+                        lastPoint = firstPoint;
+                        drawpolygon = false;
+                        linepolygonON = false;
+                        imagePanel.image_pl.Invalidate();
+
+                        // 计算光子量
+
+                        float _max = algAttribute.colorValue;
+                        float _min = algAttribute.colorMinValue;
+                        List<Point_VC> curVclist = new List<Point_VC>();
+                        Pseudo_infoVC curpdinfovc = null;
+                        foreach (var item in curPolygonAndInfoList.points)
+                        {
+                            Point_VC pvc = new Point_VC(item.X, item.Y);
+                            curVclist.Add(pvc);
+
+                        }
+                        unsafe
+                        {
+                            fixed (byte* pseu_16_byte_src = image_org_byte)
+                            {
+                                curpdinfovc = pbpvc.get_pseudo_info_polygon_vc(pseu_16_byte_src, 16,
+                                    (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, curVclist);
+
+                            }
+                        }
+                        curPolygonAndInfoList.pdinfovc = curpdinfovc;
+
+                        PolygonAndInfoList.Add(curPolygonAndInfoList);
+
+                    }
+
+                    imagePanel.image_pl.Invalidate();
+                }
+            }
         }
 
         private void Image_pl_MouseDown(object sender, MouseEventArgs e)
@@ -1245,12 +1376,22 @@ namespace PBAnaly.Module
                     leftTopPoint = readLoction;
                     currentRectangle = new System.Drawing.Rectangle(readLoction.X, readLoction.Y, 0, 0);
                 }
-                else if (CircleOn) 
+                else if (CircleOn)
                 {
                     //开始绘制圆形
                     drawCircle = true;
                     circleRadio = readLoction;
                     circleCenter = readLoction;
+                }
+                else if (linepolygonON) 
+                {
+                    drawpolygon = true;
+                    if (curPolygonAndInfoList.points == null)
+                    {
+                        curPolygonAndInfoList.points = new List<System.Drawing.Point>();
+                    }
+                    System.Drawing.Point curPoint = readLoction;
+                    curPolygonAndInfoList.points.Add(curPoint);
                 }
                 else if (imagePanel.IsImageLargerThanPanel())
                 {
@@ -1318,6 +1459,13 @@ namespace PBAnaly.Module
                     rectangles.RemoveAt(index);
                     imagePanel.image_pl.Invalidate();
                 }
+                else if (drawpolygon==false &&  IsPointInPolygon(readLoction, curPolygonAndInfoList))
+                {
+                    PolygonAndInfoList.Clear();
+                    curPolygonAndInfoList.points.Clear();
+                    curPolygonAndInfoList.pdinfovc = null;
+                    imagePanel.image_pl.Invalidate();
+                }
             }
             
         }
@@ -1340,6 +1488,133 @@ namespace PBAnaly.Module
             this.bioanalysisMannages[path] = null;
             this.bioanalysisMannages.Remove(path);
         }
+
+        private void Ava_saveReport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog()) 
+            {
+                saveFileDialog.Title = "保存Panel图像";
+                saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx";
+                if (saveFileDialog.ShowDialog()
+                    == DialogResult.OK) 
+                {
+                    // 保存光子数到xlsx里  先保存矩形的
+                    if (algAttribute.scientificON) 
+                    {
+                        var records = new List<DataRecordString>();
+                        int index = 0;
+                        foreach (var item in rectangles)
+                        {
+                            index++;
+                            if (algAttribute.scientificON)
+                            {
+                                DataRecordString dr = new DataRecordString();
+                                dr.index = index;
+
+                                dr.IOD = util.GetscientificNotation(item.pdinfovc.IOD);
+                                dr.AOD = util.GetscientificNotation(item.pdinfovc.AOD);
+                                dr.max = util.GetscientificNotation(item.pdinfovc.maxOD);
+                                dr.min = util.GetscientificNotation(item.pdinfovc.minOD);
+                                dr.Count = util.GetscientificNotation(item.pdinfovc.Count);
+                                records.Add(dr);
+                            }
+
+                        }
+
+                        foreach (var item in CircleAndInfoList)
+                        {
+                            index++;
+
+                            DataRecordString dr = new DataRecordString();
+                            dr.index = index;
+
+                            dr.IOD = util.GetscientificNotation(item.pdinfovc.IOD);
+                            dr.AOD = util.GetscientificNotation(item.pdinfovc.AOD);
+                            dr.max = util.GetscientificNotation(item.pdinfovc.maxOD);
+                            dr.min = util.GetscientificNotation(item.pdinfovc.minOD);
+                            dr.Count = util.GetscientificNotation(item.pdinfovc.Count);
+                            records.Add(dr);
+                        }
+
+                        if (records.Count > 0)
+                        {
+                            string directoryPath = System.IO.Path.GetDirectoryName(saveFileDialog.FileName);
+                            string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
+                            string path = directoryPath + "\\" + fileNameWithoutExtension + ".xlsx";
+                            if (File.Exists(path))
+                            {
+                                try
+                                {
+                                    File.Delete(path);
+                                }
+                                catch (Exception)
+                                {
+
+                                    MessageBox.Show("文件被占用，无法删除!!!");
+                                    return;
+                                }
+                            }
+                            MiniExcel.SaveAs(path, records);
+                        }
+                    }
+                    else
+                    {
+                        var records = new List<DataRecord>();
+
+                        // 目前只保存矩形下的光子数
+                        int index = 0;
+                        foreach (var item in rectangles)
+                        {
+                            index++;
+
+                            DataRecord dr = new DataRecord();
+                            dr.index = index;
+                            dr.IOD = item.pdinfovc.IOD;
+                            dr.AOD = item.pdinfovc.AOD;
+                            dr.max = item.pdinfovc.maxOD;
+                            dr.min = item.pdinfovc.minOD;
+                            dr.Count = item.pdinfovc.Count;
+                            records.Add(dr);
+                        }
+                        foreach (var item in CircleAndInfoList)
+                        {
+                            index++;
+
+                            DataRecord dr = new DataRecord();
+                            dr.index = index;
+                            dr.IOD = item.pdinfovc.IOD;
+                            dr.AOD = item.pdinfovc.AOD;
+                            dr.max = item.pdinfovc.maxOD;
+                            dr.min = item.pdinfovc.minOD;
+                            dr.Count = item.pdinfovc.Count;
+                            records.Add(dr);
+                        }
+                        
+                        if (records.Count > 0)
+                        {
+                            string directoryPath = System.IO.Path.GetDirectoryName(saveFileDialog.FileName);
+                            string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
+                            string path = directoryPath + "\\" + fileNameWithoutExtension + ".xlsx";
+                            if (File.Exists(path))
+                            {
+                                try
+                                {
+                                    File.Delete(path);
+                                }
+                                catch (Exception)
+                                {
+
+                                    MessageBox.Show("文件被占用，无法删除!!!");
+                                    return;
+                                }
+                            }
+                            MiniExcel.SaveAs(path, records);
+                        }
+                    }
+                    
+                }
+            }
+        }
         #endregion
         #region imagePaletteForm
         private void Hpb_line_Click(object sender, EventArgs e)
@@ -1354,6 +1629,42 @@ namespace PBAnaly.Module
         private void Hpb_circe_Click(object sender, EventArgs e)
         {
             CircleOn = true;
+        }
+        private void Hpb_xianduan_Click(object sender, EventArgs e)
+        {
+            linepolygonON = true;
+        }
+        private void Fb_fixSetting_Click(object sender, EventArgs e)
+        {
+          
+            // 将矩形和圆形按照大小进行统一设定
+            for (int i = 0; i < rectangles.Count; i++)
+            {
+                RectAttribute rattb = new RectAttribute();
+                rattb.rect = rectangles[i].rect;
+                rattb.rect.Width = imagePaletteForm.ROI_W;
+                rattb.rect.Height = imagePaletteForm.ROI_H;
+                rattb.pdinfovc = rectangles[i].pdinfovc;
+                
+                rectangles[i] = rattb;
+            }
+            
+
+           
+            for (int i = 0; i < CircleAndInfoList.Count; i++) 
+            {
+                CirceAndInfo circeAndInfo = new CirceAndInfo();
+                circeAndInfo.pdinfovc = CircleAndInfoList[i].pdinfovc;
+                double angleInRadians = 90 * Math.PI / 180; // Convert degrees to radians
+                double x = CircleAndInfoList[i].center.X + imagePaletteForm.CIRCLE_R * Math.Cos(angleInRadians);
+                double y = CircleAndInfoList[i].center.Y + imagePaletteForm.CIRCLE_R * Math.Sin(angleInRadians);
+                circeAndInfo.Radius = new System.Drawing.Point((int)x, (int)y);
+                circeAndInfo.center = CircleAndInfoList[i].center;
+
+                CircleAndInfoList[i] = circeAndInfo;
+
+            }
+            imagePanel.image_pl.Invalidate();
         }
         #endregion
         #endregion

@@ -200,6 +200,45 @@ namespace PBAnaly.UI
                ZoomPictureBox(1 / ZoomFactor);
             }
         }
+
+        private void ava_save_Click(object sender, EventArgs e)
+        {
+            // 创建一个位图，其大小与panel相同
+            Bitmap bitmap = new Bitmap(this.Width, this.Height);
+
+            // 将panel的视图渲染到位图上
+            this.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, this.Width, this.Height));
+
+            // 弹出保存文件对话框
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog()) 
+            {
+                saveFileDialog.Title = "保存Panel图像";
+                saveFileDialog.Filter = "PNG 图片|*.png|JPEG 图片|*.jpg|BMP 图片|*.bmp";
+                if (saveFileDialog.ShowDialog()
+                    == DialogResult.OK) 
+                {
+                    // 根据文件扩展名选择格式
+                    System.Drawing.Imaging.ImageFormat format = System.Drawing.Imaging.ImageFormat.Bmp;
+                    switch (System.IO.Path.GetExtension(saveFileDialog.FileName).ToLower())
+                    {
+                        case ".jpg":
+                            format = System.Drawing.Imaging.ImageFormat.Jpeg;
+                            break;
+                        case ".bmp":
+                            format = System.Drawing.Imaging.ImageFormat.Bmp;
+                            break;
+                    }
+                    bitmap.Save(saveFileDialog.FileName, format); // 保存图像到文件
+                }
+            }
+        }
+        private void BioanalyImagePanel_SizeChanged(object sender, EventArgs e)
+        {
+            pl_bg_panel.Location = new System.Drawing.Point(pl_panel_image.Location.X, pl_panel_image.Location.Y);
+            pl_bg_panel.Width = pl_panel_image.Width;
+            pl_bg_panel.Height = pl_panel_image.Height;
+            CenterPictureBox();
+        }
         #endregion
 
         #region 方法
