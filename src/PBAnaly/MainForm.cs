@@ -8,6 +8,7 @@ using PBAnaly.Properties;
 using PBAnaly.UI;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,10 @@ namespace PBAnaly
         private SettingForm settingForm;
         private LoginForm loginForm;
         private LogForm logForm;
-
+        private TableLayoutPanel data_tab = null;
+        private bool bioanalyBool = false;
+        private int data_col = 2;
+        private int data_row = 2;
         private int FormGenerate_X;
         private int FormGenerate_Y;
 
@@ -400,8 +404,114 @@ namespace PBAnaly
             {
                 foreach (var item in bioanalysisMannages)
                 {
+                    item.Value.Arrangement = false;
                     item.Value.WindowAdaptive();
                 }
+            }
+            else
+            {
+                if (bioanalyBool == false)
+                {
+                    bioanalyBool = true;
+                    if (bioanalysisMannages.Count == 0) return;
+                    SizeForm sizeForm = new SizeForm();
+
+                    if (sizeForm.ShowDialog() == DialogResult.OK)
+                    {
+                        data_row = sizeForm.row;
+                        data_col = sizeForm.col;
+                        sizeForm.Dispose();
+                        sizeForm = null;
+                    }
+                    else
+                    {
+                        sizeForm.Dispose();
+                        sizeForm = null;
+                        return;
+                    }
+                    DataProcess_panel.Controls.Clear();
+                    pl_right.Controls.Clear();
+                    if (data_tab != null)
+                    {
+                        data_tab.Controls.Clear();
+                        data_tab.Dispose();
+                    }
+                    data_tab = new TableLayoutPanel();
+                    data_tab.SuspendLayout();
+                    data_tab.RowCount = data_row;
+                    data_tab.ColumnCount = data_col + 1;
+
+                    for (int i = 0; i < data_row; i++)
+                    {
+                        data_tab.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / data_row));
+                    }
+                    for (int i = 0; i < data_col; i++)
+                    {
+                        data_tab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50f / data_col));
+                    }
+                    data_tab.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150f));
+                    data_tab.ResumeLayout();
+                    int row = 0;
+                    int col = 0;
+
+                    int index = 0;
+                    foreach (var item in bioanalysisMannages)
+                    {
+
+                        if (index == bioanalysisMannages.Count - 1)
+                        {
+                            pl_right.Controls.Add(item.Value.GetBioanayImagePanel);
+                            item.Value.GetRight.Dock = DockStyle.Fill;
+                            data_tab.Controls.Add(item.Value.GetRight, data_tab.ColumnCount - 1, 0);
+                            data_tab.SetRowSpan(item.Value.GetRight, data_row);
+                            //data_tab.Controls.Add(item.Value.GetBarImage, data_tab.ColumnCount-1,0);
+                            //data_tab.SetRowSpan(item.Value.GetBarImage, data_row);
+                            item.Value.Arrangement = true;
+                            index++;
+                        }
+                        item.Value.GetPanel.Dock = DockStyle.Fill;
+                        data_tab.Controls.Add(item.Value.GetPanel, col, row);
+                        item.Value.GetImagePanel.CenterPictureBox();
+                        if (col < data_tab.ColumnCount - 2)
+                        {
+                            col++;
+                        }
+                        else
+                        {
+                            row++;
+                            col = 0;
+                        }
+
+                    }
+
+
+
+                    data_tab.Dock = DockStyle.Fill;
+                    DataProcess_panel.Controls.Add(data_tab);
+                }
+                else
+                {
+                    bioanalyBool = false;
+                    data_tab.Controls.Clear();
+                    DataProcess_panel.Controls.Clear();
+                    pl_right.Controls.Clear();
+                    int index = 0;
+                    foreach (var item in bioanalysisMannages)
+                    {
+                       
+                        if (index == 0) 
+                        {
+                            
+                            pl_right.Controls.Add(item.Value.GetBioanayImagePanel);
+                            index++;
+                        }
+                        item.Value.Arrangement = false;
+                        DataProcess_panel.Controls.Add(item.Value.GetImagePanel);
+                        item.Value.Rifresh();
+                    }
+                    
+                }
+               
             }
         }
     }

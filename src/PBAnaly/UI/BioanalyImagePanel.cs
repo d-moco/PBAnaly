@@ -171,7 +171,7 @@ namespace PBAnaly.UI
         #endregion
 
         #region 事件
-        private void ava_auto_Click(object sender, EventArgs e)
+        public void ava_auto_Click(object sender, EventArgs e)
         {
            
             pl_bg_panel.Location = new System.Drawing.Point(pl_panel_image.Location.X, pl_panel_image.Location.Y);

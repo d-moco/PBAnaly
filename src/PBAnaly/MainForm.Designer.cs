@@ -37,34 +37,34 @@
             this.materialButton_analyzedata = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_outimage = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_LoadData = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_forward = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_return = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_save = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_inverse = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_resetImage = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_imageInfo = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_fakeColor = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_imageChange = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_changeFormSize = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_miniAnalyze = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_roiAnalyze = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_dotcounts = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_acidAnalyze = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_correction = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_imageProcess = new MaterialSkin.Controls.MaterialButton();
-            this.CompanyIcon_pictureBox = new System.Windows.Forms.PictureBox();
             this.btnStartUpToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tl_right_main_view = new System.Windows.Forms.TableLayoutPanel();
             this.DataProcess_panel = new ReaLTaiizor.Controls.Panel();
+            this.CompanyIcon_pictureBox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new AntdUI.In.FlowLayoutPanel();
+            this.materialButton_imageProcess = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_acidAnalyze = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_roiAnalyze = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_miniAnalyze = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_dotcounts = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_correction = new MaterialSkin.Controls.MaterialButton();
             this.flowLayoutPanel2 = new AntdUI.In.FlowLayoutPanel();
+            this.materialButton_changeFormSize = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_imageChange = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_fakeColor = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_imageInfo = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_resetImage = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_inverse = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_save = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_forward = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton_return = new MaterialSkin.Controls.MaterialButton();
             this.pl_right = new ReaLTaiizor.Controls.Panel();
             this.thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             this.metroPanel_RightTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyIcon_pictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tl_right_main_view.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyIcon_pictureBox)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -223,330 +223,6 @@
             this.materialButton_LoadData.UseVisualStyleBackColor = true;
             this.materialButton_LoadData.Click += new System.EventHandler(this.materialButton_LoadData_Click);
             // 
-            // materialButton_forward
-            // 
-            this.materialButton_forward.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_forward.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_forward.Depth = 0;
-            this.materialButton_forward.HighEmphasis = true;
-            this.materialButton_forward.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_forward.Icon")));
-            this.materialButton_forward.Location = new System.Drawing.Point(448, 0);
-            this.materialButton_forward.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_forward.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_forward.Name = "materialButton_forward";
-            this.materialButton_forward.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_forward.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_forward.TabIndex = 23;
-            this.materialButton_forward.Text = " ";
-            this.materialButton_forward.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_forward.UseAccentColor = false;
-            this.materialButton_forward.UseVisualStyleBackColor = true;
-            this.materialButton_forward.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_forward_MouseMove);
-            // 
-            // materialButton_return
-            // 
-            this.materialButton_return.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.materialButton_return.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_return.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_return.Depth = 0;
-            this.materialButton_return.HighEmphasis = true;
-            this.materialButton_return.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_return.Icon")));
-            this.materialButton_return.Location = new System.Drawing.Point(0, 36);
-            this.materialButton_return.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_return.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_return.Name = "materialButton_return";
-            this.materialButton_return.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_return.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_return.TabIndex = 22;
-            this.materialButton_return.Text = " ";
-            this.materialButton_return.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_return.UseAccentColor = false;
-            this.materialButton_return.UseVisualStyleBackColor = true;
-            this.materialButton_return.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_return_MouseMove);
-            // 
-            // materialButton_save
-            // 
-            this.materialButton_save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_save.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_save.Depth = 0;
-            this.materialButton_save.HighEmphasis = true;
-            this.materialButton_save.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_save.Icon")));
-            this.materialButton_save.Location = new System.Drawing.Point(384, 0);
-            this.materialButton_save.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_save.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_save.Name = "materialButton_save";
-            this.materialButton_save.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_save.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_save.TabIndex = 21;
-            this.materialButton_save.Text = " ";
-            this.materialButton_save.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_save.UseAccentColor = false;
-            this.materialButton_save.UseVisualStyleBackColor = true;
-            this.materialButton_save.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_save_MouseMove);
-            // 
-            // materialButton_inverse
-            // 
-            this.materialButton_inverse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_inverse.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_inverse.Depth = 0;
-            this.materialButton_inverse.HighEmphasis = true;
-            this.materialButton_inverse.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_inverse.Icon")));
-            this.materialButton_inverse.Location = new System.Drawing.Point(320, 0);
-            this.materialButton_inverse.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_inverse.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_inverse.Name = "materialButton_inverse";
-            this.materialButton_inverse.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_inverse.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_inverse.TabIndex = 20;
-            this.materialButton_inverse.Text = " ";
-            this.materialButton_inverse.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_inverse.UseAccentColor = false;
-            this.materialButton_inverse.UseVisualStyleBackColor = true;
-            this.materialButton_inverse.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_inverse_MouseMove);
-            // 
-            // materialButton_resetImage
-            // 
-            this.materialButton_resetImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_resetImage.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_resetImage.Depth = 0;
-            this.materialButton_resetImage.HighEmphasis = true;
-            this.materialButton_resetImage.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_resetImage.Icon")));
-            this.materialButton_resetImage.Location = new System.Drawing.Point(256, 0);
-            this.materialButton_resetImage.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_resetImage.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_resetImage.Name = "materialButton_resetImage";
-            this.materialButton_resetImage.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_resetImage.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_resetImage.TabIndex = 19;
-            this.materialButton_resetImage.Text = " ";
-            this.materialButton_resetImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_resetImage.UseAccentColor = false;
-            this.materialButton_resetImage.UseVisualStyleBackColor = true;
-            this.materialButton_resetImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_resetImage_MouseMove);
-            // 
-            // materialButton_imageInfo
-            // 
-            this.materialButton_imageInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_imageInfo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_imageInfo.Depth = 0;
-            this.materialButton_imageInfo.HighEmphasis = true;
-            this.materialButton_imageInfo.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageInfo.Icon")));
-            this.materialButton_imageInfo.Location = new System.Drawing.Point(192, 0);
-            this.materialButton_imageInfo.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_imageInfo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_imageInfo.Name = "materialButton_imageInfo";
-            this.materialButton_imageInfo.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_imageInfo.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_imageInfo.TabIndex = 18;
-            this.materialButton_imageInfo.Text = " ";
-            this.materialButton_imageInfo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_imageInfo.UseAccentColor = false;
-            this.materialButton_imageInfo.UseVisualStyleBackColor = true;
-            this.materialButton_imageInfo.Click += new System.EventHandler(this.materialButton_imageInfo_Click);
-            this.materialButton_imageInfo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_imageInfo_MouseMove);
-            // 
-            // materialButton_fakeColor
-            // 
-            this.materialButton_fakeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_fakeColor.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_fakeColor.Depth = 0;
-            this.materialButton_fakeColor.HighEmphasis = true;
-            this.materialButton_fakeColor.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_fakeColor.Icon")));
-            this.materialButton_fakeColor.Location = new System.Drawing.Point(128, 0);
-            this.materialButton_fakeColor.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_fakeColor.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_fakeColor.Name = "materialButton_fakeColor";
-            this.materialButton_fakeColor.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_fakeColor.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_fakeColor.TabIndex = 17;
-            this.materialButton_fakeColor.Text = " ";
-            this.materialButton_fakeColor.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_fakeColor.UseAccentColor = false;
-            this.materialButton_fakeColor.UseVisualStyleBackColor = true;
-            this.materialButton_fakeColor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_fakeColor_MouseMove);
-            // 
-            // materialButton_imageChange
-            // 
-            this.materialButton_imageChange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_imageChange.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_imageChange.Depth = 0;
-            this.materialButton_imageChange.HighEmphasis = true;
-            this.materialButton_imageChange.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageChange.Icon")));
-            this.materialButton_imageChange.Location = new System.Drawing.Point(64, 0);
-            this.materialButton_imageChange.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_imageChange.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_imageChange.Name = "materialButton_imageChange";
-            this.materialButton_imageChange.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_imageChange.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_imageChange.TabIndex = 16;
-            this.materialButton_imageChange.Text = " ";
-            this.materialButton_imageChange.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_imageChange.UseAccentColor = false;
-            this.materialButton_imageChange.UseVisualStyleBackColor = true;
-            this.materialButton_imageChange.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_imageChange_MouseMove);
-            // 
-            // materialButton_changeFormSize
-            // 
-            this.materialButton_changeFormSize.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_changeFormSize.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.materialButton_changeFormSize.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_changeFormSize.Depth = 0;
-            this.materialButton_changeFormSize.HighEmphasis = true;
-            this.materialButton_changeFormSize.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_changeFormSize.Icon")));
-            this.materialButton_changeFormSize.Location = new System.Drawing.Point(0, 0);
-            this.materialButton_changeFormSize.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_changeFormSize.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_changeFormSize.Name = "materialButton_changeFormSize";
-            this.materialButton_changeFormSize.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_changeFormSize.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_changeFormSize.TabIndex = 15;
-            this.materialButton_changeFormSize.Tag = "123";
-            this.materialButton_changeFormSize.Text = " ";
-            this.materialButton_changeFormSize.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_changeFormSize.UseAccentColor = false;
-            this.materialButton_changeFormSize.UseVisualStyleBackColor = false;
-            this.materialButton_changeFormSize.Click += new System.EventHandler(this.materialButton_changeFormSize_Click);
-            this.materialButton_changeFormSize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_changeFormSize_MouseMove);
-            // 
-            // materialButton_miniAnalyze
-            // 
-            this.materialButton_miniAnalyze.AutoSize = false;
-            this.materialButton_miniAnalyze.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_miniAnalyze.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_miniAnalyze.Depth = 0;
-            this.materialButton_miniAnalyze.HighEmphasis = true;
-            this.materialButton_miniAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_miniAnalyze.Icon")));
-            this.materialButton_miniAnalyze.Location = new System.Drawing.Point(4, 186);
-            this.materialButton_miniAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton_miniAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_miniAnalyze.Name = "materialButton_miniAnalyze";
-            this.materialButton_miniAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_miniAnalyze.Size = new System.Drawing.Size(200, 48);
-            this.materialButton_miniAnalyze.TabIndex = 7;
-            this.materialButton_miniAnalyze.Text = "微孔版分析";
-            this.materialButton_miniAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton_miniAnalyze.UseAccentColor = false;
-            this.materialButton_miniAnalyze.UseVisualStyleBackColor = true;
-            // 
-            // materialButton_roiAnalyze
-            // 
-            this.materialButton_roiAnalyze.AutoSize = false;
-            this.materialButton_roiAnalyze.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_roiAnalyze.CharacterCasing = MaterialSkin.Controls.MaterialButton.CharacterCasingEnum.Normal;
-            this.materialButton_roiAnalyze.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_roiAnalyze.Depth = 0;
-            this.materialButton_roiAnalyze.HighEmphasis = true;
-            this.materialButton_roiAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_roiAnalyze.Icon")));
-            this.materialButton_roiAnalyze.Location = new System.Drawing.Point(4, 126);
-            this.materialButton_roiAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton_roiAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_roiAnalyze.Name = "materialButton_roiAnalyze";
-            this.materialButton_roiAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_roiAnalyze.Size = new System.Drawing.Size(200, 48);
-            this.materialButton_roiAnalyze.TabIndex = 6;
-            this.materialButton_roiAnalyze.Text = "ROIs分析";
-            this.materialButton_roiAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton_roiAnalyze.UseAccentColor = false;
-            this.materialButton_roiAnalyze.UseVisualStyleBackColor = true;
-            // 
-            // materialButton_dotcounts
-            // 
-            this.materialButton_dotcounts.AutoSize = false;
-            this.materialButton_dotcounts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_dotcounts.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_dotcounts.Depth = 0;
-            this.materialButton_dotcounts.HighEmphasis = true;
-            this.materialButton_dotcounts.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_dotcounts.Icon")));
-            this.materialButton_dotcounts.Location = new System.Drawing.Point(4, 246);
-            this.materialButton_dotcounts.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton_dotcounts.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_dotcounts.Name = "materialButton_dotcounts";
-            this.materialButton_dotcounts.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_dotcounts.Size = new System.Drawing.Size(200, 48);
-            this.materialButton_dotcounts.TabIndex = 8;
-            this.materialButton_dotcounts.Text = "菌落计数";
-            this.materialButton_dotcounts.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton_dotcounts.UseAccentColor = false;
-            this.materialButton_dotcounts.UseVisualStyleBackColor = true;
-            // 
-            // materialButton_acidAnalyze
-            // 
-            this.materialButton_acidAnalyze.AutoSize = false;
-            this.materialButton_acidAnalyze.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_acidAnalyze.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_acidAnalyze.Depth = 0;
-            this.materialButton_acidAnalyze.HighEmphasis = true;
-            this.materialButton_acidAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_acidAnalyze.Icon")));
-            this.materialButton_acidAnalyze.Location = new System.Drawing.Point(4, 66);
-            this.materialButton_acidAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton_acidAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_acidAnalyze.Name = "materialButton_acidAnalyze";
-            this.materialButton_acidAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_acidAnalyze.Size = new System.Drawing.Size(200, 48);
-            this.materialButton_acidAnalyze.TabIndex = 5;
-            this.materialButton_acidAnalyze.Text = "泳道分析";
-            this.materialButton_acidAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton_acidAnalyze.UseAccentColor = false;
-            this.materialButton_acidAnalyze.UseVisualStyleBackColor = true;
-            // 
-            // materialButton_correction
-            // 
-            this.materialButton_correction.AutoSize = false;
-            this.materialButton_correction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_correction.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_correction.Depth = 0;
-            this.materialButton_correction.HighEmphasis = true;
-            this.materialButton_correction.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_correction.Icon")));
-            this.materialButton_correction.Location = new System.Drawing.Point(4, 306);
-            this.materialButton_correction.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton_correction.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_correction.Name = "materialButton_correction";
-            this.materialButton_correction.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_correction.Size = new System.Drawing.Size(200, 48);
-            this.materialButton_correction.TabIndex = 9;
-            this.materialButton_correction.Text = "蛋白归一化";
-            this.materialButton_correction.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton_correction.UseAccentColor = false;
-            this.materialButton_correction.UseVisualStyleBackColor = true;
-            // 
-            // materialButton_imageProcess
-            // 
-            this.materialButton_imageProcess.AutoSize = false;
-            this.materialButton_imageProcess.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_imageProcess.BackColor = System.Drawing.SystemColors.Control;
-            this.materialButton_imageProcess.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_imageProcess.Depth = 0;
-            this.materialButton_imageProcess.Font = new System.Drawing.Font("宋体", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.materialButton_imageProcess.HighEmphasis = true;
-            this.materialButton_imageProcess.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageProcess.Icon")));
-            this.materialButton_imageProcess.Location = new System.Drawing.Point(4, 6);
-            this.materialButton_imageProcess.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton_imageProcess.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_imageProcess.Name = "materialButton_imageProcess";
-            this.materialButton_imageProcess.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_imageProcess.Size = new System.Drawing.Size(200, 48);
-            this.materialButton_imageProcess.TabIndex = 4;
-            this.materialButton_imageProcess.Text = "图像处理";
-            this.materialButton_imageProcess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.materialButton_imageProcess.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton_imageProcess.UseAccentColor = false;
-            this.materialButton_imageProcess.UseVisualStyleBackColor = false;
-            this.materialButton_imageProcess.Click += new System.EventHandler(this.materialButton_imageProcess_Click);
-            // 
-            // CompanyIcon_pictureBox
-            // 
-            this.CompanyIcon_pictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.CompanyIcon_pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CompanyIcon_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CompanyIcon_pictureBox.Image = global::PBAnaly.Properties.Resources.京仪科技定稿_画板_1_副本2;
-            this.CompanyIcon_pictureBox.Location = new System.Drawing.Point(3, 3);
-            this.CompanyIcon_pictureBox.Name = "CompanyIcon_pictureBox";
-            this.tableLayoutPanel1.SetRowSpan(this.CompanyIcon_pictureBox, 2);
-            this.CompanyIcon_pictureBox.Size = new System.Drawing.Size(204, 80);
-            this.CompanyIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.CompanyIcon_pictureBox.TabIndex = 16;
-            this.CompanyIcon_pictureBox.TabStop = false;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
@@ -601,6 +277,20 @@
             this.DataProcess_panel.TabIndex = 19;
             this.DataProcess_panel.Text = "panel1";
             // 
+            // CompanyIcon_pictureBox
+            // 
+            this.CompanyIcon_pictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.CompanyIcon_pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CompanyIcon_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanyIcon_pictureBox.Image = global::PBAnaly.Properties.Resources.京仪科技定稿_画板_1_副本2;
+            this.CompanyIcon_pictureBox.Location = new System.Drawing.Point(3, 3);
+            this.CompanyIcon_pictureBox.Name = "CompanyIcon_pictureBox";
+            this.tableLayoutPanel1.SetRowSpan(this.CompanyIcon_pictureBox, 2);
+            this.CompanyIcon_pictureBox.Size = new System.Drawing.Size(204, 80);
+            this.CompanyIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.CompanyIcon_pictureBox.TabIndex = 16;
+            this.CompanyIcon_pictureBox.TabStop = false;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.materialButton_imageProcess);
@@ -616,6 +306,131 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(206, 491);
             this.flowLayoutPanel1.TabIndex = 18;
+            // 
+            // materialButton_imageProcess
+            // 
+            this.materialButton_imageProcess.AutoSize = false;
+            this.materialButton_imageProcess.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_imageProcess.BackColor = System.Drawing.SystemColors.Control;
+            this.materialButton_imageProcess.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_imageProcess.Depth = 0;
+            this.materialButton_imageProcess.Font = new System.Drawing.Font("宋体", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.materialButton_imageProcess.HighEmphasis = true;
+            this.materialButton_imageProcess.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageProcess.Icon")));
+            this.materialButton_imageProcess.Location = new System.Drawing.Point(4, 6);
+            this.materialButton_imageProcess.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_imageProcess.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_imageProcess.Name = "materialButton_imageProcess";
+            this.materialButton_imageProcess.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_imageProcess.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_imageProcess.TabIndex = 4;
+            this.materialButton_imageProcess.Text = "图像处理";
+            this.materialButton_imageProcess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.materialButton_imageProcess.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_imageProcess.UseAccentColor = false;
+            this.materialButton_imageProcess.UseVisualStyleBackColor = false;
+            this.materialButton_imageProcess.Click += new System.EventHandler(this.materialButton_imageProcess_Click);
+            // 
+            // materialButton_acidAnalyze
+            // 
+            this.materialButton_acidAnalyze.AutoSize = false;
+            this.materialButton_acidAnalyze.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_acidAnalyze.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_acidAnalyze.Depth = 0;
+            this.materialButton_acidAnalyze.HighEmphasis = true;
+            this.materialButton_acidAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_acidAnalyze.Icon")));
+            this.materialButton_acidAnalyze.Location = new System.Drawing.Point(4, 66);
+            this.materialButton_acidAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_acidAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_acidAnalyze.Name = "materialButton_acidAnalyze";
+            this.materialButton_acidAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_acidAnalyze.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_acidAnalyze.TabIndex = 5;
+            this.materialButton_acidAnalyze.Text = "泳道分析";
+            this.materialButton_acidAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_acidAnalyze.UseAccentColor = false;
+            this.materialButton_acidAnalyze.UseVisualStyleBackColor = true;
+            // 
+            // materialButton_roiAnalyze
+            // 
+            this.materialButton_roiAnalyze.AutoSize = false;
+            this.materialButton_roiAnalyze.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_roiAnalyze.CharacterCasing = MaterialSkin.Controls.MaterialButton.CharacterCasingEnum.Normal;
+            this.materialButton_roiAnalyze.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_roiAnalyze.Depth = 0;
+            this.materialButton_roiAnalyze.HighEmphasis = true;
+            this.materialButton_roiAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_roiAnalyze.Icon")));
+            this.materialButton_roiAnalyze.Location = new System.Drawing.Point(4, 126);
+            this.materialButton_roiAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_roiAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_roiAnalyze.Name = "materialButton_roiAnalyze";
+            this.materialButton_roiAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_roiAnalyze.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_roiAnalyze.TabIndex = 6;
+            this.materialButton_roiAnalyze.Text = "ROIs分析";
+            this.materialButton_roiAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_roiAnalyze.UseAccentColor = false;
+            this.materialButton_roiAnalyze.UseVisualStyleBackColor = true;
+            // 
+            // materialButton_miniAnalyze
+            // 
+            this.materialButton_miniAnalyze.AutoSize = false;
+            this.materialButton_miniAnalyze.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_miniAnalyze.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_miniAnalyze.Depth = 0;
+            this.materialButton_miniAnalyze.HighEmphasis = true;
+            this.materialButton_miniAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_miniAnalyze.Icon")));
+            this.materialButton_miniAnalyze.Location = new System.Drawing.Point(4, 186);
+            this.materialButton_miniAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_miniAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_miniAnalyze.Name = "materialButton_miniAnalyze";
+            this.materialButton_miniAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_miniAnalyze.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_miniAnalyze.TabIndex = 7;
+            this.materialButton_miniAnalyze.Text = "微孔版分析";
+            this.materialButton_miniAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_miniAnalyze.UseAccentColor = false;
+            this.materialButton_miniAnalyze.UseVisualStyleBackColor = true;
+            // 
+            // materialButton_dotcounts
+            // 
+            this.materialButton_dotcounts.AutoSize = false;
+            this.materialButton_dotcounts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_dotcounts.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_dotcounts.Depth = 0;
+            this.materialButton_dotcounts.HighEmphasis = true;
+            this.materialButton_dotcounts.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_dotcounts.Icon")));
+            this.materialButton_dotcounts.Location = new System.Drawing.Point(4, 246);
+            this.materialButton_dotcounts.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_dotcounts.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_dotcounts.Name = "materialButton_dotcounts";
+            this.materialButton_dotcounts.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_dotcounts.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_dotcounts.TabIndex = 8;
+            this.materialButton_dotcounts.Text = "菌落计数";
+            this.materialButton_dotcounts.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_dotcounts.UseAccentColor = false;
+            this.materialButton_dotcounts.UseVisualStyleBackColor = true;
+            // 
+            // materialButton_correction
+            // 
+            this.materialButton_correction.AutoSize = false;
+            this.materialButton_correction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_correction.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_correction.Depth = 0;
+            this.materialButton_correction.HighEmphasis = true;
+            this.materialButton_correction.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_correction.Icon")));
+            this.materialButton_correction.Location = new System.Drawing.Point(4, 306);
+            this.materialButton_correction.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_correction.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_correction.Name = "materialButton_correction";
+            this.materialButton_correction.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_correction.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_correction.TabIndex = 9;
+            this.materialButton_correction.Text = "蛋白归一化";
+            this.materialButton_correction.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton_correction.UseAccentColor = false;
+            this.materialButton_correction.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel2
             // 
@@ -635,6 +450,191 @@
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(559, 31);
             this.flowLayoutPanel2.TabIndex = 19;
+            // 
+            // materialButton_changeFormSize
+            // 
+            this.materialButton_changeFormSize.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_changeFormSize.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.materialButton_changeFormSize.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_changeFormSize.Depth = 0;
+            this.materialButton_changeFormSize.HighEmphasis = true;
+            this.materialButton_changeFormSize.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_changeFormSize.Icon")));
+            this.materialButton_changeFormSize.Location = new System.Drawing.Point(0, 0);
+            this.materialButton_changeFormSize.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_changeFormSize.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_changeFormSize.Name = "materialButton_changeFormSize";
+            this.materialButton_changeFormSize.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_changeFormSize.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_changeFormSize.TabIndex = 15;
+            this.materialButton_changeFormSize.Tag = "123";
+            this.materialButton_changeFormSize.Text = " ";
+            this.materialButton_changeFormSize.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_changeFormSize.UseAccentColor = false;
+            this.materialButton_changeFormSize.UseVisualStyleBackColor = false;
+            this.materialButton_changeFormSize.Click += new System.EventHandler(this.materialButton_changeFormSize_Click);
+            this.materialButton_changeFormSize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_changeFormSize_MouseMove);
+            // 
+            // materialButton_imageChange
+            // 
+            this.materialButton_imageChange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_imageChange.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_imageChange.Depth = 0;
+            this.materialButton_imageChange.HighEmphasis = true;
+            this.materialButton_imageChange.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageChange.Icon")));
+            this.materialButton_imageChange.Location = new System.Drawing.Point(64, 0);
+            this.materialButton_imageChange.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_imageChange.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_imageChange.Name = "materialButton_imageChange";
+            this.materialButton_imageChange.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_imageChange.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_imageChange.TabIndex = 16;
+            this.materialButton_imageChange.Text = " ";
+            this.materialButton_imageChange.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_imageChange.UseAccentColor = false;
+            this.materialButton_imageChange.UseVisualStyleBackColor = true;
+            this.materialButton_imageChange.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_imageChange_MouseMove);
+            // 
+            // materialButton_fakeColor
+            // 
+            this.materialButton_fakeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_fakeColor.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_fakeColor.Depth = 0;
+            this.materialButton_fakeColor.HighEmphasis = true;
+            this.materialButton_fakeColor.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_fakeColor.Icon")));
+            this.materialButton_fakeColor.Location = new System.Drawing.Point(128, 0);
+            this.materialButton_fakeColor.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_fakeColor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_fakeColor.Name = "materialButton_fakeColor";
+            this.materialButton_fakeColor.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_fakeColor.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_fakeColor.TabIndex = 17;
+            this.materialButton_fakeColor.Text = " ";
+            this.materialButton_fakeColor.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_fakeColor.UseAccentColor = false;
+            this.materialButton_fakeColor.UseVisualStyleBackColor = true;
+            this.materialButton_fakeColor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_fakeColor_MouseMove);
+            // 
+            // materialButton_imageInfo
+            // 
+            this.materialButton_imageInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_imageInfo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_imageInfo.Depth = 0;
+            this.materialButton_imageInfo.HighEmphasis = true;
+            this.materialButton_imageInfo.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageInfo.Icon")));
+            this.materialButton_imageInfo.Location = new System.Drawing.Point(192, 0);
+            this.materialButton_imageInfo.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_imageInfo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_imageInfo.Name = "materialButton_imageInfo";
+            this.materialButton_imageInfo.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_imageInfo.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_imageInfo.TabIndex = 18;
+            this.materialButton_imageInfo.Text = " ";
+            this.materialButton_imageInfo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_imageInfo.UseAccentColor = false;
+            this.materialButton_imageInfo.UseVisualStyleBackColor = true;
+            this.materialButton_imageInfo.Click += new System.EventHandler(this.materialButton_imageInfo_Click);
+            this.materialButton_imageInfo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_imageInfo_MouseMove);
+            // 
+            // materialButton_resetImage
+            // 
+            this.materialButton_resetImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_resetImage.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_resetImage.Depth = 0;
+            this.materialButton_resetImage.HighEmphasis = true;
+            this.materialButton_resetImage.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_resetImage.Icon")));
+            this.materialButton_resetImage.Location = new System.Drawing.Point(256, 0);
+            this.materialButton_resetImage.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_resetImage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_resetImage.Name = "materialButton_resetImage";
+            this.materialButton_resetImage.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_resetImage.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_resetImage.TabIndex = 19;
+            this.materialButton_resetImage.Text = " ";
+            this.materialButton_resetImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_resetImage.UseAccentColor = false;
+            this.materialButton_resetImage.UseVisualStyleBackColor = true;
+            this.materialButton_resetImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_resetImage_MouseMove);
+            // 
+            // materialButton_inverse
+            // 
+            this.materialButton_inverse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_inverse.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_inverse.Depth = 0;
+            this.materialButton_inverse.HighEmphasis = true;
+            this.materialButton_inverse.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_inverse.Icon")));
+            this.materialButton_inverse.Location = new System.Drawing.Point(320, 0);
+            this.materialButton_inverse.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_inverse.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_inverse.Name = "materialButton_inverse";
+            this.materialButton_inverse.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_inverse.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_inverse.TabIndex = 20;
+            this.materialButton_inverse.Text = " ";
+            this.materialButton_inverse.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_inverse.UseAccentColor = false;
+            this.materialButton_inverse.UseVisualStyleBackColor = true;
+            this.materialButton_inverse.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_inverse_MouseMove);
+            // 
+            // materialButton_save
+            // 
+            this.materialButton_save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_save.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_save.Depth = 0;
+            this.materialButton_save.HighEmphasis = true;
+            this.materialButton_save.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_save.Icon")));
+            this.materialButton_save.Location = new System.Drawing.Point(384, 0);
+            this.materialButton_save.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_save.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_save.Name = "materialButton_save";
+            this.materialButton_save.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_save.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_save.TabIndex = 21;
+            this.materialButton_save.Text = " ";
+            this.materialButton_save.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_save.UseAccentColor = false;
+            this.materialButton_save.UseVisualStyleBackColor = true;
+            this.materialButton_save.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_save_MouseMove);
+            // 
+            // materialButton_forward
+            // 
+            this.materialButton_forward.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_forward.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_forward.Depth = 0;
+            this.materialButton_forward.HighEmphasis = true;
+            this.materialButton_forward.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_forward.Icon")));
+            this.materialButton_forward.Location = new System.Drawing.Point(448, 0);
+            this.materialButton_forward.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_forward.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_forward.Name = "materialButton_forward";
+            this.materialButton_forward.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_forward.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_forward.TabIndex = 23;
+            this.materialButton_forward.Text = " ";
+            this.materialButton_forward.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_forward.UseAccentColor = false;
+            this.materialButton_forward.UseVisualStyleBackColor = true;
+            this.materialButton_forward.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_forward_MouseMove);
+            // 
+            // materialButton_return
+            // 
+            this.materialButton_return.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.materialButton_return.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton_return.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton_return.Depth = 0;
+            this.materialButton_return.HighEmphasis = true;
+            this.materialButton_return.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_return.Icon")));
+            this.materialButton_return.Location = new System.Drawing.Point(0, 36);
+            this.materialButton_return.Margin = new System.Windows.Forms.Padding(0);
+            this.materialButton_return.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton_return.Name = "materialButton_return";
+            this.materialButton_return.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton_return.Size = new System.Drawing.Size(64, 36);
+            this.materialButton_return.TabIndex = 22;
+            this.materialButton_return.Text = " ";
+            this.materialButton_return.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            this.materialButton_return.UseAccentColor = false;
+            this.materialButton_return.UseVisualStyleBackColor = true;
+            this.materialButton_return.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_return_MouseMove);
             // 
             // pl_right
             // 
@@ -659,7 +659,7 @@
             this.thunderLabel1.Name = "thunderLabel1";
             this.thunderLabel1.Size = new System.Drawing.Size(200, 16);
             this.thunderLabel1.TabIndex = 19;
-            this.thunderLabel1.Text = "PBAnaly v0.1.3";
+            this.thunderLabel1.Text = "PBAnaly v0.1.4";
             // 
             // MainForm
             // 
@@ -681,9 +681,9 @@
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.metroPanel_RightTop.ResumeLayout(false);
             this.metroPanel_RightTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyIcon_pictureBox)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tl_right_main_view.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyIcon_pictureBox)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();

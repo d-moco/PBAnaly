@@ -1,8 +1,11 @@
-﻿using MiniExcelLibs;
+﻿using AntdUI;
+using MiniExcelLibs;
 using PBAnaly.UI;
 using PBBiologyVC;
+using ReaLTaiizor.Extension;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -57,8 +60,9 @@ namespace PBAnaly.Module
         }
         #endregion
         #region 变量
+        public bool Arrangement { get; set; }
         private Dictionary<string, BioanalysisMannage> bioanalysisMannages;
-        private string path;
+        public string path { get; set; }
         private string mark_path;
         private string tif_marker_path;
         private string tif_org_path;
@@ -389,7 +393,7 @@ namespace PBAnaly.Module
             imagePaletteForm.dtb_colorMin.Value = algAttribute.colorMinValue;
             imagePaletteForm.dtb_colorMin.Minimum = 0;
             imagePaletteForm.nud_colorMin.Maximum = algAttribute.colorValue-1;
-            imagePaletteForm.nud_colorMin.Minimum = algAttribute.colorMin;
+            imagePaletteForm.nud_colorMin.Minimum = 0;
             imagePaletteForm.nud_colorMin.Value= algAttribute.colorMinValue;
             imagePaletteForm.cb_colortable.SelectedIndex = algAttribute.colorIndex;
 
@@ -728,45 +732,142 @@ namespace PBAnaly.Module
         }
         private void Dtb_brightness_ValueChanged()
         {
-            Brightness = imagePaletteForm.dtb_brightness.Value;
+            if (Arrangement) 
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.Brightness = imagePaletteForm.dtb_brightness.Value;
+                }
+            }
+            else
+            {
+                Brightness = imagePaletteForm.dtb_brightness.Value;
+            }
+           
         }
         private void Dtb_opacity_ValueChanged()
         {
-            Opacity = imagePaletteForm.dtb_opacity.Value;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.Opacity = imagePaletteForm.dtb_opacity.Value;
+                }
+            }
+            else
+            {
+                Opacity = imagePaletteForm.dtb_opacity.Value;
+            }
+           
         }
         private void Nud_opacity_ValueChanged(object sender, System.EventArgs e)
         {
-            Opacity = (int)imagePaletteForm.nud_opacity.Value;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.Opacity = (int)imagePaletteForm.nud_opacity.Value;
+                }
+            }
+            else
+            {
+                Opacity = (int)imagePaletteForm.nud_opacity.Value;
+            }
+            
         }
 
         private void Nud_brightness_ValueChanged(object sender, System.EventArgs e)
         {
-            Brightness = (int)imagePaletteForm.nud_brightness.Value;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.Brightness = (int)imagePaletteForm.nud_brightness.Value;
+                }
+            }
+            else
+            {
+                Brightness = (int)imagePaletteForm.nud_brightness.Value;
+            }
+            
         }
         private void Nud_colorMin_ValueChanged(object sender, System.EventArgs e)
         {
-            ColorMin = (int)imagePaletteForm.nud_colorMin.Value;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.ColorMin = (int)imagePaletteForm.nud_colorMin.Value;
+                }
+            }
+            else
+            {
+                ColorMin = (int)imagePaletteForm.nud_colorMin.Value;
+            }
+            
         }
 
         private void Nud_colorMax_ValueChanged(object sender, System.EventArgs e)
         {
-            ColorMax = (int)imagePaletteForm.nud_colorMax.Value;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.ColorMax = (int)imagePaletteForm.nud_colorMax.Value;
+                }
+            }
+            else
+            {
+                ColorMax = (int)imagePaletteForm.nud_colorMax.Value;
+            }
             
-                
         }
 
         private void Dtb_colorMin_ValueChanged()
         {
-            ColorMin = (int)imagePaletteForm.dtb_colorMin.Value;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.ColorMin = (int)imagePaletteForm.dtb_colorMin.Value;
+                }
+            }
+            else
+            {
+                ColorMin = (int)imagePaletteForm.dtb_colorMin.Value;
+            }
+            
         }
 
         private void Dtb_colorMax_ValueChanged()
         {
-            ColorMax = (int)imagePaletteForm.dtb_colorMax.Value;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.ColorMax = (int)imagePaletteForm.dtb_colorMax.Value;
+                }
+            }
+            else
+            {
+                ColorMax = (int)imagePaletteForm.dtb_colorMax.Value;
+            }
+            
         }
         private void Cb_colortable_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            ColorIndex = imagePaletteForm.cb_colortable.SelectedIndex;
+            if (Arrangement)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.ColorIndex = imagePaletteForm.cb_colortable.SelectedIndex;
+                }
+            }
+            else
+            {
+                ColorIndex = imagePaletteForm.cb_colortable.SelectedIndex;
+            }
+           
         }
 
 
@@ -779,6 +880,17 @@ namespace PBAnaly.Module
             // 绘制直线
             if ((startPoint != System.Drawing.Point.Empty && endPoint != System.Drawing.Point.Empty))
             {
+                if (Arrangement) 
+                {
+                    foreach (var item in bioanalysisMannages)
+                    {
+                        if (item.Value.path != path) 
+                        {
+                            item.Value.SetLine(startPoint, endPoint);
+                            item.Value.GetImage.Invalidate();
+                        }
+                    }
+                }
                 var srart = ImageProcess.ConvertRealToPictureBox(startPoint, imagePanel.image_pl);
                 var end = ImageProcess.ConvertRealToPictureBox(endPoint, imagePanel.image_pl);
                 g.DrawLine(Pens.Red, srart, end);
@@ -1679,6 +1791,58 @@ namespace PBAnaly.Module
             imagePanel.WindowState = FormWindowState.Maximized;
         }
 
+        public PictureBox GetImage
+        {
+            get 
+            {
+                return imagePanel.image_pl;
+            }
+          
+        }
+
+        public Image3D GetBarImage 
+        {
+            get
+            {
+                return imagePanel.image_pr;
+            }
+        }
+        public BioanayImagePaletteForm GetBioanayImagePanel 
+        {
+            get 
+            {
+                return imagePaletteForm;
+            }
+            set 
+            {
+                imagePaletteForm = value;
+            }
+        }
+
+        public void SetLine(System.Drawing.Point _StartPoint,System.Drawing.Point _EndPOint) 
+        {
+            startPoint = _StartPoint;
+            endPoint = _EndPOint;
+        }
+        public TableLayoutPanel GetRight
+        {
+            get { return imagePanel.tlp_right_panel; }
+            
+           
+        }
+        public AntdUI.Panel GetPanel 
+        {
+            get { return imagePanel.pl_panel_image; }
+        }
+        public void Rifresh() 
+        {
+            imagePanel.pl_panel_image.Dock = DockStyle.Fill;
+            imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.pl_panel_image, 0, 0);
+            imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.tlp_right_panel, 1, 0);
+
+            imagePanel.ava_auto_Click(null,null);
+
+        }
         #endregion
     }
 }
