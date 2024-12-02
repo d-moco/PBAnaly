@@ -31,9 +31,9 @@ int PBBiologyVC::PBImageProcessVC::render_process(System::Byte* pseImage, System
 		
 
 		Mat bgr_tab_img = bgr_tab_image(colorbarWW, h_onecolor, bgr_tab);
-		// std::cout << "w = " << bgr_tab_img.cols << "c= " << bgr_tab_img.rows << "c = " << bgr_tab_img.channels() << std::endl;
+		 std::cout << "w = " << bgr_tab_img.cols << "c= " << bgr_tab_img.rows << "c = " << bgr_tab_img.channels() << std::endl;
 		Mat bgr_scale_img = bgr_scale_image(bgr_tab_img, max, min,scientific_flag); //ÄÃµ½±ê³ßÍ¼
-		//std::cout << "w = " << bgr_scale_img.cols << "c= " << bgr_scale_img.rows<<"c = "<<bgr_scale_img.channels() << std::endl;;
+		std::cout << "w = " << bgr_scale_img.cols << "c= " << bgr_scale_img.rows<<"c = "<<bgr_scale_img.channels() << std::endl;;
 		cvtColor(bgr_scale_img, bgr_scale_img, COLOR_BGR2RGB);
 		byteCount = bgr_scale_img.rows * bgr_scale_img.cols * bgr_scale_img.channels();
 		std::memcpy(colorBarImage, bgr_scale_img.data, byteCount);

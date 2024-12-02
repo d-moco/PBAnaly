@@ -53,8 +53,6 @@
             this.collapseItem2 = new AntdUI.CollapseItem();
             this.cb_colortable = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.nud_colorMax = new System.Windows.Forms.NumericUpDown();
-            this.nud_colorMin = new System.Windows.Forms.NumericUpDown();
             this.nud_opacity = new System.Windows.Forms.NumericUpDown();
             this.nud_brightness = new System.Windows.Forms.NumericUpDown();
             this.dtb_colorMax = new ReaLTaiizor.Controls.DungeonTrackBar();
@@ -62,6 +60,10 @@
             this.dtb_opacity = new ReaLTaiizor.Controls.DungeonTrackBar();
             this.pb_bgimage = new System.Windows.Forms.PictureBox();
             this.dtb_brightness = new ReaLTaiizor.Controls.DungeonTrackBar();
+            this.pl_max = new AntdUI.Panel();
+            this.nud_colorMax = new System.Windows.Forms.NumericUpDown();
+            this.pl_min = new AntdUI.Panel();
+            this.nud_colorMin = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new AntdUI.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.collapseItem1 = new AntdUI.CollapseItem();
@@ -71,11 +73,13 @@
             this.panel2.SuspendLayout();
             this.collapseItem2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_brightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_bgimage)).BeginInit();
+            this.pl_max.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).BeginInit();
+            this.pl_min.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.collapseItem1.SuspendLayout();
@@ -131,9 +135,9 @@
             this.foxLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel8.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel8.Location = new System.Drawing.Point(3, 166);
+            this.foxLabel8.Location = new System.Drawing.Point(3, 177);
             this.foxLabel8.Name = "foxLabel8";
-            this.foxLabel8.Size = new System.Drawing.Size(204, 18);
+            this.foxLabel8.Size = new System.Drawing.Size(195, 18);
             this.foxLabel8.TabIndex = 34;
             this.foxLabel8.Text = "Color Rable";
             // 
@@ -144,9 +148,9 @@
             this.flb_act_mm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flb_act_mm.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flb_act_mm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.flb_act_mm.Location = new System.Drawing.Point(93, 137);
+            this.flb_act_mm.Location = new System.Drawing.Point(93, 151);
             this.flb_act_mm.Name = "flb_act_mm";
-            this.flb_act_mm.Size = new System.Drawing.Size(164, 23);
+            this.flb_act_mm.Size = new System.Drawing.Size(164, 20);
             this.flb_act_mm.TabIndex = 30;
             this.flb_act_mm.Text = "0 mm";
             // 
@@ -156,9 +160,9 @@
             this.foxLabel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel9.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel9.Location = new System.Drawing.Point(3, 108);
+            this.foxLabel9.Location = new System.Drawing.Point(3, 115);
             this.foxLabel9.Name = "foxLabel9";
-            this.foxLabel9.Size = new System.Drawing.Size(44, 23);
+            this.foxLabel9.Size = new System.Drawing.Size(44, 30);
             this.foxLabel9.TabIndex = 18;
             this.foxLabel9.Text = "Max";
             // 
@@ -170,7 +174,7 @@
             this.foxLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel6.Location = new System.Drawing.Point(3, 79);
             this.foxLabel6.Name = "foxLabel6";
-            this.foxLabel6.Size = new System.Drawing.Size(44, 23);
+            this.foxLabel6.Size = new System.Drawing.Size(44, 30);
             this.foxLabel6.TabIndex = 13;
             this.foxLabel6.Text = "Min";
             // 
@@ -226,10 +230,10 @@
             this.hpb_line.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
             this.hpb_line.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_line.Image = global::PBAnaly.Properties.Resources.线段;
-            this.hpb_line.Location = new System.Drawing.Point(3, 137);
+            this.hpb_line.Location = new System.Drawing.Point(3, 151);
             this.hpb_line.Name = "hpb_line";
             this.hpb_line.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_line.Size = new System.Drawing.Size(44, 23);
+            this.hpb_line.Size = new System.Drawing.Size(44, 20);
             this.hpb_line.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hpb_line.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hpb_line.TabIndex = 9;
@@ -410,7 +414,7 @@
             "RGB",
             "Pseudo",
             "Gray"});
-            this.cb_colortable.Location = new System.Drawing.Point(3, 190);
+            this.cb_colortable.Location = new System.Drawing.Point(3, 201);
             this.cb_colortable.Name = "cb_colortable";
             this.cb_colortable.Size = new System.Drawing.Size(84, 20);
             this.cb_colortable.TabIndex = 35;
@@ -422,9 +426,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.nud_colorMax, 4, 4);
-            this.tableLayoutPanel2.Controls.Add(this.nud_colorMin, 4, 3);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
             this.tableLayoutPanel2.Controls.Add(this.nud_opacity, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.nud_brightness, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.dtb_colorMax, 1, 4);
@@ -441,6 +443,8 @@
             this.tableLayoutPanel2.Controls.Add(this.cb_colortable, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.pb_bgimage, 3, 7);
             this.tableLayoutPanel2.Controls.Add(this.dtb_brightness, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pl_max, 4, 4);
+            this.tableLayoutPanel2.Controls.Add(this.pl_min, 4, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -449,45 +453,29 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(260, 272);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // nud_colorMax
-            // 
-            this.nud_colorMax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_colorMax.Location = new System.Drawing.Point(213, 108);
-            this.nud_colorMax.Name = "nud_colorMax";
-            this.nud_colorMax.Size = new System.Drawing.Size(44, 21);
-            this.nud_colorMax.TabIndex = 51;
-            // 
-            // nud_colorMin
-            // 
-            this.nud_colorMin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_colorMin.Location = new System.Drawing.Point(213, 79);
-            this.nud_colorMin.Name = "nud_colorMin";
-            this.nud_colorMin.Size = new System.Drawing.Size(44, 21);
-            this.nud_colorMin.TabIndex = 50;
-            // 
             // nud_opacity
             // 
             this.nud_opacity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_opacity.Location = new System.Drawing.Point(213, 32);
+            this.nud_opacity.Location = new System.Drawing.Point(204, 32);
             this.nud_opacity.Name = "nud_opacity";
-            this.nud_opacity.Size = new System.Drawing.Size(44, 21);
+            this.nud_opacity.Size = new System.Drawing.Size(53, 21);
             this.nud_opacity.TabIndex = 45;
             // 
             // nud_brightness
             // 
             this.nud_brightness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_brightness.Location = new System.Drawing.Point(213, 3);
+            this.nud_brightness.Location = new System.Drawing.Point(204, 3);
             this.nud_brightness.Name = "nud_brightness";
-            this.nud_brightness.Size = new System.Drawing.Size(44, 21);
+            this.nud_brightness.Size = new System.Drawing.Size(53, 21);
             this.nud_brightness.TabIndex = 44;
             // 
             // dtb_colorMax
@@ -500,13 +488,13 @@
             this.dtb_colorMax.EmptyBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.dtb_colorMax.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_colorMax.JumpToMouse = false;
-            this.dtb_colorMax.Location = new System.Drawing.Point(52, 107);
+            this.dtb_colorMax.Location = new System.Drawing.Point(52, 114);
             this.dtb_colorMax.Margin = new System.Windows.Forms.Padding(2);
             this.dtb_colorMax.Maximum = 100;
             this.dtb_colorMax.Minimum = 0;
             this.dtb_colorMax.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_colorMax.Name = "dtb_colorMax";
-            this.dtb_colorMax.Size = new System.Drawing.Size(156, 22);
+            this.dtb_colorMax.Size = new System.Drawing.Size(118, 22);
             this.dtb_colorMax.TabIndex = 40;
             this.dtb_colorMax.Text = "dungeonTrackBar5";
             this.dtb_colorMax.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -531,7 +519,7 @@
             this.dtb_colorMin.Minimum = 0;
             this.dtb_colorMin.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_colorMin.Name = "dtb_colorMin";
-            this.dtb_colorMin.Size = new System.Drawing.Size(156, 22);
+            this.dtb_colorMin.Size = new System.Drawing.Size(118, 22);
             this.dtb_colorMin.TabIndex = 39;
             this.dtb_colorMin.Text = "dungeonTrackBar4";
             this.dtb_colorMin.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -556,7 +544,7 @@
             this.dtb_opacity.Minimum = 0;
             this.dtb_opacity.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_opacity.Name = "dtb_opacity";
-            this.dtb_opacity.Size = new System.Drawing.Size(156, 22);
+            this.dtb_opacity.Size = new System.Drawing.Size(118, 22);
             this.dtb_opacity.TabIndex = 37;
             this.dtb_opacity.Text = "dungeonTrackBar2";
             this.dtb_opacity.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -568,10 +556,10 @@
             // pb_bgimage
             // 
             this.pb_bgimage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb_bgimage.Location = new System.Drawing.Point(90, 187);
+            this.pb_bgimage.Location = new System.Drawing.Point(90, 198);
             this.pb_bgimage.Margin = new System.Windows.Forms.Padding(0);
             this.pb_bgimage.Name = "pb_bgimage";
-            this.pb_bgimage.Size = new System.Drawing.Size(120, 29);
+            this.pb_bgimage.Size = new System.Drawing.Size(111, 29);
             this.pb_bgimage.TabIndex = 36;
             this.pb_bgimage.TabStop = false;
             // 
@@ -591,7 +579,7 @@
             this.dtb_brightness.Minimum = 0;
             this.dtb_brightness.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_brightness.Name = "dtb_brightness";
-            this.dtb_brightness.Size = new System.Drawing.Size(156, 22);
+            this.dtb_brightness.Size = new System.Drawing.Size(118, 22);
             this.dtb_brightness.TabIndex = 2;
             this.dtb_brightness.Text = "dungeonTrackBar1";
             this.dtb_brightness.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -599,6 +587,46 @@
             this.dtb_brightness.Value = 0;
             this.dtb_brightness.ValueDivison = ReaLTaiizor.Controls.DungeonTrackBar.ValueDivisor.By1;
             this.dtb_brightness.ValueToSet = 0F;
+            // 
+            // pl_max
+            // 
+            this.pl_max.Back = System.Drawing.SystemColors.Control;
+            this.pl_max.BackColor = System.Drawing.Color.Transparent;
+            this.pl_max.Controls.Add(this.nud_colorMax);
+            this.pl_max.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pl_max.Location = new System.Drawing.Point(201, 112);
+            this.pl_max.Margin = new System.Windows.Forms.Padding(0);
+            this.pl_max.Name = "pl_max";
+            this.pl_max.Size = new System.Drawing.Size(59, 36);
+            this.pl_max.TabIndex = 52;
+            this.pl_max.Text = "panel3";
+            // 
+            // nud_colorMax
+            // 
+            this.nud_colorMax.Location = new System.Drawing.Point(3, 3);
+            this.nud_colorMax.Name = "nud_colorMax";
+            this.nud_colorMax.Size = new System.Drawing.Size(44, 21);
+            this.nud_colorMax.TabIndex = 51;
+            // 
+            // pl_min
+            // 
+            this.pl_min.Back = System.Drawing.SystemColors.Control;
+            this.pl_min.BackColor = System.Drawing.Color.Transparent;
+            this.pl_min.Controls.Add(this.nud_colorMin);
+            this.pl_min.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pl_min.Location = new System.Drawing.Point(201, 76);
+            this.pl_min.Margin = new System.Windows.Forms.Padding(0);
+            this.pl_min.Name = "pl_min";
+            this.pl_min.Size = new System.Drawing.Size(59, 36);
+            this.pl_min.TabIndex = 53;
+            this.pl_min.Text = "panel3";
+            // 
+            // nud_colorMin
+            // 
+            this.nud_colorMin.Location = new System.Drawing.Point(3, 3);
+            this.nud_colorMin.Name = "nud_colorMin";
+            this.nud_colorMin.Size = new System.Drawing.Size(44, 21);
+            this.nud_colorMin.TabIndex = 50;
             // 
             // panel1
             // 
@@ -666,11 +694,13 @@
             this.panel2.PerformLayout();
             this.collapseItem2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_brightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_bgimage)).EndInit();
+            this.pl_max.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMax)).EndInit();
+            this.pl_min.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_colorMin)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.collapseItem1.ResumeLayout(false);
@@ -718,5 +748,7 @@
         private ReaLTaiizor.Controls.DreamTextBox dtb_r;
         private ReaLTaiizor.Controls.DreamTextBox dtb_h;
         private ReaLTaiizor.Controls.DreamTextBox dtb_w;
+        private AntdUI.Panel pl_max;
+        private AntdUI.Panel pl_min;
     }
 }

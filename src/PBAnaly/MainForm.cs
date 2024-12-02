@@ -25,6 +25,7 @@ namespace PBAnaly
         private LoginForm loginForm;
         private LogForm logForm;
         private TableLayoutPanel data_tab = null;
+        private TableLayoutPanel data_right_bar = null;
         private bool bioanalyBool = false;
         private int data_col = 2;
         private int data_row = 2;
@@ -37,7 +38,7 @@ namespace PBAnaly
         System.Windows.Forms.TableLayoutPanel tlp_main_images;
 
         private Dictionary<string ,BioanalysisMannage> bioanalysisMannages = new Dictionary<string, BioanalysisMannage>();
-   
+        private List<string> bioanalyName = new List<string>();
         bool isRun = false;
         private Thread thread;
        
@@ -322,13 +323,14 @@ namespace PBAnaly
                     return;
                 }
                 BioanalysisMannage bioanalysisMannage = new BioanalysisMannage(selectedFilePath, pl_right, bioanalysisMannages);
-
+                
                 DataProcess_panel.Controls.Add(bioanalysisMannage.GetImagePanel);
                 bioanalysisMannage.GetImagePanel.BringToFront();
 
 
-              
-                
+                bioanalyName.Add(selectedFilePath);
+
+
 
 
             }
@@ -400,13 +402,56 @@ namespace PBAnaly
         bool isGridView = false;
         private void materialButton_changeFormSize_Click(object sender, EventArgs e)
         {
+            #region 排除已经不存在的
+            // 如果list 不在字典中 将移除list中的某一个
+            List<int> indexF = new List<int>();
+            
+            foreach (var item in bioanalyName)
+            {
+                bool ret = false;
+                int i = -1;
+                foreach (var bio in bioanalysisMannages)
+                {
+                    i++;
+                    if (item == bio.Key) 
+                    {
+                        ret = true;
+                    }
+                }
+                if(ret == false) 
+                {
+                    indexF.Add(i);
+                }
+            }
+
+            for (int i = indexF.Count-1; i >= 0; i--)
+            {
+                bioanalyName.RemoveAt(indexF[i]);
+            }
+            #endregion
+
             if (bioanalysisMannages.Count == 1) 
             {
-                foreach (var item in bioanalysisMannages)
+                #region 如果只有一张图时显示方案
+                if (bioanalyBool == false)
                 {
-                    item.Value.Arrangement = false;
-                    item.Value.WindowAdaptive();
+                    bioanalyBool = true;
+                    foreach (var item in bioanalysisMannages)
+                    {
+                        item.Value.Arrangement = false;
+                        item.Value.WindowAdaptive();
+                    }
                 }
+                else
+                {
+                    bioanalyBool = false;
+                    foreach (var item in bioanalysisMannages)
+                    {
+                        item.Value.Arrangement = false;
+                        item.Value.WindowNormalAdaptive();
+                    }
+                }
+                #endregion
             }
             else
             {
@@ -431,6 +476,20 @@ namespace PBAnaly
                     }
                     DataProcess_panel.Controls.Clear();
                     pl_right.Controls.Clear();
+
+                    if (data_right_bar != null)
+                    {
+                        data_right_bar.Controls.Clear();
+                        data_right_bar.Dispose();
+
+                    }
+                    data_right_bar = new TableLayoutPanel();
+                    data_right_bar.SuspendLayout();
+                    data_right_bar.RowCount = 2;
+                    data_right_bar.ColumnCount = 1;
+                    data_right_bar.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / 1));
+                    data_right_bar.RowStyles.Add(new RowStyle(SizeType.Absolute, 60f));
+                    data_right_bar.ResumeLayout();
                     if (data_tab != null)
                     {
                         data_tab.Controls.Clear();
@@ -438,9 +497,12 @@ namespace PBAnaly
                     }
                     data_tab = new TableLayoutPanel();
                     data_tab.SuspendLayout();
+                    if(data_row >= 1 && data_row <=3)data_row = 3;
+                    else if(data_row >=5 && data_row <=9) data_row = 9;
                     data_tab.RowCount = data_row;
                     data_tab.ColumnCount = data_col + 1;
 
+                   
                     for (int i = 0; i < data_row; i++)
                     {
                         data_tab.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / data_row));
@@ -455,23 +517,27 @@ namespace PBAnaly
                     int col = 0;
 
                     int index = 0;
-                    foreach (var item in bioanalysisMannages)
+                    foreach (var bname in bioanalyName)
                     {
-
+                        var item = bioanalysisMannages[bname];
                         if (index == bioanalysisMannages.Count - 1)
                         {
-                            pl_right.Controls.Add(item.Value.GetBioanayImagePanel);
-                            item.Value.GetRight.Dock = DockStyle.Fill;
-                            data_tab.Controls.Add(item.Value.GetRight, data_tab.ColumnCount - 1, 0);
-                            data_tab.SetRowSpan(item.Value.GetRight, data_row);
-                            //data_tab.Controls.Add(item.Value.GetBarImage, data_tab.ColumnCount-1,0);
-                            //data_tab.SetRowSpan(item.Value.GetBarImage, data_row);
-                            item.Value.Arrangement = true;
-                            index++;
+                            pl_right.Controls.Add(item.GetBioanayImagePanel);
+                            //item.Value.GetRight.Dock = DockStyle.Fill;
+                            //data_tab.Controls.Add(item.Value.GetRight, data_tab.ColumnCount - 1, 0);
+                            //data_tab.SetRowSpan(item.Value.GetRight, data_row);
+                            data_right_bar.Controls.Add(item.GetBarImage, 0, 0);
+                            data_right_bar.Controls.Add(item.GetImagePanel.lb_wh, 0, 1);
+                            data_right_bar.Dock = DockStyle.Fill;
+                            data_tab.Controls.Add(data_right_bar, data_tab.ColumnCount - 1, 0);
+                            data_tab.SetRowSpan(data_right_bar, data_row);
+                            item.Arrangement = true;
+
                         }
-                        item.Value.GetPanel.Dock = DockStyle.Fill;
-                        data_tab.Controls.Add(item.Value.GetPanel, col, row);
-                        item.Value.GetImagePanel.CenterPictureBox();
+                        index++;
+                        item.GetPanel.Dock = DockStyle.Fill;
+                        data_tab.Controls.Add(item.GetPanel, col, row);
+                        item.GetImagePanel.CenterPictureBox();
                         if (col < data_tab.ColumnCount - 2)
                         {
                             col++;
@@ -481,9 +547,8 @@ namespace PBAnaly
                             row++;
                             col = 0;
                         }
-
                     }
-
+                    
 
 
                     data_tab.Dock = DockStyle.Fill;

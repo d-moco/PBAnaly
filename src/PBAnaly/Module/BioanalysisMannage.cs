@@ -76,7 +76,6 @@ namespace PBAnaly.Module
         private Image<Rgb24> colorbar_rgb24_image = null;
         private int colorbarWW = 200, colorh_onecolor = 10;
         private int colorbarW = 600, colorbarH = 2600;
-
         private ReaLTaiizor.Controls.Panel pl_right;
         private BioanalyImagePanel imagePanel = null;
         private BioanayImagePaletteForm imagePaletteForm = null;
@@ -229,6 +228,13 @@ namespace PBAnaly.Module
                         fix |= true;
                     }
 
+                    if (algAttribute.scientificON) 
+                    {
+                        if (imagePaletteForm.tb_max != null) 
+                        {
+                            imagePaletteForm.tb_max.Text = algAttribute.colorValue.ToString("E");
+                        }
+                    }
                     if (fix && isUpdateAlg)
                     {
                         queueAlgAttribute.Enqueue(algAttribute);
@@ -257,7 +263,13 @@ namespace PBAnaly.Module
                         imagePaletteForm.nud_colorMin.Value = algAttribute.colorMinValue;
                         fix = true;
                     }
-                        
+                    if (algAttribute.scientificON)
+                    {
+                        if (imagePaletteForm.tb_min != null)
+                        {
+                            imagePaletteForm.tb_min.Text = algAttribute.colorMinValue.ToString("E");
+                        }
+                    }
 
                     if (fix && isUpdateAlg)
                     {
@@ -710,10 +722,12 @@ namespace PBAnaly.Module
         {
            this.pl_right.Controls.Clear();
             this.pl_right.Controls.Add(this.imagePaletteForm);
+            this.imagePanel.BringToFront();
         }
         private void Cb_scientific_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {
             ScientificON = imagePanel.cb_scientific.Checked;
+            imagePaletteForm.RefreshscientificON(ScientificON);
         }
        
 
@@ -812,7 +826,7 @@ namespace PBAnaly.Module
             if (Arrangement)
             {
                 foreach (var item in bioanalysisMannages)
-                {
+                { 
                     item.Value.ColorMax = (int)imagePaletteForm.nud_colorMax.Value;
                 }
             }
@@ -1284,13 +1298,16 @@ namespace PBAnaly.Module
                 int y = Math.Min(leftTopPoint.Y, readLoction.Y);
                 int width = Math.Abs(readLoction.X - leftTopPoint.X);
                 int height = Math.Abs(readLoction.Y - leftTopPoint.Y);
-
+                imagePaletteForm.SetInfo = "w:" + width + "h:" + height;
                 currentRectangle = new System.Drawing.Rectangle(x, y, width, height);
                 imagePanel.image_pl.Invalidate(); // 触发重绘
             }
             else if (drawCircle && e.Button == MouseButtons.Left)
             {
                 circleRadio = readLoction;
+                int radius = (int)Math.Sqrt(Math.Pow(circleCenter.X - circleRadio.X, 2) 
+                    + Math.Pow(circleCenter.Y - circleRadio.Y, 2));
+                imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                 imagePanel.image_pl.Invalidate();
             }
             else if (drawpolygon && linepolygonON) 
@@ -1361,6 +1378,7 @@ namespace PBAnaly.Module
                     default:
                         break;
                 }
+                imagePaletteForm.SetInfo = "w:" + recDragRect.Width + "h:" + recDragRect.Height;
                 imagePanel.image_pl.Invalidate(); // 触发重绘
             }
             else if (isCirDragging)
@@ -1389,6 +1407,9 @@ namespace PBAnaly.Module
                         circleRadio = readLoction;
                     }
                 }
+                int radius = (int)Math.Sqrt(Math.Pow(circleCenter.X - circleRadio.X, 2)
+                    + Math.Pow(circleCenter.Y - circleRadio.Y, 2));
+                imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                 imagePanel.image_pl.Invalidate();
 
 
@@ -1473,6 +1494,7 @@ namespace PBAnaly.Module
 
         private void Image_pl_MouseDown(object sender, MouseEventArgs e)
         {
+            Wdb_title_Click(null, null);
             System.Drawing.Point readLoction = ImageProcess.ConvertPictureBoxToReal( e.Location, imagePanel.image_pl);
             if (e.Button == MouseButtons.Left)
             {
@@ -1790,6 +1812,10 @@ namespace PBAnaly.Module
         {
             imagePanel.WindowState = FormWindowState.Maximized;
         }
+        public void WindowNormalAdaptive()
+        {
+            imagePanel.WindowState = FormWindowState.Normal;
+        }
 
         public PictureBox GetImage
         {
@@ -1839,7 +1865,8 @@ namespace PBAnaly.Module
             imagePanel.pl_panel_image.Dock = DockStyle.Fill;
             imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.pl_panel_image, 0, 0);
             imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.tlp_right_panel, 1, 0);
-
+            imagePanel.tlp_right_panel.Controls.Add(imagePanel.image_pr, 0, 0);
+            imagePanel.tlp_right_panel.Controls.Add(imagePanel.lb_wh, 0, 1);
             imagePanel.ava_auto_Click(null,null);
 
         }

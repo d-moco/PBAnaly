@@ -294,6 +294,7 @@
             // 
             // tlp_right_panel
             // 
+            this.tlp_right_panel.BackColor = System.Drawing.Color.White;
             this.tlp_right_panel.ColumnCount = 1;
             this.tlp_right_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlp_right_panel.Controls.Add(this.lb_wh, 0, 1);
@@ -304,17 +305,18 @@
             this.tlp_right_panel.Name = "tlp_right_panel";
             this.tlp_right_panel.RowCount = 2;
             this.tlp_right_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_right_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tlp_right_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlp_right_panel.Size = new System.Drawing.Size(66, 243);
             this.tlp_right_panel.TabIndex = 1;
             // 
             // lb_wh
             // 
+            this.lb_wh.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.lb_wh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_wh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_wh.Location = new System.Drawing.Point(3, 179);
+            this.lb_wh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_wh.Location = new System.Drawing.Point(3, 186);
             this.lb_wh.Name = "lb_wh";
-            this.lb_wh.Size = new System.Drawing.Size(60, 61);
+            this.lb_wh.Size = new System.Drawing.Size(60, 54);
             this.lb_wh.TabIndex = 3;
             this.lb_wh.Text = "Color Scale\r\nMin = 1\r\nMax= 2";
             this.lb_wh.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -326,7 +328,7 @@
             this.image_pr.ImageFit = AntdUI.TFit.Fill;
             this.image_pr.Location = new System.Drawing.Point(3, 3);
             this.image_pr.Name = "image_pr";
-            this.image_pr.Size = new System.Drawing.Size(60, 170);
+            this.image_pr.Size = new System.Drawing.Size(60, 177);
             this.image_pr.Speed = 1;
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";

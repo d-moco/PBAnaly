@@ -14,6 +14,8 @@ namespace PBAnaly.UI
 {
     public partial class BioanayImagePaletteForm : Form
     {
+        public TextBox tb_min;
+        public TextBox tb_max;
         private int roi_w = 20;
         private int roi_h = 20;
         private int circle_r = 10;
@@ -51,6 +53,45 @@ namespace PBAnaly.UI
         public string SetInfo
         {
             set { flb_info.Text = value; flb_info.Refresh(); }
+        }
+
+        public void RefreshscientificON(bool scientificON) 
+        {
+            if (scientificON == false) 
+            {
+
+                pl_max.Controls.Clear();
+                pl_min.Controls.Clear();
+                tb_max.Dispose();
+                tb_min.Dispose();
+                tb_max = null;
+                tb_min = null;
+                pl_max.Controls.Add(nud_colorMax);
+                pl_min.Controls.Add(nud_colorMin);
+            }
+            else
+            {
+                pl_max.Controls.Clear();
+                pl_min.Controls.Clear();
+                if (tb_max == null) 
+                {
+                    tb_max = new TextBox();
+                    tb_max.Dock = DockStyle.Fill;
+                    tb_max.Enabled = false;
+                    tb_max.Multiline = true;
+                    tb_max.Text = nud_colorMax.Value.ToString("E");
+                }
+                if (tb_min == null)
+                {
+                    tb_min = new TextBox();
+                    tb_min.Dock = DockStyle.Fill;
+                    tb_min.Enabled = false;
+                    tb_min.Multiline = true;
+                    tb_min.Text = nud_colorMin.Value.ToString("E");
+                }
+                pl_max.Controls.Add(tb_max);
+                pl_min.Controls.Add(tb_min);
+            }
         }
         #endregion
     }
