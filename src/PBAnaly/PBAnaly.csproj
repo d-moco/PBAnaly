@@ -89,7 +89,6 @@
     </Compile>
     <Compile Include="Module\BioanalysisMannage.cs" />
     <Compile Include="Module\ImageProcess.cs" />
-    <Compile Include="Module\ImageToolMannage.cs" />
     <Compile Include="Module\PBAnalyCommMannager.cs" />
     <Compile Include="Module\util.cs" />
     <Compile Include="Program.cs" />
@@ -125,29 +124,11 @@
     <Compile Include="UI\BioanayImagePaletteForm.Designer.cs">
       <DependentUpon>BioanayImagePaletteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\colorbarControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\colorbarControl.Designer.cs">
-      <DependentUpon>colorbarControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ImagePanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ImagePanel.Designer.cs">
-      <DependentUpon>ImagePanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ImagePanelUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ImagePanelUser.Designer.cs">
       <DependentUpon>ImagePanelUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ImageToolPaletteForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ImageToolPaletteForm.Designer.cs">
-      <DependentUpon>ImageToolPaletteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RowMergeView.cs">
       <SubType>Component</SubType>
@@ -210,17 +191,8 @@
     <EmbeddedResource Include="UI\BioanayImagePaletteForm.resx">
       <DependentUpon>BioanayImagePaletteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\colorbarControl.resx">
-      <DependentUpon>colorbarControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ImagePanel.resx">
-      <DependentUpon>ImagePanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\ImagePanelUser.resx">
       <DependentUpon>ImagePanelUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ImageToolPaletteForm.resx">
-      <DependentUpon>ImageToolPaletteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RowMergeView.resx">
       <DependentUpon>RowMergeView.cs</DependentUpon>

@@ -104,7 +104,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(0, 31);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1466, 36);
+            this.metroPanel1.Size = new System.Drawing.Size(1488, 36);
             this.metroPanel1.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
             this.metroPanel1.StyleManager = null;
             this.metroPanel1.TabIndex = 3;
@@ -137,7 +137,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1466, 1277);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1488, 1328);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // panel1
@@ -151,7 +151,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panel1.Size = new System.Drawing.Size(1458, 1202);
+            this.panel1.Size = new System.Drawing.Size(1480, 1253);
             this.panel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.panel1.TabIndex = 4;
             this.panel1.Text = "panel1";
@@ -165,14 +165,14 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1444, 1190);
+            this.dataGridView1.Size = new System.Drawing.Size(1466, 1241);
             this.dataGridView1.TabIndex = 0;
             // 
             // AnalyzeDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1474, 1311);
+            this.ClientSize = new System.Drawing.Size(1496, 1362);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
