@@ -322,6 +322,10 @@ namespace PBAnaly
                 {
                     return;
                 }
+                if (bioanalysisMannages.Count == 0)
+                {
+                    bioanalyName.Clear();
+                }
                 BioanalysisMannage bioanalysisMannage = new BioanalysisMannage(selectedFilePath, pl_right, bioanalysisMannages);
                 
                 DataProcess_panel.Controls.Add(bioanalysisMannage.GetImagePanel);
@@ -403,6 +407,11 @@ namespace PBAnaly
         private void materialButton_changeFormSize_Click(object sender, EventArgs e)
         {
             #region 排除已经不存在的
+            if (bioanalysisMannages.Count == 0) 
+            {
+                bioanalyName.Clear();
+                return;
+            }
             // 如果list 不在字典中 将移除list中的某一个
             List<int> indexF = new List<int>();
             
@@ -455,6 +464,7 @@ namespace PBAnaly
             }
             else
             {
+                #region 是否合并了  
                 if (bioanalyBool == false)
                 {
                     bioanalyBool = true;
@@ -576,7 +586,8 @@ namespace PBAnaly
                     }
                     
                 }
-               
+                #endregion
+
             }
         }
     }
