@@ -1,0 +1,46 @@
+name: Sync Gitea with GitHub
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # 每小时执行一次
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout GitHub repository
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "dmoco"
+          git config --global user.email "dmoco997@163.com"
+
+      - name: Add Gitea remote
+        run: |
+          git remote add gitea https://www-map.u533760.nyat.app:55040/windowsSoft/PBAnaly.git
+
+      # 拉取 Gitea 上的更新
+      - name: Fetch Gitea updates
+        run: |
+          git fetch gitea
+
+      # 合并 Gitea 的 main 分支到 GitHub 的 main 分支
+      - name: Merge Gitea main updates into GitHub main
+        run: |
+          git checkout main
+          git merge gitea/main --no-edit
+
+      # 合并 Gitea 的 develop 分支到 GitHub 的 develop 分支
+      - name: Merge Gitea develop updates into GitHub develop
+        run: |
+          git checkout develop
+          git merge gitea/develop --no-edit
+
+      # 推送更新到 GitHub
+      - name: Push to GitHub
+        run: |
+          git push origin main
+          git push origin develop
