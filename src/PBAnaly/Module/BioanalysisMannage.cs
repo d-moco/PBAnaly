@@ -422,7 +422,7 @@ namespace PBAnaly.Module
             
 
             imagePanel.cb_scientific.CheckedChanged += Cb_scientific_CheckedChanged;
-
+            imagePaletteForm.cb_scientific.CheckedChanged += Cb_imagepalette_scientific_CheckedChanged;
             imagePanel.image_pl.MouseDown += Image_pl_MouseDown;
             imagePanel.image_pl.DoubleClick += Image_pl_DoubleClick;
             imagePanel.image_pl.MouseMove += Image_pl_MouseMove;
@@ -726,10 +726,17 @@ namespace PBAnaly.Module
         }
         private void Cb_scientific_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {
+            if (imagePaletteForm.cb_scientific.Checked != imagePanel.cb_scientific.Checked) 
+            {
+                imagePaletteForm.cb_scientific.Checked = imagePanel.cb_scientific.Checked;
+            }
             ScientificON = imagePanel.cb_scientific.Checked;
             imagePaletteForm.RefreshscientificON(ScientificON);
         }
-       
+        private void Cb_imagepalette_scientific_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
+        {
+            imagePanel.cb_scientific.Checked = imagePaletteForm.cb_scientific.Checked;
+        }
 
         private void Cbb_mode_SelectedIndexChanged(object sender, System.EventArgs e)
         {

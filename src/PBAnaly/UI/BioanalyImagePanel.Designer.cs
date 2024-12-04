@@ -34,7 +34,6 @@
             this.panel2 = new AntdUI.Panel();
             this.cbb_mode = new System.Windows.Forms.ComboBox();
             this.label1 = new AntdUI.Label();
-            this.cb_scientific = new AntdUI.Checkbox();
             this.flowPanel1 = new AntdUI.FlowPanel();
             this.ava_saveReport = new AntdUI.Avatar();
             this.ava_save = new AntdUI.Avatar();
@@ -50,6 +49,7 @@
             this.tlp_right_panel = new System.Windows.Forms.TableLayoutPanel();
             this.lb_wh = new AntdUI.Label();
             this.image_pr = new AntdUI.Image3D();
+            this.cb_scientific = new AntdUI.Checkbox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -140,15 +140,6 @@
             this.label1.Size = new System.Drawing.Size(36, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "模式:";
-            // 
-            // cb_scientific
-            // 
-            this.cb_scientific.AutoCheck = true;
-            this.cb_scientific.Location = new System.Drawing.Point(134, 3);
-            this.cb_scientific.Name = "cb_scientific";
-            this.cb_scientific.Size = new System.Drawing.Size(63, 17);
-            this.cb_scientific.TabIndex = 1;
-            this.cb_scientific.Text = "光子量";
             // 
             // flowPanel1
             // 
@@ -333,6 +324,15 @@
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";
             // 
+            // cb_scientific
+            // 
+            this.cb_scientific.AutoCheck = true;
+            this.cb_scientific.Location = new System.Drawing.Point(134, 3);
+            this.cb_scientific.Name = "cb_scientific";
+            this.cb_scientific.Size = new System.Drawing.Size(63, 17);
+            this.cb_scientific.TabIndex = 1;
+            this.cb_scientific.Text = "光子量";
+            // 
             // BioanalyImagePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -372,7 +372,6 @@
         private AntdUI.Panel panel3;
         private AntdUI.Label lb_size;
         public System.Windows.Forms.ComboBox cbb_mode;
-        public AntdUI.Checkbox cb_scientific;
         public AntdUI.Avatar ava_zoom_out;
         public AntdUI.Avatar ava__zoom_in;
         public AntdUI.Panel pl_bg_panel;
@@ -385,5 +384,6 @@
         public AntdUI.Image3D image_pr;
         public System.Windows.Forms.TableLayoutPanel tlp_right_panel;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        public AntdUI.Checkbox cb_scientific;
     }
 }
