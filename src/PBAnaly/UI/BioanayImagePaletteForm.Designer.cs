@@ -64,11 +64,13 @@
             this.nud_colorMax = new System.Windows.Forms.NumericUpDown();
             this.pl_min = new AntdUI.Panel();
             this.nud_colorMin = new System.Windows.Forms.NumericUpDown();
+            this.cb_scientific = new AntdUI.Checkbox();
             this.panel1 = new AntdUI.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.collapseItem1 = new AntdUI.CollapseItem();
             this.cll_panel = new AntdUI.Collapse();
-            this.cb_scientific = new AntdUI.Checkbox();
+            this.cb_continuous = new AntdUI.Checkbox();
+            this.panel3 = new AntdUI.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.hpb_line)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -85,6 +87,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.collapseItem1.SuspendLayout();
             this.cll_panel.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // fb_fixSetting
@@ -254,13 +257,16 @@
             this.tableLayoutPanel3.Controls.Add(this.hpb_circe, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.hpb_rect, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.panel3, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(266, 182);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
@@ -325,7 +331,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(260, 142);
+            this.panel2.Size = new System.Drawing.Size(260, 122);
             this.panel2.TabIndex = 14;
             this.panel2.Text = "panel2";
             // 
@@ -394,7 +400,7 @@
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
             this.collapseItem2.Expand = true;
-            this.collapseItem2.Location = new System.Drawing.Point(19, 433);
+            this.collapseItem2.Location = new System.Drawing.Point(19, 99);
             this.collapseItem2.Name = "collapseItem2";
             this.collapseItem2.Size = new System.Drawing.Size(266, 182);
             this.collapseItem2.TabIndex = 1;
@@ -497,7 +503,7 @@
             this.dtb_colorMax.Minimum = 0;
             this.dtb_colorMax.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_colorMax.Name = "dtb_colorMax";
-            this.dtb_colorMax.Size = new System.Drawing.Size(118, 22);
+            this.dtb_colorMax.Size = new System.Drawing.Size(147, 22);
             this.dtb_colorMax.TabIndex = 40;
             this.dtb_colorMax.Text = "dungeonTrackBar5";
             this.dtb_colorMax.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -522,7 +528,7 @@
             this.dtb_colorMin.Minimum = 0;
             this.dtb_colorMin.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_colorMin.Name = "dtb_colorMin";
-            this.dtb_colorMin.Size = new System.Drawing.Size(118, 22);
+            this.dtb_colorMin.Size = new System.Drawing.Size(147, 22);
             this.dtb_colorMin.TabIndex = 39;
             this.dtb_colorMin.Text = "dungeonTrackBar4";
             this.dtb_colorMin.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -547,7 +553,7 @@
             this.dtb_opacity.Minimum = 0;
             this.dtb_opacity.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_opacity.Name = "dtb_opacity";
-            this.dtb_opacity.Size = new System.Drawing.Size(118, 22);
+            this.dtb_opacity.Size = new System.Drawing.Size(147, 22);
             this.dtb_opacity.TabIndex = 37;
             this.dtb_opacity.Text = "dungeonTrackBar2";
             this.dtb_opacity.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -582,7 +588,7 @@
             this.dtb_brightness.Minimum = 0;
             this.dtb_brightness.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_brightness.Name = "dtb_brightness";
-            this.dtb_brightness.Size = new System.Drawing.Size(118, 22);
+            this.dtb_brightness.Size = new System.Drawing.Size(147, 22);
             this.dtb_brightness.TabIndex = 2;
             this.dtb_brightness.Text = "dungeonTrackBar1";
             this.dtb_brightness.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -631,6 +637,17 @@
             this.nud_colorMin.Size = new System.Drawing.Size(44, 21);
             this.nud_colorMin.TabIndex = 50;
             // 
+            // cb_scientific
+            // 
+            this.cb_scientific.AutoCheck = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.cb_scientific, 4);
+            this.cb_scientific.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cb_scientific.Location = new System.Drawing.Point(3, 151);
+            this.cb_scientific.Name = "cb_scientific";
+            this.cb_scientific.Size = new System.Drawing.Size(195, 16);
+            this.cb_scientific.TabIndex = 54;
+            this.cb_scientific.Text = "光子量";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel2);
@@ -661,8 +678,7 @@
             // collapseItem1
             // 
             this.collapseItem1.Controls.Add(this.tableLayoutPanel1);
-            this.collapseItem1.Expand = true;
-            this.collapseItem1.Location = new System.Drawing.Point(19, 59);
+            this.collapseItem1.Location = new System.Drawing.Point(-266, -302);
             this.collapseItem1.Name = "collapseItem1";
             this.collapseItem1.Size = new System.Drawing.Size(266, 302);
             this.collapseItem1.TabIndex = 0;
@@ -681,16 +697,26 @@
             this.cll_panel.TabIndex = 1;
             this.cll_panel.Text = "fed";
             // 
-            // cb_scientific
+            // cb_continuous
             // 
-            this.cb_scientific.AutoCheck = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.cb_scientific, 4);
-            this.cb_scientific.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cb_scientific.Location = new System.Drawing.Point(3, 151);
-            this.cb_scientific.Name = "cb_scientific";
-            this.cb_scientific.Size = new System.Drawing.Size(195, 16);
-            this.cb_scientific.TabIndex = 54;
-            this.cb_scientific.Text = "光子量";
+            this.cb_continuous.AutoCheck = true;
+            this.cb_continuous.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cb_continuous.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cb_continuous.Location = new System.Drawing.Point(0, 0);
+            this.cb_continuous.Name = "cb_continuous";
+            this.cb_continuous.Size = new System.Drawing.Size(124, 28);
+            this.cb_continuous.TabIndex = 55;
+            this.cb_continuous.Text = "连续绘制";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.cb_continuous);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(139, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(124, 28);
+            this.panel3.TabIndex = 56;
+            this.panel3.Text = "panel3";
             // 
             // BioanayImagePaletteForm
             // 
@@ -719,6 +745,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.collapseItem1.ResumeLayout(false);
             this.cll_panel.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -765,5 +792,7 @@
         private AntdUI.Panel pl_max;
         private AntdUI.Panel pl_min;
         public AntdUI.Checkbox cb_scientific;
+        public AntdUI.Checkbox cb_continuous;
+        private AntdUI.Panel panel3;
     }
 }

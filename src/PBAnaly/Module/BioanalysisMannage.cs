@@ -95,6 +95,8 @@ namespace PBAnaly.Module
         private System.Drawing.Point mouseDownPosition;
         private System.Drawing.Point pictureBoxStartPosition;
 
+        private bool isContinuous = false;
+
         private const int CircleRadius = 5;
         private bool lineOn =false;
         private bool drawLine = false;
@@ -448,6 +450,7 @@ namespace PBAnaly.Module
             imagePaletteForm.hpb_circe.Click += Hpb_circe_Click;
             imagePaletteForm.hpb_xianduan.Click += Hpb_xianduan_Click;
             imagePaletteForm.fb_fixSetting.Click += Fb_fixSetting_Click;
+            imagePaletteForm.cb_continuous.CheckedChanged += Cb_continuous_CheckedChanged;
 
         }
 
@@ -1199,7 +1202,8 @@ namespace PBAnaly.Module
                     }
 
                     drawRect = false;
-                    rectOn = false;
+                    if(!isContinuous)
+                        rectOn = false;
 
 
                 }
@@ -1232,7 +1236,8 @@ namespace PBAnaly.Module
                     CircleAndInfoList.Add(rab);
 
                     drawCircle = false;
-                    CircleOn = false;
+                    if (!isContinuous)
+                        CircleOn = false;
                     imagePanel.image_pl.Invalidate();
 
 
@@ -1766,6 +1771,15 @@ namespace PBAnaly.Module
         }
         #endregion
         #region imagePaletteForm
+        private void Cb_continuous_CheckedChanged(object sender, BoolEventArgs e)
+        {
+            isContinuous = imagePaletteForm.cb_continuous.Checked;
+            if(isContinuous == false) 
+            {
+                rectOn = false;
+                CircleOn = false;
+            }
+        }
         private void Hpb_line_Click(object sender, EventArgs e)
         {
             lineOn = true;
