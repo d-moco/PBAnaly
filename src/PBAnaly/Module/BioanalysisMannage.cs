@@ -60,6 +60,7 @@ namespace PBAnaly.Module
         }
         #endregion
         #region 变量
+        public int ImageIndex { get; set; }// 图片加载进来的序号
         public bool Arrangement { get; set; }
         private Dictionary<string, BioanalysisMannage> bioanalysisMannages;
         public string path { get; set; }
@@ -366,8 +367,15 @@ namespace PBAnaly.Module
             algThread.Start();
 
             isUpdateAlg = true;// 开始可以更新算法
-
-
+            foreach (var item in bioanalysisMannages)
+            {
+                if (item.Value.ImageIndex > ImageIndex) 
+                {
+                    ImageIndex = item.Value.ImageIndex;
+                }
+            }
+            ImageIndex++;
+            imagePanel.lb_imageIndex.Text = ImageIndex.ToString();
             bioanalysisMannages[_path] = this;
             this.bioanalysisMannages = bioanalysisMannages;
         }

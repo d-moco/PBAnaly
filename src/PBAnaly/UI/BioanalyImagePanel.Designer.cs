@@ -33,7 +33,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new AntdUI.Panel();
             this.cbb_mode = new System.Windows.Forms.ComboBox();
-            this.label1 = new AntdUI.Label();
+            this.lb_imageIndex = new AntdUI.Label();
+            this.cb_scientific = new AntdUI.Checkbox();
             this.flowPanel1 = new AntdUI.FlowPanel();
             this.ava_saveReport = new AntdUI.Avatar();
             this.ava_save = new AntdUI.Avatar();
@@ -49,7 +50,7 @@
             this.tlp_right_panel = new System.Windows.Forms.TableLayoutPanel();
             this.lb_wh = new AntdUI.Label();
             this.image_pr = new AntdUI.Image3D();
-            this.cb_scientific = new AntdUI.Checkbox();
+            this.label2 = new AntdUI.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -108,8 +109,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.cbb_mode);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lb_imageIndex);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -126,20 +128,32 @@
             "merge",
             "mark",
             "pseudocolor"});
-            this.cbb_mode.Location = new System.Drawing.Point(45, 1);
+            this.cbb_mode.Location = new System.Drawing.Point(73, 3);
             this.cbb_mode.Name = "cbb_mode";
-            this.cbb_mode.Size = new System.Drawing.Size(83, 20);
+            this.cbb_mode.Size = new System.Drawing.Size(55, 20);
             this.cbb_mode.TabIndex = 1;
             // 
-            // label1
+            // lb_imageIndex
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_imageIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "模式:";
+            this.lb_imageIndex.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_imageIndex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(83)))), ((int)(((byte)(36)))));
+            this.lb_imageIndex.Location = new System.Drawing.Point(3, 0);
+            this.lb_imageIndex.Name = "lb_imageIndex";
+            this.lb_imageIndex.Size = new System.Drawing.Size(27, 23);
+            this.lb_imageIndex.TabIndex = 0;
+            this.lb_imageIndex.Text = "0";
+            this.lb_imageIndex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cb_scientific
+            // 
+            this.cb_scientific.AutoCheck = true;
+            this.cb_scientific.Location = new System.Drawing.Point(134, 3);
+            this.cb_scientific.Name = "cb_scientific";
+            this.cb_scientific.Size = new System.Drawing.Size(63, 17);
+            this.cb_scientific.TabIndex = 1;
+            this.cb_scientific.Text = "光子量";
             // 
             // flowPanel1
             // 
@@ -324,14 +338,15 @@
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";
             // 
-            // cb_scientific
+            // label2
             // 
-            this.cb_scientific.AutoCheck = true;
-            this.cb_scientific.Location = new System.Drawing.Point(134, 3);
-            this.cb_scientific.Name = "cb_scientific";
-            this.cb_scientific.Size = new System.Drawing.Size(63, 17);
-            this.cb_scientific.TabIndex = 1;
-            this.cb_scientific.Text = "光子量";
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Location = new System.Drawing.Point(36, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "模式:";
             // 
             // BioanalyImagePanel
             // 
@@ -366,7 +381,6 @@
         private AntdUI.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private AntdUI.Panel panel2;
-        private AntdUI.Label label1;
         private AntdUI.FlowPanel flowPanel1;
         private AntdUI.Avatar ava_auto;
         private AntdUI.Panel panel3;
@@ -385,5 +399,7 @@
         public System.Windows.Forms.TableLayoutPanel tlp_right_panel;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         public AntdUI.Checkbox cb_scientific;
+        private AntdUI.Label label2;
+        public AntdUI.Label lb_imageIndex;
     }
 }
