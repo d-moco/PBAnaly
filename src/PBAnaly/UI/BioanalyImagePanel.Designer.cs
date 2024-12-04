@@ -32,6 +32,7 @@
             this.panel1 = new AntdUI.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new AntdUI.Panel();
+            this.label2 = new AntdUI.Label();
             this.cbb_mode = new System.Windows.Forms.ComboBox();
             this.lb_imageIndex = new AntdUI.Label();
             this.cb_scientific = new AntdUI.Checkbox();
@@ -50,7 +51,6 @@
             this.tlp_right_panel = new System.Windows.Forms.TableLayoutPanel();
             this.lb_wh = new AntdUI.Label();
             this.image_pr = new AntdUI.Image3D();
-            this.label2 = new AntdUI.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -119,6 +119,16 @@
             this.panel2.Size = new System.Drawing.Size(131, 23);
             this.panel2.TabIndex = 0;
             this.panel2.Text = "panel2";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Location = new System.Drawing.Point(36, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "模式:";
             // 
             // cbb_mode
             // 
@@ -337,16 +347,6 @@
             this.image_pr.Speed = 1;
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.Location = new System.Drawing.Point(36, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "模式:";
             // 
             // BioanalyImagePanel
             // 

@@ -525,7 +525,8 @@ namespace PBAnaly
                     data_tab.ResumeLayout();
                     int row = 0;
                     int col = 0;
-
+                    data_tab.Dock = DockStyle.Fill;
+                    DataProcess_panel.Controls.Add(data_tab);
                     int index = 0;
                     foreach (var bname in bioanalyName)
                     {
@@ -547,7 +548,8 @@ namespace PBAnaly
                         index++;
                         item.GetPanel.Dock = DockStyle.Fill;
                         data_tab.Controls.Add(item.GetPanel, col, row);
-                        item.GetImagePanel.CenterPictureBox();
+                        item.GetImagePanel.image_pl.SizeMode = PictureBoxSizeMode.Zoom;
+                        item.GetImagePanel.ava_auto_Click(null, null);
                         if (col < data_tab.ColumnCount - 2)
                         {
                             col++;
@@ -560,9 +562,6 @@ namespace PBAnaly
                     }
                     
 
-
-                    data_tab.Dock = DockStyle.Fill;
-                    DataProcess_panel.Controls.Add(data_tab);
                 }
                 else
                 {

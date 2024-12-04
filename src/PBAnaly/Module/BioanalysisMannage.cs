@@ -129,8 +129,8 @@ namespace PBAnaly.Module
         private System.Drawing.Point curStartPolygonPoint = new System.Drawing.Point(0, 0);
         private System.Drawing.Point curPolygonPoint = new System.Drawing.Point(0, 0);
 
-        private System.Drawing.Point startPoint = new System.Drawing.Point(-10, 0);
-        private System.Drawing.Point endPoint = new System.Drawing.Point(-10, 0);
+        private System.Drawing.Point startPoint = new System.Drawing.Point(-100, 0);
+        private System.Drawing.Point endPoint = new System.Drawing.Point(-100, 0);
 
 
         private bool isStartCircleDragged, isEndCircleDragged;
@@ -1892,6 +1892,7 @@ namespace PBAnaly.Module
         public void Rifresh() 
         {
             imagePanel.pl_panel_image.Dock = DockStyle.Fill;
+            imagePanel.image_pl.SizeMode = PictureBoxSizeMode.StretchImage;
             imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.pl_panel_image, 0, 0);
             imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.tlp_right_panel, 1, 0);
             imagePanel.tlp_right_panel.Controls.Add(imagePanel.image_pr, 0, 0);
