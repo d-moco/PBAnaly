@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.wdb_title = new AntdUI.WindowBar();
             this.panel1 = new AntdUI.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -51,6 +52,11 @@
             this.tlp_right_panel = new System.Windows.Forms.TableLayoutPanel();
             this.lb_wh = new AntdUI.Label();
             this.image_pr = new AntdUI.Image3D();
+            this.ctms_strop = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctms_strop_copy = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctms_strop_stickup = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctms_strop_delete = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -61,6 +67,7 @@
             this.pl_bg_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_pl)).BeginInit();
             this.tlp_right_panel.SuspendLayout();
+            this.ctms_strop.SuspendLayout();
             this.SuspendLayout();
             // 
             // wdb_title
@@ -299,6 +306,7 @@
             // 
             // image_pl
             // 
+            this.image_pl.ContextMenuStrip = this.ctms_strop;
             this.image_pl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.image_pl.Location = new System.Drawing.Point(0, 0);
             this.image_pl.Name = "image_pl";
@@ -348,6 +356,39 @@
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";
             // 
+            // ctms_strop
+            // 
+            this.ctms_strop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
+            this.ctms_strop_copy,
+            this.ctms_strop_stickup,
+            this.ctms_strop_delete});
+            this.ctms_strop.Name = "ctms_strop";
+            this.ctms_strop.Size = new System.Drawing.Size(181, 98);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ctms_strop_copy
+            // 
+            this.ctms_strop_copy.Name = "ctms_strop_copy";
+            this.ctms_strop_copy.Size = new System.Drawing.Size(180, 22);
+            this.ctms_strop_copy.Text = "复制";
+            // 
+            // ctms_strop_stickup
+            // 
+            this.ctms_strop_stickup.Name = "ctms_strop_stickup";
+            this.ctms_strop_stickup.Size = new System.Drawing.Size(180, 22);
+            this.ctms_strop_stickup.Text = "粘贴";
+            // 
+            // ctms_strop_delete
+            // 
+            this.ctms_strop_delete.Name = "ctms_strop_delete";
+            this.ctms_strop_delete.Size = new System.Drawing.Size(180, 22);
+            this.ctms_strop_delete.Text = "删除";
+            // 
             // BioanalyImagePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -373,6 +414,7 @@
             this.pl_bg_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.image_pl)).EndInit();
             this.tlp_right_panel.ResumeLayout(false);
+            this.ctms_strop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -401,5 +443,10 @@
         public AntdUI.Checkbox cb_scientific;
         private AntdUI.Label label2;
         public AntdUI.Label lb_imageIndex;
+        public System.Windows.Forms.ContextMenuStrip ctms_strop;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripMenuItem ctms_strop_copy;
+        public System.Windows.Forms.ToolStripMenuItem ctms_strop_stickup;
+        public System.Windows.Forms.ToolStripMenuItem ctms_strop_delete;
     }
 }

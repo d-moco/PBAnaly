@@ -1,5 +1,6 @@
 ﻿using AntdUI;
 using MiniExcelLibs;
+using OpenCvSharp.Flann;
 using PBAnaly.UI;
 using PBBiologyVC;
 using ReaLTaiizor.Extension;
@@ -58,8 +59,20 @@ namespace PBAnaly.Module
             public List<System.Drawing.Point> points;
             public Pseudo_infoVC pdinfovc;
         }
+
+        private enum ShapeForm
+        {
+            None,
+            Line,
+            Polygon,
+            Rect,
+            Circle
+        }
         #endregion
         #region 变量
+        private ShapeForm curShape = ShapeForm.None;
+        private int curShapeIndex;
+        
         public int ImageIndex { get; set; }// 图片加载进来的序号
         public bool Arrangement { get; set; }
         private Dictionary<string, BioanalysisMannage> bioanalysisMannages;
@@ -105,7 +118,9 @@ namespace PBAnaly.Module
         private bool rectOn = false;
         private bool linepolygonON = false;
         private bool isRecDragging = false;
+        private bool curIsCopy = false; // 是否需要拷贝
         private List<RectAttribute> rectangles = new List<RectAttribute>(); // 存储所有绘制完成的矩形
+        private RectAttribute oldCopyRect; //当前需要赋值的矩形
         private System.Drawing.Rectangle? currentRectangle = null; // 当前正在绘制的矩形
         private System.Drawing.Point leftTopPoint; // 矩形左上角的起始点
         private bool drawRect = false; // 是否正在绘制
@@ -117,6 +132,7 @@ namespace PBAnaly.Module
         private bool drawCircle = false;//是否绘制圆
         private bool isCirDragging = false;
         private List<CirceAndInfo> CircleAndInfoList = new List<CirceAndInfo>();
+        private CirceAndInfo oldCopyCircle;
         private System.Drawing.Point cirDragStart;
         private System.Drawing.Point circleCenter;
         private System.Drawing.Point circleRadio;
@@ -438,7 +454,9 @@ namespace PBAnaly.Module
             imagePanel.image_pl.MouseMove += Image_pl_MouseMove;
             imagePanel.image_pl.MouseUp += Image_pl_MouseUp;
             imagePanel.image_pl.Paint += Image_pl_Paint;
-
+            imagePanel.ctms_strop_delete.Click += Ctms_strop_delete_Click;
+            imagePanel.ctms_strop_copy.Click += Ctms_strop_copy_Click;
+            imagePanel.ctms_strop_stickup.Click += Ctms_strop_stickup_Click;
 
             imagePaletteForm.hpb_line.Click += Hpb_line_Click;
 
@@ -1598,35 +1616,117 @@ namespace PBAnaly.Module
                 
                
             }
-            else if (e.Button == MouseButtons.Right) 
+            else if (e.Button == MouseButtons.Right)
             {
+                imagePanel.ctms_strop.Enabled = true;
+                imagePanel.ctms_strop_copy.Enabled = false;
+                imagePanel.ctms_strop_stickup.Enabled = curIsCopy;
                 if (ImageProcess.IsPointOnLine(readLoction,startPoint,endPoint,CircleRadius))
                 {
+                    curShape = ShapeForm.Line;
+                    
+                }
+                else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
+                {
+                    curShape = ShapeForm.Circle;
+                    curShapeIndex = index1;
+                    imagePanel.ctms_strop_copy.Enabled = true;
+                }
+                else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
+                {
+                    curShape = ShapeForm.Rect;
+                    curShapeIndex = index;
+                    imagePanel.ctms_strop_copy.Enabled = true;
+                }
+                else if (drawpolygon==false &&  IsPointInPolygon(readLoction, curPolygonAndInfoList))
+                {
+                    curShape = ShapeForm.Polygon;
+                   
+                }
+                
+            }
+            
+        }
+        private void Ctms_strop_copy_Click(object sender, EventArgs e)
+        {
+            // 复制矩形 目前只允许复制矩形和圆形
+            switch (curShape)
+            {
+                case ShapeForm.None:
+                    break;
+                case ShapeForm.Line:
+                    break;
+                case ShapeForm.Polygon:
+                    break;
+                case ShapeForm.Rect:
+                    oldCopyRect = rectangles[curShapeIndex];
+                    curIsCopy = true;
+                    break;
+                case ShapeForm.Circle:
+                    oldCopyCircle = CircleAndInfoList[curShapeIndex];
+                    curIsCopy = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void Ctms_strop_stickup_Click(object sender, EventArgs e)
+        {
+            switch (curShape)
+            {
+                case ShapeForm.None:
+                    break;
+                case ShapeForm.Line:
+                    break;
+                case ShapeForm.Polygon:
+                    break;
+                case ShapeForm.Rect:
+                    
+                    rectangles.Add(oldCopyRect);
+                    
+                    break;
+                case ShapeForm.Circle:
+                    CircleAndInfoList.Add(oldCopyCircle);
+                    break;
+                default:
+                    break;
+            }
+            curIsCopy = false;
+            imagePanel.image_pl.Invalidate();
+        }
+        private void Ctms_strop_delete_Click(object sender, EventArgs e)
+        {
+            switch (curShape)
+            {
+                case ShapeForm.None:
+                    break;
+                case ShapeForm.Line:
                     startPoint = new System.Drawing.Point(-10, 0);
                     endPoint = new System.Drawing.Point(-10, 0);
                     imagePanel.image_pl.Invalidate();
                     imagePaletteForm.flb_act_mm.Text = ("0");
                     imagePaletteForm.flb_act_mm.Refresh();
-                }
-                else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
-                {
-                    CircleAndInfoList.RemoveAt(index1);
-                    imagePanel.image_pl.Invalidate();
-                }
-                else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
-                {
-                    rectangles.RemoveAt(index);
-                    imagePanel.image_pl.Invalidate();
-                }
-                else if (drawpolygon==false &&  IsPointInPolygon(readLoction, curPolygonAndInfoList))
-                {
+                    break;
+                case ShapeForm.Polygon:
                     PolygonAndInfoList.Clear();
                     curPolygonAndInfoList.points.Clear();
                     curPolygonAndInfoList.pdinfovc = null;
-                    imagePanel.image_pl.Invalidate();
-                }
+                   
+                    break;
+                case ShapeForm.Rect:
+                    rectangles.RemoveAt(curShapeIndex);
+                   
+                    break;
+                case ShapeForm.Circle:
+                    CircleAndInfoList.RemoveAt(curShapeIndex);
+                   
+                    
+                    break;
+                default:
+                    break;
             }
-            
+            curShape = ShapeForm.None;
+            imagePanel.image_pl.Invalidate();
         }
         
 
