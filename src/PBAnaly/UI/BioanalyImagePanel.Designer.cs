@@ -57,6 +57,7 @@
             this.ctms_strop_copy = new System.Windows.Forms.ToolStripMenuItem();
             this.ctms_strop_stickup = new System.Windows.Forms.ToolStripMenuItem();
             this.ctms_strop_delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.lb_top_info = new AntdUI.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -320,13 +321,15 @@
             this.tlp_right_panel.BackColor = System.Drawing.Color.White;
             this.tlp_right_panel.ColumnCount = 1;
             this.tlp_right_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_right_panel.Controls.Add(this.lb_wh, 0, 1);
-            this.tlp_right_panel.Controls.Add(this.image_pr, 0, 0);
+            this.tlp_right_panel.Controls.Add(this.lb_wh, 0, 2);
+            this.tlp_right_panel.Controls.Add(this.image_pr, 0, 1);
+            this.tlp_right_panel.Controls.Add(this.lb_top_info, 0, 0);
             this.tlp_right_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_right_panel.Location = new System.Drawing.Point(286, 0);
             this.tlp_right_panel.Margin = new System.Windows.Forms.Padding(0);
             this.tlp_right_panel.Name = "tlp_right_panel";
-            this.tlp_right_panel.RowCount = 2;
+            this.tlp_right_panel.RowCount = 3;
+            this.tlp_right_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlp_right_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlp_right_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlp_right_panel.Size = new System.Drawing.Size(66, 243);
@@ -349,9 +352,9 @@
             this.image_pr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.image_pr.Duration = 0;
             this.image_pr.ImageFit = AntdUI.TFit.Contain;
-            this.image_pr.Location = new System.Drawing.Point(3, 3);
+            this.image_pr.Location = new System.Drawing.Point(3, 31);
             this.image_pr.Name = "image_pr";
-            this.image_pr.Size = new System.Drawing.Size(60, 177);
+            this.image_pr.Size = new System.Drawing.Size(60, 149);
             this.image_pr.Speed = 1;
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";
@@ -369,25 +372,35 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
             // 
             // ctms_strop_copy
             // 
             this.ctms_strop_copy.Name = "ctms_strop_copy";
-            this.ctms_strop_copy.Size = new System.Drawing.Size(180, 22);
+            this.ctms_strop_copy.Size = new System.Drawing.Size(100, 22);
             this.ctms_strop_copy.Text = "复制";
             // 
             // ctms_strop_stickup
             // 
             this.ctms_strop_stickup.Name = "ctms_strop_stickup";
-            this.ctms_strop_stickup.Size = new System.Drawing.Size(180, 22);
+            this.ctms_strop_stickup.Size = new System.Drawing.Size(100, 22);
             this.ctms_strop_stickup.Text = "粘贴";
             // 
             // ctms_strop_delete
             // 
             this.ctms_strop_delete.Name = "ctms_strop_delete";
-            this.ctms_strop_delete.Size = new System.Drawing.Size(180, 22);
+            this.ctms_strop_delete.Size = new System.Drawing.Size(100, 22);
             this.ctms_strop_delete.Text = "删除";
+            // 
+            // lb_top_info
+            // 
+            this.lb_top_info.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_top_info.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_top_info.Location = new System.Drawing.Point(3, 3);
+            this.lb_top_info.Name = "lb_top_info";
+            this.lb_top_info.Size = new System.Drawing.Size(60, 22);
+            this.lb_top_info.TabIndex = 4;
+            this.lb_top_info.Text = "Trans-fluorescence";
             // 
             // BioanalyImagePanel
             // 
@@ -448,5 +461,6 @@
         public System.Windows.Forms.ToolStripMenuItem ctms_strop_copy;
         public System.Windows.Forms.ToolStripMenuItem ctms_strop_stickup;
         public System.Windows.Forms.ToolStripMenuItem ctms_strop_delete;
+        public AntdUI.Label lb_top_info;
     }
 }

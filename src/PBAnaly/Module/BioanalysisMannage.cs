@@ -629,15 +629,13 @@ namespace PBAnaly.Module
         {
             if (algAttribute.scientificON)
             {
-
+                imagePanel.lb_top_info.Text = "Trans-fluorescence";
                 imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n color scale\n min=" + util.GetscientificNotation(algAttribute.colorMinValue) + "\n max=" + util.GetscientificNotation(algAttribute.colorValue);
             }
             else
             {
-                if(ColorIndex!=7)
-                    imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n color scale\n min=" + algAttribute.colorMinValue.ToString() + "\n max=" + algAttribute.colorValue.ToString();
-                else
-                    imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n Trans-fluorescence\n min=" + algAttribute.colorMinValue.ToString() + "\n max=" + algAttribute.colorValue.ToString();
+                imagePanel.lb_top_info.Text = "";
+                imagePanel.lb_wh.Text = "color scale\n min=" + algAttribute.colorMinValue.ToString() + "\n max=" + algAttribute.colorValue.ToString();
             }
 
         }
