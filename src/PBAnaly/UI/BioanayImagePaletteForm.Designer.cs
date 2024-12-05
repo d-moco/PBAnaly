@@ -50,6 +50,8 @@
             this.dtb_h = new ReaLTaiizor.Controls.DreamTextBox();
             this.dtb_w = new ReaLTaiizor.Controls.DreamTextBox();
             this.flb_info = new ReaLTaiizor.Controls.FoxLabel();
+            this.panel3 = new AntdUI.Panel();
+            this.cb_continuous = new AntdUI.Checkbox();
             this.collapseItem2 = new AntdUI.CollapseItem();
             this.cb_colortable = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -69,11 +71,10 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.collapseItem1 = new AntdUI.CollapseItem();
             this.cll_panel = new AntdUI.Collapse();
-            this.cb_continuous = new AntdUI.Checkbox();
-            this.panel3 = new AntdUI.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.hpb_line)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.collapseItem2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).BeginInit();
@@ -87,7 +88,6 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.collapseItem1.SuspendLayout();
             this.cll_panel.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // fb_fixSetting
@@ -396,11 +396,32 @@
             this.flb_info.Size = new System.Drawing.Size(223, 19);
             this.flb_info.TabIndex = 7;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.cb_continuous);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(139, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(124, 28);
+            this.panel3.TabIndex = 56;
+            this.panel3.Text = "panel3";
+            // 
+            // cb_continuous
+            // 
+            this.cb_continuous.AutoCheck = true;
+            this.cb_continuous.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cb_continuous.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cb_continuous.Location = new System.Drawing.Point(0, 0);
+            this.cb_continuous.Name = "cb_continuous";
+            this.cb_continuous.Size = new System.Drawing.Size(124, 28);
+            this.cb_continuous.TabIndex = 55;
+            this.cb_continuous.Text = "连续绘制";
+            // 
             // collapseItem2
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
             this.collapseItem2.Expand = true;
-            this.collapseItem2.Location = new System.Drawing.Point(19, 99);
+            this.collapseItem2.Location = new System.Drawing.Point(19, 433);
             this.collapseItem2.Name = "collapseItem2";
             this.collapseItem2.Size = new System.Drawing.Size(266, 182);
             this.collapseItem2.TabIndex = 1;
@@ -678,7 +699,8 @@
             // collapseItem1
             // 
             this.collapseItem1.Controls.Add(this.tableLayoutPanel1);
-            this.collapseItem1.Location = new System.Drawing.Point(-266, -302);
+            this.collapseItem1.Expand = true;
+            this.collapseItem1.Location = new System.Drawing.Point(19, 59);
             this.collapseItem1.Name = "collapseItem1";
             this.collapseItem1.Size = new System.Drawing.Size(266, 302);
             this.collapseItem1.TabIndex = 0;
@@ -697,27 +719,6 @@
             this.cll_panel.TabIndex = 1;
             this.cll_panel.Text = "fed";
             // 
-            // cb_continuous
-            // 
-            this.cb_continuous.AutoCheck = true;
-            this.cb_continuous.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cb_continuous.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cb_continuous.Location = new System.Drawing.Point(0, 0);
-            this.cb_continuous.Name = "cb_continuous";
-            this.cb_continuous.Size = new System.Drawing.Size(124, 28);
-            this.cb_continuous.TabIndex = 55;
-            this.cb_continuous.Text = "连续绘制";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.cb_continuous);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(139, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(124, 28);
-            this.panel3.TabIndex = 56;
-            this.panel3.Text = "panel3";
-            // 
             // BioanayImagePaletteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -732,6 +733,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.collapseItem2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nud_opacity)).EndInit();
@@ -745,7 +747,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.collapseItem1.ResumeLayout(false);
             this.cll_panel.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

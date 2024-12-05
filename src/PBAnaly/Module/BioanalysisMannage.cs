@@ -615,7 +615,10 @@ namespace PBAnaly.Module
             }
             else
             {
-                imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n color scale\n min=" + algAttribute.colorMinValue.ToString() + "\n max=" + algAttribute.colorValue.ToString();
+                if(ColorIndex!=7)
+                    imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n color scale\n min=" + algAttribute.colorMinValue.ToString() + "\n max=" + algAttribute.colorValue.ToString();
+                else
+                    imagePanel.lb_wh.Text = "Radiance (p/sec/cm²/sr)\n Trans-fluorescence\n min=" + algAttribute.colorMinValue.ToString() + "\n max=" + algAttribute.colorValue.ToString();
             }
 
         }
