@@ -1520,8 +1520,34 @@ namespace PBAnaly.Module
             Wdb_title_Click(null, null);
             System.Drawing.Point readLoction = ImageProcess.ConvertPictureBoxToReal( e.Location, imagePanel.image_pl);
             if (e.Button == MouseButtons.Left)
-            {
-                if (lineOn)
+            { 
+                if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
+                {
+                    rectActiveCorner = cner;
+
+                    if (rectActiveCorner != Corner.None)
+                    {
+                        isRecDragging = true;
+                        recDragStart = readLoction;
+                        rectOriginalRect = cr;
+                        rectDragStartIndex = index;
+                    }
+                }
+                else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
+                {
+                    rectActiveCorner = cner1;
+                    if (rectActiveCorner != Corner.None)
+                    {
+                        isCirDragging = true;
+                        cirDragStart = readLoction;
+                        cireOriginalCire = curRect;
+                        circleCenter = curRect.center;
+                        circleRadio = curRect.Radius;
+                        cirDragStartIndex = index1;
+                    }
+
+                }
+                else if (lineOn)
                 {
                     drawLine = true;
                     startPoint = readLoction;
@@ -1569,32 +1595,8 @@ namespace PBAnaly.Module
                     isEndCircleDragged = true;
 
                 }
-                else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
-                {
-                    rectActiveCorner = cner1;
-                    if (rectActiveCorner != Corner.None)
-                    {
-                        isCirDragging = true;
-                        cirDragStart = readLoction;
-                        cireOriginalCire = curRect;
-                        circleCenter = curRect.center;
-                        circleRadio = curRect.Radius;
-                        cirDragStartIndex = index1;
-                    }
-
-                }
-                else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
-                {
-                    rectActiveCorner = cner;
-
-                    if (rectActiveCorner != Corner.None)
-                    {
-                        isRecDragging = true;
-                        recDragStart = readLoction;
-                        rectOriginalRect = cr;
-                        rectDragStartIndex = index;
-                    }
-                }
+                
+               
             }
             else if (e.Button == MouseButtons.Right) 
             {

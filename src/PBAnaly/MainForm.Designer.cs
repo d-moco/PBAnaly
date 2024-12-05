@@ -237,7 +237,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pl_right, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
@@ -270,7 +270,7 @@
             this.DataProcess_panel.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.DataProcess_panel.Location = new System.Drawing.Point(3, 3);
             this.DataProcess_panel.Name = "DataProcess_panel";
-            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(5);
             this.tl_right_main_view.SetRowSpan(this.DataProcess_panel, 2);
             this.DataProcess_panel.Size = new System.Drawing.Size(553, 489);
             this.DataProcess_panel.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -302,7 +302,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 88);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(206, 491);
             this.flowLayoutPanel1.TabIndex = 18;
@@ -642,9 +642,9 @@
             this.pl_right.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pl_right.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.pl_right.Location = new System.Drawing.Point(771, 57);
-            this.pl_right.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pl_right.Margin = new System.Windows.Forms.Padding(2);
             this.pl_right.Name = "pl_right";
-            this.pl_right.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pl_right.Padding = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.SetRowSpan(this.pl_right, 2);
             this.pl_right.Size = new System.Drawing.Size(324, 522);
             this.pl_right.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -665,16 +665,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(1103, 608);
             this.Controls.Add(this.thunderLabel1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.DrawerAutoHide = false;
+            this.DrawerAutoShow = true;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
