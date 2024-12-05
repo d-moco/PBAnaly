@@ -340,7 +340,7 @@
             // 
             this.image_pr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.image_pr.Duration = 0;
-            this.image_pr.ImageFit = AntdUI.TFit.Fill;
+            this.image_pr.ImageFit = AntdUI.TFit.Contain;
             this.image_pr.Location = new System.Drawing.Point(3, 3);
             this.image_pr.Name = "image_pr";
             this.image_pr.Size = new System.Drawing.Size(60, 177);
