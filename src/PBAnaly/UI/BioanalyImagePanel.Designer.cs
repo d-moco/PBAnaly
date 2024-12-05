@@ -364,7 +364,7 @@
             this.ctms_strop_stickup,
             this.ctms_strop_delete});
             this.ctms_strop.Name = "ctms_strop";
-            this.ctms_strop.Size = new System.Drawing.Size(181, 98);
+            this.ctms_strop.Size = new System.Drawing.Size(101, 76);
             // 
             // toolStripSeparator1
             // 

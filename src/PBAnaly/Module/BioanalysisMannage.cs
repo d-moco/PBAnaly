@@ -72,6 +72,7 @@ namespace PBAnaly.Module
         #region 变量
         private ShapeForm curShape = ShapeForm.None;
         private int curShapeIndex;
+        private System.Drawing.Point curShapePoint;
         
         public int ImageIndex { get; set; }// 图片加载进来的序号
         public bool Arrangement { get; set; }
@@ -1643,7 +1644,7 @@ namespace PBAnaly.Module
                     curShape = ShapeForm.Polygon;
                    
                 }
-                
+                curShapePoint = readLoction;
             }
             
         }
@@ -1681,11 +1682,25 @@ namespace PBAnaly.Module
                 case ShapeForm.Polygon:
                     break;
                 case ShapeForm.Rect:
-                    
+                    System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(curShapePoint, new System.Drawing.Size(oldCopyRect.rect.Width,oldCopyRect.rect.Height));
+                    oldCopyRect.rect = rectangle;
                     rectangles.Add(oldCopyRect);
                     
                     break;
                 case ShapeForm.Circle:
+                    int offsetX = curShapePoint.X - oldCopyCircle.center.X;
+                    int offsetY = curShapePoint.Y - oldCopyCircle.center.Y;
+
+                    // 更新圆心位置
+                    oldCopyCircle.center.X += offsetX;
+                    oldCopyCircle.center.Y += offsetY;
+                    System.Drawing.Point point = new System.Drawing.Point(oldCopyCircle.Radius.X, oldCopyCircle.Radius.Y);
+                    point.X += offsetX;
+                    point.Y += offsetY;
+                    oldCopyCircle.Radius = point;
+                    
+
+                  
                     CircleAndInfoList.Add(oldCopyCircle);
                     break;
                 default:
