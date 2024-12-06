@@ -1619,6 +1619,7 @@ namespace PBAnaly.Module
             {
                 imagePanel.ctms_strop.Enabled = true;
                 imagePanel.ctms_strop_copy.Enabled = false;
+                imagePanel.ctms_strop_delete.Enabled = false;
                 imagePanel.ctms_strop_stickup.Enabled = curIsCopy;
                 if (ImageProcess.IsPointOnLine(readLoction,startPoint,endPoint,CircleRadius))
                 {
@@ -1630,12 +1631,14 @@ namespace PBAnaly.Module
                     curShape = ShapeForm.Circle;
                     curShapeIndex = index1;
                     imagePanel.ctms_strop_copy.Enabled = true;
+                    imagePanel.ctms_strop_delete.Enabled = true;
                 }
                 else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
                 {
                     curShape = ShapeForm.Rect;
                     curShapeIndex = index;
                     imagePanel.ctms_strop_copy.Enabled = true;
+                    imagePanel.ctms_strop_delete.Enabled = true;
                 }
                 else if (drawpolygon==false &&  IsPointInPolygon(readLoction, curPolygonAndInfoList))
                 {
@@ -1704,7 +1707,7 @@ namespace PBAnaly.Module
                 default:
                     break;
             }
-            curIsCopy = false;
+         
             imagePanel.image_pl.Invalidate();
         }
         private void Ctms_strop_delete_Click(object sender, EventArgs e)
@@ -1738,7 +1741,7 @@ namespace PBAnaly.Module
                 default:
                     break;
             }
-            curShape = ShapeForm.None;
+          //  curShape = ShapeForm.None;
             imagePanel.image_pl.Invalidate();
         }
         
