@@ -496,7 +496,16 @@ namespace PBAnaly.Module
             }
 
             imagePanel.SetButtomLabel($"{image_mark_L16.Width} x {image_mark_L16.Height}" );
-
+            if (tifFiles.Length > 0) 
+            {
+                var t = tifFiles[0].Split("\\");
+                if (t.Length > 2) 
+                {
+                    imagePanel.SetButtomName($"{t[t.Length - 2]}");
+                }
+                
+            }
+            
         }
 
         private void ImageAlg(AlgAttribute aatb) 
@@ -2010,14 +2019,22 @@ namespace PBAnaly.Module
         {
             get { return imagePanel.pl_panel_image; }
         }
+        public TableLayoutPanel GetBottomPanel
+        {
+            get{ return imagePanel.tlp_bottom_panel; }
+        }
         public void Rifresh() 
         {
             imagePanel.pl_panel_image.Dock = DockStyle.Fill;
             imagePanel.image_pl.SizeMode = PictureBoxSizeMode.StretchImage;
             imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.pl_panel_image, 0, 0);
             imagePanel.tableLayoutPanel2.Controls.Add(imagePanel.tlp_right_panel, 1, 0);
-            imagePanel.tlp_right_panel.Controls.Add(imagePanel.image_pr, 0, 0);
-            imagePanel.tlp_right_panel.Controls.Add(imagePanel.lb_wh, 0, 1);
+            imagePanel.tlp_right_panel.Controls.Add(imagePanel.lb_top_info, 0, 0);
+            imagePanel.tlp_right_panel.Controls.Add(imagePanel.image_pr,0, 1);
+            imagePanel.tlp_right_panel.Controls.Add(imagePanel.lb_wh, 0, 2);
+            imagePanel.image_pr.ImageFit = TFit.Fill;
+
+            imagePanel.pl_bottom.Controls.Add(imagePanel.tlp_bottom_panel);
             imagePanel.ava_auto_Click(null,null);
 
         }

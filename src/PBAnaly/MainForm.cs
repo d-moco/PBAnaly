@@ -509,13 +509,16 @@ namespace PBAnaly
                     data_tab.SuspendLayout();
                     if(data_row >= 1 && data_row <=3)data_row = 3;
                     else if(data_row >=5 && data_row <=9) data_row = 9;
-                    data_tab.RowCount = data_row;
+                    data_tab.RowCount = data_row*2;
                     data_tab.ColumnCount = data_col + 1;
 
                    
                     for (int i = 0; i < data_row; i++)
                     {
-                        data_tab.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / data_row));
+                        if(i % 2==0)
+                            data_tab.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / data_row));
+                        else
+                            data_tab.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
                     }
                     for (int i = 0; i < data_col; i++)
                     {
@@ -546,8 +549,10 @@ namespace PBAnaly
 
                         }
                         index++;
-                        item.GetPanel.Dock = DockStyle.Fill;
+                        
                         data_tab.Controls.Add(item.GetPanel, col, row);
+                        item.GetPanel.Dock = DockStyle.Fill;
+                        data_tab.Controls.Add(item.GetBottomPanel,col,row+1);
                         item.GetImagePanel.image_pl.SizeMode = PictureBoxSizeMode.Zoom;
                         item.GetImagePanel.ava_auto_Click(null, null);
                         if (col < data_tab.ColumnCount - 2)
@@ -556,7 +561,7 @@ namespace PBAnaly
                         }
                         else
                         {
-                            row++;
+                            row += 2;
                             col = 0;
                         }
                     }
@@ -582,6 +587,7 @@ namespace PBAnaly
                         item.Value.Arrangement = false;
                         DataProcess_panel.Controls.Add(item.Value.GetImagePanel);
                         item.Value.Rifresh();
+                        item.Value.GetImagePanel.BringToFront();
                     }
                     
                 }

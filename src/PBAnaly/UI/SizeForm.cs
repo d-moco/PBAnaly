@@ -24,6 +24,12 @@ namespace PBAnaly.UI
 
             row = int.Parse(btb_row.Text);
             col = int.Parse(btb_col.Text);
+
+            if (row >= col) 
+            {
+                MessageBox.Show("行值不小于列数");
+                return;
+            }
             this.DialogResult = DialogResult.OK;
         }
 

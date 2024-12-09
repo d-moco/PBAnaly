@@ -43,32 +43,35 @@
             this.ava_zoom_out = new AntdUI.Avatar();
             this.ava__zoom_in = new AntdUI.Avatar();
             this.ava_auto = new AntdUI.Avatar();
-            this.panel3 = new AntdUI.Panel();
+            this.pl_bottom = new AntdUI.Panel();
+            this.tlp_bottom_panel = new System.Windows.Forms.TableLayoutPanel();
+            this.lb_name = new AntdUI.Label();
             this.lb_size = new AntdUI.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pl_panel_image = new AntdUI.Panel();
             this.pl_bg_panel = new AntdUI.Panel();
             this.image_pl = new System.Windows.Forms.PictureBox();
-            this.tlp_right_panel = new System.Windows.Forms.TableLayoutPanel();
-            this.lb_wh = new AntdUI.Label();
-            this.image_pr = new AntdUI.Image3D();
             this.ctms_strop = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctms_strop_copy = new System.Windows.Forms.ToolStripMenuItem();
             this.ctms_strop_stickup = new System.Windows.Forms.ToolStripMenuItem();
             this.ctms_strop_delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlp_right_panel = new System.Windows.Forms.TableLayoutPanel();
+            this.lb_wh = new AntdUI.Label();
+            this.image_pr = new AntdUI.Image3D();
             this.lb_top_info = new AntdUI.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.flowPanel1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pl_bottom.SuspendLayout();
+            this.tlp_bottom_panel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.pl_panel_image.SuspendLayout();
             this.pl_bg_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_pl)).BeginInit();
-            this.tlp_right_panel.SuspendLayout();
             this.ctms_strop.SuspendLayout();
+            this.tlp_right_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // wdb_title
@@ -247,24 +250,55 @@
             this.ava_auto.Text = "a";
             this.ava_auto.Click += new System.EventHandler(this.ava_auto_Click);
             // 
-            // panel3
+            // pl_bottom
             // 
-            this.panel3.Controls.Add(this.lb_size);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(3, 292);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(352, 13);
-            this.panel3.TabIndex = 2;
-            this.panel3.Text = "panel3";
+            this.pl_bottom.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pl_bottom.Controls.Add(this.tlp_bottom_panel);
+            this.pl_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pl_bottom.Location = new System.Drawing.Point(3, 292);
+            this.pl_bottom.Name = "pl_bottom";
+            this.pl_bottom.Size = new System.Drawing.Size(352, 13);
+            this.pl_bottom.TabIndex = 2;
+            this.pl_bottom.Text = "panel3";
+            // 
+            // tlp_bottom_panel
+            // 
+            this.tlp_bottom_panel.ColumnCount = 4;
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp_bottom_panel.Controls.Add(this.lb_name, 0, 0);
+            this.tlp_bottom_panel.Controls.Add(this.lb_size, 1, 0);
+            this.tlp_bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlp_bottom_panel.Location = new System.Drawing.Point(0, 0);
+            this.tlp_bottom_panel.Name = "tlp_bottom_panel";
+            this.tlp_bottom_panel.RowCount = 1;
+            this.tlp_bottom_panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlp_bottom_panel.Size = new System.Drawing.Size(352, 13);
+            this.tlp_bottom_panel.TabIndex = 1;
+            // 
+            // lb_name
+            // 
+            this.lb_name.BackColor = System.Drawing.Color.Transparent;
+            this.lb_name.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
+            this.lb_name.Location = new System.Drawing.Point(0, 0);
+            this.lb_name.Margin = new System.Windows.Forms.Padding(0);
+            this.lb_name.Name = "lb_name";
+            this.lb_name.Size = new System.Drawing.Size(97, 13);
+            this.lb_name.TabIndex = 1;
+            this.lb_name.Text = "800x600";
             // 
             // lb_size
             // 
-            this.lb_size.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lb_size.BackColor = System.Drawing.Color.Transparent;
             this.lb_size.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_size.Location = new System.Drawing.Point(0, 0);
+            this.lb_size.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
+            this.lb_size.Location = new System.Drawing.Point(97, 0);
             this.lb_size.Margin = new System.Windows.Forms.Padding(0);
             this.lb_size.Name = "lb_size";
-            this.lb_size.Size = new System.Drawing.Size(352, 13);
+            this.lb_size.Size = new System.Drawing.Size(120, 13);
             this.lb_size.TabIndex = 0;
             this.lb_size.Text = "800x600";
             this.lb_size.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -316,6 +350,39 @@
             this.image_pl.TabIndex = 0;
             this.image_pl.TabStop = false;
             // 
+            // ctms_strop
+            // 
+            this.ctms_strop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
+            this.ctms_strop_copy,
+            this.ctms_strop_stickup,
+            this.ctms_strop_delete});
+            this.ctms_strop.Name = "ctms_strop";
+            this.ctms_strop.Size = new System.Drawing.Size(101, 76);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
+            // 
+            // ctms_strop_copy
+            // 
+            this.ctms_strop_copy.Name = "ctms_strop_copy";
+            this.ctms_strop_copy.Size = new System.Drawing.Size(100, 22);
+            this.ctms_strop_copy.Text = "复制";
+            // 
+            // ctms_strop_stickup
+            // 
+            this.ctms_strop_stickup.Name = "ctms_strop_stickup";
+            this.ctms_strop_stickup.Size = new System.Drawing.Size(100, 22);
+            this.ctms_strop_stickup.Text = "粘贴";
+            // 
+            // ctms_strop_delete
+            // 
+            this.ctms_strop_delete.Name = "ctms_strop_delete";
+            this.ctms_strop_delete.Size = new System.Drawing.Size(100, 22);
+            this.ctms_strop_delete.Text = "删除";
+            // 
             // tlp_right_panel
             // 
             this.tlp_right_panel.BackColor = System.Drawing.Color.White;
@@ -351,46 +418,13 @@
             // 
             this.image_pr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.image_pr.Duration = 0;
-            this.image_pr.ImageFit = AntdUI.TFit.Contain;
+            this.image_pr.ImageFit = AntdUI.TFit.Fill;
             this.image_pr.Location = new System.Drawing.Point(3, 31);
             this.image_pr.Name = "image_pr";
             this.image_pr.Size = new System.Drawing.Size(60, 149);
             this.image_pr.Speed = 1;
             this.image_pr.TabIndex = 1;
             this.image_pr.Text = "image3D1";
-            // 
-            // ctms_strop
-            // 
-            this.ctms_strop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.ctms_strop_copy,
-            this.ctms_strop_stickup,
-            this.ctms_strop_delete});
-            this.ctms_strop.Name = "ctms_strop";
-            this.ctms_strop.Size = new System.Drawing.Size(101, 76);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
-            // 
-            // ctms_strop_copy
-            // 
-            this.ctms_strop_copy.Name = "ctms_strop_copy";
-            this.ctms_strop_copy.Size = new System.Drawing.Size(100, 22);
-            this.ctms_strop_copy.Text = "复制";
-            // 
-            // ctms_strop_stickup
-            // 
-            this.ctms_strop_stickup.Name = "ctms_strop_stickup";
-            this.ctms_strop_stickup.Size = new System.Drawing.Size(100, 22);
-            this.ctms_strop_stickup.Text = "粘贴";
-            // 
-            // ctms_strop_delete
-            // 
-            this.ctms_strop_delete.Name = "ctms_strop_delete";
-            this.ctms_strop_delete.Size = new System.Drawing.Size(100, 22);
-            this.ctms_strop_delete.Text = "删除";
             // 
             // lb_top_info
             // 
@@ -408,7 +442,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 308);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pl_bottom);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.wdb_title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -421,13 +455,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.flowPanel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.pl_bottom.ResumeLayout(false);
+            this.tlp_bottom_panel.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pl_panel_image.ResumeLayout(false);
             this.pl_bg_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.image_pl)).EndInit();
-            this.tlp_right_panel.ResumeLayout(false);
             this.ctms_strop.ResumeLayout(false);
+            this.tlp_right_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -438,7 +473,6 @@
         private AntdUI.Panel panel2;
         private AntdUI.FlowPanel flowPanel1;
         private AntdUI.Avatar ava_auto;
-        private AntdUI.Panel panel3;
         private AntdUI.Label lb_size;
         public System.Windows.Forms.ComboBox cbb_mode;
         public AntdUI.Avatar ava_zoom_out;
@@ -462,5 +496,8 @@
         public System.Windows.Forms.ToolStripMenuItem ctms_strop_stickup;
         public System.Windows.Forms.ToolStripMenuItem ctms_strop_delete;
         public AntdUI.Label lb_top_info;
+        private AntdUI.Label lb_name;
+        public AntdUI.Panel pl_bottom;
+        public System.Windows.Forms.TableLayoutPanel tlp_bottom_panel;
     }
 }

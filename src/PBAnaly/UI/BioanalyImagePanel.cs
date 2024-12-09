@@ -54,7 +54,10 @@ namespace PBAnaly.UI
         {
             lb_size.Text = value;
         }
-
+        public void SetButtomName(string value)
+        {
+            lb_name.Text = value;
+        }
         public void SetImage(Image<L16> image) 
         {
             if (image_pl.InvokeRequired) 

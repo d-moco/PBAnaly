@@ -48,7 +48,7 @@
             this.btb_row.ReadOnly = false;
             this.btb_row.Size = new System.Drawing.Size(100, 41);
             this.btb_row.TabIndex = 0;
-            this.btb_row.Text = "2";
+            this.btb_row.Text = "1";
             this.btb_row.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.btb_row.UseSystemPasswordChar = false;
             // 
