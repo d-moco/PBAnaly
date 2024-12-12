@@ -112,7 +112,18 @@ namespace PBAnaly.Module
 
             return pixels;
         }
+        public static ushort[] ConvertL16ImageToUShortArray(Image<L16> image)
+        {
+            var byteArray  = ConvertL16ImageToByteArray(image);
+            ushort[] ushortArray = new ushort[byteArray.Length / 2];
+            for (int i = 0; i < byteArray.Length; i += 2)
+            {
+                // 使用BitConverter来确保字节正确地转换为ushort
+                ushortArray[i / 2] = BitConverter.ToUInt16(byteArray, i);
+            }
 
+            return ushortArray;
+        }
         public static Bitmap ConvertL16ToBitmap(Image<L16> image)
         {
             using (var ms = new MemoryStream())

@@ -70,12 +70,16 @@ namespace PBAnaly.Module
         }
         #endregion
         #region 变量
+        private ShapeForm curTmpDownShape = ShapeForm.None;// 用于快捷键  临时确认点击了那个矩形
         private ShapeForm curShape = ShapeForm.None;
+        private int curTmpDownShapeIndex;
         private int curShapeIndex;
+        private System.Drawing.Point curTmpDownShapePoint;
         private System.Drawing.Point curShapePoint;
         
+        public bool IsActive { get; set; } // 当前窗口是否在活跃状态  用来判断是否需要操作
         public int ImageIndex { get; set; }// 图片加载进来的序号
-        public bool Arrangement { get; set; }
+        public int Arrangement { get; set; } // 0:代表单张图 1:代表是合并图图但不做处理 2:代表是合并图 并且为处理图
         private Dictionary<string, BioanalysisMannage> bioanalysisMannages;
         public string path { get; set; }
         private string mark_path;
@@ -471,6 +475,7 @@ namespace PBAnaly.Module
             imagePaletteForm.fb_fixSetting.Click += Fb_fixSetting_Click;
             imagePaletteForm.cb_continuous.CheckedChanged += Cb_continuous_CheckedChanged;
 
+            KeyboardListener.Register(OnKeyPressed); // 创建键盘钩子
         }
 
         
@@ -501,7 +506,7 @@ namespace PBAnaly.Module
                 var t = tifFiles[0].Split("\\");
                 if (t.Length > 2) 
                 {
-                    imagePanel.SetButtomName($"{t[t.Length - 2]}");
+                    imagePanel.SetButtomName($"{t[t.Length - 2]} {image_mark_L16.Width} x {image_mark_L16.Height}");
                 }
                 
             }
@@ -760,8 +765,17 @@ namespace PBAnaly.Module
         #region 事件
         private void Wdb_title_Click(object sender, EventArgs e)
         {
-           this.pl_right.Controls.Clear();
-            this.pl_right.Controls.Add(this.imagePaletteForm);
+            if (Arrangement == 2 || Arrangement == 0) 
+            {
+                this.pl_right.Controls.Clear();
+                this.pl_right.Controls.Add(this.imagePaletteForm);
+            }
+                
+            foreach (var item in bioanalysisMannages)
+            {
+                item.Value.IsActive = false;
+            }
+            IsActive = true;
             this.imagePanel.BringToFront();
         }
         private void Cb_scientific_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
@@ -793,7 +807,7 @@ namespace PBAnaly.Module
         }
         private void Dtb_brightness_ValueChanged()
         {
-            if (Arrangement) 
+            if (Arrangement == 2) 
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -808,7 +822,7 @@ namespace PBAnaly.Module
         }
         private void Dtb_opacity_ValueChanged()
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -823,7 +837,7 @@ namespace PBAnaly.Module
         }
         private void Nud_opacity_ValueChanged(object sender, System.EventArgs e)
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -839,7 +853,7 @@ namespace PBAnaly.Module
 
         private void Nud_brightness_ValueChanged(object sender, System.EventArgs e)
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -854,7 +868,7 @@ namespace PBAnaly.Module
         }
         private void Nud_colorMin_ValueChanged(object sender, System.EventArgs e)
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -870,7 +884,7 @@ namespace PBAnaly.Module
 
         private void Nud_colorMax_ValueChanged(object sender, System.EventArgs e)
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 { 
@@ -886,7 +900,7 @@ namespace PBAnaly.Module
 
         private void Dtb_colorMin_ValueChanged()
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -902,7 +916,7 @@ namespace PBAnaly.Module
 
         private void Dtb_colorMax_ValueChanged()
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -917,7 +931,7 @@ namespace PBAnaly.Module
         }
         private void Cb_colortable_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (Arrangement)
+            if (Arrangement == 2)
             {
                 foreach (var item in bioanalysisMannages)
                 {
@@ -941,7 +955,7 @@ namespace PBAnaly.Module
             // 绘制直线
             if ((startPoint != System.Drawing.Point.Empty && endPoint != System.Drawing.Point.Empty))
             {
-                if (Arrangement) 
+                if (Arrangement == 2) 
                 {
                     foreach (var item in bioanalysisMannages)
                     {
@@ -1224,7 +1238,18 @@ namespace PBAnaly.Module
                             rab.pdinfovc = curpdinfovc;
                         imagePaletteForm.SetInfo = "w:" + rab.rect.Width.ToString() + "h:" + rab.rect.Height.ToString();
                         // 完成绘制并保存矩形
-                        rectangles.Add(rab);
+                        if (Arrangement == 2) 
+                        {
+                            foreach (var item in bioanalysisMannages)
+                            {
+                                item.Value.rectangles.Add(rab);
+                            }
+                        }
+                        else
+                        {
+                            rectangles.Add(rab);
+                        }
+                       
                         currentRectangle = null;
                         drawRect = false;
                         imagePanel.image_pl.Invalidate();
@@ -1262,7 +1287,18 @@ namespace PBAnaly.Module
                     if (curpdinfovc != null)
                         rab.pdinfovc = curpdinfovc;
                     // 完成绘制并保存矩形
-                    CircleAndInfoList.Add(rab);
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                           item.Value.CircleAndInfoList.Add(rab);
+                        }
+                    }
+                    else
+                    {
+                        CircleAndInfoList.Add(rab);
+                    }
+                   
 
                     drawCircle = false;
                     if (!isContinuous)
@@ -1290,8 +1326,18 @@ namespace PBAnaly.Module
                     }
                     if (curpdinfovc != null)
                         rattb.pdinfovc = curpdinfovc;
-
-                    rectangles[rectDragStartIndex] = rattb;
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                           item.Value.rectangles[rectDragStartIndex] = rattb;
+                        }
+                    }
+                    else
+                    {
+                        rectangles[rectDragStartIndex] = rattb;
+                    }
+                    
                     imagePaletteForm.SetInfo = "w:" + recDragRect.Width.ToString() + "h:" + recDragRect.Height.ToString();
                     isRecDragging = false;
                     rectActiveCorner = Corner.None;
@@ -1322,7 +1368,18 @@ namespace PBAnaly.Module
                     }
                     circeAndInfo.pdinfovc = curpdinfovc;
                     imagePaletteForm.SetInfo = "radio:" + radius.ToString();
-                    CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            item.Value.CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
+                        }
+                    }
+                    else
+                    {
+                        CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
+                    }
+                   
                     isCirDragging = false;
                     cirDragStartIndex = -1;
                     imagePanel.image_pl.Invalidate();
@@ -1531,8 +1588,18 @@ namespace PBAnaly.Module
                             }
                         }
                         curPolygonAndInfoList.pdinfovc = curpdinfovc;
-
-                        PolygonAndInfoList.Add(curPolygonAndInfoList);
+                        if (Arrangement == 2)
+                        {
+                            foreach (var item in bioanalysisMannages)
+                            {
+                                item.Value.PolygonAndInfoList.Add(curPolygonAndInfoList);
+                            }
+                        }
+                        else
+                        {
+                            PolygonAndInfoList.Add(curPolygonAndInfoList);
+                        }
+                        
 
                     }
 
@@ -1543,16 +1610,22 @@ namespace PBAnaly.Module
 
         private void Image_pl_MouseDown(object sender, MouseEventArgs e)
         {
+           
+            curTmpDownShape = ShapeForm.None;
+            
             Wdb_title_Click(null, null);
             System.Drawing.Point readLoction = ImageProcess.ConvertPictureBoxToReal( e.Location, imagePanel.image_pl);
             if (e.Button == MouseButtons.Left)
-            { 
+            {
+                curTmpDownShapePoint = readLoction;
                 if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
                 {
                     rectActiveCorner = cner;
 
                     if (rectActiveCorner != Corner.None)
                     {
+                        curTmpDownShape = ShapeForm.Rect;
+                        curTmpDownShapeIndex = index;
                         isRecDragging = true;
                         recDragStart = readLoction;
                         rectOriginalRect = cr;
@@ -1564,6 +1637,8 @@ namespace PBAnaly.Module
                     rectActiveCorner = cner1;
                     if (rectActiveCorner != Corner.None)
                     {
+                        curTmpDownShape = ShapeForm.Circle;
+                        curTmpDownShapeIndex = index;
                         isCirDragging = true;
                         cirDragStart = readLoction;
                         cireOriginalCire = curRect;
@@ -1633,7 +1708,8 @@ namespace PBAnaly.Module
                 if (ImageProcess.IsPointOnLine(readLoction,startPoint,endPoint,CircleRadius))
                 {
                     curShape = ShapeForm.Line;
-                    
+                    imagePanel.ctms_strop_delete.Enabled = true;
+
                 }
                 else if (IsPointInCircle(readLoction, CircleAndInfoList, out var cner1, out var curRect, out var index1))
                 {
@@ -1652,7 +1728,8 @@ namespace PBAnaly.Module
                 else if (drawpolygon==false &&  IsPointInPolygon(readLoction, curPolygonAndInfoList))
                 {
                     curShape = ShapeForm.Polygon;
-                   
+                    imagePanel.ctms_strop_delete.Enabled = true;
+
                 }
                 curShapePoint = readLoction;
             }
@@ -1694,7 +1771,18 @@ namespace PBAnaly.Module
                 case ShapeForm.Rect:
                     System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(curShapePoint, new System.Drawing.Size(oldCopyRect.rect.Width,oldCopyRect.rect.Height));
                     oldCopyRect.rect = rectangle;
-                    rectangles.Add(oldCopyRect);
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            item.Value.rectangles.Add(oldCopyRect);
+                        }
+                    }
+                    else
+                    {
+                        rectangles.Add(oldCopyRect);
+                    }
+                    
                     
                     break;
                 case ShapeForm.Circle:
@@ -1708,10 +1796,20 @@ namespace PBAnaly.Module
                     point.X += offsetX;
                     point.Y += offsetY;
                     oldCopyCircle.Radius = point;
-                    
 
-                  
-                    CircleAndInfoList.Add(oldCopyCircle);
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            item.Value.CircleAndInfoList.Add(oldCopyCircle);
+                        }
+                    }
+                    else
+                    {
+                        CircleAndInfoList.Add(oldCopyCircle);
+                    }
+
+                    
                     break;
                 default:
                     break;
@@ -1719,6 +1817,7 @@ namespace PBAnaly.Module
          
             imagePanel.image_pl.Invalidate();
         }
+
         private void Ctms_strop_delete_Click(object sender, EventArgs e)
         {
             switch (curShape)
@@ -1726,24 +1825,75 @@ namespace PBAnaly.Module
                 case ShapeForm.None:
                     break;
                 case ShapeForm.Line:
-                    startPoint = new System.Drawing.Point(-10, 0);
-                    endPoint = new System.Drawing.Point(-10, 0);
-                    imagePanel.image_pl.Invalidate();
-                    imagePaletteForm.flb_act_mm.Text = ("0");
-                    imagePaletteForm.flb_act_mm.Refresh();
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            item.Value.startPoint = new System.Drawing.Point(-10, 0);
+                            item.Value.endPoint = new System.Drawing.Point(-10, 0);
+                            item.Value.imagePanel.image_pl.Invalidate();
+                            item.Value.imagePaletteForm.flb_act_mm.Text = ("0");
+                            item.Value.imagePaletteForm.flb_act_mm.Refresh();
+                        }
+                    }
+                    else
+                    {
+                        startPoint = new System.Drawing.Point(-10, 0);
+                        endPoint = new System.Drawing.Point(-10, 0);
+                        imagePanel.image_pl.Invalidate();
+                        imagePaletteForm.flb_act_mm.Text = ("0");
+                        imagePaletteForm.flb_act_mm.Refresh();
+                    }
+                    
                     break;
                 case ShapeForm.Polygon:
-                    PolygonAndInfoList.Clear();
-                    curPolygonAndInfoList.points.Clear();
-                    curPolygonAndInfoList.pdinfovc = null;
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            item.Value.PolygonAndInfoList.Clear();
+                            if(item.Value.curPolygonAndInfoList.points!=null)
+                                item.Value.curPolygonAndInfoList.points.Clear();
+                            item.Value.curPolygonAndInfoList.pdinfovc = null;
+                        }
+                    }
+                    else
+                    {
+                        PolygonAndInfoList.Clear();
+                        curPolygonAndInfoList.points.Clear();
+                        curPolygonAndInfoList.pdinfovc = null;
+                    }
+                   
                    
                     break;
                 case ShapeForm.Rect:
-                    rectangles.RemoveAt(curShapeIndex);
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            item.Value.rectangles.RemoveAt(curShapeIndex);
+                        }
+                    }
+                    else
+                    {
+                        rectangles.RemoveAt(curShapeIndex);
+                    }
+                    
                    
                     break;
                 case ShapeForm.Circle:
-                    CircleAndInfoList.RemoveAt(curShapeIndex);
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            item.Value.CircleAndInfoList.RemoveAt(curShapeIndex);
+                        }
+                    }
+                    else
+                    {
+                        CircleAndInfoList.RemoveAt(curShapeIndex);
+                    }
+                    
                    
                     
                     break;
@@ -1754,11 +1904,32 @@ namespace PBAnaly.Module
             imagePanel.image_pl.Invalidate();
         }
         
+        private  void OnKeyPressed(Keys key, bool ctrl, bool shift, bool alt)
+        {
+            if (IsActive == false) 
+            {
+                return;
+            }
+           
+            if (ctrl && key == Keys.C)
+            {
+                curShape = curTmpDownShape;
+                curTmpDownShapeIndex = curShapeIndex;
+                // 复制矩形 目前只允许复制矩形和圆形
+                Ctms_strop_copy_Click(null, null);
+            }
 
+            if (ctrl && key == Keys.V)
+            {
+                curShapePoint = curTmpDownShapePoint;
+                Ctms_strop_stickup_Click(null, null);
+            }
+        }
         private void ImagePanel_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.imagePaletteForm != null)
             {
+                KeyboardListener.Unregister(OnKeyPressed);
                 this.imagePaletteForm.Close();
                 this.imagePaletteForm.Dispose();
                 this.imagePaletteForm = null;

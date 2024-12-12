@@ -263,13 +263,14 @@
             // 
             // tlp_bottom_panel
             // 
-            this.tlp_bottom_panel.ColumnCount = 4;
-            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp_bottom_panel.ColumnCount = 5;
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tlp_bottom_panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tlp_bottom_panel.Controls.Add(this.lb_name, 0, 0);
-            this.tlp_bottom_panel.Controls.Add(this.lb_size, 1, 0);
+            this.tlp_bottom_panel.Controls.Add(this.lb_size, 4, 0);
             this.tlp_bottom_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_bottom_panel.Location = new System.Drawing.Point(0, 0);
             this.tlp_bottom_panel.Name = "tlp_bottom_panel";
@@ -286,7 +287,7 @@
             this.lb_name.Location = new System.Drawing.Point(0, 0);
             this.lb_name.Margin = new System.Windows.Forms.Padding(0);
             this.lb_name.Name = "lb_name";
-            this.lb_name.Size = new System.Drawing.Size(97, 13);
+            this.lb_name.Size = new System.Drawing.Size(348, 13);
             this.lb_name.TabIndex = 1;
             this.lb_name.Text = "800x600";
             // 
@@ -295,13 +296,14 @@
             this.lb_size.BackColor = System.Drawing.Color.Transparent;
             this.lb_size.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lb_size.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
-            this.lb_size.Location = new System.Drawing.Point(97, 0);
+            this.lb_size.Location = new System.Drawing.Point(351, 0);
             this.lb_size.Margin = new System.Windows.Forms.Padding(0);
             this.lb_size.Name = "lb_size";
-            this.lb_size.Size = new System.Drawing.Size(120, 13);
+            this.lb_size.Size = new System.Drawing.Size(1, 13);
             this.lb_size.TabIndex = 0;
             this.lb_size.Text = "800x600";
-            this.lb_size.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_size.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lb_size.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -321,11 +323,18 @@
             // 
             // pl_panel_image
             // 
-            this.pl_panel_image.Back = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.pl_panel_image.Back = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pl_panel_image.Badge = "";
+            this.pl_panel_image.BadgeOffsetX = 0;
+            this.pl_panel_image.BadgeOffsetY = 200;
+            this.pl_panel_image.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(26)))), ((int)(((byte)(111)))));
+            this.pl_panel_image.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.pl_panel_image.BorderWidth = 5F;
             this.pl_panel_image.Controls.Add(this.pl_bg_panel);
             this.pl_panel_image.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pl_panel_image.Location = new System.Drawing.Point(3, 3);
             this.pl_panel_image.Name = "pl_panel_image";
+            this.pl_panel_image.Padding = new System.Windows.Forms.Padding(5);
             this.pl_panel_image.Size = new System.Drawing.Size(280, 237);
             this.pl_panel_image.TabIndex = 0;
             this.pl_panel_image.Text = "panel4";

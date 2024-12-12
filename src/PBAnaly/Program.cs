@@ -3,6 +3,7 @@ using System.Threading;
 using System.IO;
 using System.Windows.Forms;
 using PBAnaly.Module;
+using PBAnaly.UI;
 namespace PBAnaly
 {
     public static class Global

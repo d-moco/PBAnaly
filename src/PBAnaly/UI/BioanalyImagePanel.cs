@@ -43,11 +43,11 @@ namespace PBAnaly.UI
             pl_bg_panel.Width = pl_panel_image.Width;
             pl_bg_panel.Height = pl_panel_image.Height;
             CenterPictureBox();
-
+           
             image_pl.MouseWheel += Image_pl_MouseWheel;
         }
 
-       
+
 
         #region 对外方法
         public void SetButtomLabel(string value) 
@@ -176,10 +176,10 @@ namespace PBAnaly.UI
         #region 事件
         public void ava_auto_Click(object sender, EventArgs e)
         {
-           
+            pl_panel_image.Back = System.Drawing.Color.Gray;
             pl_bg_panel.Location = new System.Drawing.Point(pl_panel_image.Location.X, pl_panel_image.Location.Y);
-            pl_bg_panel.Width = pl_panel_image.Width;
-            pl_bg_panel.Height = pl_panel_image.Height;
+            pl_bg_panel.Width = pl_panel_image.Width - 10;
+            pl_bg_panel.Height = pl_panel_image.Height -10;
             CenterPictureBox();
         }
         private void ava__zoom_in_Click(object sender, EventArgs e)
@@ -263,10 +263,10 @@ namespace PBAnaly.UI
             currentZoom *= factor;
             int w = (int)(pl_bg_panel.Width * factor);
             int h = (int)(pl_bg_panel.Height * factor);
-            if (w < pl_panel_image.Width || h < pl_panel_image.Height) 
+            if (w < pl_panel_image.Width - 50 || h < pl_panel_image.Height - 50)
             {
-                w = pl_panel_image.Width;
-                h = pl_panel_image.Height;
+                w = pl_panel_image.Width - 50;
+                h = pl_panel_image.Height - 50;
             }
 
             if (w > pl_panel_image.Width * 5 || h > pl_panel_image.Height * 5)
