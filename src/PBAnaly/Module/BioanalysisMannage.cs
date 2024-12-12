@@ -784,8 +784,20 @@ namespace PBAnaly.Module
             {
                 imagePaletteForm.cb_scientific.Checked = imagePanel.cb_scientific.Checked;
             }
-            ScientificON = imagePanel.cb_scientific.Checked;
-            imagePaletteForm.RefreshscientificON(ScientificON);
+            if (Arrangement == 2) 
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.ScientificON = imagePanel.cb_scientific.Checked;
+                    item.Value.imagePaletteForm.RefreshscientificON(ScientificON);
+                }
+            }
+            else
+            {
+                ScientificON = imagePanel.cb_scientific.Checked;
+                imagePaletteForm.RefreshscientificON(ScientificON);
+            }
+           
         }
         private void Cb_imagepalette_scientific_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {

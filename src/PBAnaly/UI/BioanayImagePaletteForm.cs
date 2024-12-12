@@ -62,6 +62,7 @@ namespace PBAnaly.UI
 
                 pl_max.Controls.Clear();
                 pl_min.Controls.Clear();
+                if (tb_max == null) return;
                 tb_max.Dispose();
                 tb_min.Dispose();
                 tb_max = null;
