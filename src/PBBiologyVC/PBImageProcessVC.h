@@ -59,7 +59,7 @@ namespace PBBiologyVC {
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_rect_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, float max, float min,int x,int y,int w,int h);
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_circle_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int r);
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_polygon_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, float max, float min, List<PBBiologyVC::Point_VC^>^ list_point);
-		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_wand_vc(System::Byte* mat, System::Byte* dst, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int th);
+		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_wand_vc(System::Byte* mat, System::Byte* dst, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int th, int% _dstW, int% _dstH, int% _dstX, int% _dstY);
 	private:
 		
 	};

@@ -129,10 +129,13 @@ PBBiologyVC::Pseudo_infoVC^ PBBiologyVC::PBImageProcessVC::get_pseudo_info_polyg
 	return ppinfovc;
 }
 
-PBBiologyVC::Pseudo_infoVC^ PBBiologyVC::PBImageProcessVC::get_pseudo_info_wand_vc(System::Byte* mat, System::Byte* dst, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int th)
+PBBiologyVC::Pseudo_infoVC^ PBBiologyVC::PBImageProcessVC::get_pseudo_info_wand_vc(System::Byte* mat, System::Byte* dst, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int th, int% _dstW,int%  _dstH,int% _dstX,int% _dstY)
 {
 	cv::Mat image(height, width, CV_16UC1, mat);
-	cv::Mat mask = get_magic_wand_image(image, x, y, 10);
+	cv::Mat image_8bit;
+	cv::normalize(image, image_8bit, 0, 255, cv::NORM_MINMAX); // 归一化到 0-255
+	image_8bit.convertTo(image_8bit, CV_8UC1);                 // 转换为 CV_8UC1
+	cv::Mat mask = get_magic_wand_image(image_8bit, x, y, th);
 	PseudoInfo pinfo = get_pseudo_info(image, mask, max, min);
 
 	
@@ -163,10 +166,17 @@ PBBiologyVC::Pseudo_infoVC^ PBBiologyVC::PBImageProcessVC::get_pseudo_info_wand_
 	// 如果找到了最大轮廓，绘制在黑色背景上
 	if (max_contour_index != -1) {
 		cv::drawContours(output, contours, max_contour_index, cv::Scalar(255, 255, 255), 2); // 白色线条，线宽为2
+		cv::Rect boundingBox = cv::boundingRect(contours[max_contour_index]);
+		cv::rectangle(output, boundingBox, cv::Scalar(0, 255, 0), 2);
+		_dstX = boundingBox.x;
+		_dstY = boundingBox.y;
+		_dstW = boundingBox.width;
+		_dstH = boundingBox.height;
+
 	}
 
-	imshow("a", output);
-	waitKey(0);
+	/*imshow("a", output);
+	waitKey(0);*/
 	return ppinfovc;
 }
 

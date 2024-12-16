@@ -133,20 +133,14 @@
   <data name="EtBr_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EtBr_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="壁纸" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\壁纸.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="保存图片" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\保存图片.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="线段" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\线段.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="YellowHot_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\YellowHot_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="蛋白质-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\蛋白质-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="重置" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\重置.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="饼干" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\饼干.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Black_Green_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Black_Green_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,11 +163,17 @@
   <data name="波形设置-未选中" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\波形设置-未选中.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Black_Blue_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Black_Blue_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="zoom-in" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\zoom-in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="数据报告 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\数据报告 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="導出" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\導出.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="保存1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\保存.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,20 +181,11 @@
   <data name="圖片_20240731174523" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\圖片_20240731174523.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="图片管理" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\图片管理.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="圆形" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\圆形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Black_Red_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Black_Red_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="京仪科技定稿_画板 1 副本2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\京仪科技定稿_画板 1 副本2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="数据报告" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\数据报告.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zoom-out" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zoom-out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -204,6 +195,9 @@
   </data>
   <data name="风控" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\风控.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Black_SDS_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Black_SDS_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="分析" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\分析.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,11 +229,17 @@
   <data name="C" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\C.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="前台" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\前台.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="图片管理" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\图片管理.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="线段 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\线段 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="圆形" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\圆形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="執行日誌紀錄" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\執行日誌紀錄.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="圆形1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\圆形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="主页面-图像编辑-正反片" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\主页面-图像编辑-正反片.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,46 +250,49 @@
   <data name="Black_Yley_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Black_Yley_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="導出" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\導出.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="线段 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\线段 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Pseudo_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pseudo_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="线段" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\线段.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="10矩形" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10矩形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="放大" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\放大.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Black_Green_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Black_Green_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="執行日誌紀錄" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\執行日誌紀錄.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="YellowHot_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\YellowHot_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="饼干" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\饼干.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="蛋白质-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\蛋白质-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="壁纸" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\壁纸.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="数据报告" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\数据报告.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="圆形1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\圆形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="zoom-in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoom-in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="黑白平衡" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\黑白平衡.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Black_SDS_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_SDS_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="重置" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\重置.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="放大" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\放大.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="前台" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\前台.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="波形图" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\波形图.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="数据报告 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\数据报告 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="文本" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\文本.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

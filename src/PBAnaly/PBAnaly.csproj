@@ -387,6 +387,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GS-Analy.ico" />
+    <None Include="Resources\文本.png" />
     <None Include="Resources\数据报告 %281%29.png" />
     <None Include="Resources\数据报告.png" />
     <None Include="Resources\线段 %281%29.png" />

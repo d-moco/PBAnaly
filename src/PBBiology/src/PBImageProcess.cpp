@@ -1214,18 +1214,29 @@ Mat get_photon_image(Mat src, float sec, float Wcm, float Hcm, float sr)
 
 Mat get_magic_wand_image(Mat src, int x, int y, int th)
 {
+    std::cout << "1" << std::endl;
     Mat matDst = cv::Mat::zeros(src.size(), CV_8UC1);
+    std::cout << "11" << std::endl;
     cv::Point2i pt(x, y);
+    std::cout << "12" << std::endl;
     cv::Point2i ptGrowing;
+    std::cout << "13" << std::endl;
     int nGrowLable = 0;
     int nSrcValue = 0;
     int nCurValue = 0;
     int mat_cnt = 0;
     int DIR[8][2] = { { -1, -1 }, { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 } };
+    std::cout << "14" << std::endl;
     std::vector<cv::Point2i> vcGrowPt;
+    std::cout << "15" << std::endl;
     vcGrowPt.push_back(pt);
+    std::cout << "16" << std::endl;
     matDst.at<uchar>(pt.y, pt.x) = 255;
+    std::cout << "17" << std::endl;
+    std::cout << "w:" << src.rows << "h:" << src.cols << std::endl;
+    std::cout << pt.y <<":1:" << pt.x << std::endl;
     nSrcValue = src.at<uchar>(pt.y, pt.x);
+    std::cout << "2" << std::endl;
     while (!vcGrowPt.empty())
     {
         pt = vcGrowPt.back();
@@ -1258,12 +1269,14 @@ Mat get_magic_wand_image(Mat src, int x, int y, int th)
                 temp_vcGrowPt_size++;
             }
         }
+        std::cout << "3" << std::endl;
         //相邻的生长点不是单向生长，则生长点有效
         if (temp_vcGrowPt_size >= 1) {
             mat_cnt++;
             matDst.at<uchar>(pt.y, pt.x) = 255;
             vcGrowPt.insert(vcGrowPt.end(), temp_vcGrowPt.begin(), temp_vcGrowPt.end());
         }
+        std::cout << "4" << std::endl;
     }
     return matDst;
 }

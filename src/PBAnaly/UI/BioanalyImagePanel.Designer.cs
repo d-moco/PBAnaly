@@ -323,11 +323,12 @@
             // 
             // pl_panel_image
             // 
-            this.pl_panel_image.Back = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pl_panel_image.ArrowSize = 0;
+            this.pl_panel_image.Back = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
             this.pl_panel_image.Badge = "";
             this.pl_panel_image.BadgeOffsetX = 0;
-            this.pl_panel_image.BadgeOffsetY = 200;
-            this.pl_panel_image.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(26)))), ((int)(((byte)(111)))));
+            this.pl_panel_image.BadgeOffsetY = -100;
+            this.pl_panel_image.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
             this.pl_panel_image.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.pl_panel_image.BorderWidth = 5F;
             this.pl_panel_image.Controls.Add(this.pl_bg_panel);

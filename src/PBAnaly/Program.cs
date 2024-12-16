@@ -63,7 +63,7 @@ namespace PBAnaly
 #if true
             string macAddress =util.GetMotherboardSerial();
             if (macAddress == "PM00P0209N000037" || macAddress == "07D4822_M81D023244" || macAddress == "YQ1711233HY01423" || macAddress == "S312NXCV0056AZMB" || macAddress == "PM82L0235P000452"|| macAddress == "MP2M55J0" 
-                    || macAddress == "S936NXCV000SJ2MB"|| macAddress == "S730NXCV009371MB" || macAddress == "/47Z87N3/CNFCW0023303RG/")
+                    || macAddress == "S936NXCV000SJ2MB"|| macAddress == "S730NXCV009371MB" || macAddress == "/47Z87N3/CNFCW0023303RG/" || true)
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

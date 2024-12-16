@@ -327,7 +327,11 @@ namespace PBAnaly
                     bioanalyName.Clear();
                 }
                 BioanalysisMannage bioanalysisMannage = new BioanalysisMannage(selectedFilePath, pl_right, bioanalysisMannages);
-                
+                if (bioanalysisMannage.GetImagePanel == null) 
+                {
+                    bioanalysisMannage = null;
+                    return;
+                }
                 DataProcess_panel.Controls.Add(bioanalysisMannage.GetImagePanel);
                 bioanalysisMannage.GetImagePanel.BringToFront();
 

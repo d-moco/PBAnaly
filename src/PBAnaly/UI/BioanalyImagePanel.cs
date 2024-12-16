@@ -176,7 +176,7 @@ namespace PBAnaly.UI
         #region 事件
         public void ava_auto_Click(object sender, EventArgs e)
         {
-            pl_panel_image.Back = System.Drawing.Color.Gray;
+            //pl_panel_image.Back = System.Drawing.Color.Gray;
             pl_bg_panel.Location = new System.Drawing.Point(pl_panel_image.Location.X, pl_panel_image.Location.Y);
             pl_bg_panel.Width = pl_panel_image.Width - 10;
             pl_bg_panel.Height = pl_panel_image.Height -10;
