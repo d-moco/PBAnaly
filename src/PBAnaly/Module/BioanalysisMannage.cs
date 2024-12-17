@@ -127,7 +127,7 @@ namespace PBAnaly.Module
         private const int CircleRadius = 5;
         private bool lineOn =false;
         private bool drawLine = false;
-        private bool drawTextbox  = false;// 绘制textbox的标签
+        private bool TextboxOn  = false;// 绘制textbox的标签
 
 
         private bool CircleOn = false;
@@ -158,7 +158,9 @@ namespace PBAnaly.Module
         private CirceAndInfo cireOriginalCire;
 
         private List<TextBoxInfo> textBoxInfos = new List<TextBoxInfo>();
+        private bool drawTextBox = false;
         private int curTextBox = -1;
+        private TextBoxInfo curTextBoxinfo;
         private List<RectAttribute> wandRectangle = new List<RectAttribute>(); // 存储所有绘制完成的矩形
         private bool drawpolygon = false;
         private List<PolygonAndInfo> PolygonAndInfoList = new List<PolygonAndInfo>();
@@ -530,12 +532,12 @@ namespace PBAnaly.Module
                 }
                 if (image_mark_L16 == null) 
                 {
-                    MessageBox.Show("缺少mark图 请检查文件夹中是否存在mark图");
+                    MessageBox.Show("样品图加载不正确,请重新加载.....");
                     return false;
                 }
                 if (image_org_L16 == null) 
                 {
-                    MessageBox.Show("缺少为彩图 请检查文件夹中是否存在伪彩图");
+                    MessageBox.Show("缺少伪彩图 请检查文件夹中是否存在伪彩图");
                     return false;
                 }
                 imagePanel.SetButtomLabel($"{image_mark_L16.Width} x {image_mark_L16.Height}");
@@ -1158,7 +1160,7 @@ namespace PBAnaly.Module
                 index++;
             }
 
-            if (drawRect) 
+            if (drawRect|| drawTextBox) 
             {
                 if (currentRectangle.HasValue)
                 {
@@ -1288,22 +1290,7 @@ namespace PBAnaly.Module
             {
                 int isStart = 0;
                 System.Drawing.Point point = new System.Drawing.Point();
-                foreach (var item1 in PolygonAndInfoList)
-                {
-                    foreach (var item in item1.points)
-                    {
-                        if (isStart == 0)
-                        {
-                            point = ImageProcess.ConvertRealToPictureBox( item,imagePanel.image_pl);
-                        }
-                        System.Drawing.Point curpoint = ImageProcess.ConvertRealToPictureBox(item, imagePanel.image_pl);
-                        ImageProcess.DrawCircle(g, curpoint, CircleRadius, Pens.Blue, Brushes.LightBlue);
-                        g.DrawLine(Pens.Red, curpoint, point);
-                        point = curpoint;
-                        isStart++;
-                    }
-
-                }
+               
 
                 if (drawpolygon)
                 {
@@ -1326,6 +1313,22 @@ namespace PBAnaly.Module
                 }
                 else
                 {
+                    foreach (var item1 in PolygonAndInfoList)
+                    {
+                        foreach (var item in item1.points)
+                        {
+                            if (isStart == 0)
+                            {
+                                point = ImageProcess.ConvertRealToPictureBox(item, imagePanel.image_pl);
+                            }
+                            System.Drawing.Point curpoint = ImageProcess.ConvertRealToPictureBox(item, imagePanel.image_pl);
+                            ImageProcess.DrawCircle(g, curpoint, CircleRadius, Pens.Blue, Brushes.LightBlue);
+                            g.DrawLine(Pens.Red, curpoint, point);
+                            point = curpoint;
+                            isStart++;
+                        }
+
+                    }
                     if (curPolygonAndInfoList.pdinfovc != null)
                     {
 
@@ -1350,21 +1353,33 @@ namespace PBAnaly.Module
                 }
                 index++;
             }
-
+            index = 0;
             foreach (var textBoxInfo in textBoxInfos)
             {
                 System.Drawing.Rectangle p = textBoxInfo.rect;
-                //if (isTextBoxRecDragging)
-                //{
-                //    if (index == rectDragStartIndex)
-                //    {
-                //        p = recDragRect;
+                if (isTextBoxRecDragging)
+                {
+                    if (index == rectDragStartIndex)
+                    {
+                        p = recDragRect;
 
-                //    }
-                //}
+                    }
+                }
                 var r = ImageProcess.ConvertRealRectangleToPictureBox(p, imagePanel.image_pl);
                 e.Graphics.DrawRectangle(Pens.Red, r);
-               
+
+                System.Drawing.Point[] corners = new System.Drawing.Point[]
+                {
+                    new System.Drawing.Point(r.Left, r.Top), // 左上角
+                    new System.Drawing.Point(r.Right, r.Top), // 右上角
+                    new System.Drawing.Point(r.Left, r.Bottom), // 左下角
+                    new System.Drawing.Point(r.Right, r.Bottom) // 右下角
+                };
+                foreach (var item in corners)
+                {
+
+                    ImageProcess.DrawCircle(g, new System.Drawing.Point(item.X, item.Y), 2, Pens.Blue, Brushes.LightBlue);
+                }
 
                 // 居中显示值
                 StringFormat sf = new StringFormat();
@@ -1372,6 +1387,7 @@ namespace PBAnaly.Module
                 sf.LineAlignment = StringAlignment.Center;
                 Font customFont = new Font("Arial", 12, FontStyle.Bold);
                 g.DrawString(textBoxInfo.value, customFont, Brushes.Red, r, sf);
+                index++;
             }
         }
 
@@ -1401,6 +1417,92 @@ namespace PBAnaly.Module
                     imagePaletteForm.flb_act_mm.Text = value.ToString() + " mm";
                     imagePaletteForm.flb_act_mm.Refresh();
                 }
+                else if (drawTextBox) 
+                {
+                   
+                    if (currentRectangle.HasValue)
+                    {
+                        TextBoxInfo textBoxInfo = new TextBoxInfo();
+                        imagePaletteForm.dtb_textbox.Text = "info";
+                        textBoxInfo.value = "info";
+                        textBoxInfo.rect = currentRectangle.Value;
+
+                        if (textBoxInfos.Count == 0)
+                        {
+                            textBoxInfo.index = 0;
+                        }
+                        else if (textBoxInfos.Count == 1)
+                        {
+                            if (textBoxInfos[0].index == 0)
+                            {
+                                textBoxInfo.index = 1;
+                            }
+                            else
+                            {
+                                textBoxInfo.index = 0;
+                            }
+                        }
+                        else
+                        {
+                            List<int> ints = new List<int>();
+                            foreach (var i in textBoxInfos)
+                            {
+                                ints.Add(i.index);
+                            }
+                            ints.Sort();
+
+                            Random rand = new Random();
+                            int potentialInt;
+
+                            
+                            int lowerBound = 0; 
+                            int upperBound = 65535;
+                           
+                            while (true)
+                            {
+                                potentialInt = rand.Next(lowerBound, upperBound + 1);
+                                if (ints.Contains(potentialInt) == false)
+                                {
+                                    textBoxInfo.index = potentialInt;
+                                    break;
+                                }
+                            }
+                            
+
+                        }
+
+                        // 完成绘制并保存矩形
+                        if (Arrangement == 2)
+                        {
+                            foreach (var item in bioanalysisMannages)
+                            {
+
+                                item.Value.textBoxInfos.Add(textBoxInfo);
+                                item.Value.curTextBox = textBoxInfos.Count - 1;
+                                item.Value.drawTextBox = false;
+                                item.Value.currentRectangle = null;
+                                item.Value.imagePanel.image_pl.Invalidate();
+                            }
+                        }
+                        else
+                        {
+
+                            textBoxInfos.Add(textBoxInfo);
+                            curTextBox = textBoxInfos.Count - 1;
+                            drawTextBox = false;
+                            currentRectangle = null;
+                            imagePanel.image_pl.Invalidate();
+                            
+                          
+                        }
+                        imagePaletteForm.SetInfo = "w:" + textBoxInfo.rect.Width.ToString() + "h:" + textBoxInfo.rect.Height.ToString();
+
+                    }
+
+                    drawTextBox = false;
+                    if (!isContinuous)
+                        TextboxOn = false;
+                }
                 else if (drawRect)
                 {
                     if (currentRectangle.HasValue)
@@ -1412,8 +1514,8 @@ namespace PBAnaly.Module
                         float _max = algAttribute.colorValue;
                         float _min = algAttribute.colorMinValue;
                         Pseudo_infoVC curpdinfovc = null;
-                        
-                        
+
+
                         // 完成绘制并保存矩形
                         if (Arrangement == 2)
                         {
@@ -1455,7 +1557,7 @@ namespace PBAnaly.Module
                             drawRect = false;
                         }
                         imagePaletteForm.SetInfo = "w:" + rab.rect.Width.ToString() + "h:" + rab.rect.Height.ToString();
-                        
+
                         imagePanel.image_pl.Invalidate();
                     }
 
@@ -1479,13 +1581,13 @@ namespace PBAnaly.Module
 
                     imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                     Pseudo_infoVC curpdinfovc = null;
-                    
+
                     // 完成绘制并保存矩形
                     if (Arrangement == 2)
                     {
                         foreach (var item in bioanalysisMannages)
                         {
-                           
+
                             unsafe
                             {
                                 fixed (byte* pseu_16_byte_src = item.Value.image_org_byte)
@@ -1524,45 +1626,52 @@ namespace PBAnaly.Module
                     }
 
 
-                   
+
                     imagePanel.image_pl.Invalidate();
 
 
                 }
-                else if (isTextBoxRecDragging) 
+                else if (isTextBoxRecDragging)
                 {
+                    TextBoxInfo rattb = new TextBoxInfo();
+                    rattb.rect = recDragRect;
+                    rattb.value = textBoxInfos[rectDragStartIndex].value;
+                    rattb.index = textBoxInfos[rectDragStartIndex].index;
+
+
+                    if (Arrangement == 2)
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            for (int i = 0; i < item.Value.textBoxInfos.Count; i++)
+                            {
+                                if (item.Value.textBoxInfos[i].index == rattb.index) 
+                                {
+                                    item.Value.textBoxInfos[i] = rattb;
+                                    item.Value.isTextBoxRecDragging = false;
+                                    item.Value.rectActiveCorner = Corner.None;
+                                    item.Value.rectDragStartIndex = -1;
+                                    item.Value.imagePanel.image_pl.Invalidate();
+                                    break;
+                                }
+                            }
+                           
+                        }
+                    }
+                    else
+                    {
+                        textBoxInfos[rectDragStartIndex] = rattb;
+                        isTextBoxRecDragging = false;
+                        rectActiveCorner = Corner.None;
+                        rectDragStartIndex = -1;
+                        imagePanel.image_pl.Invalidate();
+                    }
+
+                    imagePaletteForm.SetInfo = "w:" + recDragRect.Width.ToString() + "h:" + recDragRect.Height.ToString();
+
+
                     
-                    //if (Arrangement == 2)
-                    //{
-                    //    //for (int i = 0; i < textBoxInfos.Count; i++)
-                    //    //{
-                    //    //    TextBoxInfo textBoxInfo = new TextBoxInfo();
-                    //    //    textBoxInfo.rect = recDragRect;
-                    //    //    textBoxInfo.value = textBoxInfos[rectDragStartIndex].value;
-                    //    //    textBoxInfo.index = textBoxInfos[rectDragStartIndex].index;
-                    //    //    item = textBoxInfo;
-                    //    //}
-                    //    //foreach (var item in textBoxInfos)
-                    //    //{
-                            
-                    //    //}
-                    //}
-                    //else
-                    //{
-                    //    TextBoxInfo textBoxInfo = new TextBoxInfo();
-                    //    textBoxInfo.rect = recDragRect;
-                    //    textBoxInfo.value = textBoxInfos[rectDragStartIndex].value;
-                    //    textBoxInfo.index = textBoxInfos[rectDragStartIndex].index;
-                    //    textBoxInfos[rectDragStartIndex] = textBoxInfo;
-                    //}
-
-                    //imagePaletteForm.SetInfo = "w:" + recDragRect.Width.ToString() + "h:" + recDragRect.Height.ToString();
-                    //isRecDragging = false;
-                    //rectActiveCorner = Corner.None;
-                    //rectDragStartIndex = -1;
-
-                    //imagePanel.image_pl.Invalidate();
-                    //isTextBoxRecDragging = false;
+                    
                 }
                 else if (isRecDragging)
                 {
@@ -1572,8 +1681,8 @@ namespace PBAnaly.Module
                     float _max = algAttribute.colorValue;
                     float _min = algAttribute.colorMinValue;
                     Pseudo_infoVC curpdinfovc = null;
-                    
-                    
+
+
                     if (Arrangement == 2)
                     {
                         foreach (var item in bioanalysisMannages)
@@ -1605,7 +1714,7 @@ namespace PBAnaly.Module
                     }
 
                     imagePaletteForm.SetInfo = "w:" + recDragRect.Width.ToString() + "h:" + recDragRect.Height.ToString();
-                   
+
 
                     imagePanel.image_pl.Invalidate();
 
@@ -1620,8 +1729,8 @@ namespace PBAnaly.Module
                     float _max = algAttribute.colorValue;
                     float _min = algAttribute.colorMinValue;
                     int radius = (int)Math.Sqrt(Math.Pow(circeAndInfo.center.X - circeAndInfo.Radius.X, 2) + Math.Pow(circeAndInfo.center.Y - circeAndInfo.Radius.Y, 2));
-                    
-                    
+
+
                     imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                     if (Arrangement == 2)
                     {
@@ -1661,8 +1770,8 @@ namespace PBAnaly.Module
                         isCirDragging = false;
                         cirDragStartIndex = -1;
                     }
-                   
-                   
+
+
                     imagePanel.image_pl.Invalidate();
                 }
             }
@@ -1676,6 +1785,17 @@ namespace PBAnaly.Module
             if (lineOn && drawLine)
             {
                 endPoint = readLoction; // 更新终点位置
+                imagePanel.image_pl.Invalidate(); // 触发重绘
+            }
+            else if (drawTextBox && e.Button == MouseButtons.Left) 
+            {
+                // 动态调整矩形大小
+                int x = Math.Min(leftTopPoint.X, readLoction.X);
+                int y = Math.Min(leftTopPoint.Y, readLoction.Y);
+                int width = Math.Abs(readLoction.X - leftTopPoint.X);
+                int height = Math.Abs(readLoction.Y - leftTopPoint.Y);
+                imagePaletteForm.SetInfo = "w:" + width + "h:" + height;
+                currentRectangle = new System.Drawing.Rectangle(x, y, width, height);
                 imagePanel.image_pl.Invalidate(); // 触发重绘
             }
             else if (drawRect && e.Button == MouseButtons.Left)
@@ -1726,9 +1846,9 @@ namespace PBAnaly.Module
             {
                 imagePanel.image_pl.Cursor = Cursors.Hand;
             }
-            else if (isTextBoxRecDragging) 
+            else if (isTextBoxRecDragging)
             {
-                recDragRect = rectOriginalRect.rect;
+                recDragRect = curTextBoxinfo.rect;
                 switch (rectActiveCorner)
                 {
                     case Corner.drawMouse:
@@ -1890,8 +2010,9 @@ namespace PBAnaly.Module
                     double deltaX = lastPoint.X - firstPoint.X;
                     double deltaY = lastPoint.Y - firstPoint.Y;
                     var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
-                    if (value <= 5)
+                    if (value <= 10)
                     {
+                        PolygonAndInfoList.Clear();
                         lastPoint = firstPoint;
                         drawpolygon = false;
                         linepolygonON = false;
@@ -1902,39 +2023,57 @@ namespace PBAnaly.Module
                         float _max = algAttribute.colorValue;
                         float _min = algAttribute.colorMinValue;
                         List<Point_VC> curVclist = new List<Point_VC>();
-                        Pseudo_infoVC curpdinfovc = null;
+                        
                         foreach (var item in curPolygonAndInfoList.points)
                         {
                             Point_VC pvc = new Point_VC(item.X, item.Y);
                             curVclist.Add(pvc);
 
                         }
-                        unsafe
-                        {
-                            fixed (byte* pseu_16_byte_src = image_org_byte)
-                            {
-                                curpdinfovc = pbpvc.get_pseudo_info_polygon_vc(pseu_16_byte_src, 16,
-                                    (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, curVclist);
-
-                            }
-                        }
-                        curPolygonAndInfoList.pdinfovc = curpdinfovc;
+                        
                         if (Arrangement == 2)
                         {
                             foreach (var item in bioanalysisMannages)
                             {
-                                item.Value.PolygonAndInfoList.Add(curPolygonAndInfoList);
+                                item.Value.PolygonAndInfoList.Clear();
+                                item.Value.curPolygonAndInfoList.pdinfovc = null;
+                                Pseudo_infoVC curpdinfovc = null;
+                                unsafe
+                                {
+                                    fixed (byte* pseu_16_byte_src = item.Value.image_org_byte)
+                                    {
+                                        curpdinfovc = item.Value.pbpvc.get_pseudo_info_polygon_vc(pseu_16_byte_src, 16,
+                                            (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, curVclist);
+
+                                    }
+                                }
+                                item.Value.curPolygonAndInfoList.points = curPolygonAndInfoList.points;
+                                item.Value.curPolygonAndInfoList.pdinfovc = curpdinfovc;
+                                item.Value.PolygonAndInfoList.Add(item.Value.curPolygonAndInfoList);
+                                item.Value.imagePanel.image_pl.Invalidate();
                             }
                         }
                         else
                         {
+                            Pseudo_infoVC curpdinfovc = null;
+                            unsafe
+                            {
+                                fixed (byte* pseu_16_byte_src = image_org_byte)
+                                {
+                                    curpdinfovc = pbpvc.get_pseudo_info_polygon_vc(pseu_16_byte_src, 16,
+                                        (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, curVclist);
+
+                                }
+                            }
+                            curPolygonAndInfoList.pdinfovc = curpdinfovc;
                             PolygonAndInfoList.Add(curPolygonAndInfoList);
+                            imagePanel.image_pl.Invalidate();
                         }
                         
 
                     }
 
-                    imagePanel.image_pl.Invalidate();
+                    
                 }
             }
         }
@@ -1951,12 +2090,19 @@ namespace PBAnaly.Module
                 curTmpDownShapePoint = readLoction;
                 if (IsPointInRectangles(readLoction, textBoxInfos, out var cner3, out var cr3, out var index3)) // 遍历是否在所有矩形或者角点附近
                 {
-                    imagePaletteForm.dtb_textbox.Text = cr3.value;
-                    curTextBox = index3;
-                    isTextBoxRecDragging = true;
-                    recDragStart = readLoction;
-                    rectDragStartIndex = index3;
-                    recDragStart = readLoction;
+                    rectActiveCorner = cner3;
+
+                    if (rectActiveCorner != Corner.None)
+                    {
+                        curTmpDownShape = ShapeForm.TextBoxRect;
+                        curTextBox = index3;
+                        isTextBoxRecDragging = true;
+                        recDragStart = readLoction;
+                        curTextBoxinfo = cr3;
+                        rectDragStartIndex = index3;
+                    }
+
+
                 }
                 else if (IsPointInRectangles(readLoction, rectangles, out var cner, out var cr, out var index))
                 {
@@ -1988,49 +2134,13 @@ namespace PBAnaly.Module
                     }
 
                 }
-                else if (drawTextbox) 
+                else if (TextboxOn)
                 {
-                    TextBoxInfo textBoxInfo = new TextBoxInfo();
-                    imagePaletteForm.dtb_textbox.Text = "info";
-                    textBoxInfo.value = "info";
-                    textBoxInfo.rect = new System.Drawing.Rectangle(readLoction.X, readLoction.Y, 250, 70);
-                    if (textBoxInfos.Count == 0) 
-                    {
-                        textBoxInfo.index = 0;
-                    }
-                    else if (textBoxInfos.Count == 1) 
-                    {
-                        if (textBoxInfos[0].index == 0)
-                        {
-                            textBoxInfo.index = 1;
-                        }
-                        else
-                        {
-                            textBoxInfo.index = 0;
-                        }
-                    }
-                    else
-                    {
-                        List<int> ints = new List<int>();
-                        foreach (var i in textBoxInfos) 
-                        {
-                            ints.Add(i.index);
-                        }
-                        ints.Sort();
-                        for (int i = 0; i < ints.Count; i++)
-                        {
-                            if (ints[i] != i)
-                            {
-                                textBoxInfo.index = i;
-                                break;
-                            }
-                        }
+                    // 开始绘制新矩形
+                    drawTextBox = true;
+                    leftTopPoint = readLoction;
+                    currentRectangle = new System.Drawing.Rectangle(readLoction.X, readLoction.Y, 0, 0);
 
-                    }
-                    textBoxInfos.Add(textBoxInfo);
-                    curTextBox = textBoxInfos.Count - 1;
-                    drawTextbox = false;
-                    imagePanel.image_pl.Invalidate();
                 }
                 else if (iswandON)
                 {
@@ -2087,12 +2197,26 @@ namespace PBAnaly.Module
                     circleRadio = readLoction;
                     circleCenter = readLoction;
                 }
+                else if (drawpolygon) 
+                {
+                    
+                    if (curPolygonAndInfoList.points == null)
+                    {
+                        curPolygonAndInfoList.points = new List<System.Drawing.Point>();
+                    }
+                    System.Drawing.Point curPoint = readLoction;
+                    curPolygonAndInfoList.points.Add(curPoint);
+                }
                 else if (linepolygonON)
                 {
                     drawpolygon = true;
                     if (curPolygonAndInfoList.points == null)
                     {
                         curPolygonAndInfoList.points = new List<System.Drawing.Point>();
+                    }
+                    else
+                    {
+                        curPolygonAndInfoList.points.Clear();
                     }
                     System.Drawing.Point curPoint = readLoction;
                     curPolygonAndInfoList.points.Add(curPoint);
@@ -2539,12 +2663,28 @@ namespace PBAnaly.Module
             {
                 if (imagePaletteForm.dtb_textbox.Text != textBoxInfos[curTextBox].value) 
                 {
-                    TextBoxInfo textBoxInfo = new TextBoxInfo();
-                    textBoxInfo.value = imagePaletteForm.dtb_textbox.Text;
-                    textBoxInfo.rect = textBoxInfos[curTextBox].rect;
-                    textBoxInfo.index = textBoxInfos[curTextBox].index;
-                    textBoxInfos[curTextBox] = textBoxInfo;
-                    imagePanel.image_pl.Invalidate();
+                    if (Arrangement == 2) 
+                    {
+                        foreach (var item in bioanalysisMannages)
+                        {
+                            TextBoxInfo textBoxInfo = new TextBoxInfo();
+                            textBoxInfo.value = imagePaletteForm.dtb_textbox.Text;
+                            textBoxInfo.rect = textBoxInfos[curTextBox].rect;
+                            textBoxInfo.index = textBoxInfos[curTextBox].index;
+                            item.Value.textBoxInfos[curTextBox] = textBoxInfo;
+                            item.Value.imagePanel.image_pl.Invalidate();
+                        }
+                    }
+                    else
+                    {
+                        TextBoxInfo textBoxInfo = new TextBoxInfo();
+                        textBoxInfo.value = imagePaletteForm.dtb_textbox.Text;
+                        textBoxInfo.rect = textBoxInfos[curTextBox].rect;
+                        textBoxInfo.index = textBoxInfos[curTextBox].index;
+                        textBoxInfos[curTextBox] = textBoxInfo;
+                        imagePanel.image_pl.Invalidate();
+                    }
+                    
                 }
                 
             }
@@ -2552,7 +2692,7 @@ namespace PBAnaly.Module
 
         private void Ava_textbox_Click(object sender, EventArgs e)
         {
-            drawTextbox = true;
+            TextboxOn = true;
         }
         private void Cb_continuous_CheckedChanged(object sender, BoolEventArgs e)
         {

@@ -135,7 +135,9 @@ PBBiologyVC::Pseudo_infoVC^ PBBiologyVC::PBImageProcessVC::get_pseudo_info_wand_
 	cv::Mat image_8bit;
 	cv::normalize(image, image_8bit, 0, 255, cv::NORM_MINMAX); // 归一化到 0-255
 	image_8bit.convertTo(image_8bit, CV_8UC1);                 // 转换为 CV_8UC1
-	cv::Mat mask = get_magic_wand_image(image_8bit, x, y, th);
+	int _max = max / 256;
+	int _min = min / 256;
+	cv::Mat mask = get_magic_wand_image(image_8bit, x, y, _max,_min);
 	PseudoInfo pinfo = get_pseudo_info(image, mask, max, min);
 
 	
