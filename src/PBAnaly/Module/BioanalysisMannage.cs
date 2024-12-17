@@ -1599,7 +1599,7 @@ namespace PBAnaly.Module
                             }
                             if (curpdinfovc != null)
                                 rab.pdinfovc = curpdinfovc;
-
+                            item.Value.CircleAndInfoList.Add(rab);
                             item.Value.drawCircle = false;
                             if (!item.Value.isContinuous)
                                 item.Value.CircleOn = false;
@@ -1739,9 +1739,9 @@ namespace PBAnaly.Module
                             Pseudo_infoVC curpdinfovc = null;
                             unsafe
                             {
-                                fixed (byte* pseu_16_byte_src = image_org_byte)
+                                fixed (byte* pseu_16_byte_src = item.Value.image_org_byte)
                                 {
-                                    curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
+                                    curpdinfovc = item.Value.pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
                                         (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, circeAndInfo.center.X, circeAndInfo.center.Y, radius);
 
                                 }
@@ -1769,10 +1769,11 @@ namespace PBAnaly.Module
                         circeAndInfo.pdinfovc = curpdinfovc;
                         isCirDragging = false;
                         cirDragStartIndex = -1;
+                        imagePanel.image_pl.Invalidate();
                     }
 
 
-                    imagePanel.image_pl.Invalidate();
+                    
                 }
             }
             
@@ -2175,6 +2176,7 @@ namespace PBAnaly.Module
                         attribute.pdinfovc = curpdinfovc;
                         wandRectangle.Add(attribute);
                         imagePanel.image_pl.Invalidate();
+                        iswandON = false;
                     }
 
                 }
@@ -2255,6 +2257,13 @@ namespace PBAnaly.Module
                     imagePaletteForm.dtb_textbox.Text = cr3.value;
                     curShapeIndex = index3;
                     imagePanel.ctms_strop_delete.Enabled = true;
+                }
+                else if (IsPointInRectangles(readLoction, wandRectangle, out var cner4, out var cr4, out var index4))
+                {
+                    curShape = ShapeForm.WandRect;
+                    curShapeIndex = index4;
+                    imagePanel.ctms_strop_delete.Enabled = true;
+
                 }
                 else if (ImageProcess.IsPointOnLine(readLoction,startPoint,endPoint,CircleRadius))
                 {
