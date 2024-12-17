@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-//ÇøÓòÉú³¤Ëã·¨
+//åŒºåŸŸç”Ÿé•¿ç®—æ³•
 int RegionGrow(cv::Mat& src, cv::Mat& matDst, cv::Point2i pt, int th)
 {
 	cv::Point2i ptGrowing;
@@ -16,39 +16,39 @@ int RegionGrow(cv::Mat& src, cv::Mat& matDst, cv::Point2i pt, int th)
 	vcGrowPt.push_back(pt);
 	matDst.at<uchar>(pt.y, pt.x) = 255;
 
-	while (!vcGrowPt.empty())						//Éú³¤Õ»²»Îª¿ÕÔòÉú³¤
+	while (!vcGrowPt.empty())						//ç”Ÿé•¿æ ˆä¸ä¸ºç©ºåˆ™ç”Ÿé•¿
 	{
-		pt = vcGrowPt.back();						//È¡³öÒ»¸öÉú³¤µã
+		pt = vcGrowPt.back();						//å–å‡ºä¸€ä¸ªç”Ÿé•¿ç‚¹
 		vcGrowPt.pop_back();
 
-		std::vector<cv::Point2i> temp_vcGrowPt;						//ÁÙÊ±Éú³¤µãÕ»
-		int temp_vcGrowPt_size = 0;	//¿ÉÉú³¤·½ÏòÊıÁ¿£¬ÒòÎª´æÔÚ±»ÆäÓàÉú³¤µãÏÈÉú³¤Çé¿ö£¬²»¿ÉÖ±½ÓÊ¹ÓÃtemp_vcGrowPt.size()
+		std::vector<cv::Point2i> temp_vcGrowPt;						//ä¸´æ—¶ç”Ÿé•¿ç‚¹æ ˆ
+		int temp_vcGrowPt_size = 0;	//å¯ç”Ÿé•¿æ–¹å‘æ•°é‡ï¼Œå› ä¸ºå­˜åœ¨è¢«å…¶ä½™ç”Ÿé•¿ç‚¹å…ˆç”Ÿé•¿æƒ…å†µï¼Œä¸å¯ç›´æ¥ä½¿ç”¨temp_vcGrowPt.size()
 		nSrcValue = src.at<uchar>(pt.y, pt.x);
-		//·Ö±ğ¶Ô°Ë¸ö·½ÏòÉÏµÄµã½øĞĞÉú³¤
+		//åˆ†åˆ«å¯¹å…«ä¸ªæ–¹å‘ä¸Šçš„ç‚¹è¿›è¡Œç”Ÿé•¿
 		for (int i = 0; i < 8; ++i)
 		{
 			ptGrowing.x = pt.x + DIR[i][0];
 			ptGrowing.y = pt.y + DIR[i][1];
-			//¼ì²éÊÇ·ñÊÇ±ßÔµµã
+			//æ£€æŸ¥æ˜¯å¦æ˜¯è¾¹ç¼˜ç‚¹
 			if (ptGrowing.x < 0 || ptGrowing.y < 0 || ptGrowing.x >(src.cols - 1) || (ptGrowing.y > src.rows - 1))
 				continue;
 
-			nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);		//µ±Ç°´ıÉú³¤µãµÄ»Ò¶ÈÖµ
-			if (nGrowLable == 0)					//Èç¹û±ê¼Çµã»¹Ã»ÓĞ±»Éú³¤
+			nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);		//å½“å‰å¾…ç”Ÿé•¿ç‚¹çš„ç°åº¦å€¼
+			if (nGrowLable == 0)					//å¦‚æœæ ‡è®°ç‚¹è¿˜æ²¡æœ‰è¢«ç”Ÿé•¿
 			{
 				nCurValue = src.at<uchar>(ptGrowing.y, ptGrowing.x);
-				if (abs(nCurValue - nSrcValue) < th)					//ÔÚãĞÖµ·¶Î§ÄÚÔòÉú³¤
+				if (abs(nCurValue - nSrcValue) < th)					//åœ¨é˜ˆå€¼èŒƒå›´å†…åˆ™ç”Ÿé•¿
 				{
 					// matDst.at<uchar>(ptGrowing.y, ptGrowing.x) = 255;
 					temp_vcGrowPt_size++;
-					temp_vcGrowPt.push_back(ptGrowing);					//½«ÏÂÒ»¸öÉú³¤µãÑ¹ÈëÕ»ÖĞ
+					temp_vcGrowPt.push_back(ptGrowing);					//å°†ä¸‹ä¸€ä¸ªç”Ÿé•¿ç‚¹å‹å…¥æ ˆä¸­
 				}
 			}
 			else {
 				temp_vcGrowPt_size++;
 			}
 		}
-		//ÏàÁÚµÄÉú³¤µã²»ÊÇµ¥ÏòÉú³¤£¬ÔòÉú³¤µãÓĞĞ§
+		//ç›¸é‚»çš„ç”Ÿé•¿ç‚¹ä¸æ˜¯å•å‘ç”Ÿé•¿ï¼Œåˆ™ç”Ÿé•¿ç‚¹æœ‰æ•ˆ
 		if (temp_vcGrowPt_size >= 1) {
 			mat_cnt++;
 			matDst.at<uchar>(pt.y, pt.x) = 255;
@@ -56,43 +56,43 @@ int RegionGrow(cv::Mat& src, cv::Mat& matDst, cv::Point2i pt, int th)
 		}
 	}
 	return mat_cnt;
-	// bitwise_and(src, matDst, matDst); //ÓëÔËËã¿ÉÒÔ±£ÁôÔ­Í¼ÏñÊı¾İ
+	// bitwise_and(src, matDst, matDst); //ä¸è¿ç®—å¯ä»¥ä¿ç•™åŸå›¾åƒæ•°æ®
 }
 
-// ¶¨ÒåÄâºÏÔ²ĞÎµÄº¯Êı
+// å®šä¹‰æ‹Ÿåˆåœ†å½¢çš„å‡½æ•°
 void FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& Circle_R)
 {
-	//¶¨Òå¼ÆËãÖĞ¼ä±äÁ¿
-	double sumX1 = 0.0; //´ú±íXiµÄºÍ(´Ó1~n) £¬X1´ú±íXµÄ1´Î·½
+	//å®šä¹‰è®¡ç®—ä¸­é—´å˜é‡
+	double sumX1 = 0.0; //ä»£è¡¨Xiçš„å’Œ(ä»1~n) ï¼ŒX1ä»£è¡¨Xçš„1æ¬¡æ–¹
 	double sumY1 = 0.0;
-	double sumX2 = 0.0;	//´ú±í(Xi)^2µÄºÍ(i´Ó1~n)£¬X2´ú±íXµÄ¶ş´Î·½
+	double sumX2 = 0.0;	//ä»£è¡¨(Xi)^2çš„å’Œ(iä»1~n)ï¼ŒX2ä»£è¡¨Xçš„äºŒæ¬¡æ–¹
 	double sumY2 = 0.0;
 	double sumX3 = 0.0;
 	double sumY3 = 0.0;
 	double sumX1Y1 = 0.0;
 	double sumX1Y2 = 0.0;
 	double sumX2Y1 = 0.0;
-	const double N = (double)Circle_Data.size();//»ñµÃÊäÈëµãµÄ¸öÊı
+	const double N = (double)Circle_Data.size();//è·å¾—è¾“å…¥ç‚¹çš„ä¸ªæ•°
 
-	for (int i = 0; i < Circle_Data.size(); ++i)//±éÀú×éÖĞËùÓĞÊı¾İ
+	for (int i = 0; i < Circle_Data.size(); ++i)//éå†ç»„ä¸­æ‰€æœ‰æ•°æ®
 	{
 		double x = 0;
 		double y = 0;
-		x = Circle_Data[i].x;			//»ñµÃ×éÖĞµÚi¸öµãµÄx×ø±ê
-		y = Circle_Data[i].y;			//»ñµÃ×éÖĞµÚi¸öµãµÄy×ø±ê
-		double x2 = x * x;				//¼ÆËãx^2
-		double y2 = y * y;				//¼ÆËãy^2
-		double x3 = x2 * x;				//¼ÆËãx^3
-		double y3 = y2 * y;				//¼ÆËãy^3
-		double xy = x * y;				//¼ÆËãxy
-		double x1y2 = x * y2;			//¼ÆËãx*y^2
-		double x2y1 = x2 * y;			//¼ÆËãx^2*y
+		x = Circle_Data[i].x;			//è·å¾—ç»„ä¸­ç¬¬iä¸ªç‚¹çš„xåæ ‡
+		y = Circle_Data[i].y;			//è·å¾—ç»„ä¸­ç¬¬iä¸ªç‚¹çš„yåæ ‡
+		double x2 = x * x;				//è®¡ç®—x^2
+		double y2 = y * y;				//è®¡ç®—y^2
+		double x3 = x2 * x;				//è®¡ç®—x^3
+		double y3 = y2 * y;				//è®¡ç®—y^3
+		double xy = x * y;				//è®¡ç®—xy
+		double x1y2 = x * y2;			//è®¡ç®—x*y^2
+		double x2y1 = x2 * y;			//è®¡ç®—x^2*y
 
-		sumX1 += x;						//sumX=sumX+x;¼ÆËãx×ø±êµÄºÍ
-		sumY1 += y;						//sumY=sumY+y;¼ÆËãy×ø±êµÄºÍ
-		sumX2 += x2;					//¼ÆËãx^2µÄºÍ
-		sumY2 += y2;					//¼ÆËã¸÷¸öµãµÄy^2µÄºÍ
-		sumX3 += x3;					//¼ÆËãx^3µÄºÍ
+		sumX1 += x;						//sumX=sumX+x;è®¡ç®—xåæ ‡çš„å’Œ
+		sumY1 += y;						//sumY=sumY+y;è®¡ç®—yåæ ‡çš„å’Œ
+		sumX2 += x2;					//è®¡ç®—x^2çš„å’Œ
+		sumY2 += y2;					//è®¡ç®—å„ä¸ªç‚¹çš„y^2çš„å’Œ
+		sumX3 += x3;					//è®¡ç®—x^3çš„å’Œ
 		sumY3 += y3;
 		sumX1Y1 += xy;
 		sumX1Y2 += x1y2;
@@ -117,11 +117,11 @@ void FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& 
 
 int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& Circle_R, float thresh)
 {
-	// ¶¨ÒåRANSACµü´ú´ÎÊıºÍ×îĞ¡Ñù±¾Êı
+	// å®šä¹‰RANSACè¿­ä»£æ¬¡æ•°å’Œæœ€å°æ ·æœ¬æ•°
 	int iterations = 1000;
 	int min_samples = 3;
 
-	// Ê¹ÓÃRANSACËã·¨ÄâºÏÔ²ĞÎ
+	// ä½¿ç”¨RANSACç®—æ³•æ‹Ÿåˆåœ†å½¢
 	float best_radius = 0;
 	Point2f best_center;
 	std::vector<int> is_inlier(Circle_Data.size(), 0);
@@ -132,7 +132,7 @@ int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, f
 
 	while (sample_count < iterations)
 	{
-		// Ëæ»úÑ¡Ôñ×îĞ¡Ñù±¾Êı¸öµã
+		// éšæœºé€‰æ‹©æœ€å°æ ·æœ¬æ•°ä¸ªç‚¹
 		vector<Point> points;
 		for (int j = 0; j < min_samples; j++)
 		{
@@ -141,12 +141,12 @@ int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, f
 			points.push_back(point);
 		}
 
-		// Ê¹ÓÃ×îĞ¡¶ş³Ë·¨ÄâºÏÔ²ĞÎ
+		// ä½¿ç”¨æœ€å°äºŒä¹˜æ³•æ‹Ÿåˆåœ†å½¢
 		float radius;
 		Point2f center;
 		FitCircleCenter(points, center, radius);
 
-		// ¼ÆËãËùÓĞµãÓëÔ²Ö®¼äµÄ¾àÀë£¬ÒÔÈ·¶¨ÄÚµã
+		// è®¡ç®—æ‰€æœ‰ç‚¹ä¸åœ†ä¹‹é—´çš„è·ç¦»ï¼Œä»¥ç¡®å®šå†…ç‚¹
 		vector<Point2f> inliers;
 		for (int i = 0; i < Circle_Data.size(); i++)
 		{
@@ -160,28 +160,28 @@ int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, f
 				inliers.push_back(point);
 			}
 		}
-		// ¸üĞÂ×î¼ÑÄâºÏÔ²ĞÎ
+		// æ›´æ–°æœ€ä½³æ‹Ÿåˆåœ†å½¢
 		if (inliers.size() > max_inlier_num) {
 			max_inlier_num = inliers.size();
 			is_inlier = is_inlier_tmp;
 			best_radius = radius;
 			best_center = center;
 		}
-		//6. ¸üĞÂµü´úµÄ×î¼Ñ´ÎÊı
+		//6. æ›´æ–°è¿­ä»£çš„æœ€ä½³æ¬¡æ•°
 		if (inliers.size() == 0)
 		{
 			iterations = 1000;
 		}
 		else
 		{
-			double epsilon = 1.0 - double(inliers.size()) / (double)Circle_Data.size(); //Ò°Öµµã±ÈÀı
-			double p = 0.9;                                                //ËùÓĞÑù±¾ÖĞ´æÔÚ1¸öºÃÑù±¾µÄ¸ÅÂÊ
+			double epsilon = 1.0 - double(inliers.size()) / (double)Circle_Data.size(); //é‡å€¼ç‚¹æ¯”ä¾‹
+			double p = 0.9;                                                //æ‰€æœ‰æ ·æœ¬ä¸­å­˜åœ¨1ä¸ªå¥½æ ·æœ¬çš„æ¦‚ç‡
 			double s = 3.0;
 			iterations = int(std::log(1.0 - p) / std::log(1.0 - std::pow((1.0 - epsilon), s)));
 		}
 		sample_count++;
 	}
-	//7. »ùÓÚ×îÓÅµÄ½á¹ûËù¶ÔÓ¦µÄÄÚµã×ö×îÖÕÄâºÏ
+	//7. åŸºäºæœ€ä¼˜çš„ç»“æœæ‰€å¯¹åº”çš„å†…ç‚¹åšæœ€ç»ˆæ‹Ÿåˆ
 	std::vector<cv::Point2f> inliers;
 	inliers.reserve(max_inlier_num);
 	for (int i = 0; i < is_inlier.size(); i++)
@@ -297,9 +297,9 @@ int defaultIsoData(int* data)
 //	{
 //		return dst;
 //	}
-//	//brightness_offset:ÁÁ¶ÈÆ«ÒÆ·¶Î§ -255 µ½ +255
-//	//contrast_factor:¶Ô±È¶ÈÒò×Ó·¶Î§ 0.1 µ½ 3.0£¨1.0Îª²»±ä£©
-//	//opacity_factor:Í¸Ã÷¶ÈÒò×Ó·¶Î§ 0 µ½ 1£¨0ÎªÍ¸Ã÷£¬1Îª²»Í¸Ã÷£©
+//	//brightness_offset:äº®åº¦åç§»èŒƒå›´ -255 åˆ° +255
+//	//contrast_factor:å¯¹æ¯”åº¦å› å­èŒƒå›´ 0.1 åˆ° 3.0ï¼ˆ1.0ä¸ºä¸å˜ï¼‰
+//	//opacity_factor:é€æ˜åº¦å› å­èŒƒå›´ 0 åˆ° 1ï¼ˆ0ä¸ºé€æ˜ï¼Œ1ä¸ºä¸é€æ˜ï¼‰
 //
 //	Mat img8bit;
 //	src.convertTo(img8bit, CV_8UC1, 0.00390625);
@@ -311,7 +311,7 @@ int defaultIsoData(int* data)
 //	img_with_opacity.convertTo(img_with_opacity, CV_8UC1);
 //
 //	Mat img_with_opacity_rgb;
-//	cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // ½«µ¥Í¨µÀ»Ò¶ÈÍ¼Ïñ×ª»»ÎªÈıÍ¨µÀRGBÍ¼Ïñ
+//	cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // å°†å•é€šé“ç°åº¦å›¾åƒè½¬æ¢ä¸ºä¸‰é€šé“RGBå›¾åƒ
 //
 //	for (int y = 0; y < pseudoImg.rows; y++) {
 //		for (int x = 0; x < pseudoImg.cols; x++) {
@@ -424,30 +424,30 @@ Mat bgr_scale_image(Mat src, float maxVal, float minVal)
 
 //int blendImages(const Mat& src, const Mat& mark, const Mat& dst, double alpha)
 //{
-//	// ¼ì²éÊäÈëÍ¼ÏñµÄÀàĞÍºÍ´óĞ¡
+//	// æ£€æŸ¥è¾“å…¥å›¾åƒçš„ç±»å‹å’Œå¤§å°
 //	if (src.type() != CV_16UC1 || mark.type() != CV_8UC3)
 //	{
-//		return -1; // ´íÎó´¦Àí
+//		return -1; // é”™è¯¯å¤„ç†
 //	}
 //
-//	// ½« alpha ´Ó 0-100 µÄ·¶Î§×ª»»Îª 0-1
+//	// å°† alpha ä» 0-100 çš„èŒƒå›´è½¬æ¢ä¸º 0-1
 //	double alpha_normalized = alpha / 100.0;
 //
-//	// ½« src ´Ó 16 Î»×ª»»Îª 8 Î»
+//	// å°† src ä» 16 ä½è½¬æ¢ä¸º 8 ä½
 //	Mat src8U;
-//	src.convertTo(src8U, CV_8UC1, 1.0 / 256); // ½«16Î»ÖµËõ·Åµ½0-255·¶Î§
+//	src.convertTo(src8U, CV_8UC1, 1.0 / 256); // å°†16ä½å€¼ç¼©æ”¾åˆ°0-255èŒƒå›´
 //
-//	// ½« src8U ×ª»»Îª²ÊÉ«Í¼Ïñ£¬ÒÔ±ãÓë mark ÈÚºÏ
+//	// å°† src8U è½¬æ¢ä¸ºå½©è‰²å›¾åƒï¼Œä»¥ä¾¿ä¸ mark èåˆ
 //	Mat srcColor;
-//	cvtColor(src8U, srcColor, COLOR_GRAY2RGB); // ×ª»»Îª BGR ²ÊÉ«Í¼Ïñ
+//	cvtColor(src8U, srcColor, COLOR_GRAY2RGB); // è½¬æ¢ä¸º BGR å½©è‰²å›¾åƒ
 //
-//	// ´´½¨Ò»¸öÊä³öÍ¼Ïñ
+//	// åˆ›å»ºä¸€ä¸ªè¾“å‡ºå›¾åƒ
 //	Mat blended;
 //
-//	// Ê¹ÓÃ addWeighted ½øĞĞÈÚºÏ
+//	// ä½¿ç”¨ addWeighted è¿›è¡Œèåˆ
 //	addWeighted(srcColor, 1, mark,alpha_normalized, 0.0, blended);
 //	blended.copyTo(dst);
-//	return 1; // ³É¹¦
+//	return 1; // æˆåŠŸ
 //}
 
 
@@ -792,9 +792,9 @@ Mat render_mask_image(Mat src, Mat pseudoImg, int brightness_offset, double cont
     {
         return dst;
     }
-    //brightness_offset:ÁÁ¶ÈÆ«ÒÆ·¶Î§ -255 µ½ +255
-    //contrast_factor:¶Ô±È¶ÈÒò×Ó·¶Î§ 0.1 µ½ 3.0£¨1.0Îª²»±ä£©
-    //opacity_factor:Í¸Ã÷¶ÈÒò×Ó·¶Î§ 0 µ½ 1£¨0ÎªÍ¸Ã÷£¬1Îª²»Í¸Ã÷£©
+    //brightness_offset:äº®åº¦åç§»èŒƒå›´ -255 åˆ° +255
+    //contrast_factor:å¯¹æ¯”åº¦å› å­èŒƒå›´ 0.1 åˆ° 3.0ï¼ˆ1.0ä¸ºä¸å˜ï¼‰
+    //opacity_factor:é€æ˜åº¦å› å­èŒƒå›´ 0 åˆ° 1ï¼ˆ0ä¸ºé€æ˜ï¼Œ1ä¸ºä¸é€æ˜ï¼‰
 
     Mat img8bit;
     src.convertTo(img8bit, CV_8UC1, 0.00390625);
@@ -806,7 +806,7 @@ Mat render_mask_image(Mat src, Mat pseudoImg, int brightness_offset, double cont
     img_with_opacity.convertTo(img_with_opacity, CV_8UC1);
 
     Mat img_with_opacity_rgb;
-    cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // ½«µ¥Í¨µÀ»Ò¶ÈÍ¼Ïñ×ª»»ÎªÈıÍ¨µÀRGBÍ¼Ïñ
+    cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // å°†å•é€šé“ç°åº¦å›¾åƒè½¬æ¢ä¸ºä¸‰é€šé“RGBå›¾åƒ
 
     for (int y = 0; y < pseudoImg.rows; y++) {
         for (int x = 0; x < pseudoImg.cols; x++) {
@@ -1212,71 +1212,68 @@ Mat get_photon_image(Mat src, float sec, float Wcm, float Hcm, float sr)
     return dst;
 }
 
-Mat get_magic_wand_image(Mat src, int x, int y, int th)
+Mat get_magic_wand_image(Mat src,int x,int y,float max,float min)
 {
-    std::cout << "1" << std::endl;
     Mat matDst = cv::Mat::zeros(src.size(), CV_8UC1);
-    std::cout << "11" << std::endl;
-    cv::Point2i pt(x, y);
-    std::cout << "12" << std::endl;
-    cv::Point2i ptGrowing;
-    std::cout << "13" << std::endl;
-    int nGrowLable = 0;
-    int nSrcValue = 0;
-    int nCurValue = 0;
-    int mat_cnt = 0;
-    int DIR[8][2] = { { -1, -1 }, { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 } };
-    std::cout << "14" << std::endl;
-    std::vector<cv::Point2i> vcGrowPt;
-    std::cout << "15" << std::endl;
-    vcGrowPt.push_back(pt);
-    std::cout << "16" << std::endl;
-    matDst.at<uchar>(pt.y, pt.x) = 255;
-    std::cout << "17" << std::endl;
-    std::cout << "w:" << src.rows << "h:" << src.cols << std::endl;
-    std::cout << pt.y <<":1:" << pt.x << std::endl;
-    nSrcValue = src.at<uchar>(pt.y, pt.x);
-    std::cout << "2" << std::endl;
-    while (!vcGrowPt.empty())
+    cv::Point2i pt(x,y);
+    int w = src.cols;
+    int h = src.rows;
+    // int nSrcValue = src.at<uchar>(pt.y, pt.x);
+    int nSrcValue = src.data[pt.y * w + pt.x];
+    if(nSrcValue < min)
     {
-        pt = vcGrowPt.back();
-        vcGrowPt.pop_back();
-
-        std::vector<cv::Point2i> temp_vcGrowPt;
-        int temp_vcGrowPt_size = 0;
-        // nSrcValue = src.at<uchar>(pt.y, pt.x);
-        //·Ö±ğ¶Ô°Ë¸ö·½ÏòÉÏµÄµã½øĞĞÉú³¤
-        for (int i = 0; i < 8; ++i)
-        {
-            ptGrowing.x = pt.x + DIR[i][0];
-            ptGrowing.y = pt.y + DIR[i][1];
-            //¼ì²éÊÇ·ñÊÇ±ßÔµµã
-            if (ptGrowing.x < 0 || ptGrowing.y < 0 || ptGrowing.x >(src.cols - 1) || (ptGrowing.y > src.rows - 1))
-                continue;
-
-            nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);		//µ±Ç°´ıÉú³¤µãµÄ»Ò¶ÈÖµ
-            if (nGrowLable == 0)					//Èç¹û±ê¼Çµã»¹Ã»ÓĞ±»Éú³¤
-            {
-                nCurValue = src.at<uchar>(ptGrowing.y, ptGrowing.x);
-                if (abs(nCurValue - nSrcValue) < th)					//ÔÚãĞÖµ·¶Î§ÄÚÔòÉú³¤
-                {
-                    // matDst.at<uchar>(ptGrowing.y, ptGrowing.x) = 255;
-                    temp_vcGrowPt_size++;
-                    temp_vcGrowPt.push_back(ptGrowing);					//½«ÏÂÒ»¸öÉú³¤µãÑ¹ÈëÕ»ÖĞ
-                }
-            }
-            else {
-                temp_vcGrowPt_size++;
-            }
-        }
-        std::cout << "3" << std::endl;
-        //ÏàÁÚµÄÉú³¤µã²»ÊÇµ¥ÏòÉú³¤£¬ÔòÉú³¤µãÓĞĞ§
-        if (temp_vcGrowPt_size >= 1) {
-            mat_cnt++;
-            matDst.at<uchar>(pt.y, pt.x) = 255;
-            vcGrowPt.insert(vcGrowPt.end(), temp_vcGrowPt.begin(), temp_vcGrowPt.end());
-        }
-        std::cout << "4" << std::endl;
+        return matDst;
     }
+
+    cv::Point2i ptGrowing;	
+	int nGrowLable = 0;	
+	int nCurValue = 0;	
+    int mat_cnt = 0;
+	int DIR[8][2] = { { -1, -1 }, { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 } };
+	std::vector<cv::Point2i> vcGrowPt;	
+	vcGrowPt.push_back(pt);	
+	// matDst.at<uchar>(pt.y, pt.x) = 255;	
+	matDst.data[pt.y * w + pt.x] = 255;	
+	while (!vcGrowPt.empty())						
+	{
+		pt = vcGrowPt.back();						
+		vcGrowPt.pop_back();
+
+		std::vector<cv::Point2i> temp_vcGrowPt;	
+		int temp_vcGrowPt_size = 0;	
+        // nSrcValue = src.at<uchar>(pt.y, pt.x);
+		//åˆ†åˆ«å¯¹å…«ä¸ªæ–¹å‘ä¸Šçš„ç‚¹è¿›è¡Œç”Ÿé•¿
+		for (int i = 0; i < 8; ++i)
+		{
+			ptGrowing.x = pt.x + DIR[i][0];
+			ptGrowing.y = pt.y + DIR[i][1];
+			//æ£€æŸ¥æ˜¯å¦æ˜¯è¾¹ç¼˜ç‚¹
+			if (ptGrowing.x < 0 || ptGrowing.y < 0 || ptGrowing.x >(src.cols - 1) || (ptGrowing.y > src.rows - 1))
+				continue;
+
+			// nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);
+			nGrowLable = matDst.data[ptGrowing.y * w + ptGrowing.x];		//å½“å‰å¾…ç”Ÿé•¿ç‚¹çš„ç°åº¦å€¼
+			if (nGrowLable == 0)					//å¦‚æœæ ‡è®°ç‚¹è¿˜æ²¡æœ‰è¢«ç”Ÿé•¿
+			{
+				nCurValue = src.data[ptGrowing.y * w + ptGrowing.x];
+				if (nCurValue >= min)					//åœ¨é˜ˆå€¼èŒƒå›´å†…åˆ™ç”Ÿé•¿
+				{
+					// matDst.at<uchar>(ptGrowing.y, ptGrowing.x) = 255;
+					temp_vcGrowPt_size++;
+					temp_vcGrowPt.push_back(ptGrowing);					//å°†ä¸‹ä¸€ä¸ªç”Ÿé•¿ç‚¹å‹å…¥æ ˆä¸­
+				}
+			}
+			else {
+				temp_vcGrowPt_size++;
+			}
+		}
+		//ç›¸é‚»çš„ç”Ÿé•¿ç‚¹ä¸æ˜¯å•å‘ç”Ÿé•¿ï¼Œåˆ™ç”Ÿé•¿ç‚¹æœ‰æ•ˆ
+		if (temp_vcGrowPt_size >= 1) {
+            mat_cnt++;
+			// matDst.at<uchar>(pt.y, pt.x) = 255;
+            matDst.data[pt.y * w + pt.x] = 255;	
+			vcGrowPt.insert(vcGrowPt.end(), temp_vcGrowPt.begin(), temp_vcGrowPt.end());
+		}
+	}
     return matDst;
 }
