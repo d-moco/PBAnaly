@@ -107,7 +107,7 @@ namespace PBAnaly.Module
         private ReaLTaiizor.Controls.Panel pl_right;
         private BioanalyImagePanel imagePanel = null;
         private BioanayImagePaletteForm imagePaletteForm = null;
-        PBBiologyVC.PBImageProcessVC pbpvc = new PBBiologyVC.PBImageProcessVC();
+        public PBBiologyVC.PBImageProcessVC pbpvc = new PBBiologyVC.PBImageProcessVC();
 
         private Thread algThread;
         private bool isalgRun = false;
@@ -376,10 +376,7 @@ namespace PBAnaly.Module
 
             isUpdateAlg = false;
             this.pl_right = _pl_right;
-            imagePanel = new BioanalyImagePanel();
-            imagePanel.TopLevel = false;
-            imagePanel.Show();
-            imagePanel.BringToFront();
+          
 
             imagePaletteForm = new BioanayImagePaletteForm();
             imagePaletteForm.TopLevel = false;
@@ -1415,33 +1412,50 @@ namespace PBAnaly.Module
                         float _max = algAttribute.colorValue;
                         float _min = algAttribute.colorMinValue;
                         Pseudo_infoVC curpdinfovc = null;
-                        unsafe
-                        {
-                            fixed (byte* pseu_16_byte_src = image_org_byte)
-                            {
-                                curpdinfovc = pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
-                                    _max, _min, currentRectangle.Value.X, currentRectangle.Value.Y, currentRectangle.Value.Width, currentRectangle.Value.Height);
-
-                            }
-                        }
-                        if (curpdinfovc != null)
-                            rab.pdinfovc = curpdinfovc;
-                        imagePaletteForm.SetInfo = "w:" + rab.rect.Width.ToString() + "h:" + rab.rect.Height.ToString();
+                        
+                        
                         // 完成绘制并保存矩形
                         if (Arrangement == 2)
                         {
                             foreach (var item in bioanalysisMannages)
                             {
+                                unsafe
+                                {
+                                    fixed (byte* pseu_16_byte_src = item.Value.image_org_byte)
+                                    {
+                                        curpdinfovc = item.Value.pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
+                                            _max, _min, currentRectangle.Value.X, currentRectangle.Value.Y, currentRectangle.Value.Width, currentRectangle.Value.Height);
+
+                                    }
+                                }
+                                if (curpdinfovc != null)
+                                    rab.pdinfovc = curpdinfovc;
                                 item.Value.rectangles.Add(rab);
+                                item.Value.currentRectangle = null;
+                                item.Value.drawRect = false;
+                                item.Value.imagePanel.image_pl.Invalidate();
+
                             }
                         }
                         else
                         {
-                            rectangles.Add(rab);
-                        }
+                            unsafe
+                            {
+                                fixed (byte* pseu_16_byte_src = image_org_byte)
+                                {
+                                    curpdinfovc = pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
+                                        _max, _min, currentRectangle.Value.X, currentRectangle.Value.Y, currentRectangle.Value.Width, currentRectangle.Value.Height);
 
-                        currentRectangle = null;
-                        drawRect = false;
+                                }
+                            }
+                            if (curpdinfovc != null)
+                                rab.pdinfovc = curpdinfovc;
+                            rectangles.Add(rab);
+                            currentRectangle = null;
+                            drawRect = false;
+                        }
+                        imagePaletteForm.SetInfo = "w:" + rab.rect.Width.ToString() + "h:" + rab.rect.Height.ToString();
+                        
                         imagePanel.image_pl.Invalidate();
                     }
 
@@ -1465,34 +1479,52 @@ namespace PBAnaly.Module
 
                     imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                     Pseudo_infoVC curpdinfovc = null;
-                    unsafe
-                    {
-                        fixed (byte* pseu_16_byte_src = image_org_byte)
-                        {
-                            curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
-                                (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, rab.center.X, rab.center.Y, radius);
-
-                        }
-                    }
-                    if (curpdinfovc != null)
-                        rab.pdinfovc = curpdinfovc;
+                    
                     // 完成绘制并保存矩形
                     if (Arrangement == 2)
                     {
                         foreach (var item in bioanalysisMannages)
                         {
-                            item.Value.CircleAndInfoList.Add(rab);
+                           
+                            unsafe
+                            {
+                                fixed (byte* pseu_16_byte_src = item.Value.image_org_byte)
+                                {
+                                    curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
+                                        (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, rab.center.X, rab.center.Y, radius);
+
+                                }
+                            }
+                            if (curpdinfovc != null)
+                                rab.pdinfovc = curpdinfovc;
+
+                            item.Value.drawCircle = false;
+                            if (!item.Value.isContinuous)
+                                item.Value.CircleOn = false;
+                            item.Value.imagePanel.image_pl.Invalidate();
                         }
                     }
                     else
                     {
+                        unsafe
+                        {
+                            fixed (byte* pseu_16_byte_src = image_org_byte)
+                            {
+                                curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
+                                    (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, rab.center.X, rab.center.Y, radius);
+
+                            }
+                        }
+                        if (curpdinfovc != null)
+                            rab.pdinfovc = curpdinfovc;
                         CircleAndInfoList.Add(rab);
+                        drawCircle = false;
+                        if (!isContinuous)
+                            CircleOn = false;
                     }
 
 
-                    drawCircle = false;
-                    if (!isContinuous)
-                        CircleOn = false;
+                   
                     imagePanel.image_pl.Invalidate();
 
 
@@ -1540,33 +1572,40 @@ namespace PBAnaly.Module
                     float _max = algAttribute.colorValue;
                     float _min = algAttribute.colorMinValue;
                     Pseudo_infoVC curpdinfovc = null;
-                    unsafe
-                    {
-                        fixed (byte* pseu_16_byte_src = image_org_byte)
-                        {
-                            curpdinfovc = pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
-                                _max, _min, recDragRect.X, recDragRect.Y, recDragRect.Width, recDragRect.Height);
-
-                        }
-                    }
-                    if (curpdinfovc != null)
-                        rattb.pdinfovc = curpdinfovc;
+                    
+                    
                     if (Arrangement == 2)
                     {
                         foreach (var item in bioanalysisMannages)
                         {
+                            unsafe
+                            {
+                                fixed (byte* pseu_16_byte_src = item.Value.image_org_byte)
+                                {
+                                    curpdinfovc = item.Value.pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
+                                        _max, _min, recDragRect.X, recDragRect.Y, recDragRect.Width, recDragRect.Height);
+
+                                }
+                            }
+                            if (curpdinfovc != null)
+                                rattb.pdinfovc = curpdinfovc;
                             item.Value.rectangles[rectDragStartIndex] = rattb;
+                            item.Value.isRecDragging = false;
+                            item.Value.rectActiveCorner = Corner.None;
+                            item.Value.rectDragStartIndex = -1;
+                            item.Value.imagePanel.image_pl.Invalidate();
                         }
                     }
                     else
                     {
                         rectangles[rectDragStartIndex] = rattb;
+                        isRecDragging = false;
+                        rectActiveCorner = Corner.None;
+                        rectDragStartIndex = -1;
                     }
 
                     imagePaletteForm.SetInfo = "w:" + recDragRect.Width.ToString() + "h:" + recDragRect.Height.ToString();
-                    isRecDragging = false;
-                    rectActiveCorner = Corner.None;
-                    rectDragStartIndex = -1;
+                   
 
                     imagePanel.image_pl.Invalidate();
 
@@ -1581,32 +1620,49 @@ namespace PBAnaly.Module
                     float _max = algAttribute.colorValue;
                     float _min = algAttribute.colorMinValue;
                     int radius = (int)Math.Sqrt(Math.Pow(circeAndInfo.center.X - circeAndInfo.Radius.X, 2) + Math.Pow(circeAndInfo.center.Y - circeAndInfo.Radius.Y, 2));
-                    Pseudo_infoVC curpdinfovc = null;
-                    unsafe
-                    {
-                        fixed (byte* pseu_16_byte_src = image_org_byte)
-                        {
-                            curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
-                                (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, circeAndInfo.center.X, circeAndInfo.center.Y, radius);
-
-                        }
-                    }
-                    circeAndInfo.pdinfovc = curpdinfovc;
+                    
+                    
                     imagePaletteForm.SetInfo = "radio:" + radius.ToString();
                     if (Arrangement == 2)
                     {
                         foreach (var item in bioanalysisMannages)
                         {
+                            Pseudo_infoVC curpdinfovc = null;
+                            unsafe
+                            {
+                                fixed (byte* pseu_16_byte_src = image_org_byte)
+                                {
+                                    curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
+                                        (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, circeAndInfo.center.X, circeAndInfo.center.Y, radius);
+
+                                }
+                            }
+                            circeAndInfo.pdinfovc = curpdinfovc;
                             item.Value.CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
+                            item.Value.isCirDragging = false;
+                            item.Value.cirDragStartIndex = -1;
+                            item.Value.imagePanel.image_pl.Invalidate();
                         }
                     }
                     else
                     {
-                        CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
-                    }
+                        Pseudo_infoVC curpdinfovc = null;
+                        unsafe
+                        {
+                            fixed (byte* pseu_16_byte_src = image_org_byte)
+                            {
+                                curpdinfovc = pbpvc.get_pseudo_info_circle_vc(pseu_16_byte_src, 16,
+                                    (ushort)image_org_L16.Width, (ushort)image_org_L16.Height, _max, _min, circeAndInfo.center.X, circeAndInfo.center.Y, radius);
 
-                    isCirDragging = false;
-                    cirDragStartIndex = -1;
+                            }
+                        }
+                        CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
+                        circeAndInfo.pdinfovc = curpdinfovc;
+                        isCirDragging = false;
+                        cirDragStartIndex = -1;
+                    }
+                   
+                   
                     imagePanel.image_pl.Invalidate();
                 }
             }
