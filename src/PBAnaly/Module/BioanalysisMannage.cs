@@ -1707,6 +1707,17 @@ namespace PBAnaly.Module
                     }
                     else
                     {
+                        unsafe
+                        {
+                            fixed (byte* pseu_16_byte_src = image_org_byte)
+                            {
+                                curpdinfovc = pbpvc.get_pseudo_info_rect_vc(pseu_16_byte_src, 16, (ushort)image_org_L16.Width, (ushort)image_org_L16.Height,
+                                    _max, _min, recDragRect.X, recDragRect.Y, recDragRect.Width, recDragRect.Height);
+
+                            }
+                        }
+                        if (curpdinfovc != null)
+                            rattb.pdinfovc = curpdinfovc;
                         rectangles[rectDragStartIndex] = rattb;
                         isRecDragging = false;
                         rectActiveCorner = Corner.None;
