@@ -1776,8 +1776,9 @@ namespace PBAnaly.Module
 
                             }
                         }
-                        CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
                         circeAndInfo.pdinfovc = curpdinfovc;
+                        CircleAndInfoList[cirDragStartIndex] = circeAndInfo;
+                        
                         isCirDragging = false;
                         cirDragStartIndex = -1;
                         imagePanel.image_pl.Invalidate();
