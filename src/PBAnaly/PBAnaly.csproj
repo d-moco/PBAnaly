@@ -75,12 +75,24 @@
     <Compile Include="LogForm.Designer.cs">
       <DependentUpon>LogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginCommon\BackPassWordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\BackPassWordForm.Designer.cs">
+      <DependentUpon>BackPassWordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginCommon\LastLogin.cs" />
     <Compile Include="LoginCommon\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginCommon\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCommon\RegisterFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\RegisterFrom.Designer.cs">
+      <DependentUpon>RegisterFrom.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginCommon\User.cs" />
     <Compile Include="LoginCommon\UserManage.cs" />
@@ -168,8 +180,14 @@
     <EmbeddedResource Include="LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\BackPassWordForm.resx">
+      <DependentUpon>BackPassWordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginCommon\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\RegisterFrom.resx">
+      <DependentUpon>RegisterFrom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

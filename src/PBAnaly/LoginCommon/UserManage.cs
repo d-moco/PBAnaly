@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PBAnaly.LoginCommon
 {
@@ -215,7 +216,7 @@ namespace PBAnaly.LoginCommon
                             LastLoginUser.Add(last.UserName, last);
                         }
                     }
-
+                    connection.Close();
                 }
                 catch (Exception e)
                 {
@@ -271,5 +272,54 @@ namespace PBAnaly.LoginCommon
         }
 
         #endregion
+
+        #region RegisterUser 注册一个用户
+        /// <summary>
+        /// 用户注册
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static bool RegisterUser(User user)
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string insertSQL = @"
+                        INSERT OR IGNORE INTO User (UserName, Password, CreatedBy, CreatedDate, Role, PasswordQuestion, QuestionAnswer)
+                        VALUES (@UserName, @Password, @CreatedBy, @CreatedDate, @Role, @PasswordQuestion, @QuestionAnswer);";
+
+                    using (var command = new SQLiteCommand(insertSQL, connection))
+                    {
+                        // 参数化查询，防止SQL注入
+                        command.Parameters.AddWithValue("@UserName", user.Name);
+                        command.Parameters.AddWithValue("@Password", user.Password); // 示例密码
+                        command.Parameters.AddWithValue("@CreatedBy", "System");
+                        command.Parameters.AddWithValue("@CreatedDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@Role", user.Role);
+                        command.Parameters.AddWithValue("@PasswordQuestion", user.PasswordQuestion);
+                        command.Parameters.AddWithValue("@QuestionAnswer", user.QuestionAnswer);
+
+                        command.ExecuteNonQuery();
+
+                    }
+
+                    connection.Close();
+                }
+
+                UsersKeyValuePairs[user.Name] = user;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+        #endregion
+
     }
 }

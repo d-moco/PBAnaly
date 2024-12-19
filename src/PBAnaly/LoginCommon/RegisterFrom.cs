@@ -1,7 +1,4 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using ReaLTaiizor.Manager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,36 +10,19 @@ using System.Windows.Forms;
 
 namespace PBAnaly.LoginCommon
 {
-    public partial class LoginForm : Form
+    public partial class RegisterFrom : Form
     {
-        private MaterialSkin.MaterialSkinManager materialSkinManager;
-        public bool isOK = false;
-
-        public LoginForm()
+        public RegisterFrom()
         {
             InitializeComponent();
+
 
             // 设置窗体的启动位置为屏幕的中心
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Location = new System.Drawing.Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                                  (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
-           
 
-            //如果上一次登录的时候是勾选了记住本次登录，那么就像用户名和密码填充到本文控件
-            if (UserManage.LastLoginUser.Count > 0)
-            {
-                foreach (var item in UserManage.LastLoginUser.Values)
-                {
-                    if (item.Remember == 1)
-                    {
-                        txt_UserName.Text= item.UserName;
-                        txt_Password.Text = item.Password;
-                        cb_Remember.Checked = true;
-                    }
-                }
-            }
         }
-
 
         #region =====重写WndPoc方法 无边框窗体更改大小及拖动=========
         const int HTLEFT = 10;
@@ -123,16 +103,55 @@ namespace PBAnaly.LoginCommon
         }
         #endregion
 
-        #region ProcessCmdKey 是一个用于处理按键命令的方法，在自定义控件中可以重写它来捕获键盘输入（包括 Enter 键）
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        #region btn_register_Click 注册按钮
+        private void btn_register_Click(object sender, EventArgs e)
         {
-            // 检查是否按下了 Enter 键
-            if (keyData == Keys.Enter)
+            try
             {
-                btn_Login_Click(null, null);
-                return true; // 表示该按键已处理
+                string UserName         = txt_UserName.Text;
+                string Password         = txt_Password.Text;
+                string Enter_Password   = txt_enter_password.Text;
+                string Broblem          = txt_broblem.Text;
+                string Answer           = txt_answer.Text;
+
+                if (UserManage.UsersKeyValuePairs.ContainsKey(UserName)) { MessageBox.Show("The current user already exists!!"); return; }
+                if (string.IsNullOrEmpty(UserName)){MessageBox.Show("Please enter your username!!");return;}
+                if (string.IsNullOrEmpty(Password)){MessageBox.Show("Please enter your Password!!");return;}
+                if (string.IsNullOrEmpty(Enter_Password)){MessageBox.Show("Please enter a second password!!");return;}
+                if (string.IsNullOrEmpty(Broblem)){MessageBox.Show("Please enter the security question, in case you forget" +
+                    " the password, you can report the question to retrieve!!");return;}
+                if (string.IsNullOrEmpty(Answer)){MessageBox.Show("Please enter the security answer!!");return;}
+                if(Password!= Enter_Password) { MessageBox.Show("The two passwords are different!!"); return; }
+                
+                User user = new User();
+                user.Name = UserName;
+                user.Password= Password;
+                user.Role = UserRole.Operator;
+                user.PasswordQuestion = Broblem;
+                user.QuestionAnswer = Answer;
+                user.CreatedDate=DateTime.Now;
+
+                if (UserManage.RegisterUser(user))
+                {
+                    txt_UserName.Text = "";
+                    txt_Password.Text = "";
+                    txt_enter_password.Text = "";
+                    txt_broblem.Text = "";
+                    txt_answer.Text = "";
+                    
+                    MessageBox.Show("注册成功");
+                }
+                else
+                {
+                    MessageBox.Show("注册失败");
+
+                }
+
             }
-            return base.ProcessCmdKey(ref msg, keyData);
+            catch (Exception ex)
+            {
+
+            }
         }
         #endregion
 
@@ -146,74 +165,24 @@ namespace PBAnaly.LoginCommon
             txt_Password.Text = "";
         }
 
-        #region btn_Login_Click 登录按钮
-        private void btn_Login_Click(object sender, EventArgs e)
+        private void txt_enter_password_Click(object sender, EventArgs e)
         {
-            string UserName = txt_UserName.Text;
-            string Password = txt_Password.Text;
-            int Remember = cb_Remember.Checked ? 1 : 0;
-            if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
-            {
-                MessageBox.Show("User ID or Password is empty ,Please Check!!", "Login Error");
-                return;
-            }
-
-
-            if (UserManage.UsersKeyValuePairs.ContainsKey(UserName))
-            {
-                User user = UserManage.UsersKeyValuePairs[UserName];
-                if (Password == UserManage.UsersKeyValuePairs[UserName].Password)
-                {
-                    UserManage.IsLogined = true;//系统已登录
-                    UserManage.SetLogionUser(user);//当前登录的用户
-                    //将本次登录更新为上一次登录的用户插入数据库，方便下次登录的时候查看
-                    UserManage.UpDateLastUser(UserName, Password, Remember);
-                    isOK = true;
-                    Close();
-                }
-                else { MessageBox.Show("Password is incorrect, please re-enter"); return; }
-            }
-            else { MessageBox.Show("User name is incorrect, please re-enter"); }
-
-        }
-        #endregion
-
-        #region btn_Close_Click 关闭按钮
-        private void btn_Close_Click(object sender, EventArgs e)
-        {
-            isOK = false;
-
-            Close();
-        }
-        #endregion
-
-        private void SIGNIN_materialButton_Click(object sender, EventArgs e)
-        {
-            RegisterFrom register = new RegisterFrom();
-            register.ShowDialog();
-
+            txt_enter_password.Text = "";
         }
 
-        private void lab_forget_pass_MouseEnter(object sender, EventArgs e)
+        private void txt_broblem_Click(object sender, EventArgs e)
         {
-            // 鼠标进入时，样式变为手指
-            Cursor = Cursors.Hand;
-            lab_forget_pass.Font = new Font("微软雅黑", 10);
-            lab_forget_pass.ForeColor = Color.LimeGreen;
+            txt_broblem.Text = "";
         }
 
-        private void lab_forget_pass_MouseLeave(object sender, EventArgs e)
+        private void txt_answer_Click(object sender, EventArgs e)
         {
-            // 鼠标离开时，样式恢复为默认
-            Cursor = Cursors.Default;
-            lab_forget_pass.Font = new Font("微软雅黑", 9);
-            lab_forget_pass.ForeColor = Color.White;
+            txt_answer.Text = "";
         }
 
-        private void lab_forget_pass_Click(object sender, EventArgs e)
+        private void btn_back_Click(object sender, EventArgs e)
         {
-            BackPassWordForm backPass = new BackPassWordForm();
-            backPass.ShowDialog();
+            this.Close();
         }
     }
 }

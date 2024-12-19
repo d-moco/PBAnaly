@@ -17,9 +17,17 @@ namespace PBAnaly.LoginCommon
         /// </summary>
         Operator,
         /// <summary>
+        /// 工程师
+        /// </summary>
+        Engineer,
+        /// <summary>
         /// 管理员权限
         /// </summary>
-        Administrator
+        Administrator,
+        /// <summary>
+        /// 超级管理员
+        /// </summary>
+        SuperAdministrator
     }
     #endregion
 }
