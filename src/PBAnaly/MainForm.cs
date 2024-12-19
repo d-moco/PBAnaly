@@ -59,7 +59,26 @@ namespace PBAnaly
             FormGenerate_Y = 0;
            // initPanel();
         }
+        public MainForm()
+        {
+            InitializeComponent();
 
+            LoginCommon.LoginForm loginForm = new LoginCommon.LoginForm();
+            loginForm.ShowDialog();
+            if (!loginForm.isOK)
+            {
+                this.FormClosing -= new FormClosingEventHandler(MainForm_FormClosing);
+                Close();
+            }
+
+            loginForm.Hide();
+
+            UIInit();
+
+            FormGenerate_X = 0;
+            FormGenerate_Y = 0;
+            // initPanel();
+        }
 
 
 
@@ -601,6 +620,11 @@ namespace PBAnaly
                 #endregion
 
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

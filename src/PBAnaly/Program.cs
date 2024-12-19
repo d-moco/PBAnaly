@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using PBAnaly.Module;
 using PBAnaly.UI;
+using PBAnaly.LoginCommon;
 namespace PBAnaly
 {
     public static class Global
@@ -67,9 +68,15 @@ namespace PBAnaly
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+
+                //数据库操作
+                string dbPath = "UserManage.db";
+                string connectionString = $"Data Source={dbPath};Version=3;";
+                UserManage.ConnectDb();
+
                 var login = new LoginForm();
                 login.StartPosition = FormStartPosition.CenterScreen;
-                Application.Run(login);
+                Application.Run(new MainForm());
                 
             }
             else 
