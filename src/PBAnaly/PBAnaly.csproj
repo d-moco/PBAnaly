@@ -165,6 +165,12 @@
     <Compile Include="UI\SizeForm.Designer.cs">
       <DependentUpon>SizeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SystemSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SystemSettingForm.Designer.cs">
+      <DependentUpon>SystemSettingForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DataProcessForm.resx">
       <DependentUpon>DataProcessForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SizeForm.resx">
       <DependentUpon>SizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SystemSettingForm.resx">
+      <DependentUpon>SystemSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -421,6 +430,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GS-Analy.ico" />
+    <None Include="Resources\最小化white.png" />
+    <None Include="Resources\最大化white.png" />
     <None Include="Resources\关闭White.png" />
     <None Include="Resources\文本.png" />
     <None Include="Resources\数据报告 %281%29.png" />

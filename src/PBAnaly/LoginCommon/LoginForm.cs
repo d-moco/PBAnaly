@@ -33,7 +33,7 @@ namespace PBAnaly.LoginCommon
             {
                 foreach (var item in UserManage.LastLoginUser.Values)
                 {
-                    if (item.Remember == 1)
+                    if (item.Remember == "1")
                     {
                         txt_UserName.Text= item.UserName;
                         txt_Password.Text = item.Password;
@@ -151,7 +151,7 @@ namespace PBAnaly.LoginCommon
         {
             string UserName = txt_UserName.Text;
             string Password = txt_Password.Text;
-            int Remember = cb_Remember.Checked ? 1 : 0;
+            string Remember = cb_Remember.Checked ? "1" : "0";
             if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
             {
                 MessageBox.Show("User ID or Password is empty ,Please Check!!", "Login Error");

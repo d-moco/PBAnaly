@@ -89,6 +89,21 @@ namespace PBAnaly.LoginCommon
                             Console.WriteLine("表 'User' 已创建。");
                         }
 
+                        sql = @"
+                                CREATE TABLE IF NOT EXISTS last (
+                                    ID VARCHAR(100) NOT NULL,
+                                    UserName VARCHAR(200) NOT NULL,
+                                    Password VARCHAR(2000) NOT NULL,
+                                    Remember VARCHAR(200) NOT NULL,
+                                    PRIMARY KEY (ID)
+                                );";
+
+                        using (var command = new SQLiteCommand(sql, connection))
+                        {
+                            command.ExecuteNonQuery();  // 执行SQL命令创建表
+                            Console.WriteLine("表 'last' 已创建。");
+                        }
+
                         // 插入数据
                         InsertDefaultUserData(connectionString);
                     }
@@ -115,30 +130,54 @@ namespace PBAnaly.LoginCommon
         /// <param name="connectionString"></param>
         private static void InsertDefaultUserData(string connectionString)
         {
-            using (var connection = new SQLiteConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                string insertSQL = @"
-                INSERT OR IGNORE INTO User (UserName, Password, CreatedBy, CreatedDate, Role, PasswordQuestion, QuestionAnswer)
-                VALUES (@UserName, @Password, @CreatedBy, @CreatedDate, @Role, @PasswordQuestion, @QuestionAnswer);";
-
-                using (var command = new SQLiteCommand(insertSQL, connection))
+                using (var connection = new SQLiteConnection(connectionString))
                 {
-                    // 参数化查询，防止SQL注入
-                    command.Parameters.AddWithValue("@UserName", "root");
-                    command.Parameters.AddWithValue("@Password", "root"); // 示例密码
-                    command.Parameters.AddWithValue("@CreatedBy", "System");
-                    command.Parameters.AddWithValue("@CreatedDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                    command.Parameters.AddWithValue("@Role", "Administrator");
-                    command.Parameters.AddWithValue("@PasswordQuestion", "我的名字");
-                    command.Parameters.AddWithValue("@QuestionAnswer", "root");
+                    connection.Open();
 
-                    command.ExecuteNonQuery();
+                    string insertSQL = @"
+                        INSERT OR IGNORE INTO User (UserName, Password, CreatedBy, CreatedDate, Role, PasswordQuestion, QuestionAnswer)
+                        VALUES (@UserName, @Password, @CreatedBy, @CreatedDate, @Role, @PasswordQuestion, @QuestionAnswer);";
+
+                    using (var command = new SQLiteCommand(insertSQL, connection))
+                    {
+                        // 参数化查询，防止SQL注入
+                        command.Parameters.AddWithValue("@UserName", "root");
+                        command.Parameters.AddWithValue("@Password", "root"); // 示例密码
+                        command.Parameters.AddWithValue("@CreatedBy", "System");
+                        command.Parameters.AddWithValue("@CreatedDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@Role", "Administrator");
+                        command.Parameters.AddWithValue("@PasswordQuestion", "我的名字");
+                        command.Parameters.AddWithValue("@QuestionAnswer", "root");
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    string insertLast = @"
+                        INSERT OR IGNORE INTO last (ID,UserName, Password, Remember)
+                        VALUES (@ID,@UserName, @Password, @Remember);";
+
+                    using (var command = new SQLiteCommand(insertLast, connection))
+                    {
+                        // 参数化查询，防止SQL注入
+                        command.Parameters.AddWithValue("@ID", "1");
+                        command.Parameters.AddWithValue("@UserName", "root");
+                        command.Parameters.AddWithValue("@Password", "root"); // 示例密码
+                        command.Parameters.AddWithValue("@Remember", "0");
+
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
                 }
-
-                connection.Close();
             }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         #endregion
@@ -212,7 +251,7 @@ namespace PBAnaly.LoginCommon
                             LastLogin last = new LastLogin();
                             last.UserName = row["UserName"].ToString();
                             last.Password = row["Password"].ToString();
-                            last.Remember = int.Parse(row["Remember"].ToString());
+                            last.Remember = row["Remember"].ToString();
                             LastLoginUser.Add(last.UserName, last);
                         }
                     }
@@ -237,7 +276,7 @@ namespace PBAnaly.LoginCommon
         /// <param name="UserName"></param>
         /// <param name="Password"></param>
         /// <param name="Remember"></param>
-        public static void UpDateLastUser(string UserName,string Password,int Remember)
+        public static void UpDateLastUser(string UserName,string Password,string Remember)
         {
             try
             {
@@ -254,7 +293,7 @@ namespace PBAnaly.LoginCommon
                         cmd.Parameters.AddWithValue("@UserName", UserName);
                         cmd.Parameters.AddWithValue("@Password", Password);
                         cmd.Parameters.AddWithValue("@Remember", Remember);
-                        cmd.Parameters.AddWithValue("@ID", 1);
+                        cmd.Parameters.AddWithValue("@ID", "1");
 
                         // 执行更新命令
                         int rowsAffected = cmd.ExecuteNonQuery();

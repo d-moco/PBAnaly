@@ -26,7 +26,7 @@ namespace PBAnaly.LoginCommon
         /// <summary>
         /// 是否记住本次登录信息   1：记住 0：不记住
         /// </summary>
-        public int Remember { get; set; }
+        public string Remember { get; set; }
         #endregion
     }
 }
