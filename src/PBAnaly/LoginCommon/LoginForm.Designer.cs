@@ -34,7 +34,9 @@
             this.txt_UserName = new System.Windows.Forms.TextBox();
             this.SIGNIN_materialButton = new MaterialSkin.Controls.MaterialButton();
             this.btn_Login = new MaterialSkin.Controls.MaterialButton();
+            this.label4 = new System.Windows.Forms.Label();
             this.btn_Close = new System.Windows.Forms.Button();
+            this.lab_forget_pass = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,11 +46,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.panel1.Controls.Add(this.lab_forget_pass);
             this.panel1.Controls.Add(this.txt_Password);
             this.panel1.Controls.Add(this.cb_Remember);
             this.panel1.Controls.Add(this.txt_UserName);
             this.panel1.Controls.Add(this.SIGNIN_materialButton);
             this.panel1.Controls.Add(this.btn_Login);
+            this.panel1.Font = new System.Drawing.Font("宋体", 10F);
             this.panel1.Location = new System.Drawing.Point(-1, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(588, 332);
@@ -104,10 +108,11 @@
             this.SIGNIN_materialButton.NoAccentTextColor = System.Drawing.Color.Empty;
             this.SIGNIN_materialButton.Size = new System.Drawing.Size(147, 36);
             this.SIGNIN_materialButton.TabIndex = 15;
-            this.SIGNIN_materialButton.Text = "Sign In";
+            this.SIGNIN_materialButton.Text = "Register";
             this.SIGNIN_materialButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.SIGNIN_materialButton.UseAccentColor = false;
             this.SIGNIN_materialButton.UseVisualStyleBackColor = true;
+            this.SIGNIN_materialButton.Click += new System.EventHandler(this.SIGNIN_materialButton_Click);
             // 
             // btn_Login
             // 
@@ -130,6 +135,17 @@
             this.btn_Login.UseVisualStyleBackColor = true;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 25);
+            this.label4.TabIndex = 451;
+            this.label4.Text = "Login";
+            // 
             // btn_Close
             // 
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -145,12 +161,27 @@
             this.btn_Close.UseVisualStyleBackColor = false;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
+            // lab_forget_pass
+            // 
+            this.lab_forget_pass.AutoSize = true;
+            this.lab_forget_pass.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.lab_forget_pass.ForeColor = System.Drawing.Color.White;
+            this.lab_forget_pass.Location = new System.Drawing.Point(288, 175);
+            this.lab_forget_pass.Name = "lab_forget_pass";
+            this.lab_forget_pass.Size = new System.Drawing.Size(207, 17);
+            this.lab_forget_pass.TabIndex = 495;
+            this.lab_forget_pass.Text = "Forgot your password? Click back";
+            this.lab_forget_pass.Click += new System.EventHandler(this.lab_forget_pass_Click);
+            this.lab_forget_pass.MouseEnter += new System.EventHandler(this.lab_forget_pass_MouseEnter);
+            this.lab_forget_pass.MouseLeave += new System.EventHandler(this.lab_forget_pass_MouseLeave);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.ClientSize = new System.Drawing.Size(587, 365);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -159,6 +190,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -171,5 +203,7 @@
         private MaterialSkin.Controls.MaterialButton SIGNIN_materialButton;
         private MaterialSkin.Controls.MaterialButton btn_Login;
         private System.Windows.Forms.Button btn_Close;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lab_forget_pass;
     }
 }
