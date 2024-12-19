@@ -557,7 +557,10 @@ namespace PBAnaly
                     int index = 0;
                     foreach (var bname in bioanalyName)
                     {
+                        
                         var item = bioanalysisMannages[bname];
+                        item.rectangles.Clear();
+                        item.CircleAndInfoList.Clear();
                         item.Arrangement = 1;
                         if (index == bioanalysisMannages.Count - 1)
                         {
