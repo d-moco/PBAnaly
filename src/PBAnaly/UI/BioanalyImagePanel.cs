@@ -265,8 +265,8 @@ namespace PBAnaly.UI
             int h = (int)(pl_bg_panel.Height * factor);
             if (w < pl_panel_image.Width - 50 || h < pl_panel_image.Height - 50)
             {
-                w = pl_panel_image.Width - 50;
-                h = pl_panel_image.Height - 50;
+                w = pl_panel_image.Width ;
+                h = pl_panel_image.Height ;
             }
 
             if (w > pl_panel_image.Width * 5 || h > pl_panel_image.Height * 5)

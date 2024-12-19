@@ -189,7 +189,11 @@ namespace PBAnaly
 
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
-           
+            //刷新
+            foreach (var item in bioanalysisMannages)
+            {
+                item.Value.GetImagePanel.CenterPictureBox();
+            }
         }
 
         private void materialButton_LoadData_Click(object sender, EventArgs e)
