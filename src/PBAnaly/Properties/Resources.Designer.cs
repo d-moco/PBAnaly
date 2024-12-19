@@ -543,6 +543,16 @@ namespace PBAnaly.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 添加用户 {
+            get {
+                object obj = ResourceManager.GetObject("添加用户", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 窗口最大化_操作_jurassic {
             get {
                 object obj = ResourceManager.GetObject("窗口最大化_操作_jurassic", resourceCulture);

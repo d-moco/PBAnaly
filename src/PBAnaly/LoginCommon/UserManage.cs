@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniExcelLibs;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -207,7 +208,7 @@ namespace PBAnaly.LoginCommon
                                 Password = reader["Password"].ToString(),
                                 CreatedBy = reader["CreatedBy"].ToString(),
                                 CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
-                                Role = Enum.TryParse<UserRole>(reader["Role"].ToString(), out var role) ? role : UserRole.Operator,
+                                Role = (UserRole)Enum.Parse(typeof(UserRole), reader["Role"].ToString()),
                                 PasswordQuestion = reader["PasswordQuestion"].ToString(),
                                 QuestionAnswer = reader["QuestionAnswer"].ToString()
                             };
@@ -357,6 +358,127 @@ namespace PBAnaly.LoginCommon
             }
         }
 
+
+        #endregion
+
+        #region FixUserRole 修改权限
+        /// <summary>
+        /// 修改权限
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <param name="Role"></param>
+        /// <returns></returns>
+        public static bool FixUserRole(string UserName,string Role)
+        {
+            try
+            {
+                string updateQuery = "UPDATE User SET Role = @Role WHERE UserName = @UserName";
+
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, conn))
+                    {
+                        // 参数化查询，防止SQL注入
+                        cmd.Parameters.AddWithValue("@UserName", UserName);
+                        cmd.Parameters.AddWithValue("@Role", Role);
+
+                        // 执行更新命令
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        Console.WriteLine($"更新成功，受影响的行数：{rowsAffected}");
+                    }
+
+                    conn.Close();
+
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region DeleteUser 删除用户
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <returns></returns>
+        public static bool DeleteUser(string UserName)
+        {
+            try
+            {
+                string sql = string.Format("delete from User where `UserName`='{0}'", UserName);
+
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                    {
+
+                        var blnResult = (cmd.ExecuteNonQuery() > 0);
+                    }
+                    
+                    conn.Close();
+                    UsersKeyValuePairs.Remove(UserName);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        #endregion
+
+
+        #region FixUserPassword 修改密码
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
+        public static bool FixUserPassword(string UserName , string Password)
+        {
+            try
+            {
+                string updateQuery = "UPDATE User SET Password = @Password WHERE UserName = @UserName";
+
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, conn))
+                    {
+                        // 参数化查询，防止SQL注入
+                        cmd.Parameters.AddWithValue("@UserName", UserName);
+                        cmd.Parameters.AddWithValue("@Password", Password);
+
+                        // 执行更新命令
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        Console.WriteLine($"更新成功，受影响的行数：{rowsAffected}");
+                    }
+
+                    conn.Close();
+
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         #endregion
 

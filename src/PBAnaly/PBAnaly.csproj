@@ -96,6 +96,12 @@
     </Compile>
     <Compile Include="LoginCommon\User.cs" />
     <Compile Include="LoginCommon\UserManage.cs" />
+    <Compile Include="LoginCommon\UserManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\UserManageForm.Designer.cs">
+      <DependentUpon>UserManageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginCommon\UserRole.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginCommon\RegisterFrom.resx">
       <DependentUpon>RegisterFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\UserManageForm.resx">
+      <DependentUpon>UserManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -430,6 +439,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GS-Analy.ico" />
+    <None Include="Resources\添加用户.png" />
     <None Include="Resources\最小化white.png" />
     <None Include="Resources\最大化white.png" />
     <None Include="Resources\关闭White.png" />

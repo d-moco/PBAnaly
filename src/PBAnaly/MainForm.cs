@@ -247,6 +247,8 @@ namespace PBAnaly
 
         private void materialButton_setting_Click(object sender, EventArgs e)
         {
+            SystemSettingForm system = new SystemSettingForm();
+            system.ShowDialog();
             //if (settingForm != null)
             //    return;
 
