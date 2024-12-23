@@ -146,8 +146,8 @@ namespace PBAnaly.Util
             ushort data1, data2, data3, data4;
 
             string str1 = "1234567890123456";
-            string DefaultUserPassword = "11111111";
-            string DefaultAdminPassword = "00000000";
+            string DefaultUserPassword = "wwwbgsgs";
+            string DefaultAdminPassword = "wwwbgsgs";
             string strSoftIDString = "1234ABCD";
 
             HID = Count = 0;
