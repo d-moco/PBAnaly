@@ -81,17 +81,17 @@
             this.metroPanel_RightTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel_RightTop.HorizontalScrollbarBarColor = true;
             this.metroPanel_RightTop.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel_RightTop.HorizontalScrollbarSize = 7;
-            this.metroPanel_RightTop.Location = new System.Drawing.Point(210, 0);
+            this.metroPanel_RightTop.HorizontalScrollbarSize = 9;
+            this.metroPanel_RightTop.Location = new System.Drawing.Point(280, 0);
             this.metroPanel_RightTop.Margin = new System.Windows.Forms.Padding(0);
             this.metroPanel_RightTop.Name = "metroPanel_RightTop";
-            this.metroPanel_RightTop.Size = new System.Drawing.Size(559, 55);
+            this.metroPanel_RightTop.Size = new System.Drawing.Size(746, 69);
             this.metroPanel_RightTop.TabIndex = 12;
             this.metroPanel_RightTop.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroPanel_RightTop.UseCustomBackColor = true;
             this.metroPanel_RightTop.VerticalScrollbarBarColor = true;
             this.metroPanel_RightTop.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel_RightTop.VerticalScrollbarSize = 7;
+            this.metroPanel_RightTop.VerticalScrollbarSize = 9;
             // 
             // materialButton_log
             // 
@@ -102,11 +102,11 @@
             this.materialButton_log.HighEmphasis = true;
             this.materialButton_log.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_log.Icon")));
             this.materialButton_log.Location = new System.Drawing.Point(581, 0);
-            this.materialButton_log.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.materialButton_log.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.materialButton_log.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_log.Name = "materialButton_log";
             this.materialButton_log.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_log.Size = new System.Drawing.Size(113, 55);
+            this.materialButton_log.Size = new System.Drawing.Size(113, 69);
             this.materialButton_log.TabIndex = 19;
             this.materialButton_log.Text = "操作日志";
             this.materialButton_log.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -123,11 +123,11 @@
             this.materialButton_setting.HighEmphasis = true;
             this.materialButton_setting.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_setting.Icon")));
             this.materialButton_setting.Location = new System.Drawing.Point(468, 0);
-            this.materialButton_setting.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.materialButton_setting.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.materialButton_setting.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_setting.Name = "materialButton_setting";
             this.materialButton_setting.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_setting.Size = new System.Drawing.Size(113, 55);
+            this.materialButton_setting.Size = new System.Drawing.Size(113, 69);
             this.materialButton_setting.TabIndex = 18;
             this.materialButton_setting.Text = "系统设置";
             this.materialButton_setting.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -145,11 +145,11 @@
             this.materialButton_curveimage.HighEmphasis = true;
             this.materialButton_curveimage.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_curveimage.Icon")));
             this.materialButton_curveimage.Location = new System.Drawing.Point(339, 0);
-            this.materialButton_curveimage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.materialButton_curveimage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.materialButton_curveimage.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_curveimage.Name = "materialButton_curveimage";
             this.materialButton_curveimage.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_curveimage.Size = new System.Drawing.Size(129, 55);
+            this.materialButton_curveimage.Size = new System.Drawing.Size(129, 69);
             this.materialButton_curveimage.TabIndex = 17;
             this.materialButton_curveimage.Text = "泳道波形图";
             this.materialButton_curveimage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -167,11 +167,11 @@
             this.materialButton_analyzedata.HighEmphasis = true;
             this.materialButton_analyzedata.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_analyzedata.Icon")));
             this.materialButton_analyzedata.Location = new System.Drawing.Point(226, 0);
-            this.materialButton_analyzedata.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.materialButton_analyzedata.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.materialButton_analyzedata.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_analyzedata.Name = "materialButton_analyzedata";
             this.materialButton_analyzedata.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_analyzedata.Size = new System.Drawing.Size(113, 55);
+            this.materialButton_analyzedata.Size = new System.Drawing.Size(113, 69);
             this.materialButton_analyzedata.TabIndex = 16;
             this.materialButton_analyzedata.Text = "分析数据";
             this.materialButton_analyzedata.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -189,11 +189,11 @@
             this.materialButton_outimage.HighEmphasis = true;
             this.materialButton_outimage.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_outimage.Icon")));
             this.materialButton_outimage.Location = new System.Drawing.Point(113, 0);
-            this.materialButton_outimage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.materialButton_outimage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.materialButton_outimage.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_outimage.Name = "materialButton_outimage";
             this.materialButton_outimage.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_outimage.Size = new System.Drawing.Size(113, 55);
+            this.materialButton_outimage.Size = new System.Drawing.Size(113, 69);
             this.materialButton_outimage.TabIndex = 15;
             this.materialButton_outimage.Text = "导出图像";
             this.materialButton_outimage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -211,11 +211,11 @@
             this.materialButton_LoadData.HighEmphasis = true;
             this.materialButton_LoadData.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_LoadData.Icon")));
             this.materialButton_LoadData.Location = new System.Drawing.Point(0, 0);
-            this.materialButton_LoadData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.materialButton_LoadData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.materialButton_LoadData.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_LoadData.Name = "materialButton_LoadData";
             this.materialButton_LoadData.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_LoadData.Size = new System.Drawing.Size(113, 55);
+            this.materialButton_LoadData.Size = new System.Drawing.Size(113, 69);
             this.materialButton_LoadData.TabIndex = 14;
             this.materialButton_LoadData.Text = "加载数据";
             this.materialButton_LoadData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -226,9 +226,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 328F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
             this.tableLayoutPanel1.Controls.Add(this.tl_right_main_view, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.metroPanel_RightTop, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.CompanyIcon_pictureBox, 0, 0);
@@ -236,30 +236,30 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.pl_right, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 30);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1097, 581);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1463, 726);
             this.tableLayoutPanel1.TabIndex = 18;
             // 
             // tl_right_main_view
             // 
             this.tl_right_main_view.ColumnCount = 2;
             this.tl_right_main_view.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tl_right_main_view.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
+            this.tl_right_main_view.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 432F));
             this.tl_right_main_view.Controls.Add(this.DataProcess_panel, 0, 0);
             this.tl_right_main_view.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tl_right_main_view.Location = new System.Drawing.Point(210, 86);
+            this.tl_right_main_view.Location = new System.Drawing.Point(280, 108);
             this.tl_right_main_view.Margin = new System.Windows.Forms.Padding(0);
             this.tl_right_main_view.Name = "tl_right_main_view";
             this.tl_right_main_view.RowCount = 2;
             this.tl_right_main_view.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tl_right_main_view.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tl_right_main_view.Size = new System.Drawing.Size(559, 495);
+            this.tl_right_main_view.Size = new System.Drawing.Size(746, 618);
             this.tl_right_main_view.TabIndex = 0;
             // 
             // DataProcess_panel
@@ -268,11 +268,12 @@
             this.tl_right_main_view.SetColumnSpan(this.DataProcess_panel, 2);
             this.DataProcess_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataProcess_panel.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
-            this.DataProcess_panel.Location = new System.Drawing.Point(3, 3);
+            this.DataProcess_panel.Location = new System.Drawing.Point(4, 4);
+            this.DataProcess_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DataProcess_panel.Name = "DataProcess_panel";
-            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(5);
+            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tl_right_main_view.SetRowSpan(this.DataProcess_panel, 2);
-            this.DataProcess_panel.Size = new System.Drawing.Size(553, 489);
+            this.DataProcess_panel.Size = new System.Drawing.Size(738, 610);
             this.DataProcess_panel.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.DataProcess_panel.TabIndex = 19;
             this.DataProcess_panel.Text = "panel1";
@@ -283,10 +284,11 @@
             this.CompanyIcon_pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CompanyIcon_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CompanyIcon_pictureBox.Image = global::PBAnaly.Properties.Resources.京仪科技定稿_画板_1_副本2;
-            this.CompanyIcon_pictureBox.Location = new System.Drawing.Point(3, 3);
+            this.CompanyIcon_pictureBox.Location = new System.Drawing.Point(4, 4);
+            this.CompanyIcon_pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CompanyIcon_pictureBox.Name = "CompanyIcon_pictureBox";
             this.tableLayoutPanel1.SetRowSpan(this.CompanyIcon_pictureBox, 2);
-            this.CompanyIcon_pictureBox.Size = new System.Drawing.Size(204, 80);
+            this.CompanyIcon_pictureBox.Size = new System.Drawing.Size(272, 100);
             this.CompanyIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.CompanyIcon_pictureBox.TabIndex = 16;
             this.CompanyIcon_pictureBox.TabStop = false;
@@ -301,10 +303,10 @@
             this.flowLayoutPanel1.Controls.Add(this.materialButton_correction);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 88);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 110);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(206, 491);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(274, 614);
             this.flowLayoutPanel1.TabIndex = 18;
             // 
             // materialButton_imageProcess
@@ -317,12 +319,12 @@
             this.materialButton_imageProcess.Font = new System.Drawing.Font("宋体", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.materialButton_imageProcess.HighEmphasis = true;
             this.materialButton_imageProcess.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageProcess.Icon")));
-            this.materialButton_imageProcess.Location = new System.Drawing.Point(4, 6);
-            this.materialButton_imageProcess.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_imageProcess.Location = new System.Drawing.Point(5, 8);
+            this.materialButton_imageProcess.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.materialButton_imageProcess.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_imageProcess.Name = "materialButton_imageProcess";
             this.materialButton_imageProcess.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_imageProcess.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_imageProcess.Size = new System.Drawing.Size(267, 60);
             this.materialButton_imageProcess.TabIndex = 4;
             this.materialButton_imageProcess.Text = "图像处理";
             this.materialButton_imageProcess.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -339,12 +341,12 @@
             this.materialButton_acidAnalyze.Depth = 0;
             this.materialButton_acidAnalyze.HighEmphasis = true;
             this.materialButton_acidAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_acidAnalyze.Icon")));
-            this.materialButton_acidAnalyze.Location = new System.Drawing.Point(4, 66);
-            this.materialButton_acidAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_acidAnalyze.Location = new System.Drawing.Point(5, 84);
+            this.materialButton_acidAnalyze.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.materialButton_acidAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_acidAnalyze.Name = "materialButton_acidAnalyze";
             this.materialButton_acidAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_acidAnalyze.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_acidAnalyze.Size = new System.Drawing.Size(267, 60);
             this.materialButton_acidAnalyze.TabIndex = 5;
             this.materialButton_acidAnalyze.Text = "泳道分析";
             this.materialButton_acidAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -360,12 +362,12 @@
             this.materialButton_roiAnalyze.Depth = 0;
             this.materialButton_roiAnalyze.HighEmphasis = true;
             this.materialButton_roiAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_roiAnalyze.Icon")));
-            this.materialButton_roiAnalyze.Location = new System.Drawing.Point(4, 126);
-            this.materialButton_roiAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_roiAnalyze.Location = new System.Drawing.Point(5, 160);
+            this.materialButton_roiAnalyze.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.materialButton_roiAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_roiAnalyze.Name = "materialButton_roiAnalyze";
             this.materialButton_roiAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_roiAnalyze.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_roiAnalyze.Size = new System.Drawing.Size(267, 60);
             this.materialButton_roiAnalyze.TabIndex = 6;
             this.materialButton_roiAnalyze.Text = "ROIs分析";
             this.materialButton_roiAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -380,12 +382,12 @@
             this.materialButton_miniAnalyze.Depth = 0;
             this.materialButton_miniAnalyze.HighEmphasis = true;
             this.materialButton_miniAnalyze.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_miniAnalyze.Icon")));
-            this.materialButton_miniAnalyze.Location = new System.Drawing.Point(4, 186);
-            this.materialButton_miniAnalyze.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_miniAnalyze.Location = new System.Drawing.Point(5, 236);
+            this.materialButton_miniAnalyze.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.materialButton_miniAnalyze.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_miniAnalyze.Name = "materialButton_miniAnalyze";
             this.materialButton_miniAnalyze.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_miniAnalyze.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_miniAnalyze.Size = new System.Drawing.Size(267, 60);
             this.materialButton_miniAnalyze.TabIndex = 7;
             this.materialButton_miniAnalyze.Text = "微孔版分析";
             this.materialButton_miniAnalyze.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -400,12 +402,12 @@
             this.materialButton_dotcounts.Depth = 0;
             this.materialButton_dotcounts.HighEmphasis = true;
             this.materialButton_dotcounts.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_dotcounts.Icon")));
-            this.materialButton_dotcounts.Location = new System.Drawing.Point(4, 246);
-            this.materialButton_dotcounts.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_dotcounts.Location = new System.Drawing.Point(5, 312);
+            this.materialButton_dotcounts.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.materialButton_dotcounts.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_dotcounts.Name = "materialButton_dotcounts";
             this.materialButton_dotcounts.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_dotcounts.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_dotcounts.Size = new System.Drawing.Size(267, 60);
             this.materialButton_dotcounts.TabIndex = 8;
             this.materialButton_dotcounts.Text = "菌落计数";
             this.materialButton_dotcounts.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -420,12 +422,12 @@
             this.materialButton_correction.Depth = 0;
             this.materialButton_correction.HighEmphasis = true;
             this.materialButton_correction.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_correction.Icon")));
-            this.materialButton_correction.Location = new System.Drawing.Point(4, 306);
-            this.materialButton_correction.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton_correction.Location = new System.Drawing.Point(5, 388);
+            this.materialButton_correction.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.materialButton_correction.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_correction.Name = "materialButton_correction";
             this.materialButton_correction.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_correction.Size = new System.Drawing.Size(200, 48);
+            this.materialButton_correction.Size = new System.Drawing.Size(267, 60);
             this.materialButton_correction.TabIndex = 9;
             this.materialButton_correction.Text = "蛋白归一化";
             this.materialButton_correction.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -445,10 +447,10 @@
             this.flowLayoutPanel2.Controls.Add(this.materialButton_forward);
             this.flowLayoutPanel2.Controls.Add(this.materialButton_return);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(210, 55);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(280, 69);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(559, 31);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(746, 39);
             this.flowLayoutPanel2.TabIndex = 19;
             // 
             // materialButton_changeFormSize
@@ -623,7 +625,7 @@
             this.materialButton_return.Depth = 0;
             this.materialButton_return.HighEmphasis = true;
             this.materialButton_return.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_return.Icon")));
-            this.materialButton_return.Location = new System.Drawing.Point(0, 36);
+            this.materialButton_return.Location = new System.Drawing.Point(512, 0);
             this.materialButton_return.Margin = new System.Windows.Forms.Padding(0);
             this.materialButton_return.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_return.Name = "materialButton_return";
@@ -641,12 +643,12 @@
             this.pl_right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
             this.pl_right.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pl_right.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
-            this.pl_right.Location = new System.Drawing.Point(771, 57);
-            this.pl_right.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_right.Location = new System.Drawing.Point(1029, 71);
+            this.pl_right.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pl_right.Name = "pl_right";
-            this.pl_right.Padding = new System.Windows.Forms.Padding(4);
+            this.pl_right.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tableLayoutPanel1.SetRowSpan(this.pl_right, 2);
-            this.pl_right.Size = new System.Drawing.Size(324, 522);
+            this.pl_right.Size = new System.Drawing.Size(431, 653);
             this.pl_right.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.pl_right.TabIndex = 20;
             this.pl_right.Text = "panel1";
@@ -655,26 +657,28 @@
             // 
             this.thunderLabel1.BackColor = System.Drawing.Color.Transparent;
             this.thunderLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.thunderLabel1.Location = new System.Drawing.Point(9, 5);
+            this.thunderLabel1.Location = new System.Drawing.Point(12, 6);
+            this.thunderLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.thunderLabel1.Name = "thunderLabel1";
-            this.thunderLabel1.Size = new System.Drawing.Size(200, 16);
+            this.thunderLabel1.Size = new System.Drawing.Size(267, 20);
             this.thunderLabel1.TabIndex = 19;
-            this.thunderLabel1.Text = "PBAnaly v0.1.7rc11";
+            this.thunderLabel1.Text = "PBAnaly v0.1.8";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(1103, 608);
+            this.ClientSize = new System.Drawing.Size(1471, 760);
             this.Controls.Add(this.thunderLabel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DrawerAutoShow = true;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
-            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(4, 30, 4, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

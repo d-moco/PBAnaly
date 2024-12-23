@@ -134,7 +134,10 @@ namespace PBAnaly.Util
         public static extern uint VikeyGetTime(ushort Index, Byte[] pTime);
 
 
-
+        public void Uninitializatio() 
+        {
+            VikeyUninitialization(); //程序退出之前一定要调用此函数
+        }
         public bool CheckViKey() 
         {
 

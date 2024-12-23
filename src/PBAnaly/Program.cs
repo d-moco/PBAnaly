@@ -68,6 +68,7 @@ namespace PBAnaly
                 MessageBox.Show("你没有权限，请检查加密狗是否插入","警告");
                 return;
             }
+            Util.ViKeySoft.Instance.Uninitializatio();
 #if true
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
