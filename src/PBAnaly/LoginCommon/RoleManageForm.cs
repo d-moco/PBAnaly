@@ -1,33 +1,26 @@
-﻿using PBAnaly.LoginCommon;
-using Sunny.UI.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PBAnaly.UI
+namespace PBAnaly.LoginCommon
 {
-    public partial class SystemSettingForm : Form
+    public partial class RoleManageForm : Form
     {
-        public SystemSettingForm()
+        public RoleManageForm()
         {
             InitializeComponent();
-
-            pnlMainMenu.BringToFront();
 
             // 设置窗体的启动位置为屏幕的中心
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Location = new System.Drawing.Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                                  (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
         }
-
-        UserManageForm UserForm;
 
         #region =====重写WndPoc方法 无边框窗体更改大小及拖动=========
         const int HTLEFT = 10;
@@ -108,32 +101,62 @@ namespace PBAnaly.UI
         }
         #endregion
 
-        private void btn_Close_Click(object sender, EventArgs e)
+        private void btn_save_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                List<AccessItem> items = new List<AccessItem>();
+                for (int index = 0; index < dataGridView1.RowCount; index++)
+                {
+                    DataGridViewRow row = dataGridView1.Rows[index];
+                    AccessItem item = new AccessItem();
+                    item.Id = (int)row.Cells[0].Value;
+                    item.Disrible = (string)row.Cells[1].Value;
+                    item.Operator = (bool)row.Cells[2].Value;
+                    item.Engineer = (bool)row.Cells[3].Value;
+                    item.Administrator = (bool)row.Cells[4].Value;
+                    item.SuperAdministrator = true;
+                    items.Add(item);
+                }
+                AccessControl.AccessItems = items;
+                AccessControl.SaveConfig();
+
+                MessageBox.Show("success");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
-        private void SystemSettingForm_Load(object sender, EventArgs e)
+        private void RoleManageForm_Load(object sender, EventArgs e)
         {
-            UserForm = new UserManageForm();
-            UserForm.Dock = DockStyle.Fill;
-            UserForm.Location = new Point(0, 0);
-            UserForm.TopLevel = false;
-            tab_UserManage.Controls.Add(UserForm);
-            UserForm.InitUser();
-            UserForm.Show();
-
-            if (UserManage.IsLogined)
+            try
             {
-                if (UserManage.LogionUser.Role == UserRole.SuperAdministrator)
+                for (int index = 0; index < AccessControl.AccessItems.Count; index++)
                 {
-                    tab_UserManage.Parent = tabMain;
-                }
-                else
-                {
-                    tab_UserManage.Parent = null;
+                    DataGridViewRow dr = new DataGridViewRow();
+                    dr.CreateCells(dataGridView1);
+                    dr.Cells[0].Value = AccessControl.AccessItems[index].Id;
+                    dr.Cells[1].Value = AccessControl.AccessItems[index].Disrible;
+                    dr.Cells[2].Value = AccessControl.AccessItems[index].Operator;
+                    dr.Cells[3].Value = AccessControl.AccessItems[index].Engineer;
+                    dr.Cells[4].Value = AccessControl.AccessItems[index].SuperAdministrator;
+                    dr.Cells[5].Value = AccessControl.AccessItems[index].Administrator;
+
+                    
+                    dataGridView1.Rows.Add(dr);
                 }
             }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

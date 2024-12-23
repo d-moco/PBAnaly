@@ -73,6 +73,7 @@ namespace PBAnaly
                 string dbPath = "UserManage.db";
                 string connectionString = $"Data Source={dbPath};Version=3;";
                 UserManage.ConnectDb();
+                AccessControl.LoadConfig();//加载权限
 
                 var login = new LoginForm();
                 login.StartPosition = FormStartPosition.CenterScreen;

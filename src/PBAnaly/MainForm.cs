@@ -3,6 +3,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using OpenCvSharp.Flann;
 using OpenTK;
+using PBAnaly.LoginCommon;
 using PBAnaly.Module;
 using PBAnaly.Properties;
 using PBAnaly.UI;
@@ -73,12 +74,193 @@ namespace PBAnaly
 
             loginForm.Hide();
 
+            UserManage.LogionUserChanged += OnLogionUserChanged;
+            
+            InitAccessControls();
+
+            OnLogionUser();
+
             UIInit();
 
             FormGenerate_X = 0;
             FormGenerate_Y = 0;
             // initPanel();
         }
+
+
+        #region 重新梳理权限控制，控件的权限可通过管理员进行配置
+        /// <summary>
+        /// 用于权限控制，将所有要管控的控件保存到mControls中
+        /// </summary>
+        private Control[] mControls;
+
+        /// <summary>
+        /// 初始化权限控件集合
+        /// </summary>
+        private void InitAccessControls()
+        {
+            mControls = new Control[] 
+            {
+                materialButton_setting,         //0、系统设置
+                materialButton_curveimage,      //1、泳道波形图
+                materialButton_analyzedata,     //2、分析数据
+                materialButton_outimage,        //3、导出图像
+                materialButton_LoadData,        //4、加载数据
+                materialButton_imageProcess,    //5、图像处理
+                materialButton_acidAnalyze,     //6、泳道分析
+                materialButton_roiAnalyze,      //7、ROIs分析
+                materialButton_miniAnalyze,     //8、微孔版分析
+                materialButton_dotcounts,       //9、菌落计数
+                materialButton_correction      //10、蛋白归一化
+            };
+        }
+
+        #region OnLogionUserChanged 处理登录用户更改事件
+        /// <summary>
+        /// 处理登录用户更改事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnLogionUserChanged(object sender, EventArgs e)
+        {
+            if (UserManage.IsLogined)
+            {
+                switch (UserManage.LogionUser.Role)
+                {
+                    case UserRole.Operator:
+                        SetOperatorRole();
+                        break;
+                    case UserRole.Engineer:
+                        SetEngineerRole();
+                        break;
+                    case UserRole.Administrator:
+                        SetAdministratorRole();
+                        break;
+                    case UserRole.SuperAdministrator:
+                        SetSuperAdministratorRole();
+                        break;
+                }
+            }
+            else
+            {
+                CloseControlEnabled();
+            }
+        }
+
+        private void OnLogionUser()
+        {
+            if (UserManage.IsLogined)
+            {
+                switch (UserManage.LogionUser.Role)
+                {
+                    case UserRole.Operator:
+                        SetOperatorRole();
+                        break;
+                    case UserRole.Engineer:
+                        SetEngineerRole();
+
+                        break;
+                    case UserRole.Administrator:
+                        SetAdministratorRole();
+                        break;
+                    case UserRole.SuperAdministrator:
+                        SetSuperAdministratorRole();
+                        break;
+                }
+            }
+            else
+            {
+                CloseControlEnabled();
+            }
+        }
+
+        #endregion
+
+        #region CloseControlEnabled 关闭控件权限，在未登录时使用
+        /// <summary>
+        /// 关闭控件权限，在未登录时使用
+        /// </summary>
+        private void CloseControlEnabled()
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(CloseControlEnabled));
+            }
+            else
+            {
+                SetControlsEnabled(false);
+            }
+        }
+        #endregion
+
+        #region SetControlsEnabled 设置控件是否可以对用户交互作出响应。
+        /// <summary>
+        /// 设置控件是否可以对用户交互作出响应。
+        /// </summary>
+        /// <param name="isEnabled">true-可以对用户交互作出响应；false-不可以对用户交互作出响应。</param>
+        public void SetControlsEnabled(bool isEnabled)
+        {
+            for (int index = 0; index < mControls.Length; index++)
+            {
+                mControls[index].Enabled = false;
+            }
+        }
+        #endregion
+
+        #region SetOperatorRole 设置操作员权限
+        /// <summary>
+        /// 设置操作员权限
+        /// </summary>
+        private void SetOperatorRole()
+        {
+            for (int index = 0; index < mControls.Length; index++)
+            {
+                mControls[index].Enabled = AccessControl.AccessItems[index].Operator;
+            }
+        }
+        #endregion
+
+        #region SetEngineerRole 设置工程师权限
+        /// <summary>
+        /// 设置工程师权限
+        /// </summary>
+        private void SetEngineerRole()
+        {
+            for (int index = 0; index < mControls.Length; index++)
+            {
+                mControls[index].Enabled = AccessControl.AccessItems[index].Engineer;
+            }
+        }
+        #endregion
+
+        #region SetAdministratorRole 设置管理员权限
+        /// <summary>
+        /// 设置管理员权限
+        /// </summary>
+        private void SetAdministratorRole()
+        {
+            for (int index = 0; index < mControls.Length; index++)
+            {
+                mControls[index].Enabled = AccessControl.AccessItems[index].Administrator;
+            }
+        }
+        #endregion
+
+        #region SetAdministratorRole 设置超级管理员权限
+        /// <summary>
+        /// 设置超级管理员权限
+        /// </summary>
+        private void SetSuperAdministratorRole()
+        {
+            for (int index = 0; index < mControls.Length; index++)
+            {
+                mControls[index].Enabled = AccessControl.AccessItems[index].SuperAdministrator;
+            }
+        }
+        #endregion
+
+        #endregion
+
 
 
 

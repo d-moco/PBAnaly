@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,24 +42,25 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_fix = new System.Windows.Forms.TabPage();
+            this.btn_role_manage = new System.Windows.Forms.Button();
             this.btn_fix_role = new System.Windows.Forms.Button();
             this.txt_UserName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cbx_role_role = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tab_delete = new System.Windows.Forms.TabPage();
+            this.btn_delete_user = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tab_fix_password = new System.Windows.Forms.TabPage();
+            this.btn_FixPassword = new System.Windows.Forms.Button();
+            this.txt_password = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txt_fix_p_UserName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_edit_password = new System.Windows.Forms.Button();
             this.btn_editRole = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_delete_user = new System.Windows.Forms.Button();
-            this.txt_fix_p_UserName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_password = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_FixPassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -99,14 +100,14 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -128,8 +129,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "序号";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -137,8 +138,8 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column2.HeaderText = "用户名";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -152,8 +153,8 @@
             // 
             // Column3
             // 
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column3.HeaderText = "创建时间";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -161,8 +162,8 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column4.HeaderText = "权限";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -184,6 +185,7 @@
             // 
             // tab_fix
             // 
+            this.tab_fix.Controls.Add(this.btn_role_manage);
             this.tab_fix.Controls.Add(this.btn_fix_role);
             this.tab_fix.Controls.Add(this.txt_UserName);
             this.tab_fix.Controls.Add(this.label11);
@@ -196,6 +198,22 @@
             this.tab_fix.TabIndex = 0;
             this.tab_fix.Text = "修改权限";
             this.tab_fix.UseVisualStyleBackColor = true;
+            // 
+            // btn_role_manage
+            // 
+            this.btn_role_manage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.btn_role_manage.FlatAppearance.BorderSize = 0;
+            this.btn_role_manage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_role_manage.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.btn_role_manage.ForeColor = System.Drawing.Color.White;
+            this.btn_role_manage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_role_manage.Location = new System.Drawing.Point(284, 305);
+            this.btn_role_manage.Name = "btn_role_manage";
+            this.btn_role_manage.Size = new System.Drawing.Size(101, 38);
+            this.btn_role_manage.TabIndex = 506;
+            this.btn_role_manage.Text = "权限管理";
+            this.btn_role_manage.UseVisualStyleBackColor = false;
+            this.btn_role_manage.Click += new System.EventHandler(this.btn_role_manage_Click);
             // 
             // btn_fix_role
             // 
@@ -270,6 +288,31 @@
             this.tab_delete.Text = "删除";
             this.tab_delete.UseVisualStyleBackColor = true;
             // 
+            // btn_delete_user
+            // 
+            this.btn_delete_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.btn_delete_user.FlatAppearance.BorderSize = 0;
+            this.btn_delete_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_user.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.btn_delete_user.ForeColor = System.Drawing.Color.White;
+            this.btn_delete_user.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete_user.Location = new System.Drawing.Point(155, 74);
+            this.btn_delete_user.Name = "btn_delete_user";
+            this.btn_delete_user.Size = new System.Drawing.Size(78, 38);
+            this.btn_delete_user.TabIndex = 499;
+            this.btn_delete_user.Text = "删除";
+            this.btn_delete_user.UseVisualStyleBackColor = false;
+            this.btn_delete_user.Click += new System.EventHandler(this.btn_delete_user_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(119, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(161, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "选中左侧表格的一行即可删除";
+            // 
             // tab_fix_password
             // 
             this.tab_fix_password.Controls.Add(this.btn_FixPassword);
@@ -284,6 +327,61 @@
             this.tab_fix_password.TabIndex = 2;
             this.tab_fix_password.Text = "修改密码";
             this.tab_fix_password.UseVisualStyleBackColor = true;
+            // 
+            // btn_FixPassword
+            // 
+            this.btn_FixPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.btn_FixPassword.FlatAppearance.BorderSize = 0;
+            this.btn_FixPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_FixPassword.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.btn_FixPassword.ForeColor = System.Drawing.Color.White;
+            this.btn_FixPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_FixPassword.Location = new System.Drawing.Point(285, 216);
+            this.btn_FixPassword.Name = "btn_FixPassword";
+            this.btn_FixPassword.Size = new System.Drawing.Size(101, 38);
+            this.btn_FixPassword.TabIndex = 509;
+            this.btn_FixPassword.Text = "修改密码";
+            this.btn_FixPassword.UseVisualStyleBackColor = false;
+            this.btn_FixPassword.Click += new System.EventHandler(this.btn_FixPassword_Click);
+            // 
+            // txt_password
+            // 
+            this.txt_password.Font = new System.Drawing.Font("宋体", 10F);
+            this.txt_password.Location = new System.Drawing.Point(94, 148);
+            this.txt_password.Multiline = true;
+            this.txt_password.Name = "txt_password";
+            this.txt_password.Size = new System.Drawing.Size(292, 28);
+            this.txt_password.TabIndex = 508;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 15F);
+            this.label3.Location = new System.Drawing.Point(39, 156);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 20);
+            this.label3.TabIndex = 507;
+            this.label3.Text = "密码";
+            // 
+            // txt_fix_p_UserName
+            // 
+            this.txt_fix_p_UserName.Font = new System.Drawing.Font("宋体", 13F);
+            this.txt_fix_p_UserName.Location = new System.Drawing.Point(94, 46);
+            this.txt_fix_p_UserName.Multiline = true;
+            this.txt_fix_p_UserName.Name = "txt_fix_p_UserName";
+            this.txt_fix_p_UserName.ReadOnly = true;
+            this.txt_fix_p_UserName.Size = new System.Drawing.Size(292, 28);
+            this.txt_fix_p_UserName.TabIndex = 506;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 15F);
+            this.label2.Location = new System.Drawing.Point(19, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 20);
+            this.label2.TabIndex = 505;
+            this.label2.Text = "用户名";
             // 
             // panel1
             // 
@@ -352,86 +450,6 @@
             this.btn_editRole.UseVisualStyleBackColor = false;
             this.btn_editRole.Click += new System.EventHandler(this.btn_editRole_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(119, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "选中左侧表格的一行即可删除";
-            // 
-            // btn_delete_user
-            // 
-            this.btn_delete_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
-            this.btn_delete_user.FlatAppearance.BorderSize = 0;
-            this.btn_delete_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_user.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.btn_delete_user.ForeColor = System.Drawing.Color.White;
-            this.btn_delete_user.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete_user.Location = new System.Drawing.Point(155, 74);
-            this.btn_delete_user.Name = "btn_delete_user";
-            this.btn_delete_user.Size = new System.Drawing.Size(78, 38);
-            this.btn_delete_user.TabIndex = 499;
-            this.btn_delete_user.Text = "删除";
-            this.btn_delete_user.UseVisualStyleBackColor = false;
-            this.btn_delete_user.Click += new System.EventHandler(this.btn_delete_user_Click);
-            // 
-            // txt_fix_p_UserName
-            // 
-            this.txt_fix_p_UserName.Font = new System.Drawing.Font("宋体", 13F);
-            this.txt_fix_p_UserName.Location = new System.Drawing.Point(94, 46);
-            this.txt_fix_p_UserName.Multiline = true;
-            this.txt_fix_p_UserName.Name = "txt_fix_p_UserName";
-            this.txt_fix_p_UserName.ReadOnly = true;
-            this.txt_fix_p_UserName.Size = new System.Drawing.Size(292, 28);
-            this.txt_fix_p_UserName.TabIndex = 506;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 15F);
-            this.label2.Location = new System.Drawing.Point(19, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 20);
-            this.label2.TabIndex = 505;
-            this.label2.Text = "用户名";
-            // 
-            // txt_password
-            // 
-            this.txt_password.Font = new System.Drawing.Font("宋体", 10F);
-            this.txt_password.Location = new System.Drawing.Point(94, 148);
-            this.txt_password.Multiline = true;
-            this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(292, 28);
-            this.txt_password.TabIndex = 508;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 15F);
-            this.label3.Location = new System.Drawing.Point(39, 156);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 20);
-            this.label3.TabIndex = 507;
-            this.label3.Text = "密码";
-            // 
-            // btn_FixPassword
-            // 
-            this.btn_FixPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
-            this.btn_FixPassword.FlatAppearance.BorderSize = 0;
-            this.btn_FixPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_FixPassword.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.btn_FixPassword.ForeColor = System.Drawing.Color.White;
-            this.btn_FixPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_FixPassword.Location = new System.Drawing.Point(285, 216);
-            this.btn_FixPassword.Name = "btn_FixPassword";
-            this.btn_FixPassword.Size = new System.Drawing.Size(101, 38);
-            this.btn_FixPassword.TabIndex = 509;
-            this.btn_FixPassword.Text = "修改密码";
-            this.btn_FixPassword.UseVisualStyleBackColor = false;
-            this.btn_FixPassword.Click += new System.EventHandler(this.btn_FixPassword_Click);
-            // 
             // UserManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -487,5 +505,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_fix_p_UserName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_role_manage;
     }
 }

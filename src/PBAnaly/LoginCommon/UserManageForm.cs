@@ -48,6 +48,18 @@ namespace PBAnaly.LoginCommon
                         index++;
                     }
                 }
+
+                if (UserManage.IsLogined)
+                {
+                    if(UserManage.LogionUser.Role == UserRole.SuperAdministrator)
+                    {
+                        btn_role_manage.Visible = true;
+                    }
+                    else
+                    {
+                        btn_role_manage.Visible = false;
+                    }
+                }
             }
             catch (Exception)
             {
@@ -220,5 +232,11 @@ namespace PBAnaly.LoginCommon
             }
         }
         #endregion
+
+        private void btn_role_manage_Click(object sender, EventArgs e)
+        {
+            RoleManageForm roleManageForm = new RoleManageForm();
+            roleManageForm.ShowDialog();
+        }
     }
 }

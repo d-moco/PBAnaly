@@ -75,6 +75,7 @@
     <Compile Include="LogForm.Designer.cs">
       <DependentUpon>LogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginCommon\AccessControl.cs" />
     <Compile Include="LoginCommon\BackPassWordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="LoginCommon\RegisterFrom.Designer.cs">
       <DependentUpon>RegisterFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCommon\RoleManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\RoleManageForm.Designer.cs">
+      <DependentUpon>RoleManageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginCommon\User.cs" />
     <Compile Include="LoginCommon\UserManage.cs" />
@@ -200,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginCommon\RegisterFrom.resx">
       <DependentUpon>RegisterFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\RoleManageForm.resx">
+      <DependentUpon>RoleManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginCommon\UserManageForm.resx">
       <DependentUpon>UserManageForm.cs</DependentUpon>
