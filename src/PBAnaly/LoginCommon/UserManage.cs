@@ -148,7 +148,7 @@ namespace PBAnaly.LoginCommon
                         command.Parameters.AddWithValue("@Password", "root"); // 示例密码
                         command.Parameters.AddWithValue("@CreatedBy", "System");
                         command.Parameters.AddWithValue("@CreatedDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                        command.Parameters.AddWithValue("@Role", "Administrator");
+                        command.Parameters.AddWithValue("@Role", "SuperAdministrator");
                         command.Parameters.AddWithValue("@PasswordQuestion", "我的名字");
                         command.Parameters.AddWithValue("@QuestionAnswer", "root");
 
