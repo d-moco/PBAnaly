@@ -184,6 +184,7 @@
     <Compile Include="UI\SystemSettingForm.Designer.cs">
       <DependentUpon>SystemSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\ViKeySoft.cs" />
     <EmbeddedResource Include="DataProcessForm.resx">
       <DependentUpon>DataProcessForm.cs</DependentUpon>
     </EmbeddedResource>
