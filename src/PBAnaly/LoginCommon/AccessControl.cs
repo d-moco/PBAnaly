@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace PBAnaly.LoginCommon
@@ -31,10 +32,6 @@ namespace PBAnaly.LoginCommon
                     XmlSerializer xs = new XmlSerializer(typeof(List<AccessItem>));
                     AccessItems = xs.Deserialize(fs) as List<AccessItem>;
                     fs.Close();
-                }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show("加载配置文件AccessControl.xml不存在。即将推出程序.");
                 }
             }
             catch (Exception ex)

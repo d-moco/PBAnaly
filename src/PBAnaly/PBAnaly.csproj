@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assist\OperatingRecord.cs" />
     <Compile Include="DataProcessForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +167,12 @@
     <Compile Include="UI\ImagePanelUser.Designer.cs">
       <DependentUpon>ImagePanelUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\RowMergeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -251,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ImagePanelUser.resx">
       <DependentUpon>ImagePanelUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RowMergeView.resx">
       <DependentUpon>RowMergeView.cs</DependentUpon>
@@ -450,6 +460,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GS-Analy.ico" />
+    <None Include="Resources\登录-亮.png" />
     <None Include="Resources\添加用户.png" />
     <None Include="Resources\最小化white.png" />
     <None Include="Resources\最大化white.png" />

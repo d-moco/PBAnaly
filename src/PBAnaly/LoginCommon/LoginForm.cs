@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using PBAnaly.Assist;
 using ReaLTaiizor.Manager;
 using System;
 using System.Collections.Generic;
@@ -169,6 +170,9 @@ namespace PBAnaly.LoginCommon
                     //将本次登录更新为上一次登录的用户插入数据库，方便下次登录的时候查看
                     UserManage.UpDateLastUser(UserName, Password, Remember);
                     isOK = true;
+
+                    OperatingRecord.CreateRecord("登录按钮", "用户登录");
+
                     Close();
                 }
                 else { MessageBox.Show("Password is incorrect, please re-enter"); return; }

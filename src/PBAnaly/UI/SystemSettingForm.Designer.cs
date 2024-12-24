@@ -33,11 +33,11 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tab_UserManage = new System.Windows.Forms.TabPage();
             this.pnlMainMenu = new System.Windows.Forms.Panel();
-            this.btn_ReadManage = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_Min = new System.Windows.Forms.Button();
             this.btn_Max = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
+            this.btn_ReadManage = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_mode.SuspendLayout();
             this.tabMain.SuspendLayout();
@@ -64,7 +64,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_mode.BackColor = System.Drawing.SystemColors.Control;
             this.panel_mode.Controls.Add(this.tabMain);
-            this.panel_mode.Location = new System.Drawing.Point(58, 0);
+            this.panel_mode.Location = new System.Drawing.Point(59, 0);
             this.panel_mode.Name = "panel_mode";
             this.panel_mode.Size = new System.Drawing.Size(1098, 639);
             this.panel_mode.TabIndex = 444;
@@ -102,19 +102,6 @@
             this.pnlMainMenu.Name = "pnlMainMenu";
             this.pnlMainMenu.Size = new System.Drawing.Size(77, 642);
             this.pnlMainMenu.TabIndex = 443;
-            // 
-            // btn_ReadManage
-            // 
-            this.btn_ReadManage.BackColor = System.Drawing.Color.White;
-            this.btn_ReadManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ReadManage.Font = new System.Drawing.Font("宋体", 9F);
-            this.btn_ReadManage.Image = global::PBAnaly.Properties.Resources.添加用户;
-            this.btn_ReadManage.Location = new System.Drawing.Point(3, 3);
-            this.btn_ReadManage.Name = "btn_ReadManage";
-            this.btn_ReadManage.Size = new System.Drawing.Size(76, 86);
-            this.btn_ReadManage.TabIndex = 3;
-            this.btn_ReadManage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_ReadManage.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -171,6 +158,19 @@
             this.btn_Close.TabIndex = 457;
             this.btn_Close.UseVisualStyleBackColor = false;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            // 
+            // btn_ReadManage
+            // 
+            this.btn_ReadManage.BackColor = System.Drawing.Color.White;
+            this.btn_ReadManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ReadManage.Font = new System.Drawing.Font("宋体", 9F);
+            this.btn_ReadManage.Image = global::PBAnaly.Properties.Resources.登录_亮;
+            this.btn_ReadManage.Location = new System.Drawing.Point(2, 3);
+            this.btn_ReadManage.Name = "btn_ReadManage";
+            this.btn_ReadManage.Size = new System.Drawing.Size(75, 86);
+            this.btn_ReadManage.TabIndex = 3;
+            this.btn_ReadManage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_ReadManage.UseVisualStyleBackColor = false;
             // 
             // SystemSettingForm
             // 

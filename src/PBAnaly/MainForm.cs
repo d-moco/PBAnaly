@@ -3,6 +3,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using OpenCvSharp.Flann;
 using OpenTK;
+using PBAnaly.Assist;
 using PBAnaly.LoginCommon;
 using PBAnaly.Module;
 using PBAnaly.Properties;
@@ -15,6 +16,8 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using Resources = PBAnaly.Properties.Resources;
 
 namespace PBAnaly
@@ -77,7 +80,7 @@ namespace PBAnaly
             UserManage.LogionUserChanged += OnLogionUserChanged;
             
             InitAccessControls();
-
+            LoadAccessFile();
             OnLogionUser();
 
             UIInit();
@@ -114,6 +117,90 @@ namespace PBAnaly
                 materialButton_correction      //10、蛋白归一化
             };
         }
+
+        #region LoadAccessFile 加载管理控件访问权限的文件，如果文件不存在，就根据界面的设置的控件创建一个
+        /// <summary>
+        /// 加载管理控件访问权限的文件，如果文件不存在，就根据界面的设置的控件创建一个
+        /// </summary>
+        private void LoadAccessFile()
+        {
+            try
+            {
+                if (!File.Exists("AccessControl.xml"))
+                {
+                    CreatAccessControlFlie();
+                }
+                else
+                {
+                    FileStream fs = new FileStream("AccessControl.xml", FileMode.Open);
+                    XmlSerializer xs = new XmlSerializer(typeof(List<AccessItem>));
+                    AccessControl.AccessItems = xs.Deserialize(fs) as List<AccessItem>;
+                    fs.Close();
+
+                    if(AccessControl.AccessItems.Count!= mControls.Length)
+                    {
+                        string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                        string xmlFileName = "AccessControl.xml";
+                        // 拼接出完整的文件路径
+                        string filePath = Path.Combine(currentDirectory, xmlFileName);
+                        // 删除文件
+                        File.Delete(filePath);
+
+                        CreatAccessControlFlie();
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            
+        }
+        #endregion
+
+        #region CreatAccessControlFlie 创建管理控件权限访问的文件夹
+        /// <summary>
+        /// 创建管理控件权限访问的文件夹
+        /// </summary>
+        private void CreatAccessControlFlie()
+        {
+            try
+            {
+                // 创建XML根节点
+                XElement root = new XElement("ArrayOfItem");
+                for (int i = 0; i < mControls.Length; i++)
+                {
+
+
+                    XElement item = new XElement("item",
+                             new XAttribute("Id", i),
+                             new XAttribute("Operator", "false"),
+                             new XAttribute("Engineer", "false"),
+                             new XAttribute("Administrator", "true"),
+                             new XAttribute("SuperAdministrator", "true"),
+                             new XAttribute("Disible", mControls[i].Text)
+                         );
+                    root.Add(item);
+                }
+
+                // 保存XML到文件
+                string filePath = "AccessControl.xml";
+                root.Save(filePath);
+
+                AccessControl.AccessItems = new List<AccessItem>();
+
+                FileStream fs = new FileStream("AccessControl.xml", FileMode.Open);
+                XmlSerializer xs = new XmlSerializer(typeof(List<AccessItem>));
+                AccessControl.AccessItems = xs.Deserialize(fs) as List<AccessItem>;
+                fs.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        #endregion
 
         #region OnLogionUserChanged 处理登录用户更改事件
         /// <summary>
@@ -433,6 +520,7 @@ namespace PBAnaly
 
         private void materialButton_setting_Click(object sender, EventArgs e)
         {
+            OperatingRecord.CreateRecord("系统设置按钮", "被点击了一下");
             SystemSettingForm system = new SystemSettingForm();
             system.ShowDialog();
             //if (settingForm != null)
@@ -552,13 +640,16 @@ namespace PBAnaly
         }
         private void materialButton_log_Click(object sender, EventArgs e)
         {
-            if (logForm != null)
-                return;
-
-            logForm = new LogForm(materialSkinManager,InnerUserID);
-            logForm.FormClosed += LogForm_FormClosed;
-            logForm.TopMost = true;
+            UI.LogForm logForm = new UI.LogForm(materialSkinManager);
             logForm.Show();
+
+            //if (logForm != null)
+            //    return;
+
+            //logForm = new LogForm(materialSkinManager,InnerUserID);
+            //logForm.FormClosed += LogForm_FormClosed;
+            //logForm.TopMost = true;
+            //logForm.Show();
         }
 
         private void LogForm_FormClosed(object sender, FormClosedEventArgs e)
