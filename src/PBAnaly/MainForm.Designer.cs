@@ -85,7 +85,7 @@
             this.metroPanel_RightTop.Location = new System.Drawing.Point(210, 0);
             this.metroPanel_RightTop.Margin = new System.Windows.Forms.Padding(0);
             this.metroPanel_RightTop.Name = "metroPanel_RightTop";
-            this.metroPanel_RightTop.Size = new System.Drawing.Size(639, 55);
+            this.metroPanel_RightTop.Size = new System.Drawing.Size(569, 55);
             this.metroPanel_RightTop.TabIndex = 12;
             this.metroPanel_RightTop.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroPanel_RightTop.UseCustomBackColor = true;
@@ -228,7 +228,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 318F));
             this.tableLayoutPanel1.Controls.Add(this.tl_right_main_view, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.metroPanel_RightTop, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.CompanyIcon_pictureBox, 0, 0);
@@ -237,7 +237,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pl_right, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
@@ -259,7 +259,7 @@
             this.tl_right_main_view.RowCount = 2;
             this.tl_right_main_view.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tl_right_main_view.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tl_right_main_view.Size = new System.Drawing.Size(639, 495);
+            this.tl_right_main_view.Size = new System.Drawing.Size(569, 495);
             this.tl_right_main_view.TabIndex = 0;
             // 
             // DataProcess_panel
@@ -270,9 +270,9 @@
             this.DataProcess_panel.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.DataProcess_panel.Location = new System.Drawing.Point(3, 3);
             this.DataProcess_panel.Name = "DataProcess_panel";
-            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(5);
             this.tl_right_main_view.SetRowSpan(this.DataProcess_panel, 2);
-            this.DataProcess_panel.Size = new System.Drawing.Size(633, 489);
+            this.DataProcess_panel.Size = new System.Drawing.Size(563, 489);
             this.DataProcess_panel.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.DataProcess_panel.TabIndex = 19;
             this.DataProcess_panel.Text = "panel1";
@@ -302,7 +302,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 88);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(206, 491);
             this.flowLayoutPanel1.TabIndex = 18;
@@ -448,7 +448,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(210, 55);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(639, 31);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(569, 31);
             this.flowLayoutPanel2.TabIndex = 19;
             // 
             // materialButton_changeFormSize
@@ -623,7 +623,7 @@
             this.materialButton_return.Depth = 0;
             this.materialButton_return.HighEmphasis = true;
             this.materialButton_return.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_return.Icon")));
-            this.materialButton_return.Location = new System.Drawing.Point(512, 0);
+            this.materialButton_return.Location = new System.Drawing.Point(0, 36);
             this.materialButton_return.Margin = new System.Windows.Forms.Padding(0);
             this.materialButton_return.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_return.Name = "materialButton_return";
@@ -641,12 +641,12 @@
             this.pl_right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
             this.pl_right.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pl_right.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
-            this.pl_right.Location = new System.Drawing.Point(851, 57);
-            this.pl_right.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pl_right.Location = new System.Drawing.Point(781, 57);
+            this.pl_right.Margin = new System.Windows.Forms.Padding(2);
             this.pl_right.Name = "pl_right";
-            this.pl_right.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pl_right.Padding = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.SetRowSpan(this.pl_right, 2);
-            this.pl_right.Size = new System.Drawing.Size(244, 522);
+            this.pl_right.Size = new System.Drawing.Size(314, 522);
             this.pl_right.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.pl_right.TabIndex = 20;
             this.pl_right.Text = "panel1";
