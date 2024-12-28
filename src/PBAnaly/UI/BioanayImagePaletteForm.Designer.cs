@@ -80,6 +80,7 @@
             this.foxLabel12 = new ReaLTaiizor.Controls.FoxLabel();
             this.foxLabel15 = new ReaLTaiizor.Controls.FoxLabel();
             this.ava_textbox = new AntdUI.Avatar();
+            this.cb_sharpen = new AntdUI.Checkbox();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -115,11 +116,10 @@
             this.fb_fixSetting.EnabledCalc = true;
             this.fb_fixSetting.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.fb_fixSetting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.fb_fixSetting.Location = new System.Drawing.Point(183, 39);
-            this.fb_fixSetting.Margin = new System.Windows.Forms.Padding(4);
+            this.fb_fixSetting.Location = new System.Drawing.Point(137, 31);
             this.fb_fixSetting.Name = "fb_fixSetting";
             this.fb_fixSetting.OverColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.fb_fixSetting.Size = new System.Drawing.Size(79, 39);
+            this.fb_fixSetting.Size = new System.Drawing.Size(59, 31);
             this.fb_fixSetting.TabIndex = 6;
             this.fb_fixSetting.Text = "修改";
             // 
@@ -128,10 +128,9 @@
             this.foxLabel7.BackColor = System.Drawing.Color.Transparent;
             this.foxLabel7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel7.Location = new System.Drawing.Point(160, 6);
-            this.foxLabel7.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel7.Location = new System.Drawing.Point(120, 5);
             this.foxLabel7.Name = "foxLabel7";
-            this.foxLabel7.Size = new System.Drawing.Size(35, 24);
+            this.foxLabel7.Size = new System.Drawing.Size(26, 19);
             this.foxLabel7.TabIndex = 4;
             this.foxLabel7.Text = "r=";
             // 
@@ -140,10 +139,9 @@
             this.foxLabel5.BackColor = System.Drawing.Color.Transparent;
             this.foxLabel5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel5.Location = new System.Drawing.Point(4, 39);
-            this.foxLabel5.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel5.Location = new System.Drawing.Point(3, 31);
             this.foxLabel5.Name = "foxLabel5";
-            this.foxLabel5.Size = new System.Drawing.Size(35, 24);
+            this.foxLabel5.Size = new System.Drawing.Size(26, 19);
             this.foxLabel5.TabIndex = 2;
             this.foxLabel5.Text = "h=";
             // 
@@ -154,10 +152,9 @@
             this.foxLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel8.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel8.Location = new System.Drawing.Point(4, 246);
-            this.foxLabel8.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel8.Location = new System.Drawing.Point(3, 197);
             this.foxLabel8.Name = "foxLabel8";
-            this.foxLabel8.Size = new System.Drawing.Size(260, 22);
+            this.foxLabel8.Size = new System.Drawing.Size(198, 18);
             this.foxLabel8.TabIndex = 34;
             this.foxLabel8.Text = "Color Rable";
             // 
@@ -168,10 +165,9 @@
             this.flb_act_mm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flb_act_mm.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flb_act_mm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.flb_act_mm.Location = new System.Drawing.Point(125, 216);
-            this.flb_act_mm.Margin = new System.Windows.Forms.Padding(4);
+            this.flb_act_mm.Location = new System.Drawing.Point(93, 173);
             this.flb_act_mm.Name = "flb_act_mm";
-            this.flb_act_mm.Size = new System.Drawing.Size(218, 22);
+            this.flb_act_mm.Size = new System.Drawing.Size(164, 18);
             this.flb_act_mm.TabIndex = 30;
             this.flb_act_mm.Text = "0 mm";
             // 
@@ -181,10 +177,9 @@
             this.foxLabel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel9.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel9.Location = new System.Drawing.Point(4, 143);
-            this.foxLabel9.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel9.Location = new System.Drawing.Point(3, 115);
             this.foxLabel9.Name = "foxLabel9";
-            this.foxLabel9.Size = new System.Drawing.Size(59, 37);
+            this.foxLabel9.Size = new System.Drawing.Size(44, 30);
             this.foxLabel9.TabIndex = 18;
             this.foxLabel9.Text = "Max";
             // 
@@ -194,10 +189,9 @@
             this.foxLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel6.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel6.Location = new System.Drawing.Point(4, 98);
-            this.foxLabel6.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel6.Location = new System.Drawing.Point(3, 79);
             this.foxLabel6.Name = "foxLabel6";
-            this.foxLabel6.Size = new System.Drawing.Size(59, 37);
+            this.foxLabel6.Size = new System.Drawing.Size(44, 30);
             this.foxLabel6.TabIndex = 13;
             this.foxLabel6.Text = "Min";
             // 
@@ -207,10 +201,9 @@
             this.foxLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel2.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel2.Location = new System.Drawing.Point(4, 76);
-            this.foxLabel2.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel2.Location = new System.Drawing.Point(3, 61);
             this.foxLabel2.Name = "foxLabel2";
-            this.foxLabel2.Size = new System.Drawing.Size(59, 14);
+            this.foxLabel2.Size = new System.Drawing.Size(44, 12);
             this.foxLabel2.TabIndex = 10;
             this.foxLabel2.Text = "色阶";
             // 
@@ -220,10 +213,9 @@
             this.foxLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel3.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel3.Location = new System.Drawing.Point(4, 40);
-            this.foxLabel3.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel3.Location = new System.Drawing.Point(3, 32);
             this.foxLabel3.Name = "foxLabel3";
-            this.foxLabel3.Size = new System.Drawing.Size(59, 28);
+            this.foxLabel3.Size = new System.Drawing.Size(44, 23);
             this.foxLabel3.TabIndex = 6;
             this.foxLabel3.Text = "透明度::";
             // 
@@ -233,10 +225,9 @@
             this.foxLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.foxLabel1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel1.Location = new System.Drawing.Point(4, 4);
-            this.foxLabel1.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel1.Location = new System.Drawing.Point(3, 3);
             this.foxLabel1.Name = "foxLabel1";
-            this.foxLabel1.Size = new System.Drawing.Size(59, 28);
+            this.foxLabel1.Size = new System.Drawing.Size(44, 23);
             this.foxLabel1.TabIndex = 1;
             this.foxLabel1.Text = "亮度:";
             // 
@@ -245,20 +236,19 @@
             this.foxLabel4.BackColor = System.Drawing.Color.Transparent;
             this.foxLabel4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel4.Location = new System.Drawing.Point(4, 4);
-            this.foxLabel4.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel4.Location = new System.Drawing.Point(3, 3);
             this.foxLabel4.Name = "foxLabel4";
-            this.foxLabel4.Size = new System.Drawing.Size(35, 24);
+            this.foxLabel4.Size = new System.Drawing.Size(26, 19);
             this.foxLabel4.TabIndex = 0;
             this.foxLabel4.Text = "w=";
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.hpb_wand, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.hpb_xianduan, 2, 0);
@@ -271,11 +261,11 @@
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(357, 228);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(268, 182);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // hpb_wand
@@ -283,10 +273,9 @@
             this.hpb_wand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_wand.Image = global::PBAnaly.Properties.Resources.魔术棒_魔法_魔术_一键;
             this.hpb_wand.ImageFit = AntdUI.TFit.Contain;
-            this.hpb_wand.Location = new System.Drawing.Point(139, 4);
-            this.hpb_wand.Margin = new System.Windows.Forms.Padding(4);
+            this.hpb_wand.Location = new System.Drawing.Point(105, 3);
             this.hpb_wand.Name = "hpb_wand";
-            this.hpb_wand.Size = new System.Drawing.Size(37, 34);
+            this.hpb_wand.Size = new System.Drawing.Size(28, 28);
             this.hpb_wand.TabIndex = 14;
             this.hpb_wand.Text = "a";
             // 
@@ -296,10 +285,9 @@
             this.hpb_xianduan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_xianduan.Image = global::PBAnaly.Properties.Resources.线段__1_;
             this.hpb_xianduan.ImageFit = AntdUI.TFit.Contain;
-            this.hpb_xianduan.Location = new System.Drawing.Point(94, 4);
-            this.hpb_xianduan.Margin = new System.Windows.Forms.Padding(4);
+            this.hpb_xianduan.Location = new System.Drawing.Point(71, 3);
             this.hpb_xianduan.Name = "hpb_xianduan";
-            this.hpb_xianduan.Size = new System.Drawing.Size(37, 34);
+            this.hpb_xianduan.Size = new System.Drawing.Size(28, 28);
             this.hpb_xianduan.TabIndex = 13;
             this.hpb_xianduan.Text = "a";
             // 
@@ -309,10 +297,9 @@
             this.hpb_circe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_circe.Image = global::PBAnaly.Properties.Resources.圆形;
             this.hpb_circe.ImageFit = AntdUI.TFit.Contain;
-            this.hpb_circe.Location = new System.Drawing.Point(49, 4);
-            this.hpb_circe.Margin = new System.Windows.Forms.Padding(4);
+            this.hpb_circe.Location = new System.Drawing.Point(37, 3);
             this.hpb_circe.Name = "hpb_circe";
-            this.hpb_circe.Size = new System.Drawing.Size(37, 34);
+            this.hpb_circe.Size = new System.Drawing.Size(28, 28);
             this.hpb_circe.TabIndex = 0;
             this.hpb_circe.Text = "a";
             // 
@@ -322,10 +309,9 @@
             this.hpb_rect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_rect.Image = global::PBAnaly.Properties.Resources._10矩形;
             this.hpb_rect.ImageFit = AntdUI.TFit.Contain;
-            this.hpb_rect.Location = new System.Drawing.Point(4, 4);
-            this.hpb_rect.Margin = new System.Windows.Forms.Padding(4);
+            this.hpb_rect.Location = new System.Drawing.Point(3, 3);
             this.hpb_rect.Name = "hpb_rect";
-            this.hpb_rect.Size = new System.Drawing.Size(37, 34);
+            this.hpb_rect.Size = new System.Drawing.Size(28, 28);
             this.hpb_rect.TabIndex = 0;
             this.hpb_rect.Text = "a";
             // 
@@ -343,10 +329,9 @@
             this.panel2.Controls.Add(this.foxLabel5);
             this.panel2.Controls.Add(this.foxLabel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(4, 46);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(3, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(349, 153);
+            this.panel2.Size = new System.Drawing.Size(262, 122);
             this.panel2.TabIndex = 14;
             this.panel2.Text = "panel2";
             // 
@@ -361,10 +346,9 @@
             this.dtb_th.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtb_th.ColorF = System.Drawing.Color.Black;
             this.dtb_th.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.dtb_th.Location = new System.Drawing.Point(47, 92);
-            this.dtb_th.Margin = new System.Windows.Forms.Padding(4);
+            this.dtb_th.Location = new System.Drawing.Point(35, 74);
             this.dtb_th.Name = "dtb_th";
-            this.dtb_th.Size = new System.Drawing.Size(106, 25);
+            this.dtb_th.Size = new System.Drawing.Size(80, 21);
             this.dtb_th.TabIndex = 12;
             this.dtb_th.Text = "100";
             // 
@@ -373,10 +357,9 @@
             this.foxLabel10.BackColor = System.Drawing.Color.Transparent;
             this.foxLabel10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel10.Location = new System.Drawing.Point(4, 89);
-            this.foxLabel10.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel10.Location = new System.Drawing.Point(3, 71);
             this.foxLabel10.Name = "foxLabel10";
-            this.foxLabel10.Size = new System.Drawing.Size(35, 24);
+            this.foxLabel10.Size = new System.Drawing.Size(26, 19);
             this.foxLabel10.TabIndex = 11;
             this.foxLabel10.Text = "th=";
             // 
@@ -391,10 +374,9 @@
             this.dtb_r.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtb_r.ColorF = System.Drawing.Color.Black;
             this.dtb_r.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.dtb_r.Location = new System.Drawing.Point(192, 6);
-            this.dtb_r.Margin = new System.Windows.Forms.Padding(4);
+            this.dtb_r.Location = new System.Drawing.Point(144, 5);
             this.dtb_r.Name = "dtb_r";
-            this.dtb_r.Size = new System.Drawing.Size(106, 25);
+            this.dtb_r.Size = new System.Drawing.Size(80, 21);
             this.dtb_r.TabIndex = 10;
             this.dtb_r.Text = "10";
             // 
@@ -409,10 +391,9 @@
             this.dtb_h.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtb_h.ColorF = System.Drawing.Color.Black;
             this.dtb_h.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.dtb_h.Location = new System.Drawing.Point(47, 42);
-            this.dtb_h.Margin = new System.Windows.Forms.Padding(4);
+            this.dtb_h.Location = new System.Drawing.Point(35, 34);
             this.dtb_h.Name = "dtb_h";
-            this.dtb_h.Size = new System.Drawing.Size(106, 25);
+            this.dtb_h.Size = new System.Drawing.Size(80, 21);
             this.dtb_h.TabIndex = 9;
             this.dtb_h.Text = "10";
             // 
@@ -427,10 +408,9 @@
             this.dtb_w.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtb_w.ColorF = System.Drawing.Color.Black;
             this.dtb_w.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.dtb_w.Location = new System.Drawing.Point(45, 6);
-            this.dtb_w.Margin = new System.Windows.Forms.Padding(4);
+            this.dtb_w.Location = new System.Drawing.Point(34, 5);
             this.dtb_w.Name = "dtb_w";
-            this.dtb_w.Size = new System.Drawing.Size(106, 25);
+            this.dtb_w.Size = new System.Drawing.Size(80, 21);
             this.dtb_w.TabIndex = 8;
             this.dtb_w.Text = "10";
             // 
@@ -439,20 +419,18 @@
             this.flb_info.BackColor = System.Drawing.Color.Transparent;
             this.flb_info.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.flb_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.flb_info.Location = new System.Drawing.Point(1, 126);
-            this.flb_info.Margin = new System.Windows.Forms.Padding(4);
+            this.flb_info.Location = new System.Drawing.Point(1, 101);
             this.flb_info.Name = "flb_info";
-            this.flb_info.Size = new System.Drawing.Size(297, 24);
+            this.flb_info.Size = new System.Drawing.Size(223, 19);
             this.flb_info.TabIndex = 7;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.cb_continuous);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(184, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(139, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(169, 34);
+            this.panel3.Size = new System.Drawing.Size(126, 28);
             this.panel3.TabIndex = 56;
             this.panel3.Text = "panel3";
             // 
@@ -462,19 +440,17 @@
             this.cb_continuous.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_continuous.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_continuous.Location = new System.Drawing.Point(0, 0);
-            this.cb_continuous.Margin = new System.Windows.Forms.Padding(4);
             this.cb_continuous.Name = "cb_continuous";
-            this.cb_continuous.Size = new System.Drawing.Size(169, 34);
+            this.cb_continuous.Size = new System.Drawing.Size(126, 28);
             this.cb_continuous.TabIndex = 55;
             this.cb_continuous.Text = "连续绘制";
             // 
             // collapseItem2
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
-            this.collapseItem2.Location = new System.Drawing.Point(-357, -228);
-            this.collapseItem2.Margin = new System.Windows.Forms.Padding(4);
+            this.collapseItem2.Location = new System.Drawing.Point(-268, -182);
             this.collapseItem2.Name = "collapseItem2";
-            this.collapseItem2.Size = new System.Drawing.Size(357, 228);
+            this.collapseItem2.Size = new System.Drawing.Size(268, 182);
             this.collapseItem2.TabIndex = 1;
             this.collapseItem2.Text = "ROI工具";
             // 
@@ -493,20 +469,20 @@
             "RGB",
             "Pseudo",
             "Gray"});
-            this.cb_colortable.Location = new System.Drawing.Point(4, 276);
-            this.cb_colortable.Margin = new System.Windows.Forms.Padding(4);
+            this.cb_colortable.Location = new System.Drawing.Point(3, 221);
             this.cb_colortable.Name = "cb_colortable";
-            this.cb_colortable.Size = new System.Drawing.Size(113, 23);
+            this.cb_colortable.Size = new System.Drawing.Size(84, 20);
             this.cb_colortable.TabIndex = 35;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 5;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel2.Controls.Add(this.cb_sharpen, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.nud_opacity, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.nud_brightness, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.dtb_colorMax, 1, 4);
@@ -531,35 +507,33 @@
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 10;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(347, 340);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(260, 272);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // nud_opacity
             // 
             this.nud_opacity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_opacity.Location = new System.Drawing.Point(272, 40);
-            this.nud_opacity.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_opacity.Location = new System.Drawing.Point(207, 32);
             this.nud_opacity.Name = "nud_opacity";
-            this.nud_opacity.Size = new System.Drawing.Size(71, 25);
+            this.nud_opacity.Size = new System.Drawing.Size(50, 21);
             this.nud_opacity.TabIndex = 45;
             // 
             // nud_brightness
             // 
             this.nud_brightness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nud_brightness.Location = new System.Drawing.Point(272, 4);
-            this.nud_brightness.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_brightness.Location = new System.Drawing.Point(207, 3);
             this.nud_brightness.Name = "nud_brightness";
-            this.nud_brightness.Size = new System.Drawing.Size(71, 25);
+            this.nud_brightness.Size = new System.Drawing.Size(50, 21);
             this.nud_brightness.TabIndex = 44;
             // 
             // dtb_colorMax
@@ -572,13 +546,13 @@
             this.dtb_colorMax.EmptyBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.dtb_colorMax.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_colorMax.JumpToMouse = false;
-            this.dtb_colorMax.Location = new System.Drawing.Point(70, 141);
-            this.dtb_colorMax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtb_colorMax.Location = new System.Drawing.Point(52, 114);
+            this.dtb_colorMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtb_colorMax.Maximum = 100;
             this.dtb_colorMax.Minimum = 0;
-            this.dtb_colorMax.MinimumSize = new System.Drawing.Size(47, 22);
+            this.dtb_colorMax.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_colorMax.Name = "dtb_colorMax";
-            this.dtb_colorMax.Size = new System.Drawing.Size(195, 22);
+            this.dtb_colorMax.Size = new System.Drawing.Size(150, 22);
             this.dtb_colorMax.TabIndex = 40;
             this.dtb_colorMax.Text = "dungeonTrackBar5";
             this.dtb_colorMax.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -597,13 +571,13 @@
             this.dtb_colorMin.EmptyBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.dtb_colorMin.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_colorMin.JumpToMouse = false;
-            this.dtb_colorMin.Location = new System.Drawing.Point(70, 96);
-            this.dtb_colorMin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtb_colorMin.Location = new System.Drawing.Point(52, 78);
+            this.dtb_colorMin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtb_colorMin.Maximum = 100;
             this.dtb_colorMin.Minimum = 0;
-            this.dtb_colorMin.MinimumSize = new System.Drawing.Size(47, 22);
+            this.dtb_colorMin.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_colorMin.Name = "dtb_colorMin";
-            this.dtb_colorMin.Size = new System.Drawing.Size(195, 22);
+            this.dtb_colorMin.Size = new System.Drawing.Size(150, 22);
             this.dtb_colorMin.TabIndex = 39;
             this.dtb_colorMin.Text = "dungeonTrackBar4";
             this.dtb_colorMin.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -622,13 +596,13 @@
             this.dtb_opacity.EmptyBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.dtb_opacity.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_opacity.JumpToMouse = false;
-            this.dtb_opacity.Location = new System.Drawing.Point(70, 38);
-            this.dtb_opacity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtb_opacity.Location = new System.Drawing.Point(52, 31);
+            this.dtb_opacity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtb_opacity.Maximum = 100;
             this.dtb_opacity.Minimum = 0;
-            this.dtb_opacity.MinimumSize = new System.Drawing.Size(47, 22);
+            this.dtb_opacity.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_opacity.Name = "dtb_opacity";
-            this.dtb_opacity.Size = new System.Drawing.Size(195, 22);
+            this.dtb_opacity.Size = new System.Drawing.Size(150, 22);
             this.dtb_opacity.TabIndex = 37;
             this.dtb_opacity.Text = "dungeonTrackBar2";
             this.dtb_opacity.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -642,11 +616,10 @@
             this.hpb_line.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
             this.hpb_line.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_line.Image = global::PBAnaly.Properties.Resources.线段;
-            this.hpb_line.Location = new System.Drawing.Point(4, 216);
-            this.hpb_line.Margin = new System.Windows.Forms.Padding(4);
+            this.hpb_line.Location = new System.Drawing.Point(3, 173);
             this.hpb_line.Name = "hpb_line";
             this.hpb_line.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hpb_line.Size = new System.Drawing.Size(59, 22);
+            this.hpb_line.Size = new System.Drawing.Size(44, 18);
             this.hpb_line.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hpb_line.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hpb_line.TabIndex = 9;
@@ -656,10 +629,10 @@
             // pb_bgimage
             // 
             this.pb_bgimage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb_bgimage.Location = new System.Drawing.Point(121, 272);
+            this.pb_bgimage.Location = new System.Drawing.Point(90, 218);
             this.pb_bgimage.Margin = new System.Windows.Forms.Padding(0);
             this.pb_bgimage.Name = "pb_bgimage";
-            this.pb_bgimage.Size = new System.Drawing.Size(147, 36);
+            this.pb_bgimage.Size = new System.Drawing.Size(114, 29);
             this.pb_bgimage.TabIndex = 36;
             this.pb_bgimage.TabStop = false;
             // 
@@ -673,13 +646,13 @@
             this.dtb_brightness.EmptyBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.dtb_brightness.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_brightness.JumpToMouse = false;
-            this.dtb_brightness.Location = new System.Drawing.Point(70, 2);
-            this.dtb_brightness.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtb_brightness.Location = new System.Drawing.Point(52, 2);
+            this.dtb_brightness.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtb_brightness.Maximum = 100;
             this.dtb_brightness.Minimum = 0;
-            this.dtb_brightness.MinimumSize = new System.Drawing.Size(47, 22);
+            this.dtb_brightness.MinimumSize = new System.Drawing.Size(35, 18);
             this.dtb_brightness.Name = "dtb_brightness";
-            this.dtb_brightness.Size = new System.Drawing.Size(195, 22);
+            this.dtb_brightness.Size = new System.Drawing.Size(150, 22);
             this.dtb_brightness.TabIndex = 2;
             this.dtb_brightness.Text = "dungeonTrackBar1";
             this.dtb_brightness.ThumbBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -694,19 +667,18 @@
             this.pl_max.BackColor = System.Drawing.Color.Transparent;
             this.pl_max.Controls.Add(this.nud_colorMax);
             this.pl_max.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pl_max.Location = new System.Drawing.Point(268, 139);
+            this.pl_max.Location = new System.Drawing.Point(204, 112);
             this.pl_max.Margin = new System.Windows.Forms.Padding(0);
             this.pl_max.Name = "pl_max";
-            this.pl_max.Size = new System.Drawing.Size(79, 45);
+            this.pl_max.Size = new System.Drawing.Size(56, 36);
             this.pl_max.TabIndex = 52;
             this.pl_max.Text = "panel3";
             // 
             // nud_colorMax
             // 
-            this.nud_colorMax.Location = new System.Drawing.Point(4, 4);
-            this.nud_colorMax.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_colorMax.Location = new System.Drawing.Point(3, 3);
             this.nud_colorMax.Name = "nud_colorMax";
-            this.nud_colorMax.Size = new System.Drawing.Size(59, 25);
+            this.nud_colorMax.Size = new System.Drawing.Size(44, 21);
             this.nud_colorMax.TabIndex = 51;
             // 
             // pl_min
@@ -715,30 +687,28 @@
             this.pl_min.BackColor = System.Drawing.Color.Transparent;
             this.pl_min.Controls.Add(this.nud_colorMin);
             this.pl_min.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pl_min.Location = new System.Drawing.Point(268, 94);
+            this.pl_min.Location = new System.Drawing.Point(204, 76);
             this.pl_min.Margin = new System.Windows.Forms.Padding(0);
             this.pl_min.Name = "pl_min";
-            this.pl_min.Size = new System.Drawing.Size(79, 45);
+            this.pl_min.Size = new System.Drawing.Size(56, 36);
             this.pl_min.TabIndex = 53;
             this.pl_min.Text = "panel3";
             // 
             // nud_colorMin
             // 
-            this.nud_colorMin.Location = new System.Drawing.Point(4, 4);
-            this.nud_colorMin.Margin = new System.Windows.Forms.Padding(4);
+            this.nud_colorMin.Location = new System.Drawing.Point(3, 3);
             this.nud_colorMin.Name = "nud_colorMin";
-            this.nud_colorMin.Size = new System.Drawing.Size(59, 25);
+            this.nud_colorMin.Size = new System.Drawing.Size(44, 21);
             this.nud_colorMin.TabIndex = 50;
             // 
             // cb_scientific
             // 
             this.cb_scientific.AutoCheck = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.cb_scientific, 4);
+            this.tableLayoutPanel2.SetColumnSpan(this.cb_scientific, 2);
             this.cb_scientific.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cb_scientific.Location = new System.Drawing.Point(4, 188);
-            this.cb_scientific.Margin = new System.Windows.Forms.Padding(4);
+            this.cb_scientific.Location = new System.Drawing.Point(3, 151);
             this.cb_scientific.Name = "cb_scientific";
-            this.cb_scientific.Size = new System.Drawing.Size(260, 20);
+            this.cb_scientific.Size = new System.Drawing.Size(64, 16);
             this.cb_scientific.TabIndex = 54;
             this.cb_scientific.Text = "光子量";
             // 
@@ -746,10 +716,9 @@
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(347, 340);
+            this.panel1.Size = new System.Drawing.Size(260, 272);
             this.panel1.TabIndex = 0;
             this.panel1.Text = "panel1";
             // 
@@ -757,26 +726,26 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 348F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 278F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(355, 378);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(266, 302);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // collapseItem1
             // 
             this.collapseItem1.Controls.Add(this.tableLayoutPanel1);
-            this.collapseItem1.Location = new System.Drawing.Point(-355, -378);
-            this.collapseItem1.Margin = new System.Windows.Forms.Padding(4);
+            this.collapseItem1.Expand = true;
+            this.collapseItem1.Location = new System.Drawing.Point(19, 59);
             this.collapseItem1.Name = "collapseItem1";
-            this.collapseItem1.Size = new System.Drawing.Size(355, 378);
+            this.collapseItem1.Size = new System.Drawing.Size(266, 302);
             this.collapseItem1.TabIndex = 0;
             this.collapseItem1.Text = "图像调整";
             // 
@@ -789,30 +758,27 @@
             this.cll_panel.Items.Add(this.collapseItem2);
             this.cll_panel.Items.Add(this.collapseItem3);
             this.cll_panel.Location = new System.Drawing.Point(0, 0);
-            this.cll_panel.Margin = new System.Windows.Forms.Padding(4);
             this.cll_panel.Name = "cll_panel";
-            this.cll_panel.Size = new System.Drawing.Size(405, 619);
+            this.cll_panel.Size = new System.Drawing.Size(304, 495);
             this.cll_panel.TabIndex = 1;
             this.cll_panel.Text = "fed";
             // 
             // collapseItem3
             // 
             this.collapseItem3.Controls.Add(this.tableLayoutPanel4);
-            this.collapseItem3.Expand = true;
-            this.collapseItem3.Location = new System.Drawing.Point(24, 171);
-            this.collapseItem3.Margin = new System.Windows.Forms.Padding(4);
+            this.collapseItem3.Location = new System.Drawing.Point(-266, -165);
             this.collapseItem3.Name = "collapseItem3";
-            this.collapseItem3.Size = new System.Drawing.Size(357, 206);
+            this.collapseItem3.Size = new System.Drawing.Size(266, 165);
             this.collapseItem3.TabIndex = 2;
             this.collapseItem3.Text = "标签工具";
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 5;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.ava_textbox, 0, 0);
@@ -821,11 +787,11 @@
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(357, 206);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(266, 165);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // panel4
@@ -835,10 +801,9 @@
             this.panel4.Controls.Add(this.foxLabel12);
             this.panel4.Controls.Add(this.foxLabel15);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(4, 46);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(3, 37);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(349, 131);
+            this.panel4.Size = new System.Drawing.Size(260, 105);
             this.panel4.TabIndex = 15;
             this.panel4.Text = "panel4";
             // 
@@ -853,10 +818,9 @@
             this.dtb_textbox.ColorE = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dtb_textbox.ColorF = System.Drawing.Color.Black;
             this.dtb_textbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.dtb_textbox.Location = new System.Drawing.Point(68, 4);
-            this.dtb_textbox.Margin = new System.Windows.Forms.Padding(4);
+            this.dtb_textbox.Location = new System.Drawing.Point(51, 3);
             this.dtb_textbox.Name = "dtb_textbox";
-            this.dtb_textbox.Size = new System.Drawing.Size(106, 25);
+            this.dtb_textbox.Size = new System.Drawing.Size(80, 21);
             this.dtb_textbox.TabIndex = 8;
             this.dtb_textbox.Text = "10";
             // 
@@ -865,10 +829,9 @@
             this.foxLabel12.BackColor = System.Drawing.Color.Transparent;
             this.foxLabel12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel12.Location = new System.Drawing.Point(1, 126);
-            this.foxLabel12.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel12.Location = new System.Drawing.Point(1, 101);
             this.foxLabel12.Name = "foxLabel12";
-            this.foxLabel12.Size = new System.Drawing.Size(297, 24);
+            this.foxLabel12.Size = new System.Drawing.Size(223, 19);
             this.foxLabel12.TabIndex = 7;
             // 
             // foxLabel15
@@ -876,10 +839,9 @@
             this.foxLabel15.BackColor = System.Drawing.Color.Transparent;
             this.foxLabel15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
-            this.foxLabel15.Location = new System.Drawing.Point(4, 4);
-            this.foxLabel15.Margin = new System.Windows.Forms.Padding(4);
+            this.foxLabel15.Location = new System.Drawing.Point(3, 3);
             this.foxLabel15.Name = "foxLabel15";
-            this.foxLabel15.Size = new System.Drawing.Size(79, 24);
+            this.foxLabel15.Size = new System.Drawing.Size(59, 19);
             this.foxLabel15.TabIndex = 0;
             this.foxLabel15.Text = "value=";
             // 
@@ -889,21 +851,31 @@
             this.ava_textbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ava_textbox.Image = global::PBAnaly.Properties.Resources.文本;
             this.ava_textbox.ImageFit = AntdUI.TFit.Contain;
-            this.ava_textbox.Location = new System.Drawing.Point(4, 4);
-            this.ava_textbox.Margin = new System.Windows.Forms.Padding(4);
+            this.ava_textbox.Location = new System.Drawing.Point(3, 3);
             this.ava_textbox.Name = "ava_textbox";
-            this.ava_textbox.Size = new System.Drawing.Size(37, 34);
+            this.ava_textbox.Size = new System.Drawing.Size(28, 28);
             this.ava_textbox.TabIndex = 0;
             this.ava_textbox.Text = "a";
             // 
+            // cb_sharpen
+            // 
+            this.cb_sharpen.AutoCheck = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.cb_sharpen, 2);
+            this.cb_sharpen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cb_sharpen.Location = new System.Drawing.Point(73, 151);
+            this.cb_sharpen.Name = "cb_sharpen";
+            this.cb_sharpen.Size = new System.Drawing.Size(128, 16);
+            this.cb_sharpen.TabIndex = 57;
+            this.cb_sharpen.Text = "锐化";
+            // 
             // BioanayImagePaletteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 619);
+            this.ClientSize = new System.Drawing.Size(304, 495);
             this.Controls.Add(this.cll_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BioanayImagePaletteForm";
             this.Text = "BioanayImagePaletteForm";
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -985,5 +957,6 @@
         private ReaLTaiizor.Controls.FoxLabel foxLabel12;
         private ReaLTaiizor.Controls.FoxLabel foxLabel15;
         public ReaLTaiizor.Controls.DreamTextBox dtb_textbox;
+        public AntdUI.Checkbox cb_sharpen;
     }
 }

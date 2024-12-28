@@ -7,6 +7,7 @@ using ReaLTaiizor.Extension;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -42,6 +43,8 @@ namespace PBAnaly.Module
             public bool scientificON;
 
             public int colorIndex;
+
+            public bool sharpen; //锐化
         }
 
         public struct RectAttribute 
@@ -85,7 +88,7 @@ namespace PBAnaly.Module
         private int curShapeIndex;
         private System.Drawing.Point curTmpDownShapePoint;
         private System.Drawing.Point curShapePoint;
-        
+
         public bool IsActive { get; set; } // 当前窗口是否在活跃状态  用来判断是否需要操作
         public int ImageIndex { get; set; }// 图片加载进来的序号
         public int Arrangement { get; set; } // 0:代表单张图 1:代表是合并图图但不做处理 2:代表是合并图 并且为处理图
@@ -96,6 +99,8 @@ namespace PBAnaly.Module
         private string tif_org_path;
         private Image<L16> image_mark_L16 = null;
         private byte[] image_mark_byte = null;
+        private byte[] image_mark_sharpen_byte = null;
+        private Image<L16> image_mark_sharpen_L16 = null;
         private Image<Rgb24> image_mark_rgb24 = null;
         private Image<Rgb24> image_mark_and_org_rgb24 = null;
         private Image<L16> image_org_L16 = null;
@@ -182,6 +187,73 @@ namespace PBAnaly.Module
 
         #region 构造函数
 
+        public bool Sharpen 
+        {
+            get { return algAttribute.sharpen; }
+            set 
+            {
+                if (algAttribute.sharpen != value) 
+                {
+                    algAttribute.sharpen = value;
+                    bool fix = true;
+                    if (algAttribute.sharpen)
+                    {
+                        if (image_mark_sharpen_L16 != null) 
+                        {
+                            var _mark_L16 = image_mark_L16.Clone();
+                            byte[] _mark_byte = new byte[image_mark_sharpen_byte.Length];
+                            Array.Copy(image_mark_byte, _mark_byte, image_mark_byte.Length);
+                            image_mark_L16 = image_mark_sharpen_L16.Clone();
+                            Array.Copy(image_mark_sharpen_byte, image_mark_byte, image_mark_byte.Length);
+                            image_mark_sharpen_L16 = _mark_L16;
+                            image_mark_sharpen_byte = _mark_byte;
+                        }
+                        else
+                        {
+                            image_mark_sharpen_byte = new byte[image_mark_byte.Length];
+                            image_mark_sharpen_L16 = image_mark_L16.Clone();
+                            Array.Copy(image_mark_byte, image_mark_sharpen_byte, image_mark_byte.Length);
+                            unsafe
+                            {
+                                fixed (byte* mark_byte = image_mark_byte)
+                                {
+                                    pbpvc.setSharpen_vc(mark_byte, 16, (ushort)image_mark_L16.Width, (ushort)image_mark_L16.Height);
+                                }
+                            }
+
+                            image_mark_L16 = util.ConvertByteArrayToL16Image(image_mark_byte, (ushort)image_mark_L16.Width, (ushort)image_mark_L16.Height, 1);
+
+                        }
+
+                    }
+                    else
+                    {
+                        if (image_mark_sharpen_L16 != null) 
+                        {
+                            var _mark_L16 = image_mark_L16.Clone();
+                            byte[] _mark_byte = new byte[image_mark_sharpen_byte.Length];
+                            image_mark_sharpen_byte.CopyTo(_mark_byte, 0);
+                            image_mark_L16 = image_mark_sharpen_L16.Clone();
+                            image_mark_byte.CopyTo(image_mark_sharpen_byte, 0);
+                            image_mark_sharpen_L16 = _mark_L16;
+
+                            image_mark_sharpen_byte = _mark_byte;
+                        }
+                        else
+                        {
+                            fix = false; 
+                        }
+                       
+                    }
+
+                    if (fix && isUpdateAlg) 
+                    {
+                        queueAlgAttribute.Enqueue(algAttribute);
+                    }
+
+                }
+            }
+        }
         public int Brightness 
         {
             get { return algAttribute.brightness; }
@@ -475,8 +547,8 @@ namespace PBAnaly.Module
             imagePaletteForm.nud_colorMin.ValueChanged += Nud_colorMin_ValueChanged;
             imagePaletteForm.cb_colortable.SelectedIndexChanged += Cb_colortable_SelectedIndexChanged;
 
-            
 
+            imagePaletteForm.cb_sharpen.CheckedChanged += Cb_sharpen_CheckedChanged;
             imagePanel.cb_scientific.CheckedChanged += Cb_scientific_CheckedChanged;
             imagePaletteForm.cb_scientific.CheckedChanged += Cb_imagepalette_scientific_CheckedChanged;
             imagePanel.image_pl.MouseDown += Image_pl_MouseDown;
@@ -507,7 +579,7 @@ namespace PBAnaly.Module
             KeyboardListener.Register(OnKeyPressed); // 创建键盘钩子
         }
 
-        
+       
 
         private bool ReadTif() 
         {
@@ -946,6 +1018,21 @@ namespace PBAnaly.Module
             IsActive = true;
             this.imagePanel.BringToFront();
         }
+        private void Cb_sharpen_CheckedChanged(object sender, BoolEventArgs e)
+        {
+            if (Arrangement == 2)
+            {
+                foreach (var item in bioanalysisMannages)
+                {
+                    item.Value.Sharpen  = imagePaletteForm.cb_sharpen.Checked;
+                   
+                }
+            }
+            else
+            {
+                Sharpen = imagePaletteForm.cb_sharpen.Checked;
+            }
+        }
         private void Cb_scientific_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {
             if (imagePaletteForm.cb_scientific.Checked != imagePanel.cb_scientific.Checked) 
@@ -978,12 +1065,9 @@ namespace PBAnaly.Module
             {
                 imagePaletteForm.cb_colortable.SelectedIndex = 7;
             }
-            else
-            {
-                RefreshCbb();
-            }
-            
-           
+            RefreshCbb();
+
+
         }
         private void Dtb_brightness_ValueChanged()
         {

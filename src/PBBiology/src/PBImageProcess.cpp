@@ -1277,3 +1277,14 @@ Mat get_magic_wand_image(Mat src,int x,int y,float max,float min)
 	}
     return matDst;
 }
+
+
+Mat SetSharpen(Mat src) 
+{
+    Mat blur_img, usm;
+
+    GaussianBlur(src,blur_img,Size(0,0),10);
+    usm = src + 0.5 * (src - blur_img);
+  
+    return usm;
+}

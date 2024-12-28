@@ -37,19 +37,7 @@ namespace PBBiologyVC {
 
 	public:
 		
-	/*	int render_mask_image_vc(System::Byte* mat, int bit,unsigned short width, unsigned short height, System::Byte* mark, System::Byte* dst, float max, float min, bool reverse);
-		int blendImages_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, System::Byte* mark, System::Byte* dst,float alpha);
-		int render_image_16_vc(System::Byte* mat, unsigned short width, unsigned short height, System::Byte* dst,
-			int colorIndex, float max, float min, bool reverse, System::Byte* colobar, unsigned short colorbar_width, unsigned short colorbar_height,
-			int h_onecolor);*/
-		//PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, int x, int y, int w, int h, float max, float min);
 
-		/*int render_process(System::Byte* pseImage, System::Byte* markImage, System::Byte* renderpseImage, System::Byte* mergepseImage,
-			System::Byte* colorBarImage,int colorIndex, unsigned short colorbarW, unsigned short colorbarH,
-			int bit , unsigned short width, unsigned short height, float max, float min, bool reverse,
-			unsigned short colorbarWW, unsigned short h_onecolor, int brightness_offset, double contrast_factor, double opacity_factor);
-
-		int get_colorbar_VC(System::Byte* pseImage, int colorIndex, unsigned short colorbarW, unsigned short colorbarH, unsigned short colorbarWW, unsigned short h_onecolor, float max, float min, bool reverse);*/
 
 		int render_process(System::Byte* pseImage, System::Byte* markImage, System::Byte* renderpseImage, System::Byte* mergepseImage,
 			System::Byte* colorBarImage, int colorIndex, unsigned short colorbarW, unsigned short colorbarH,
@@ -60,6 +48,7 @@ namespace PBBiologyVC {
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_circle_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int r);
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_polygon_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, float max, float min, List<PBBiologyVC::Point_VC^>^ list_point);
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_wand_vc(System::Byte* mat, System::Byte* dst, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int th, int% _dstW, int% _dstH, int% _dstX, int% _dstY);
+		void setSharpen_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height);
 	private:
 		
 	};
