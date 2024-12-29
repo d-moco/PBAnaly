@@ -126,6 +126,7 @@
     <Compile Include="Module\BioanalysisMannage.cs" />
     <Compile Include="Module\ImageProcess.cs" />
     <Compile Include="Module\KeyboardListener.cs" />
+    <Compile Include="Module\LanesMannage.cs" />
     <Compile Include="Module\PBAnalyCommMannager.cs" />
     <Compile Include="Module\util.cs" />
     <Compile Include="Program.cs" />
@@ -148,6 +149,18 @@
     </Compile>
     <Compile Include="UI\AnalyzeDataForm.Designer.cs">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LanesImagePaletteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LanesImagePaletteForm.Designer.cs">
+      <DependentUpon>LanesImagePaletteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LanesImagePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LanesImagePanel.Designer.cs">
+      <DependentUpon>LanesImagePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\BioanalyImagePanel.cs">
       <SubType>Form</SubType>
@@ -172,6 +185,12 @@
     </Compile>
     <Compile Include="UI\LogForm.Designer.cs">
       <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MultiImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MultiImageForm.Designer.cs">
+      <DependentUpon>MultiImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RowMergeView.cs">
       <SubType>Component</SubType>
@@ -250,6 +269,12 @@
     <EmbeddedResource Include="UI\AnalyzeDataForm.resx">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\LanesImagePaletteForm.resx">
+      <DependentUpon>LanesImagePaletteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LanesImagePanel.resx">
+      <DependentUpon>LanesImagePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\BioanalyImagePanel.resx">
       <DependentUpon>BioanalyImagePanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MultiImageForm.resx">
+      <DependentUpon>MultiImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RowMergeView.resx">
       <DependentUpon>RowMergeView.cs</DependentUpon>
@@ -294,6 +322,12 @@
     </PackageReference>
     <PackageReference Include="Aspose.PDF">
       <Version>24.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="Magick.NET-Q16-AnyCPU">
+      <Version>14.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Magick.NET.Core">
+      <Version>14.3.0</Version>
     </PackageReference>
     <PackageReference Include="MaterialSkin">
       <Version>0.2.1</Version>

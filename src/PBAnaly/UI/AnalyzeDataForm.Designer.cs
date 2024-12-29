@@ -104,7 +104,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(0, 31);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1510, 36);
+            this.metroPanel1.Size = new System.Drawing.Size(1577, 36);
             this.metroPanel1.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
             this.metroPanel1.StyleManager = null;
             this.metroPanel1.TabIndex = 3;
@@ -131,13 +131,13 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 30);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1510, 1379);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1577, 1169);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // panel1
@@ -148,10 +148,10 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.panel1.Location = new System.Drawing.Point(4, 71);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panel1.Size = new System.Drawing.Size(1502, 1304);
+            this.panel1.Size = new System.Drawing.Size(1569, 1094);
             this.panel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.panel1.TabIndex = 4;
             this.panel1.Text = "panel1";
@@ -161,23 +161,23 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(7, 6);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1488, 1292);
+            this.dataGridView1.Size = new System.Drawing.Size(1555, 1082);
             this.dataGridView1.TabIndex = 0;
             // 
             // AnalyzeDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1518, 1413);
+            this.ClientSize = new System.Drawing.Size(1585, 1203);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.MainMenuStrip = this.miniToolStrip;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AnalyzeDataForm";
             this.Padding = new System.Windows.Forms.Padding(4, 30, 4, 4);
             this.Text = "AnalyzeDataForm";

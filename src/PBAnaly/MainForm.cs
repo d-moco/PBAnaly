@@ -42,7 +42,9 @@ namespace PBAnaly
         System.Windows.Forms.TableLayoutPanel tlp_main_images;
 
         private Dictionary<string ,BioanalysisMannage> bioanalysisMannages = new Dictionary<string, BioanalysisMannage>();
+        private Dictionary<string, LanesMannage> lanesMannages = new Dictionary<string, LanesMannage>();
         private List<string> bioanalyName = new List<string>();
+        private List<string> lanesName = new List<string>();
         bool isRun = false;
         private Thread thread;
        
@@ -467,55 +469,99 @@ namespace PBAnaly
 
         private void materialButton_LoadData_Click(object sender, EventArgs e)
         {
+            // 加载泳道分析的图库
             string selectedFilePath = "";
             // 弹出选择图像的框
             #region 打开图片
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "TIF Files (*.tif)|*.tif|All files (*.*)|*.*";  // 设置文件筛选器
+            openFileDialog.Filter = "TIF Files (*.tif)|*.tif|TIFF files (*.tiff)|*.tiff";  // 设置文件筛选器
             openFileDialog.Title = "Select a TIF File";  // 设置对话框标题
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // 获取选中的文件路径
+                // 获取选中的文件路径  只传入目录
                 selectedFilePath = openFileDialog.FileName;
-                
+
+
             }
 
             #endregion
-            if (selectedFilePath != "") 
+            if (selectedFilePath != "")
             {
-                // Save Log Information
-                Read_Write_Log read_Write_Log = new Read_Write_Log();
-                string SaveLogFile = read_Write_Log.LogFile;
+                
 
-                List<Log> OldLog = new List<Log>();
-                if (File.Exists(SaveLogFile))
+                if (lanesMannages.TryGetValue(selectedFilePath, out var value))
                 {
-                    OldLog = read_Write_Log.ReadCsv(SaveLogFile);
+                    return;
                 }
-
-                string dateTime = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-                OldLog.Add(new Log() { UserID = InnerUserID, ITEM = "加载数据", Description = "加载数据", Time = dateTime });
-
-                read_Write_Log.WriteCsv(SaveLogFile, OldLog);
-
-                DataProcessForm frmEmbed = new DataProcessForm(materialSkinManager, selectedFilePath);
-
-                if (frmEmbed != null)
+                if (lanesMannages.Count == 0)
                 {
-                    //frmEmbed.FormBorderStyle = FormBorderStyle.None;  //  无边框
-                    frmEmbed.TopLevel = false;  //  不是最顶层窗体
-                    DataProcess_panel.Controls.Add(frmEmbed);   //  添加到 Panel中
-
-                    FormGenerate_X = FormGenerate_X + 15;
-                    FormGenerate_Y = FormGenerate_Y + 15;
-
-                    frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
-                    frmEmbed.Show();      //  显示
-                    PBAnalyCommMannager.processForm = frmEmbed;
+                    lanesName.Clear();
                 }
+                LanesMannage lanesMannage = new LanesMannage(selectedFilePath, pl_right, lanesMannages);
+
+                if (lanesMannage.GetImagePanel == null)
+                {
+                    lanesMannage = null;
+                    return;
+                }
+                DataProcess_panel.Controls.Add(lanesMannage.GetImagePanel);
+                lanesMannage.GetImagePanel.BringToFront();
+                lanesName.Add(selectedFilePath);
+
+
+
+
             }
-           
+            //string selectedFilePath = "";
+            //// 弹出选择图像的框
+            //#region 打开图片
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Filter = "TIF Files (*.tif)|*.tif|All files (*.*)|*.*";  // 设置文件筛选器
+            //openFileDialog.Title = "Select a TIF File";  // 设置对话框标题
+
+            //if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    // 获取选中的文件路径
+            //    selectedFilePath = openFileDialog.FileName;
+
+            //}
+
+            //#endregion
+            //if (selectedFilePath != "") 
+            //{
+            //    // Save Log Information
+            //    Read_Write_Log read_Write_Log = new Read_Write_Log();
+            //    string SaveLogFile = read_Write_Log.LogFile;
+
+            //    List<Log> OldLog = new List<Log>();
+            //    if (File.Exists(SaveLogFile))
+            //    {
+            //        OldLog = read_Write_Log.ReadCsv(SaveLogFile);
+            //    }
+
+            //    string dateTime = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+            //    OldLog.Add(new Log() { UserID = InnerUserID, ITEM = "加载数据", Description = "加载数据", Time = dateTime });
+
+            //    read_Write_Log.WriteCsv(SaveLogFile, OldLog);
+
+            //    DataProcessForm frmEmbed = new DataProcessForm(materialSkinManager, selectedFilePath);
+
+            //    if (frmEmbed != null)
+            //    {
+            //        //frmEmbed.FormBorderStyle = FormBorderStyle.None;  //  无边框
+            //        frmEmbed.TopLevel = false;  //  不是最顶层窗体
+            //        DataProcess_panel.Controls.Add(frmEmbed);   //  添加到 Panel中
+
+            //        FormGenerate_X = FormGenerate_X + 15;
+            //        FormGenerate_Y = FormGenerate_Y + 15;
+
+            //        frmEmbed.Location = new System.Drawing.Point(FormGenerate_X, FormGenerate_Y);
+            //        frmEmbed.Show();      //  显示
+            //        PBAnalyCommMannager.processForm = frmEmbed;
+            //    }
+            //}
+
         }
 
         private void materialButton_setting_Click(object sender, EventArgs e)
