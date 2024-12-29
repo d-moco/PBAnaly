@@ -1110,7 +1110,8 @@ Mat bgr_scale_image(Mat src, float maxVal, float minVal, int scientific_flag)
     float rotia = 255.0 / (maxVal - minVal);
     Mat image = Mat(h + 2 * start, 3 * w, CV_8UC3);
     image.setTo(255);
-    src.copyTo(image(Rect(0, start, w, h)));
+    src.copyTo(image(Rect(0,start,w,h)));
+    cv::rectangle(image, Rect(0,start,w,h), cv::Scalar(0,0,0), 2);
 
     float diff = maxVal - minVal;
     int exponent = static_cast<int>(std::log10(diff));
@@ -1188,8 +1189,7 @@ Mat bgr_scale_image(Mat src, float maxVal, float minVal, int scientific_flag)
         std::ostringstream oss;
         if (tickData[i] == int(tickData[i])) {
             oss << static_cast<int>(tickData[i]);
-        }
-        else {
+        } else {
             oss.precision(1);
             oss << std::fixed << tickData[i];
         }
@@ -1287,4 +1287,85 @@ Mat SetSharpen(Mat src)
     usm = src + 0.5 * (src - blur_img);
   
     return usm;
+}
+bool camera_calibration(Mat gray,cv::Size patternSize,float grid_size,cv::Mat& cameraMatrix,cv::Mat& distCoeffs,float& pixel_size)
+{
+    if(gray.type() != CV_8UC1)
+    {
+        std::cerr << "Error: gray not CV_8UC1!" << std::endl;
+        return 0;
+    }
+    std::vector<cv::Point2f> corners;
+    bool found = cv::findChessboardCorners(gray, patternSize, corners,
+                                           cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
+
+    if (found) {
+        cv::cornerSubPix(gray, corners, cv::Size(3, 3), cv::Size(-1, -1),
+                         cv::TermCriteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 30, 0.1));
+    } else {
+        std::cerr << "Error: Chessboard corners not found!" << std::endl;
+        return 0;
+    }
+    std::vector<std::vector<cv::Point3f>> objectPoints;
+    std::vector<std::vector<cv::Point2f>> imagePoints;
+
+    std::vector<cv::Point3f> objPts;
+    for (int i = 0; i < patternSize.height; ++i) {
+        for (int j = 0; j < patternSize.width; ++j) {
+            objPts.push_back(cv::Point3f(j, i, 0.0f));
+        }
+    }
+    objectPoints.push_back(objPts);
+    imagePoints.push_back(corners);
+    cameraMatrix = cv::Mat::eye(3, 3, CV_64F);  // 相机矩阵初始化
+    distCoeffs = cv::Mat::zeros(8, 1, CV_64F);  // 畸变系数初始化
+    std::vector<cv::Mat> rvecs, tvecs;
+	int calibrationFlags = 0;
+	TermCriteria criteria = TermCriteria(TermCriteria::MAX_ITER + TermCriteria::EPS, 30, DBL_EPSILON);
+    cv::calibrateCamera(objectPoints, imagePoints, gray.size(), cameraMatrix, distCoeffs, rvecs, tvecs,calibrationFlags,criteria);
+
+    vector<Point2f> undistortedCorners;
+    undistortPoints(corners, undistortedCorners, cameraMatrix, distCoeffs);
+
+    std::vector<cv::Point3f> homogeneousPoints;
+    for (const auto& p : undistortedCorners) {
+        homogeneousPoints.push_back(cv::Point3f(p.x, p.y, 1.0f));  // 将 (x, y) 转换为 (x, y, 1)
+    }
+    std::vector<cv::Point2f> pixelPoints;
+    for (const auto& p : homogeneousPoints) {
+        cv::Mat pointMat = (cv::Mat_<double>(3, 1) << p.x, p.y, p.z);
+        cv::Mat transformedPoint = cameraMatrix * pointMat;
+        float x = transformedPoint.at<double>(0, 0) / transformedPoint.at<double>(2, 0);
+        float y = transformedPoint.at<double>(1, 0) / transformedPoint.at<double>(2, 0);
+        pixelPoints.push_back(cv::Point2f(x, y));
+    }
+    int numCols = patternSize.width;
+    int numRows = patternSize.height;
+    float meanSideLength = 0;
+    int num = 0;
+    for (int i = 0; i < (patternSize.height - 1); ++i) {
+        for (int j = 0; j < (patternSize.width - 1); ++j) {
+            int index = i * patternSize.width + j;
+            if (j + 1 < numCols) {
+                float width = static_cast<float>(norm(pixelPoints[index] - pixelPoints[index + 1]));
+                meanSideLength+=(width);
+                num++;
+            }
+            if (i + 1 < patternSize.height) {
+                float height = static_cast<float>(norm(pixelPoints[index] - pixelPoints[index + numCols]));
+                meanSideLength+=(height);
+                num++;
+            }
+        }
+    }
+    meanSideLength /= num;
+    pixel_size = grid_size/meanSideLength;
+    return 1;
+}
+
+Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs)
+{
+    cv::Mat undistortedImage;
+    cv::undistort(image, undistortedImage, cameraMatrix, distCoeffs);
+    return undistortedImage;
 }

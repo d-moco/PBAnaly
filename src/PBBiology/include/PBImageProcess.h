@@ -48,3 +48,12 @@ Mat get_magic_wand_image(Mat src,int x,int y,float max,float min);
 
 // 锐化
 Mat SetSharpen(Mat src);
+//相机标定功能，gray是包含完整棋盘格灰度图像，patternSize是棋盘格内角点的数量（假如棋盘格的尺寸是9*7，那内角点就是8*6），grid_size是每个格子的物理大小
+//cameraMatrix和distCoeffs是后续图像畸变矫正需要的参数，标定一次后，镜头无变动情况下，后续图像直接用此参数矫正就可以，pixel_size是矫正后每个pixel的物理大小
+//返回值是0表示标定错误，返回值是1表示标定正确
+//注：相机标定功能得到的结果参数只能用于矫正和计算得到结果的输入图像分辨率一致的图
+bool camera_calibration(Mat gray,cv::Size patternSize,float grid_size,cv::Mat& cameraMatrix,cv::Mat& distCoeffs,float& pixel_size);
+//图像畸变矫正功能，image是输入图像（无要求），cameraMatrix和distCoeffs是图像畸变矫正的参数
+//返回值是矫正后的图像，输入图像是什么格式，输出图像就是什么格式
+//注：相机标定功能得到的结果参数只能用于矫正和计算得到结果的输入图像分辨率一致的图
+Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs);
