@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace PBAnaly.Module
         private string path { get; set; }
         private string curImagePath;
 
+        PBBiology pbb = new PBBiology();
         private Image<L16> image_L16;
         private byte[] image_byte;
         private byte[] image_8bit_byte;
@@ -133,7 +135,32 @@ namespace PBAnaly.Module
 
         private void ImageAlg(band_infos aatb)
         {
-            
+
+            //Mat image = new Mat(image_L16.Height,image_L16.Width,MatType.CV_8UC1);
+            //Marshal.Copy(image_8bit_byte,0,image.Data,image_8bit_byte.Length);
+
+            //Mat whiteBackgroundImg = new Mat();
+            //Scalar meanValue = Cv2.Mean(image);
+            //if (meanValue[0] < 10000)
+            //{
+            //    Cv2.BitwiseNot(image, whiteBackgroundImg);
+            //}
+            //else
+            //{
+            //    whiteBackgroundImg = image.Clone(); 
+            //}
+
+            //List<RectVC> proteinRect = new List<RectVC>();
+            //// 算法使用的是8bit的图进行计算
+            //unsafe
+            //{
+            //    fixed (byte* p = image_8bit_byte) 
+            //    {
+            //        proteinRect = pbb.getProteinRectVC(p, (ushort)image_L16.Width, (ushort)image_L16.Height);
+            //    }
+
+
+            //}
         }
 
         /// <summary>
@@ -152,10 +179,14 @@ namespace PBAnaly.Module
             imagePanel.FormClosing += ImagePanel_FormClosing;
             imagePanel.FormClosed += ImagePanel_FormClosed;
 
+
+
+            imagePaletteForm.mb_findLanes.Click += Mb_findLanes_Click;
+
             KeyboardListener.Register(OnKeyPressed); // 创建键盘钩子
         }
 
-        
+       
 
         private bool ReadTiff()
         {
@@ -301,6 +332,13 @@ namespace PBAnaly.Module
             }
             IsActive = true;
             this.imagePanel.BringToFront();
+        }
+        #endregion
+
+        #region imagePalette
+        private void Mb_findLanes_Click(object sender, EventArgs e)
+        {
+            
         }
         #endregion
 
