@@ -593,7 +593,19 @@ namespace PBAnaly.Module
                         tif_marker_path = tifFile;
                         image_mark_L16 = util.LoadTiffAsL16(tif_marker_path);
                         image_mark_byte = util.ConvertL16ImageToByteArray(image_mark_L16);
-
+                        byte[] bytes = new byte[image_mark_byte.Length];
+                        unsafe
+                        {
+                            fixed (byte* p = image_mark_byte) 
+                            {
+                                fixed (byte* p1 = bytes) 
+                                {
+                                    pbpvc.distortion_correction_vc(p, 16, (ushort)image_mark_L16.Width, (ushort)image_mark_L16.Height, p1);
+                                }
+                            }
+                            image_mark_byte = bytes;
+                            image_mark_L16 = util.ConvertByteArrayToL16Image(image_mark_byte, image_mark_L16.Width, image_mark_L16.Height, 1);
+                        }
                     }
                     else
                     {

@@ -49,6 +49,9 @@ namespace PBBiologyVC {
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_polygon_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height, float max, float min, List<PBBiologyVC::Point_VC^>^ list_point);
 		PBBiologyVC::Pseudo_infoVC^ get_pseudo_info_wand_vc(System::Byte* mat, System::Byte* dst, int bit, unsigned short width, unsigned short height, float max, float min, int x, int y, int th, int% _dstW, int% _dstH, int% _dstX, int% _dstY);
 		void setSharpen_vc(System::Byte* mat, int bit, unsigned short width, unsigned short height);
+
+		void distortion_correction_vc(System::Byte* image, int bit, unsigned short width, unsigned short height, System::Byte* dst);
+		
 	private:
 		
 	};
