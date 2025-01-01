@@ -43,6 +43,7 @@
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
             this.clasi_strips = new AntdUI.CollapseItem();
             this.clasi_conformity = new AntdUI.CollapseItem();
+            this.checkbox2 = new AntdUI.Checkbox();
             this.collapse1.SuspendLayout();
             this.clasi_lanes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -65,7 +66,7 @@
             this.collapse1.Items.Add(this.clasi_strips);
             this.collapse1.Items.Add(this.clasi_conformity);
             this.collapse1.Location = new System.Drawing.Point(0, 0);
-            this.collapse1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.collapse1.Margin = new System.Windows.Forms.Padding(2);
             this.collapse1.Name = "collapse1";
             this.collapse1.Size = new System.Drawing.Size(304, 495);
             this.collapse1.TabIndex = 0;
@@ -76,7 +77,7 @@
             this.clasi_lanes.Controls.Add(this.tableLayoutPanel1);
             this.clasi_lanes.Expand = true;
             this.clasi_lanes.Location = new System.Drawing.Point(18, 58);
-            this.clasi_lanes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clasi_lanes.Margin = new System.Windows.Forms.Padding(2);
             this.clasi_lanes.Name = "clasi_lanes";
             this.clasi_lanes.Size = new System.Drawing.Size(268, 175);
             this.clasi_lanes.TabIndex = 0;
@@ -98,7 +99,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
@@ -192,12 +193,13 @@
             // panel1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 4);
+            this.panel1.Controls.Add(this.checkbox2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.numericUpDown1);
             this.panel1.Controls.Add(this.checkbox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(84, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 4);
             this.panel1.Size = new System.Drawing.Size(160, 140);
@@ -208,7 +210,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("宋体", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(2, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 25);
             this.label1.TabIndex = 7;
@@ -217,7 +219,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(2, 69);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(57, 21);
             this.numericUpDown1.TabIndex = 6;
@@ -226,7 +228,7 @@
             // 
             this.checkbox1.AutoCheck = true;
             this.checkbox1.Location = new System.Drawing.Point(2, 11);
-            this.checkbox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkbox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkbox1.Name = "checkbox1";
             this.checkbox1.Size = new System.Drawing.Size(106, 18);
             this.checkbox1.TabIndex = 0;
@@ -237,7 +239,7 @@
             this.clasi_init.Controls.Add(this.materialCheckbox1);
             this.clasi_init.Expand = true;
             this.clasi_init.Location = new System.Drawing.Point(18, 305);
-            this.clasi_init.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clasi_init.Margin = new System.Windows.Forms.Padding(2);
             this.clasi_init.Name = "clasi_init";
             this.clasi_init.Size = new System.Drawing.Size(268, 162);
             this.clasi_init.TabIndex = 1;
@@ -262,7 +264,7 @@
             // clasi_strips
             // 
             this.clasi_strips.Location = new System.Drawing.Point(-75, -48);
-            this.clasi_strips.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clasi_strips.Margin = new System.Windows.Forms.Padding(2);
             this.clasi_strips.Name = "clasi_strips";
             this.clasi_strips.Size = new System.Drawing.Size(75, 48);
             this.clasi_strips.TabIndex = 2;
@@ -271,11 +273,21 @@
             // clasi_conformity
             // 
             this.clasi_conformity.Location = new System.Drawing.Point(-75, -48);
-            this.clasi_conformity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clasi_conformity.Margin = new System.Windows.Forms.Padding(2);
             this.clasi_conformity.Name = "clasi_conformity";
             this.clasi_conformity.Size = new System.Drawing.Size(75, 48);
             this.clasi_conformity.TabIndex = 3;
             this.clasi_conformity.Text = "整合";
+            // 
+            // checkbox2
+            // 
+            this.checkbox2.AutoCheck = true;
+            this.checkbox2.Location = new System.Drawing.Point(0, 111);
+            this.checkbox2.Margin = new System.Windows.Forms.Padding(2);
+            this.checkbox2.Name = "checkbox2";
+            this.checkbox2.Size = new System.Drawing.Size(106, 18);
+            this.checkbox2.TabIndex = 8;
+            this.checkbox2.Text = "总是显示泳道";
             // 
             // LanesImagePaletteForm
             // 
@@ -284,7 +296,7 @@
             this.ClientSize = new System.Drawing.Size(304, 495);
             this.Controls.Add(this.collapse1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LanesImagePaletteForm";
             this.Text = "BioanayImagePaletteForm";
             this.collapse1.ResumeLayout(false);
@@ -316,5 +328,6 @@
         private AntdUI.Checkbox checkbox1;
         private AntdUI.Label label1;
         public MaterialSkin.Controls.MaterialButton mb_findLanes;
+        private AntdUI.Checkbox checkbox2;
     }
 }

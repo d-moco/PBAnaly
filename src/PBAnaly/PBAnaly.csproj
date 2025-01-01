@@ -150,6 +150,12 @@
     <Compile Include="UI\AnalyzeDataForm.Designer.cs">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LaneLineChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LaneLineChartForm.Designer.cs">
+      <DependentUpon>LaneLineChartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LanesImagePaletteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AnalyzeDataForm.resx">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaneLineChartForm.resx">
+      <DependentUpon>LaneLineChartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LanesImagePaletteForm.resx">
       <DependentUpon>LanesImagePaletteForm.cs</DependentUpon>

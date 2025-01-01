@@ -488,7 +488,7 @@ namespace PBAnaly
             #endregion
             if (selectedFilePath != "")
             {
-                
+
 
                 if (lanesMannages.TryGetValue(selectedFilePath, out var value))
                 {
@@ -528,7 +528,7 @@ namespace PBAnaly
             //}
 
             //#endregion
-            //if (selectedFilePath != "") 
+            //if (selectedFilePath != "")
             //{
             //    // Save Log Information
             //    Read_Write_Log read_Write_Log = new Read_Write_Log();
