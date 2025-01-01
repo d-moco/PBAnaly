@@ -191,7 +191,7 @@ void PBBiologyVC::PBImageProcessVC::setSharpen_vc(System::Byte* mat, int bit, un
 	std::memcpy(mat, dst.data, byteCount);
 }
 
-void PBBiologyVC::PBImageProcessVC::distortion_correction_vc(System::Byte* mat,int bit, unsigned short width, unsigned short height, System::Byte* dst)
+float PBBiologyVC::PBImageProcessVC::distortion_correction_vc(System::Byte* mat,int bit, unsigned short width, unsigned short height, System::Byte* dst)
 {
 	cv::Mat image(height, width, CV_16UC1, mat);
 	//cv::Mat mat = cv::imread("testImage/6.tif", cv::IMREAD_ANYDEPTH);
@@ -295,6 +295,8 @@ void PBBiologyVC::PBImageProcessVC::distortion_correction_vc(System::Byte* mat,i
 	}
 	Mat dstR = distortion_correction(image, cameraMatrix, distCoeffs);
 	std::memcpy(dst, dstR.data, dstR.cols * dstR.rows *2);
+
+	return pixel_size;
 	/*std::cout << "wxh" << width << "x" << height << "d wxh" << dstR.cols << "x" << dstR.rows << std::endl;*/
 
 	//cv::Size patternSize(8, 5);
