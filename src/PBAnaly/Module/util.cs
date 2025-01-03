@@ -92,6 +92,12 @@ namespace PBAnaly.Module
             Image<L16> image = Image.Load<L16>(filePath);
             return image;
         }
+        public static Image<L8> LoadTiffAsL8(string filePath)
+        {
+            // 加载图像并确保其为16位灰度图像
+            Image<L8> image = Image.Load<L8>(filePath);
+            return image;
+        }
         public static byte[] ConvertL16ImageToByteArray(Image<L16> image)
         {
             int width = image.Width;
@@ -112,6 +118,28 @@ namespace PBAnaly.Module
 
             return pixels;
         }
+
+        public static byte[] ConvertL8ImageToByteArray(Image<L8> image)
+        {
+            int width = image.Width;
+            int height = image.Height;
+            byte[] pixels = new byte[width * height * sizeof(byte)];
+
+            int index = 0;
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    // 直接访问每个像素的值并转换为 byte[]
+                    byte pixelValue = image[x, y].PackedValue;
+                    BitConverter.GetBytes(pixelValue).CopyTo(pixels, index);
+                    index += sizeof(byte);
+                }
+            }
+
+            return pixels;
+        }
+
         public static ushort[] ConvertL16ImageToUShortArray(Image<L16> image)
         {
             var byteArray  = ConvertL16ImageToByteArray(image);

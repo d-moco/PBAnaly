@@ -124,6 +124,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\BioanalysisMannage.cs" />
+    <Compile Include="Module\ColonyMannage.cs" />
     <Compile Include="Module\ImageProcess.cs" />
     <Compile Include="Module\KeyboardListener.cs" />
     <Compile Include="Module\LanesMannage.cs" />
