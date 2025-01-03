@@ -7,7 +7,7 @@ using namespace System::Collections::Generic;
 using namespace System::Runtime::InteropServices;
 
 namespace PBBiologyVC {
-
+	
 	public ref struct Pseudo_infoVC
 	{
 	public:

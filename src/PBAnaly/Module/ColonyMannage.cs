@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Web.UI.WebControls;
+
 
 namespace PBAnaly.Module
 {
@@ -25,6 +28,12 @@ namespace PBAnaly.Module
         private Image<Rgb24> image_rgb_24 = null;
         private LanesImagePanel imagePanel = null;
         private BioanayImagePaletteForm imagePaletteForm = null;
+        private PBBiologyVC.PBColonyVC pbvc = new PBBiologyVC.PBColonyVC();
+        
+        private Thread algThread;
+        private bool isalgRun = false;
+        private bool isUpdateAlg = false;
+
         #endregion
 
         public ColonyMannage(string _path, ReaLTaiizor.Controls.Panel _pl_right, Dictionary<string,ColonyMannage> colonyMannages) 
@@ -43,11 +52,23 @@ namespace PBAnaly.Module
                 return;
             }
 
+            ImageAlg();
             RefreshImage();
         }
 
 
         #region 方法
+
+        private void ImageAlg() 
+        {
+            unsafe
+            {
+                fixed (byte* p = image_byte) 
+                {
+                    pbvc.run(p, 16, (ushort)image_L16.Width, (ushort)image_L16.Height, -1, -1);
+                }
+            }
+        }
         private bool ReadTif()
         {
             // 读tif 或 tiff 
