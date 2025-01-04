@@ -380,7 +380,7 @@ namespace PBAnaly
 
         private void materialButton_changeFormSize_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button)
+           if (sender is Button)
             {
                 Button btn = sender as Button;
                 this.btnStartUpToolTip.SetToolTip(btn, "适配窗口");
@@ -441,23 +441,7 @@ namespace PBAnaly
             }
         }
 
-        private void materialButton_return_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (sender is Button)
-            {
-                Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Z 撤銷");
-            }
-        }
-
-        private void materialButton_forward_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (sender is Button)
-            {
-                Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Y 重做");
-            }
-        }
+   
 
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {

@@ -57,7 +57,7 @@ namespace PBBiologyVC{
 	{
 		~PBColonyVC();
 	public:
-		void run(System::Byte* image, int bit, unsigned short width, unsigned short height, int lower, int upper);
+		void run(System::Byte* image, int bit, unsigned short width, unsigned short height, int lower, int upper, System::Byte* dstRgb);
 	};
 
 	

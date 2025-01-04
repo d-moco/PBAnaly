@@ -57,8 +57,6 @@
             this.materialButton_resetImage = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_inverse = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_save = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_forward = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_return = new MaterialSkin.Controls.MaterialButton();
             this.pl_right = new ReaLTaiizor.Controls.Panel();
             this.thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             this.metroPanel_RightTop.SuspendLayout();
@@ -269,7 +267,7 @@
             this.DataProcess_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataProcess_panel.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.DataProcess_panel.Location = new System.Drawing.Point(4, 4);
-            this.DataProcess_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DataProcess_panel.Margin = new System.Windows.Forms.Padding(4);
             this.DataProcess_panel.Name = "DataProcess_panel";
             this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tl_right_main_view.SetRowSpan(this.DataProcess_panel, 2);
@@ -285,7 +283,7 @@
             this.CompanyIcon_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CompanyIcon_pictureBox.Image = global::PBAnaly.Properties.Resources.京仪科技定稿_画板_1_副本2;
             this.CompanyIcon_pictureBox.Location = new System.Drawing.Point(4, 4);
-            this.CompanyIcon_pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CompanyIcon_pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.CompanyIcon_pictureBox.Name = "CompanyIcon_pictureBox";
             this.tableLayoutPanel1.SetRowSpan(this.CompanyIcon_pictureBox, 2);
             this.CompanyIcon_pictureBox.Size = new System.Drawing.Size(272, 100);
@@ -445,8 +443,6 @@
             this.flowLayoutPanel2.Controls.Add(this.materialButton_resetImage);
             this.flowLayoutPanel2.Controls.Add(this.materialButton_inverse);
             this.flowLayoutPanel2.Controls.Add(this.materialButton_save);
-            this.flowLayoutPanel2.Controls.Add(this.materialButton_forward);
-            this.flowLayoutPanel2.Controls.Add(this.materialButton_return);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(280, 69);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -598,47 +594,6 @@
             this.materialButton_save.UseVisualStyleBackColor = true;
             this.materialButton_save.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_save_MouseMove);
             // 
-            // materialButton_forward
-            // 
-            this.materialButton_forward.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_forward.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_forward.Depth = 0;
-            this.materialButton_forward.HighEmphasis = true;
-            this.materialButton_forward.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_forward.Icon")));
-            this.materialButton_forward.Location = new System.Drawing.Point(448, 0);
-            this.materialButton_forward.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_forward.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_forward.Name = "materialButton_forward";
-            this.materialButton_forward.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_forward.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_forward.TabIndex = 23;
-            this.materialButton_forward.Text = " ";
-            this.materialButton_forward.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_forward.UseAccentColor = false;
-            this.materialButton_forward.UseVisualStyleBackColor = true;
-            this.materialButton_forward.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_forward_MouseMove);
-            // 
-            // materialButton_return
-            // 
-            this.materialButton_return.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.materialButton_return.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_return.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_return.Depth = 0;
-            this.materialButton_return.HighEmphasis = true;
-            this.materialButton_return.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_return.Icon")));
-            this.materialButton_return.Location = new System.Drawing.Point(512, 0);
-            this.materialButton_return.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_return.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_return.Name = "materialButton_return";
-            this.materialButton_return.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_return.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_return.TabIndex = 22;
-            this.materialButton_return.Text = " ";
-            this.materialButton_return.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_return.UseAccentColor = false;
-            this.materialButton_return.UseVisualStyleBackColor = true;
-            this.materialButton_return.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_return_MouseMove);
-            // 
             // pl_right
             // 
             this.pl_right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
@@ -647,7 +602,7 @@
             this.pl_right.Location = new System.Drawing.Point(1042, 71);
             this.pl_right.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pl_right.Name = "pl_right";
-            this.pl_right.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pl_right.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.SetRowSpan(this.pl_right, 2);
             this.pl_right.Size = new System.Drawing.Size(418, 653);
             this.pl_right.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -659,7 +614,7 @@
             this.thunderLabel1.BackColor = System.Drawing.Color.Transparent;
             this.thunderLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.thunderLabel1.Location = new System.Drawing.Point(12, 6);
-            this.thunderLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thunderLabel1.Margin = new System.Windows.Forms.Padding(4);
             this.thunderLabel1.Name = "thunderLabel1";
             this.thunderLabel1.Size = new System.Drawing.Size(267, 20);
             this.thunderLabel1.TabIndex = 19;
@@ -677,7 +632,7 @@
             this.DrawerAutoShow = true;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(4, 30, 4, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -707,8 +662,6 @@
         private MaterialSkin.Controls.MaterialButton materialButton_analyzedata;
         private MaterialSkin.Controls.MaterialButton materialButton_outimage;
         private MaterialSkin.Controls.MaterialButton materialButton_changeFormSize;
-        private MaterialSkin.Controls.MaterialButton materialButton_forward;
-        private MaterialSkin.Controls.MaterialButton materialButton_return;
         private MaterialSkin.Controls.MaterialButton materialButton_save;
         private MaterialSkin.Controls.MaterialButton materialButton_inverse;
         private MaterialSkin.Controls.MaterialButton materialButton_resetImage;

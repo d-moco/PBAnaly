@@ -3,7 +3,7 @@
 #include <opencv2/opencv.hpp>
 #include <PBColony.h>
 
-void PBBiologyVC::PBColonyVC::run(System::Byte* image, int bit, unsigned short width, unsigned short height,int lower,int upper)
+void PBBiologyVC::PBColonyVC::run(System::Byte* image, int bit, unsigned short width, unsigned short height,int lower,int upper, System::Byte* dstRgb)
 {
     PBColony pbcolony;
     cv::Mat input_cn1;
@@ -37,8 +37,8 @@ void PBBiologyVC::PBColonyVC::run(System::Byte* image, int bit, unsigned short w
         vector<ColonyInfo> Cinfo = pbcolony.get_colony_info(input_cn1, bin, input_cn3, class_stand, pbcolony.image_inverted_flag);
         ColonyStatistic CStatistic = pbcolony.get_colony_statistics(Cinfo);
 
-        cv::imshow("a", input_cn3);
-        cv::waitKey(0);
+        
+        std::memcpy(dstRgb, input_cn3.data, input_cn3.rows * input_cn3.cols*3);
 
 
     }

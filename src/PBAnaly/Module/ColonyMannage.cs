@@ -65,9 +65,15 @@ namespace PBAnaly.Module
             {
                 fixed (byte* p = image_byte) 
                 {
-                    pbvc.run(p, 16, (ushort)image_L16.Width, (ushort)image_L16.Height, -1, -1);
+                    fixed (byte* bit8rgb = image_8bit_rgb_byte) 
+                    {
+                        pbvc.run(p, 16, (ushort)image_L16.Width, (ushort)image_L16.Height, -1, -1, bit8rgb);
+                    }
+                    
                 }
             }
+            image_rgb_24 = util.ConvertByteArrayToRgb24Image(image_8bit_rgb_byte, image_L16.Width, image_L16.Height, 3);
+            RefreshImage();
         }
         private bool ReadTif()
         {
