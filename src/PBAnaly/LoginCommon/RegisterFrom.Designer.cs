@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label_re_Answer = new System.Windows.Forms.Label();
+            this.label_re_question = new System.Windows.Forms.Label();
+            this.label_enterPassword = new System.Windows.Forms.Label();
+            this.label_re_password = new System.Windows.Forms.Label();
+            this.label_re_userNma = new System.Windows.Forms.Label();
+            this.txt_answer = new System.Windows.Forms.TextBox();
+            this.txt_broblem = new System.Windows.Forms.TextBox();
+            this.txt_enter_password = new System.Windows.Forms.TextBox();
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.txt_UserName = new System.Windows.Forms.TextBox();
-            this.btn_register = new MaterialSkin.Controls.MaterialButton();
-            this.btn_back = new MaterialSkin.Controls.MaterialButton();
+            this.btn_re_register = new MaterialSkin.Controls.MaterialButton();
+            this.btn_back_form_re = new MaterialSkin.Controls.MaterialButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_enter_password = new System.Windows.Forms.TextBox();
-            this.txt_broblem = new System.Windows.Forms.TextBox();
-            this.txt_answer = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,22 +51,111 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label_re_Answer);
+            this.panel1.Controls.Add(this.label_re_question);
+            this.panel1.Controls.Add(this.label_enterPassword);
+            this.panel1.Controls.Add(this.label_re_password);
+            this.panel1.Controls.Add(this.label_re_userNma);
             this.panel1.Controls.Add(this.txt_answer);
             this.panel1.Controls.Add(this.txt_broblem);
             this.panel1.Controls.Add(this.txt_enter_password);
             this.panel1.Controls.Add(this.txt_Password);
             this.panel1.Controls.Add(this.txt_UserName);
-            this.panel1.Controls.Add(this.btn_register);
-            this.panel1.Controls.Add(this.btn_back);
+            this.panel1.Controls.Add(this.btn_re_register);
+            this.panel1.Controls.Add(this.btn_back_form_re);
             this.panel1.Location = new System.Drawing.Point(-1, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(638, 537);
             this.panel1.TabIndex = 452;
+            // 
+            // label_re_Answer
+            // 
+            this.label_re_Answer.AutoSize = true;
+            this.label_re_Answer.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
+            this.label_re_Answer.ForeColor = System.Drawing.Color.White;
+            this.label_re_Answer.Location = new System.Drawing.Point(90, 361);
+            this.label_re_Answer.Name = "label_re_Answer";
+            this.label_re_Answer.Size = new System.Drawing.Size(80, 25);
+            this.label_re_Answer.TabIndex = 459;
+            this.label_re_Answer.Text = "Answer";
+            // 
+            // label_re_question
+            // 
+            this.label_re_question.AutoSize = true;
+            this.label_re_question.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
+            this.label_re_question.ForeColor = System.Drawing.Color.White;
+            this.label_re_question.Location = new System.Drawing.Point(90, 282);
+            this.label_re_question.Name = "label_re_question";
+            this.label_re_question.Size = new System.Drawing.Size(94, 25);
+            this.label_re_question.TabIndex = 458;
+            this.label_re_question.Text = "Question";
+            // 
+            // label_enterPassword
+            // 
+            this.label_enterPassword.AutoSize = true;
+            this.label_enterPassword.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
+            this.label_enterPassword.ForeColor = System.Drawing.Color.White;
+            this.label_enterPassword.Location = new System.Drawing.Point(90, 209);
+            this.label_enterPassword.Name = "label_enterPassword";
+            this.label_enterPassword.Size = new System.Drawing.Size(99, 25);
+            this.label_enterPassword.TabIndex = 457;
+            this.label_enterPassword.Text = "Password";
+            // 
+            // label_re_password
+            // 
+            this.label_re_password.AutoSize = true;
+            this.label_re_password.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
+            this.label_re_password.ForeColor = System.Drawing.Color.White;
+            this.label_re_password.Location = new System.Drawing.Point(90, 138);
+            this.label_re_password.Name = "label_re_password";
+            this.label_re_password.Size = new System.Drawing.Size(99, 25);
+            this.label_re_password.TabIndex = 456;
+            this.label_re_password.Text = "Password";
+            // 
+            // label_re_userNma
+            // 
+            this.label_re_userNma.AutoSize = true;
+            this.label_re_userNma.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
+            this.label_re_userNma.ForeColor = System.Drawing.Color.White;
+            this.label_re_userNma.Location = new System.Drawing.Point(90, 72);
+            this.label_re_userNma.Name = "label_re_userNma";
+            this.label_re_userNma.Size = new System.Drawing.Size(65, 25);
+            this.label_re_userNma.TabIndex = 455;
+            this.label_re_userNma.Text = "Name";
+            // 
+            // txt_answer
+            // 
+            this.txt_answer.Font = new System.Drawing.Font("宋体", 18F);
+            this.txt_answer.Location = new System.Drawing.Point(195, 355);
+            this.txt_answer.Multiline = true;
+            this.txt_answer.Name = "txt_answer";
+            this.txt_answer.Size = new System.Drawing.Size(389, 33);
+            this.txt_answer.TabIndex = 21;
+            this.txt_answer.Text = "Security answer";
+            this.txt_answer.Click += new System.EventHandler(this.txt_answer_Click);
+            // 
+            // txt_broblem
+            // 
+            this.txt_broblem.Font = new System.Drawing.Font("宋体", 18F);
+            this.txt_broblem.Location = new System.Drawing.Point(195, 276);
+            this.txt_broblem.Multiline = true;
+            this.txt_broblem.Name = "txt_broblem";
+            this.txt_broblem.Size = new System.Drawing.Size(389, 33);
+            this.txt_broblem.TabIndex = 20;
+            this.txt_broblem.Text = "Security problem";
+            this.txt_broblem.Click += new System.EventHandler(this.txt_broblem_Click);
+            // 
+            // txt_enter_password
+            // 
+            this.txt_enter_password.Font = new System.Drawing.Font("宋体", 18F);
+            this.txt_enter_password.Location = new System.Drawing.Point(195, 203);
+            this.txt_enter_password.Multiline = true;
+            this.txt_enter_password.Name = "txt_enter_password";
+            this.txt_enter_password.PasswordChar = '*';
+            this.txt_enter_password.Size = new System.Drawing.Size(389, 33);
+            this.txt_enter_password.TabIndex = 19;
+            this.txt_enter_password.Text = "User Name";
+            this.txt_enter_password.Click += new System.EventHandler(this.txt_enter_password_Click);
             // 
             // txt_Password
             // 
@@ -91,47 +180,47 @@
             this.txt_UserName.Text = "User Name";
             this.txt_UserName.Click += new System.EventHandler(this.txt_UserName_Click);
             // 
-            // btn_register
+            // btn_re_register
             // 
-            this.btn_register.AutoSize = false;
-            this.btn_register.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_register.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btn_register.Depth = 0;
-            this.btn_register.HighEmphasis = true;
-            this.btn_register.Icon = null;
-            this.btn_register.Location = new System.Drawing.Point(394, 431);
-            this.btn_register.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btn_register.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btn_register.Name = "btn_register";
-            this.btn_register.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_register.Size = new System.Drawing.Size(147, 36);
-            this.btn_register.TabIndex = 15;
-            this.btn_register.Text = "register";
-            this.btn_register.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btn_register.UseAccentColor = false;
-            this.btn_register.UseVisualStyleBackColor = true;
-            this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
+            this.btn_re_register.AutoSize = false;
+            this.btn_re_register.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_re_register.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btn_re_register.Depth = 0;
+            this.btn_re_register.HighEmphasis = true;
+            this.btn_re_register.Icon = null;
+            this.btn_re_register.Location = new System.Drawing.Point(394, 431);
+            this.btn_re_register.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_re_register.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_re_register.Name = "btn_re_register";
+            this.btn_re_register.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btn_re_register.Size = new System.Drawing.Size(147, 36);
+            this.btn_re_register.TabIndex = 15;
+            this.btn_re_register.Text = "register";
+            this.btn_re_register.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btn_re_register.UseAccentColor = false;
+            this.btn_re_register.UseVisualStyleBackColor = true;
+            this.btn_re_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
-            // btn_back
+            // btn_back_form_re
             // 
-            this.btn_back.AutoSize = false;
-            this.btn_back.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_back.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btn_back.Depth = 0;
-            this.btn_back.HighEmphasis = true;
-            this.btn_back.Icon = null;
-            this.btn_back.Location = new System.Drawing.Point(14, 9);
-            this.btn_back.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btn_back.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btn_back.Name = "btn_back";
-            this.btn_back.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_back.Size = new System.Drawing.Size(62, 30);
-            this.btn_back.TabIndex = 14;
-            this.btn_back.Text = "back";
-            this.btn_back.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btn_back.UseAccentColor = false;
-            this.btn_back.UseVisualStyleBackColor = true;
-            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
+            this.btn_back_form_re.AutoSize = false;
+            this.btn_back_form_re.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_back_form_re.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btn_back_form_re.Depth = 0;
+            this.btn_back_form_re.HighEmphasis = true;
+            this.btn_back_form_re.Icon = null;
+            this.btn_back_form_re.Location = new System.Drawing.Point(14, 9);
+            this.btn_back_form_re.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_back_form_re.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_back_form_re.Name = "btn_back_form_re";
+            this.btn_back_form_re.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btn_back_form_re.Size = new System.Drawing.Size(62, 30);
+            this.btn_back_form_re.TabIndex = 14;
+            this.btn_back_form_re.Text = "back";
+            this.btn_back_form_re.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btn_back_form_re.UseAccentColor = false;
+            this.btn_back_form_re.UseVisualStyleBackColor = true;
+            this.btn_back_form_re.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // label4
             // 
@@ -143,95 +232,6 @@
             this.label4.Size = new System.Drawing.Size(81, 25);
             this.label4.TabIndex = 454;
             this.label4.Text = "register";
-            // 
-            // txt_enter_password
-            // 
-            this.txt_enter_password.Font = new System.Drawing.Font("宋体", 18F);
-            this.txt_enter_password.Location = new System.Drawing.Point(195, 203);
-            this.txt_enter_password.Multiline = true;
-            this.txt_enter_password.Name = "txt_enter_password";
-            this.txt_enter_password.PasswordChar = '*';
-            this.txt_enter_password.Size = new System.Drawing.Size(389, 33);
-            this.txt_enter_password.TabIndex = 19;
-            this.txt_enter_password.Text = "User Name";
-            this.txt_enter_password.Click += new System.EventHandler(this.txt_enter_password_Click);
-            // 
-            // txt_broblem
-            // 
-            this.txt_broblem.Font = new System.Drawing.Font("宋体", 18F);
-            this.txt_broblem.Location = new System.Drawing.Point(195, 276);
-            this.txt_broblem.Multiline = true;
-            this.txt_broblem.Name = "txt_broblem";
-            this.txt_broblem.Size = new System.Drawing.Size(389, 33);
-            this.txt_broblem.TabIndex = 20;
-            this.txt_broblem.Text = "Security problem";
-            this.txt_broblem.Click += new System.EventHandler(this.txt_broblem_Click);
-            // 
-            // txt_answer
-            // 
-            this.txt_answer.Font = new System.Drawing.Font("宋体", 18F);
-            this.txt_answer.Location = new System.Drawing.Point(195, 355);
-            this.txt_answer.Multiline = true;
-            this.txt_answer.Name = "txt_answer";
-            this.txt_answer.Size = new System.Drawing.Size(389, 33);
-            this.txt_answer.TabIndex = 21;
-            this.txt_answer.Text = "Security answer";
-            this.txt_answer.Click += new System.EventHandler(this.txt_answer_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(78, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 25);
-            this.label1.TabIndex = 455;
-            this.label1.Text = "User Name";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(90, 138);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 25);
-            this.label2.TabIndex = 456;
-            this.label2.Text = "Password";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(11, 209);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 25);
-            this.label3.TabIndex = 457;
-            this.label3.Text = "Confirm Password";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(23, 282);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(166, 25);
-            this.label5.TabIndex = 458;
-            this.label5.Text = "security question";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(109, 361);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 25);
-            this.label6.TabIndex = 459;
-            this.label6.Text = "Answer";
             // 
             // RegisterFrom
             // 
@@ -259,13 +259,13 @@
         private System.Windows.Forms.TextBox txt_enter_password;
         private System.Windows.Forms.TextBox txt_Password;
         private System.Windows.Forms.TextBox txt_UserName;
-        private MaterialSkin.Controls.MaterialButton btn_register;
-        private MaterialSkin.Controls.MaterialButton btn_back;
+        private MaterialSkin.Controls.MaterialButton btn_re_register;
+        private MaterialSkin.Controls.MaterialButton btn_back_form_re;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_re_Answer;
+        private System.Windows.Forms.Label label_re_question;
+        private System.Windows.Forms.Label label_enterPassword;
+        private System.Windows.Forms.Label label_re_password;
+        private System.Windows.Forms.Label label_re_userNma;
     }
 }

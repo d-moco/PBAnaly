@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using PBAnaly.Module;
 using PBAnaly.UI;
 using PBAnaly.LoginCommon;
+using PBAnaly.Assist;
 namespace PBAnaly
 {
     public static class Global
@@ -63,11 +64,11 @@ namespace PBAnaly
             }
 
 
-            if (Util.ViKeySoft.Instance.CheckViKey() == false) 
-            {
-                MessageBox.Show("你没有权限，请检查加密狗是否插入","警告");
-                return;
-            }
+            //if (Util.ViKeySoft.Instance.CheckViKey() == false) 
+            //{
+            //    MessageBox.Show("你没有权限，请检查加密狗是否插入","警告");
+            //    return;
+            //}
             Util.ViKeySoft.Instance.Uninitializatio();
 #if true
             Application.EnableVisualStyles();
@@ -77,6 +78,7 @@ namespace PBAnaly
             string dbPath = "UserManage.db";
             string connectionString = $"Data Source={dbPath};Version=3;";
             UserManage.ConnectDb();
+            GlobalData.LoadGlobalPropertyFromDb();
             //AccessControl.LoadConfig();//加载权限
             var login = new LoginForm();
             login.StartPosition = FormStartPosition.CenterScreen;

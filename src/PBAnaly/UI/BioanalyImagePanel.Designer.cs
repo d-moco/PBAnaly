@@ -33,7 +33,7 @@
             this.panel1 = new AntdUI.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new AntdUI.Panel();
-            this.label2 = new AntdUI.Label();
+            this.label2_mode = new AntdUI.Label();
             this.cbb_mode = new System.Windows.Forms.ComboBox();
             this.lb_imageIndex = new AntdUI.Label();
             this.cb_scientific = new AntdUI.Checkbox();
@@ -120,7 +120,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label2_mode);
             this.panel2.Controls.Add(this.cbb_mode);
             this.panel2.Controls.Add(this.lb_imageIndex);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -131,15 +131,15 @@
             this.panel2.TabIndex = 0;
             this.panel2.Text = "panel2";
             // 
-            // label2
+            // label2_mode
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label2_mode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.Location = new System.Drawing.Point(36, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "模式:";
+            this.label2_mode.Location = new System.Drawing.Point(36, 0);
+            this.label2_mode.Name = "label2_mode";
+            this.label2_mode.Size = new System.Drawing.Size(36, 23);
+            this.label2_mode.TabIndex = 1;
+            this.label2_mode.Text = "模式:";
             // 
             // cbb_mode
             // 
@@ -445,6 +445,7 @@
             this.lb_top_info.Size = new System.Drawing.Size(60, 22);
             this.lb_top_info.TabIndex = 4;
             this.lb_top_info.Text = "Trans-fluorescence";
+            this.lb_top_info.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
             // BioanalyImagePanel
             // 
@@ -498,7 +499,7 @@
         public System.Windows.Forms.TableLayoutPanel tlp_right_panel;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         public AntdUI.Checkbox cb_scientific;
-        private AntdUI.Label label2;
+        private AntdUI.Label label2_mode;
         public AntdUI.Label lb_imageIndex;
         public System.Windows.Forms.ContextMenuStrip ctms_strop;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

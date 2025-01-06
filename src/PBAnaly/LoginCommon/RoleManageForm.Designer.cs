@@ -33,9 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_Close = new System.Windows.Forms.Button();
+            this.btn_role_save = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_Close = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -52,27 +52,28 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btn_save);
+            this.panel1.Controls.Add(this.btn_role_save);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(756, 569);
             this.panel1.TabIndex = 0;
             // 
-            // btn_Close
+            // btn_role_save
             // 
-            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Close.FlatAppearance.BorderSize = 0;
-            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_Close.Image = global::PBAnaly.Properties.Resources.关闭White;
-            this.btn_Close.Location = new System.Drawing.Point(712, 0);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(44, 28);
-            this.btn_Close.TabIndex = 458;
-            this.btn_Close.UseVisualStyleBackColor = false;
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.btn_role_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
+            this.btn_role_save.FlatAppearance.BorderSize = 0;
+            this.btn_role_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_role_save.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.btn_role_save.ForeColor = System.Drawing.Color.White;
+            this.btn_role_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_role_save.Location = new System.Drawing.Point(641, 49);
+            this.btn_role_save.Name = "btn_role_save";
+            this.btn_role_save.Size = new System.Drawing.Size(101, 38);
+            this.btn_role_save.TabIndex = 506;
+            this.btn_role_save.Text = "保存";
+            this.btn_role_save.UseVisualStyleBackColor = false;
+            this.btn_role_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // dataGridView1
             // 
@@ -120,57 +121,56 @@
             this.dataGridView1.Size = new System.Drawing.Size(632, 569);
             this.dataGridView1.TabIndex = 4;
             // 
-            // btn_save
+            // btn_Close
             // 
-            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(96)))));
-            this.btn_save.FlatAppearance.BorderSize = 0;
-            this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.btn_save.ForeColor = System.Drawing.Color.White;
-            this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.Location = new System.Drawing.Point(641, 49);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(101, 38);
-            this.btn_save.TabIndex = 506;
-            this.btn_save.Text = "保存";
-            this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.FlatAppearance.BorderSize = 0;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_Close.Image = global::PBAnaly.Properties.Resources.关闭White;
+            this.btn_Close.Location = new System.Drawing.Point(712, 0);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(44, 28);
+            this.btn_Close.TabIndex = 458;
+            this.btn_Close.UseVisualStyleBackColor = false;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "序号";
+            this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "描述";
+            this.Column2.HeaderText = "Description";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "操作员";
+            this.Column3.HeaderText = "Operator";
             this.Column3.Name = "Column3";
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "工程师";
+            this.Column4.HeaderText = "Engineer";
             this.Column4.Name = "Column4";
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "管理员";
+            this.Column5.HeaderText = "Administrator";
             this.Column5.Name = "Column5";
             this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "超级管理员";
+            this.Column6.HeaderText = "SupperAdministrator";
             this.Column6.Name = "Column6";
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -198,7 +198,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_Close;
-        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_role_save;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;

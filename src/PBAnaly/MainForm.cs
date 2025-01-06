@@ -12,8 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -79,6 +81,7 @@ namespace PBAnaly
 
             loginForm.Hide();
 
+            GlobalData.PropertyChanged += OnGlobalDataPropertyChanged;
             UserManage.LogionUserChanged += OnLogionUserChanged;
             
             InitAccessControls();
@@ -89,9 +92,86 @@ namespace PBAnaly
 
             FormGenerate_X = 0;
             FormGenerate_Y = 0;
+
+            if (GlobalData.GetProperty("Language") == "Chinese")
+            {
+                SetLanguage("zh-CN");
+            }
+            else
+            {
+                SetLanguage("en-US");
+            }
             // initPanel();
         }
 
+
+        #region OnGlobalDataPropertyChanged 处理全局属性更改事件
+        /// <summary> 
+        /// 处理全局属性更改事件
+        /// </summary>
+        /// <param name="name">发生变化的属性名</param>
+        /// <param name="value">更改的属性值</param>
+        private void OnGlobalDataPropertyChanged(string name, string value)
+        {
+            switch (name)
+            {
+                case "Language":
+                    if (GlobalData.GetProperty("Language") == "Chinese")
+                    {
+                        SetLanguage("zh-CN");
+                    }
+                    else
+                    {
+                        SetLanguage("en-US");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region 中英文切换
+        ResourceManager resourceManager;
+        private void SetLanguage(string cultureCode)
+        {
+            resourceManager = new ResourceManager("PBAnaly.Properties.Resources", typeof(MainForm).Assembly);
+
+            // 设置当前线程的文化信息
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
+
+            // 更新所有控件的文本
+            UpdateControlsText();
+        }
+
+        // 更新所有控件的文本
+        private void UpdateControlsText()
+        {
+            //// 遍历所有控件并更新文本
+            foreach (Control control in this.Controls)
+            {
+                UpdateControlText(control);
+            }
+        }
+        // 更新单个控件的文本
+        private void UpdateControlText(Control control)
+        {
+            //// 直接通过控件的 Name 属性获取资源字符串
+            string resourceText = resourceManager.GetString(control.Name);
+            if (!string.IsNullOrEmpty(resourceText))
+            {
+                control.Text = resourceText;
+            }
+
+            // 如果控件包含子控件，则递归更新子控件
+            foreach (Control subControl in control.Controls)
+            {
+                UpdateControlText(subControl);
+            }
+        }
+
+        #endregion
 
         #region 重新梳理权限控制，控件的权限可通过管理员进行配置
         /// <summary>
@@ -351,8 +431,6 @@ namespace PBAnaly
         #endregion
 
 
-
-
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int wMsg, bool wParam, int lParm);
         private const int WM_SETREDRAW = 11;
@@ -382,7 +460,17 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "适配窗口");
+
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "适配窗口");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Adaptation window");
+                }
+
+               
             }
         }
 
@@ -391,7 +479,16 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "图像变换");
+
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "图像变换");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Image transformation");
+                }
+                
             }
         }
 
@@ -400,7 +497,15 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "伪彩");
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "伪彩");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Image transformation");
+                }
+                
             }
         }
 
@@ -409,7 +514,15 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "图像信息");
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "图像信息");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Image information");
+                }
+               
             }
         }
 
@@ -418,7 +531,15 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "重置原图");
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "重置原图");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Reset artwork");
+                }
+                
             }
         }
 
@@ -427,7 +548,15 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "反值");
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "反值");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Inverse value");
+                }
+                
             }
         }
 
@@ -436,7 +565,15 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + S 保存");
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + S 保存");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + S save");
+                }
+                
             }
         }
 
@@ -445,7 +582,15 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Z 撤銷");
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Z 撤銷");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Z revocation");
+                }
+                
             }
         }
 
@@ -454,7 +599,15 @@ namespace PBAnaly
             if (sender is Button)
             {
                 Button btn = sender as Button;
-                this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Y 重做");
+                if (GlobalData.GetProperty("Language") == "Chinese")
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Y 重做");
+                }
+                else
+                {
+                    this.btnStartUpToolTip.SetToolTip(btn, "Ctrl + Y renewal");
+                }
+                
             }
         }
 
@@ -954,5 +1107,7 @@ namespace PBAnaly
         {
 
         }
+
+       
     }
 }

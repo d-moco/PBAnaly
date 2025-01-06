@@ -118,23 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Black_Blue_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_Blue_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="计数器" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\计数器.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="返回前台" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\返回前台.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="yto-icon-X-transit_time" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\yto-icon-X-transit_time.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="关闭White" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\关闭White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EtBr_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EtBr_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="壁纸" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\壁纸.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,9 +163,6 @@
   <data name="波形设置-未选中" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\波形设置-未选中.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Black_Blue_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Black_Blue_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -193,9 +181,6 @@
   <data name="圆形" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\圆形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Black_Red_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_Red_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="京仪科技定稿_画板 1 副本2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\京仪科技定稿_画板 1 副本2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -211,20 +196,11 @@
   <data name="风控" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\风控.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Black_SDS_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_SDS_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="饼干" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\饼干.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="控制窗口" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\控制窗口.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Black_SDS_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_SDS_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EtBr_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EtBr_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Black_Yley_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Black_Yley_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -237,12 +213,6 @@
   </data>
   <data name="YellowHot_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\YellowHot_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pseudo_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pseudo_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="C" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\C.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="图片管理" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\图片管理.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,20 +232,11 @@
   <data name="缩小" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\缩小.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Black_Yley_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_Yley_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="導出" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\導出.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pseudo_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pseudo_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="线段" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\线段.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="10矩形" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\10矩形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="最大化white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\最大化white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -309,5 +270,209 @@
   </data>
   <data name="登录-亮" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\登录-亮.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btn_back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="label1" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="label5" xml:space="preserve">
+    <value>密保问题</value>
+  </data>
+  <data name="label6" xml:space="preserve">
+    <value>答案</value>
+  </data>
+  <data name="label2" xml:space="preserve">
+    <value>你的密码</value>
+  </data>
+  <data name="btn_Frin_Password" xml:space="preserve">
+    <value>找回</value>
+  </data>
+  <data name="label4" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="cb_Remember" xml:space="preserve">
+    <value>记住登录</value>
+  </data>
+  <data name="lab_forget_pass" xml:space="preserve">
+    <value>忘记密码？点击找回</value>
+  </data>
+  <data name="btn_Login" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="SIGNIN_materialButton" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="btn_back_form_re" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="label_re_userNma" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="label_re_password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="label_enterPassword" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="label_re_question" xml:space="preserve">
+    <value>密保问题</value>
+  </data>
+  <data name="btn_re_register" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="btn_editRole_head" xml:space="preserve">
+    <value>修改权限</value>
+  </data>
+  <data name="btn_delete_role" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="btn_edit_password_role" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="label_role_userName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="label1_role" xml:space="preserve">
+    <value>权限</value>
+  </data>
+  <data name="btn_fix_role" xml:space="preserve">
+    <value>修改权限</value>
+  </data>
+  <data name="btn_delete_user" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="label_password_formUserManage" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="label_Username_form_userManage" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="btn_FixPassword" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="materialButton_LoadData" xml:space="preserve">
+    <value>加载数据</value>
+  </data>
+  <data name="materialButton_outimage" xml:space="preserve">
+    <value>导出图像</value>
+  </data>
+  <data name="materialButton_analyzedata" xml:space="preserve">
+    <value>数据分析</value>
+  </data>
+  <data name="materialButton_curveimage" xml:space="preserve">
+    <value>泳道波形图</value>
+  </data>
+  <data name="materialButton_setting" xml:space="preserve">
+    <value>系统操作</value>
+  </data>
+  <data name="materialButton_log" xml:space="preserve">
+    <value>操作日志</value>
+  </data>
+  <data name="materialButton_imageProcess" xml:space="preserve">
+    <value>图像处理</value>
+  </data>
+  <data name="materialButton_acidAnalyze" xml:space="preserve">
+    <value>泳道分析</value>
+  </data>
+  <data name="materialButton_roiAnalyze" xml:space="preserve">
+    <value>ROI分析</value>
+  </data>
+  <data name="materialButton_miniAnalyze" xml:space="preserve">
+    <value>微孔版分析</value>
+  </data>
+  <data name="materialButton_dotcounts" xml:space="preserve">
+    <value>菌落技术</value>
+  </data>
+  <data name="materialButton_correction" xml:space="preserve">
+    <value>蛋白归一化</value>
+  </data>
+  <data name="crownLabel1" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="label2_mode" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="btn_role_manage" xml:space="preserve">
+    <value>权限管理</value>
+  </data>
+  <data name="btn_role_save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="label_re_Answer" xml:space="preserve">
+    <value>答案</value>
+  </data>
+  <data name="label_DeleteTips" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="cb_scientific" xml:space="preserve">
+    <value>光子量</value>
+  </data>
+  <data name="lb_top_info" xml:space="preserve">
+    <value>反式荧光</value>
+  </data>
+  <data name="mb_findLanes" xml:space="preserve">
+    <value>查找泳道</value>
+  </data>
+  <data name="label_path" xml:space="preserve">
+    <value>路径</value>
+  </data>
+  <data name="ab_one" xml:space="preserve">
+    <value>第一幅</value>
+  </data>
+  <data name="ab_last" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="ab_next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="ab_atLast" xml:space="preserve">
+    <value>最后</value>
+  </data>
+  <data name="ab_saveTif" xml:space="preserve">
+    <value>另存为</value>
+  </data>
+  <data name="ab_close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="ab_open_cur_tif" xml:space="preserve">
+    <value>打开当前帧</value>
+  </data>
+  <data name="btn_ok" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="clasi_lanes" xml:space="preserve">
+    <value>泳道</value>
+  </data>
+  <data name="materialCheckbox1" xml:space="preserve">
+    <value>统一泳道宽度</value>
+  </data>
+  <data name="clasi_init" xml:space="preserve">
+    <value>初始井</value>
+  </data>
+  <data name="clasi_strips" xml:space="preserve">
+    <value>条带</value>
+  </data>
+  <data name="clasi_conformity" xml:space="preserve">
+    <value>整合</value>
+  </data>
+  <data name="materialSwitch_UI" xml:space="preserve">
+    <value>光/暗 主题</value>
+  </data>
+  <data name="SettingForm" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="btn_SystemSetting" xml:space="preserve">
+    <value>系统设置</value>
+  </data>
+  <data name="btn_UserManager" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="label_Language" xml:space="preserve">
+    <value>语言</value>
   </data>
 </root>
