@@ -45,6 +45,7 @@ namespace PBAnaly
 
         private Dictionary<string ,BioanalysisMannage> bioanalysisMannages = new Dictionary<string, BioanalysisMannage>();
         private Dictionary<string, LanesMannage> lanesMannages = new Dictionary<string, LanesMannage>();
+        private Dictionary<string, ColonyMannage> colonysMannages = new Dictionary<string, ColonyMannage>();
         private List<string> bioanalyName = new List<string>();
         private List<string> lanesName = new List<string>();
         bool isRun = false;
@@ -457,7 +458,7 @@ namespace PBAnaly
 
         private void materialButton_changeFormSize_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button)
+           if (sender is Button)
             {
                 Button btn = sender as Button;
 
@@ -837,6 +838,50 @@ namespace PBAnaly
 
             }
         }
+
+        private void mb_colonyCount_Click(object sender, EventArgs e)
+        {
+            string selectedFilePath = "";
+            // 弹出选择图像的框
+            #region 打开图片
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "TIF Files (*.tif)|*.tif|All files (*.*)|*.*";  // 设置文件筛选器
+            openFileDialog.Title = "Select a TIF File";  // 设置对话框标题
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+                selectedFilePath = openFileDialog.FileName;
+
+
+            }
+            #endregion
+            if (selectedFilePath != "") 
+            {
+                if (colonysMannages.TryGetValue(selectedFilePath, out var value))
+                {
+                    return;
+                }
+                if (colonysMannages.Count == 0)
+                {
+                    colonysMannages.Clear();
+                }
+
+                ColonyMannage colonyMannage = new ColonyMannage(selectedFilePath, pl_right, colonysMannages);
+                if (colonyMannage.GetImagePanel == null)
+                {
+                    colonyMannage = null;
+                    return;
+                }
+                DataProcess_panel.Controls.Add(colonyMannage.GetImagePanel);
+                colonyMannage.GetImagePanel.BringToFront();
+
+
+                colonysMannages.Add(selectedFilePath, colonyMannage);
+            }
+
+        }
+
         private void materialButton_log_Click(object sender, EventArgs e)
         {
             UI.LogForm logForm = new UI.LogForm(materialSkinManager);
@@ -1107,7 +1152,5 @@ namespace PBAnaly
         {
 
         }
-
-       
     }
 }
