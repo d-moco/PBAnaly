@@ -259,7 +259,7 @@ std::vector<int> PBLane::checkArray(std::vector<int>& processX, Mat src, int sta
 	return result;
 }
 
-vector<std::array<int, 3>> PBLane::get_top_point(vector<unsigned char> rbuf, int range)
+vector<std::array<int, 3>> PBLane::get_top_point(vector<unsigned short> rbuf, int range)
 {
 	vector<std::array<int, 2>> point;
 	vector<char> diff(rbuf.size());
@@ -279,7 +279,7 @@ vector<std::array<int, 3>> PBLane::get_top_point(vector<unsigned char> rbuf, int
 	}
 	for (int i = rbuf.size() - 1; i >= 0; i--)
 	{
-		if (diff[i] == 0 && i == rbuf.size() - 1)
+		if (i == rbuf.size() - 1 && diff[i] == 0)
 		{
 			diff[i] = 1;
 		}
@@ -437,37 +437,12 @@ vector<std::array<int, 3>> PBLane::get_top_point(vector<unsigned char> rbuf, int
 	return topPoint;
 }
 
-BandInfo PBLane::get_protein_lane_data(Mat src, Rect lane)
-{
-	BandInfo band;
-	int sum = 0;
-	vector<unsigned char> cdata;
-	for (int i = lane.y; i < lane.y + lane.height; i++)
-	{
-		sum = 0;
-		for (int j = lane.x; j < lane.x + lane.width; j++)
-		{
-			sum += src.at<unsigned short>(i, j);
-		}
-		sum /= lane.width;
-		band.land_data.push_back((unsigned short)sum);
-		band.ydata.push_back((float)((65535 - sum) / 255.0));
-		cdata.push_back((unsigned char)((65535 - sum) >> 8));
-	}
-	for (int i = 0; i < lane.height; i++)
-	{
-		band.xdata.push_back((float)i / lane.height);
-	}
-	band.band_point = get_top_point(cdata, 8);
-	return band;
-}
-
 
 PBLane::PBLane() {}
 
 PBLane::~PBLane() {}
 
-std::vector<cv::Rect> PBLane::getProteinRect(Mat src)
+std::vector<cv::Rect> PBLane::getProteinRect(Mat src,int* ProteinRect_width,bool keep_width,int ProteinRect_height_ratio)
 {
 	cv::Mat edges;
 	Canny(src, edges, 50, 150);
@@ -478,44 +453,45 @@ std::vector<cv::Rect> PBLane::getProteinRect(Mat src)
 	std::vector<cv::Rect> boundingRects;
 	for (const auto& contour : contours) {
 		cv::Rect rect = cv::boundingRect(contour);
-		double area = rect.area();
+		double area = rect.area(); 
 		if (area < 20 || area > 700) {
-			continue;
+			continue; 
 		}
 		double rotia = 0.0;
-		rotia = (double)rect.width / rect.height;
+		rotia = (double)rect.width/rect.height;
 		if (rotia >= 7 || rotia <= 2) {
-			continue;
+			continue; 
 		}
 		boundingRects.push_back(rect);
 	}
 
 	std::vector<int> allX(boundingRects.size());
-	std::vector<int> allY(boundingRects.size());
+	std::vector<int> allY(boundingRects.size());                        
 	std::vector<int> allW(boundingRects.size());
 	int up = src.rows;
 	int down = 0;
-	for (int i = 0; i < boundingRects.size(); i++)
+	for (int i = 0;i<boundingRects.size();i++) 
 	{
-		allX[i] = boundingRects[i].x + boundingRects[i].width / 2;
-		allY[i] = boundingRects[i].y + boundingRects[i].height / 2;
+		allX[i] = boundingRects[i].x + boundingRects[i].width/2;
+		allY[i] = boundingRects[i].y + boundingRects[i].height/2;
 		allW[i] = boundingRects[i].width;
-		up = min(boundingRects[i].y, up);
-		down = max(boundingRects[i].y + boundingRects[i].height, down);
+		up = min(boundingRects[i].y,up);
+		down = max(boundingRects[i].y + boundingRects[i].height,down);
 	}
 	int meanW = 0;
 	int meanY = 0;
 	int maxH = 0;
-	std::sort(allW.begin(), allW.end(), myCompare);
-	std::sort(allY.begin(), allY.end(), myCompare);
-	std::sort(allX.begin(), allX.end(), myCompare);
+	std::sort(allW.begin(), allW.end(), [](const int& a, const int& b) {
+		return a < b;
+	});
+	std::sort(allY.begin(), allY.end(), [](const int& a, const int& b) {
+		return a < b;
+	});
+	std::sort(allX.begin(), allX.end(), [](const int& a, const int& b) {
+		return a < b;
+	});
 	int cnt = 0;
-	if (boundingRects.size() == 0) 
-	{
-		std::vector<cv::Rect> proteinRect1(boundingRects.size());
-		return proteinRect1;
-	}
-	for (int i = boundingRects.size() / 3; i <= 2 * boundingRects.size() / 3; i++)
+	for(int i = boundingRects.size()/3;i <= 2*boundingRects.size()/3;i++)
 	{
 		cnt++;
 		meanW += allW[i];
@@ -524,37 +500,99 @@ std::vector<cv::Rect> PBLane::getProteinRect(Mat src)
 	meanW /= cnt;
 	meanY /= cnt;
 	maxH = max(down - meanY, meanY - up) * 2;
-	maxH = max(maxH, src.rows / 3);
+	maxH = max(maxH,src.rows/3);
 	std::vector<int> groupsX;
 	const int n = 3;
 	int sumX = allX[0];
 	cnt = 1;
 	for (int i = 1; i < boundingRects.size(); i++) {
-		if (allX[i] - allX[i - 1] > n)
+		if (allX[i]  - allX[i-1] > n)
 		{
-			groupsX.push_back(sumX / cnt);
+			groupsX.push_back(sumX/cnt);
 			sumX = 0;
 			cnt = 0;
 		}
 		sumX += allX[i];
 		cnt++;
 	}
-	groupsX.push_back(sumX / cnt);
+	groupsX.push_back(sumX/cnt);
 
-	std::vector<int> processX = processArray(groupsX, meanW, meanW * 1.8);
-	std::vector<int> proteinX = checkArray(processX, src, 15, src.rows - 30, meanW);
+	std::vector<int> processX = processArray(groupsX,meanW,meanW*1.8);
+	std::vector<int> proteinX = checkArray(processX, src,15,src.rows - 30,meanW);
 	std::vector<cv::Rect> proteinRect(proteinX.size());
-	for (int i = 0; i < proteinX.size(); i++)
+	for(int i = 0;i<proteinX.size();i++)
 	{
-		proteinRect[i].x = proteinX[i] - meanW / 2;
-
-		proteinRect[i].y = 15;//meanY - maxH/2;
+		if(keep_width == 1){
+			meanW = *ProteinRect_width;
+		}
+		else{
+			*ProteinRect_width = meanW;
+		}
+		int y_start = src.rows * (100 - ProteinRect_height_ratio) / 200;
+		proteinRect[i].x = proteinX[i] - meanW/2;
+		proteinRect[i].y = y_start;
 		proteinRect[i].width = meanW;
-		proteinRect[i].height = src.rows - 30;
+		proteinRect[i].height = src.rows - y_start *  2;
 	}
 	return proteinRect;
 }
+void PBLane::addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands)
+{
+	Rect new_proteinRect;
+	new_proteinRect.x = x - proteinRect[0].width/2;
+	new_proteinRect.y = proteinRect[0].y;
+	new_proteinRect.width = proteinRect[0].width;
+	new_proteinRect.height = proteinRect[0].height;
+	BandInfo band = get_protein_lane_data(src,new_proteinRect);
 
+    for (auto it = proteinRect.begin(); it != proteinRect.end(); ++it) {
+        if (it->x > new_proteinRect.x) {
+			size_t index = std::distance(proteinRect.begin(), it);
+            proteinRect.insert(it, new_proteinRect);
+			unadjustbands.insert(unadjustbands.begin() + index, band);
+            return;
+        }
+    }
+	proteinRect.push_back(new_proteinRect);
+	unadjustbands.push_back(band);
+	return;
+}
+
+void PBLane::deleteProteinRect(std::vector<cv::Rect>& proteinRect,int idx,std::vector<BandInfo>& unadjustbands)
+{
+	if (idx < proteinRect.size()) {
+        proteinRect.erase(proteinRect.begin() + idx);
+        unadjustbands.erase(unadjustbands.begin() + idx);
+    } else {
+        std::cout << "idx out of range!" << std::endl;
+    }
+	return;
+}
+
+BandInfo PBLane::get_protein_lane_data(Mat src, Rect lane)
+{
+	BandInfo band;
+	int sum = 0;
+	vector<unsigned short> cdata;
+	for (int i = lane.y; i < lane.y + lane.height; i++)
+	{
+		sum = 0;
+		for (int j = lane.x; j < lane.x + lane.width; j++)
+		{
+			sum += src.at<unsigned short>(i, j);
+		}
+		sum /= lane.width;
+		band.land_data.push_back((unsigned short)sum);
+		band.ydata.push_back((float)((65535 - sum) / 255.0));
+		cdata.push_back(65535 - sum);
+	}
+	for (int i = 0; i < lane.height; i++)
+	{
+		band.xdata.push_back((float)i / lane.height);
+	}
+	band.band_point = get_top_point(cdata, 8);
+	return band;
+}
 
 std::vector<BandInfo> PBLane::getProteinBands(Mat src, std::vector<cv::Rect> lanes)
 {
@@ -580,11 +618,198 @@ std::vector<BandInfo> PBLane::getProteinBands(Mat src, std::vector<cv::Rect> lan
 	return bands;
 }
 
+void PBLane::modifyProteinRectAndBands(Mat src,std::vector<cv::Rect>& proteinRect,int ProteinRect_width,int ProteinRect_height_ratio,std::vector<BandInfo>& unadjustbands)
+{	
+	int y_start = src.rows * (100 - ProteinRect_height_ratio) / 200;
+	int det_y = proteinRect[0].y - y_start;
+	for(int i = 0;i<proteinRect.size();i++)
+	{
+		proteinRect[i].x = proteinRect[i].x - (ProteinRect_width - proteinRect[i].width)/2;
+		proteinRect[i].y = y_start;
+		proteinRect[i].width = ProteinRect_width;
+		proteinRect[i].height = src.rows - y_start *  2;
+	}
+	int sum = 0;
+	for(int n = 0; n < proteinRect.size(); n++)
+	{
+		unadjustbands[n].land_data.clear();
+		unadjustbands[n].ydata.clear();
+		unadjustbands[n].xdata.clear();
+		for(int i = proteinRect[n].y; i < proteinRect[n].y + proteinRect[n].height; i++)
+		{
+			sum = 0;
+			for(int j = proteinRect[n].x; j < proteinRect[n].x + proteinRect[n].width; j++)
+			{
+				sum+=src.at<unsigned short>(i,j);
+			}
+			sum/=proteinRect[n].width;
+			unadjustbands[n].land_data.push_back((unsigned short)sum);
+			unadjustbands[n].ydata.push_back((float)((65535 - sum)/255.0));
+		}
+		for(int i = 0; i < proteinRect[n].height; i++)
+		{
+			unadjustbands[n].xdata.push_back((float)i/proteinRect[n].height);
+		}
 
-void PBLane::adjustBands(std::vector<BandInfo>& bands, int range)
+		for(int i = 0; i < unadjustbands[n].band_point.size(); i++)
+		{
+			//fix left and right
+			unadjustbands[n].band_point[i][1] += det_y;
+			unadjustbands[n].band_point[i][2] += det_y;
+			//fix top
+			int y1 = unadjustbands[n].band_point[i][1];
+			int y2 = unadjustbands[n].band_point[i][2];
+			float temp = unadjustbands[n].ydata[y1];
+			for(int j = y1 + 1; j < y2; j++)
+			{
+				if(unadjustbands[n].ydata[j] > temp){
+					temp = unadjustbands[n].ydata[j];
+					unadjustbands[n].band_point[i][0] = j;
+				}
+			}
+		}
+	}
+}
+
+void PBLane::getLaneBandsIndex(std::vector<cv::Rect> lanes,std::vector<BandInfo> bands,int x,int y,int* lanesIndex,int* bandsIndex)
 {
-	// ”√”⁄¥Ê¥¢À˘”–µƒ÷µº∞∆‰∂‘”¶µƒ¡–À˜“˝
-	std::map<int, int> columnMap;
+	*lanesIndex = -1;
+	*bandsIndex = -1;
+	int ystart = lanes[0].y;
+	int yend = lanes[0].y + lanes[0].height - 1;
+	if(y > yend || y < ystart)
+	{
+		return ;
+	}
+	for (int i = 0; i < lanes.size(); i++) {
+		int xstart = lanes[i].x;
+		int xend = lanes[i].x + lanes[i].width - 1;
+        if(x <= xend && x >= xstart){
+            *lanesIndex = i;
+            break;
+        }
+    }
+	for (int j = 0; j < bands[*lanesIndex].band_point.size(); j++) {
+		int y1 = bands[*lanesIndex].band_point[j][1] + ystart;
+		int y2 = bands[*lanesIndex].band_point[j][2] + ystart;
+        if(y <= y2 && y >= y1){
+            *bandsIndex = j;
+            break;
+        }
+    }
+	return;
+}
+
+void PBLane::addProteinBand(std::vector<cv::Rect> lanes,int lanesIndex,std::vector<BandInfo>& unadjustbands,int y)
+{
+	int ystart = lanes[lanesIndex].y;
+	int yend = lanes[lanesIndex].y + lanes[lanesIndex].height - 1;
+	int y1 = 0;
+	int y2 = lanes[lanesIndex].height;
+	if(y < ystart || y > yend)
+	{
+		return ;
+	}
+	int rect_y = y - lanes[lanesIndex].y;
+	for(int i = 0; i < unadjustbands[lanesIndex].band_point.size(); i++)
+	{
+		y2 = unadjustbands[lanesIndex].band_point[i][1];
+		if(rect_y >= y1 && rect_y < y2)
+		{
+			break;
+		}
+		else
+		{
+			y1 = unadjustbands[lanesIndex].band_point[i][2];
+		}
+		
+	}
+	if(y1 > y2)
+	{
+		y2 = lanes[lanesIndex].height;
+	}
+
+	//fine top
+	int range = 8;
+	int top_start = rect_y - range;
+	int top_end = rect_y + range;
+	if(top_start < y1){
+		top_start = y1;
+	}
+	if(top_end > y2){
+		top_end = y2;
+	}
+	std::array<int, 3> new_band_point;
+	new_band_point[0] = top_start;
+	float temp = unadjustbands[lanesIndex].ydata[top_start];
+	float mean = unadjustbands[lanesIndex].ydata[top_start];
+	for(int i = top_start + 1; i < top_end; i++)
+	{
+		mean += unadjustbands[lanesIndex].ydata[i];
+		if(unadjustbands[lanesIndex].ydata[i] > temp){
+			temp = unadjustbands[lanesIndex].ydata[i];
+			new_band_point[0] = i;
+		}
+	}
+	mean /= (top_end - top_start);
+
+	//fine left
+	temp = unadjustbands[lanesIndex].ydata[new_band_point[0]];
+	new_band_point[1] = y1;
+	for(int i = new_band_point[0] - 1; i > y1; i--)
+	{
+		if(unadjustbands[lanesIndex].ydata[i] > temp)
+		{
+			if(temp < mean)
+			{
+				new_band_point[1] = i+1;
+				break;
+			}
+		}
+		temp = unadjustbands[lanesIndex].ydata[i];
+	}
+	//fine right
+	temp = unadjustbands[lanesIndex].ydata[new_band_point[0]];
+	new_band_point[2] = y2;
+	for(int i = new_band_point[0] + 1; i < y2; i++)
+	{
+		if(unadjustbands[lanesIndex].ydata[i] > temp)
+		{
+			if(temp < mean)
+			{
+				new_band_point[2] = i+1;
+				break;
+			}
+		}
+		temp = unadjustbands[lanesIndex].ydata[i];
+	}
+
+	for (auto it = unadjustbands[lanesIndex].band_point.begin(); it != unadjustbands[lanesIndex].band_point.end(); ++it) {
+        if ((*it)[0] > new_band_point[0]) {
+            unadjustbands[lanesIndex].band_point.insert(it, new_band_point);
+            return;
+        }
+    }
+    unadjustbands[lanesIndex].band_point.push_back(new_band_point);
+	return ;
+}
+
+void PBLane::deleteProteinBand(int lanesIndex,std::vector<BandInfo>& unadjustbands,int bandsIndex)
+{
+	if (bandsIndex < unadjustbands[lanesIndex].band_point.size()) {
+        unadjustbands[lanesIndex].band_point.erase(unadjustbands[lanesIndex].band_point.begin() + bandsIndex);
+    } else {
+        std::cout << "bandsIndex out of range!" << std::endl;
+    }
+	return;
+}
+
+
+std::vector<BandInfo> PBLane::adjustBands(std::vector<BandInfo> unadjustbands, int range)
+{
+    // Áî®‰∫éÂ≠òÂÇ®ÊâÄÊúâÁöÑÂÄºÂèäÂÖ∂ÂØπÂ∫îÁöÑÂàóÁ¥¢Âºï
+    std::map<int, int> columnMap;
+	std::vector<BandInfo> bands = unadjustbands;
 
 	std::vector<std::array<int, 4>> vec;
 	for (int i = 0; i < bands.size(); i++)
