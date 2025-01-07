@@ -45,6 +45,8 @@ namespace PBAnaly.Module
             public int colorIndex;
 
             public bool sharpen; //锐化
+
+            public float pixel_size;
         }
 
         public struct RectAttribute 
@@ -593,7 +595,19 @@ namespace PBAnaly.Module
                         tif_marker_path = tifFile;
                         image_mark_L16 = util.LoadTiffAsL16(tif_marker_path);
                         image_mark_byte = util.ConvertL16ImageToByteArray(image_mark_L16);
-
+                        byte[] bytes = new byte[image_mark_byte.Length];
+                        unsafe
+                        {
+                            fixed (byte* p = image_mark_byte) 
+                            {
+                                fixed (byte* p1 = bytes) 
+                                {
+                                    algAttribute.pixel_size = pbpvc.distortion_correction_vc(p, 16, (ushort)image_mark_L16.Width, (ushort)image_mark_L16.Height, p1);
+                                }
+                            }
+                            image_mark_byte = bytes;
+                            image_mark_L16 = util.ConvertByteArrayToL16Image(image_mark_byte, image_mark_L16.Width, image_mark_L16.Height, 1);
+                        }
                     }
                     else
                     {
@@ -1565,6 +1579,7 @@ namespace PBAnaly.Module
                     double deltaX = endPoint.X - startPoint.X;
                     double deltaY = endPoint.Y - startPoint.Y;
                     var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+                    value = value * algAttribute.pixel_size;
                     imagePaletteForm.flb_act_mm.Text = value.ToString() + " mm";
                     imagePaletteForm.flb_act_mm.Refresh();
                 }

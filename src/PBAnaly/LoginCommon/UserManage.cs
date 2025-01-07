@@ -105,6 +105,19 @@ namespace PBAnaly.LoginCommon
                             Console.WriteLine("表 'last' 已创建。");
                         }
 
+                        sql = @"
+                                CREATE TABLE IF NOT EXISTS global_property (
+                                    property_name VARCHAR(200) NOT NULL,
+                                    property_value VARCHAR(2000) NOT NULL,
+                                    PRIMARY KEY (property_name)
+                                );";
+
+                        using (var command = new SQLiteCommand(sql, connection))
+                        {
+                            command.ExecuteNonQuery();  // 执行SQL命令创建表
+                            Console.WriteLine("表 'global_property' 已创建。");
+                        }
+
                         // 插入数据
                         InsertDefaultUserData(connectionString);
                     }

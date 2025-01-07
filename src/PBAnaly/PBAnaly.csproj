@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assist\GlobalData.cs" />
     <Compile Include="Assist\OperatingRecord.cs" />
     <Compile Include="DataProcessForm.cs">
       <SubType>Form</SubType>
@@ -124,6 +125,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\BioanalysisMannage.cs" />
+    <Compile Include="Module\ColonyMannage.cs" />
     <Compile Include="Module\ImageProcess.cs" />
     <Compile Include="Module\KeyboardListener.cs" />
     <Compile Include="Module\LanesMannage.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="Module\util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
     <Compile Include="Read_Write_Log.cs" />
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +152,12 @@
     </Compile>
     <Compile Include="UI\AnalyzeDataForm.Designer.cs">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LaneLineChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LaneLineChartForm.Designer.cs">
+      <DependentUpon>LaneLineChartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LanesImagePaletteForm.cs">
       <SubType>Form</SubType>
@@ -247,16 +256,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AnalyzeDataForm.resx">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaneLineChartForm.resx">
+      <DependentUpon>LaneLineChartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LanesImagePaletteForm.resx">
       <DependentUpon>LanesImagePaletteForm.cs</DependentUpon>
