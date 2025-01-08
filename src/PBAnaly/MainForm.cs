@@ -196,7 +196,7 @@ namespace PBAnaly
                 materialButton_acidAnalyze,     //6、泳道分析
                 materialButton_roiAnalyze,      //7、ROIs分析
                 materialButton_miniAnalyze,     //8、微孔版分析
-                materialButton_dotcounts,       //9、菌落计数
+                mb_colonyCount,       //9、菌落计数
                 materialButton_correction      //10、蛋白归一化
             };
         }

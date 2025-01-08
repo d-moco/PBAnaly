@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Black_Blue_1" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="btn_back" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -232,9 +228,6 @@
   <data name="materialButton_miniAnalyze" xml:space="preserve">
     <value>MiniAnalyze</value>
   </data>
-  <data name="materialButton_dotcounts" xml:space="preserve">
-    <value>Dotcounts</value>
-  </data>
   <data name="materialButton_correction" xml:space="preserve">
     <value>Correction</value>
   </data>
@@ -324,5 +317,8 @@
   </data>
   <data name="label_Language" xml:space="preserve">
     <value>Language:</value>
+  </data>
+  <data name="mb_colonyCount" xml:space="preserve">
+    <value>Colony</value>
   </data>
 </root>

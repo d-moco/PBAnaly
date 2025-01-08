@@ -22,7 +22,7 @@ private:
 
 	std::vector<int> checkArray(std::vector<int>& processX, Mat src, int start_y, int end_y, int meanW);
 
-	vector<std::array<int, 3>> get_top_point(vector<unsigned char> rbuf, int range);
+	vector<std::array<int, 3>> get_top_point(vector<unsigned short> rbuf, int range);
 
 	static bool myCompare(const int& a, const int& b);
 	static bool myCompare2(const std::array<int, 4>& a, const std::array<int, 4>& b);

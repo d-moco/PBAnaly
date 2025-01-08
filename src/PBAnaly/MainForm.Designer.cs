@@ -47,7 +47,7 @@
             this.materialButton_acidAnalyze = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_roiAnalyze = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_miniAnalyze = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_dotcounts = new MaterialSkin.Controls.MaterialButton();
+            this.mb_colonyCount = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_correction = new MaterialSkin.Controls.MaterialButton();
             this.flowLayoutPanel2 = new AntdUI.In.FlowLayoutPanel();
             this.materialButton_changeFormSize = new MaterialSkin.Controls.MaterialButton();
@@ -593,47 +593,7 @@
             this.materialButton_save.UseAccentColor = false;
             this.materialButton_save.UseVisualStyleBackColor = true;
             this.materialButton_save.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_save_MouseMove);
-            // 
-            // materialButton_forward
-            // 
-            this.materialButton_forward.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_forward.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_forward.Depth = 0;
-            this.materialButton_forward.HighEmphasis = true;
-            this.materialButton_forward.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_forward.Icon")));
-            this.materialButton_forward.Location = new System.Drawing.Point(448, 0);
-            this.materialButton_forward.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_forward.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_forward.Name = "materialButton_forward";
-            this.materialButton_forward.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_forward.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_forward.TabIndex = 23;
-            this.materialButton_forward.Text = " ";
-            this.materialButton_forward.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_forward.UseAccentColor = false;
-            this.materialButton_forward.UseVisualStyleBackColor = true;
-            this.materialButton_forward.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_forward_MouseMove);
-            // 
-            // materialButton_return
-            // 
-            this.materialButton_return.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.materialButton_return.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_return.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_return.Depth = 0;
-            this.materialButton_return.HighEmphasis = true;
-            this.materialButton_return.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_return.Icon")));
-            this.materialButton_return.Location = new System.Drawing.Point(0, 36);
-            this.materialButton_return.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_return.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_return.Name = "materialButton_return";
-            this.materialButton_return.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_return.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_return.TabIndex = 22;
-            this.materialButton_return.Text = " ";
-            this.materialButton_return.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_return.UseAccentColor = false;
-            this.materialButton_return.UseVisualStyleBackColor = true;
-            this.materialButton_return.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_return_MouseMove);
+ 
             // 
             // pl_right
             // 

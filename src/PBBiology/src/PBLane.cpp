@@ -867,7 +867,7 @@ std::vector<BandInfo> PBLane::adjustBands(std::vector<BandInfo> unadjustbands, i
 			bands[vec[i][3]].band_point[columnIndex - 1] = { vec[i][0],vec[i][1],vec[i][2] };
 		}
 	}
-	return;
+	return bands;
 }
 
 void PBLane::molecularWeightResult(std::vector<cv::Rect> lanes, std::vector<BandInfo>& bands)

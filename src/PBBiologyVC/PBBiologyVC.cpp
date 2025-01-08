@@ -68,7 +68,7 @@ namespace PBBiologyVC
         cv::Mat src(height, width, CV_8UC1,mat);
         cv::Mat edges;
         cv::Canny(src, edges, 50, 150);
-        std::vector<cv::Rect> rects = pblane->getProteinRect(src);
+        std::vector<cv::Rect> rects = pblane->getProteinRect(src,(int*)width, (int*)height,1);
 
         List<RectVC^>^ results = gcnew List<RectVC^>();
         for (const auto& rect : rects) {

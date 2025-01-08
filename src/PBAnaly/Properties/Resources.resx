@@ -163,9 +163,6 @@
   <data name="波形设置-未选中" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\波形设置-未选中.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Black_Blue_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_Blue_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="添加用户" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\添加用户.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -201,9 +198,6 @@
   </data>
   <data name="控制窗口" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\控制窗口.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Black_Yley_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Black_Yley_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="窗口最大化_操作_jurassic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\窗口最大化_操作_jurassic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -382,9 +376,6 @@
   <data name="materialButton_miniAnalyze" xml:space="preserve">
     <value>微孔版分析</value>
   </data>
-  <data name="materialButton_dotcounts" xml:space="preserve">
-    <value>菌落技术</value>
-  </data>
   <data name="materialButton_correction" xml:space="preserve">
     <value>蛋白归一化</value>
   </data>
@@ -474,5 +465,8 @@
   </data>
   <data name="label_Language" xml:space="preserve">
     <value>语言</value>
+  </data>
+  <data name="mb_colonyCount" xml:space="preserve">
+    <value>菌落计数</value>
   </data>
 </root>
