@@ -199,7 +199,70 @@ cv::Mat PBColony::get_lower_upper(Mat& input_cn1, Mat& mask, int& lower, int& up
 	return bin;
 }
 
+bool PBColony::delete_colony(Mat& mask,int x,int y)
+{
+    int w = mask.cols;
+    int h = mask.rows;
+    if(mask.type() != CV_8UC1)
+    {
+        return 0;
+    }
+    if(mask.data[y * w + x] != 255)
+    {
+        return 0;
+    }
 
+    cv::Point2i pt(x,y);	
+    cv::Point2i ptGrowing;	
+	int DIR[8][2] = { { -1, -1 }, { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 } };
+	std::vector<cv::Point2i> vcGrowPt;	
+	vcGrowPt.push_back(pt);	
+    
+	while (!vcGrowPt.empty())						
+	{
+		pt = vcGrowPt.back();
+		vcGrowPt.pop_back();
+        mask.data[pt.y * w + pt.x] = 0;
+
+		for (int i = 0; i < 8; ++i)
+		{
+			ptGrowing.x = pt.x + DIR[i][0];
+			ptGrowing.y = pt.y + DIR[i][1];
+
+			if (ptGrowing.x < 0 || ptGrowing.y < 0 || ptGrowing.x >= w || ptGrowing.y >= h)
+				continue;
+
+			if (mask.data[ptGrowing.y * w + ptGrowing.x] == 255)
+			{
+                vcGrowPt.push_back(ptGrowing);	
+			}
+		}
+	}
+    return 1;
+}
+
+bool PBColony::add_colony(Mat& mask,Mat addimg)
+{
+    if(mask.type() != CV_8UC1 || addimg.type() != CV_8UC1)
+    {
+        return 0;
+    }
+
+    Mat result;
+    bitwise_or(mask, addimg, result);
+    mask = result.clone();
+    return 1;
+}
+
+bool PBColony::segmented_colony(Mat& mask,Mat segmentedimg)
+{
+    if(mask.type() != CV_8UC1 || segmentedimg.type() != CV_8UC1)
+    {
+        return 0;
+    }
+    mask.setTo(0, segmentedimg == 255);
+    return 1;
+}
 void PBColony::init_classify_standard(ClassifyStandard& class_stand)
 {
 	class_stand.num = 2;

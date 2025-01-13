@@ -43,6 +43,24 @@ public:
 	////返回值：二值化图像
 	cv::Mat get_lower_upper(Mat& input_cn1, Mat& mask, int& lower, int& upper);
 
+	/// @brief 删除菌落
+	/// @param mask 菌落检测后得到的二值化图像get_lower_upper,结果也体现在这个图像上
+	/// @param x 对应删除菌落鼠标点击的x轴坐标
+	/// @param y 对应删除菌落鼠标点击的y轴坐标
+	/// @return 0表示格式不对或者不需要处理，1表示已经删除菌落
+	bool delete_colony(Mat& mask,int x,int y);
+
+	/// @brief 增加菌落
+	/// @param mask 菌落检测后得到的二值化图像get_lower_upper,结果也体现在这个图像上
+	/// @param addimg 要增加菌落的二值化图像，比如在图像划一块轮廓，轮廓内都为255，轮廓外为0
+	/// @return 0表示格式不对，1表示已经增加菌落
+	bool add_colony(Mat& mask,Mat addimg);
+
+	/// @brief 分割菌落
+	/// @param mask 菌落检测后得到的二值化图像get_lower_upper,结果也体现在这个图像上
+	/// @param segmentedimg 要划分菌落对应的划线，划线为255，背景为0
+	/// @return 0表示格式不对，1表示已经分割菌落
+	bool segmented_colony(Mat& mask,Mat segmentedimg);
 	////函数：初始化分类标准
 	void init_classify_standard(ClassifyStandard& class_stand);
 	////函数：设置分类间隔
