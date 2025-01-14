@@ -71,22 +71,65 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 最后 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Black_Blue_0 {
+        internal static string ab_atLast {
             get {
-                object obj = ResourceManager.GetObject("Black_Blue_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ab_atLast", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 关闭 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Black_Blue_1 {
+        internal static string ab_close {
             get {
-                object obj = ResourceManager.GetObject("Black_Blue_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ab_close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 上一页 的本地化字符串。
+        /// </summary>
+        internal static string ab_last {
+            get {
+                return ResourceManager.GetString("ab_last", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 下一页 的本地化字符串。
+        /// </summary>
+        internal static string ab_next {
+            get {
+                return ResourceManager.GetString("ab_next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 第一幅 的本地化字符串。
+        /// </summary>
+        internal static string ab_one {
+            get {
+                return ResourceManager.GetString("ab_one", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 打开当前帧 的本地化字符串。
+        /// </summary>
+        internal static string ab_open_cur_tif {
+            get {
+                return ResourceManager.GetString("ab_open_cur_tif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 另存为 的本地化字符串。
+        /// </summary>
+        internal static string ab_saveTif {
+            get {
+                return ResourceManager.GetString("ab_saveTif", resourceCulture);
             }
         }
         
@@ -113,16 +156,6 @@ namespace PBAnaly.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap Black_Red_0 {
-            get {
-                object obj = ResourceManager.GetObject("Black_Red_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap Black_Red_1 {
             get {
                 object obj = ResourceManager.GetObject("Black_Red_1", resourceCulture);
@@ -131,102 +164,533 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 返回 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Black_SDS_0 {
+        internal static string btn_back {
             get {
-                object obj = ResourceManager.GetObject("Black_SDS_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_back", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 返回 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Black_SDS_1 {
+        internal static string btn_back_form_re {
             get {
-                object obj = ResourceManager.GetObject("Black_SDS_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_back_form_re", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 取消 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Black_Yley_0 {
+        internal static string btn_cancel {
             get {
-                object obj = ResourceManager.GetObject("Black_Yley_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_cancel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 删除 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Black_Yley_1 {
+        internal static string btn_delete_role {
             get {
-                object obj = ResourceManager.GetObject("Black_Yley_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_delete_role", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 删除 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap C {
+        internal static string btn_delete_user {
             get {
-                object obj = ResourceManager.GetObject("C", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_delete_user", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 修改密码 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap EtBr_0 {
+        internal static string btn_edit_password_role {
             get {
-                object obj = ResourceManager.GetObject("EtBr_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_edit_password_role", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 修改权限 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap EtBr_1 {
+        internal static string btn_editRole_head {
             get {
-                object obj = ResourceManager.GetObject("EtBr_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_editRole_head", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 修改权限 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Gray {
+        internal static string btn_fix_role {
             get {
-                object obj = ResourceManager.GetObject("Gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_fix_role", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 修改密码 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Pseudo_0 {
+        internal static string btn_FixPassword {
             get {
-                object obj = ResourceManager.GetObject("Pseudo_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_FixPassword", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 找回 的本地化字符串。
         /// </summary>
-        internal static System.Drawing.Bitmap Pseudo_1 {
+        internal static string btn_Frin_Password {
             get {
-                object obj = ResourceManager.GetObject("Pseudo_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("btn_Frin_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 登录 的本地化字符串。
+        /// </summary>
+        internal static string btn_Login {
+            get {
+                return ResourceManager.GetString("btn_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确定 的本地化字符串。
+        /// </summary>
+        internal static string btn_ok {
+            get {
+                return ResourceManager.GetString("btn_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册 的本地化字符串。
+        /// </summary>
+        internal static string btn_re_register {
+            get {
+                return ResourceManager.GetString("btn_re_register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 权限管理 的本地化字符串。
+        /// </summary>
+        internal static string btn_role_manage {
+            get {
+                return ResourceManager.GetString("btn_role_manage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存 的本地化字符串。
+        /// </summary>
+        internal static string btn_role_save {
+            get {
+                return ResourceManager.GetString("btn_role_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 系统设置 的本地化字符串。
+        /// </summary>
+        internal static string btn_SystemSetting {
+            get {
+                return ResourceManager.GetString("btn_SystemSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户管理 的本地化字符串。
+        /// </summary>
+        internal static string btn_UserManager {
+            get {
+                return ResourceManager.GetString("btn_UserManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 记住登录 的本地化字符串。
+        /// </summary>
+        internal static string cb_Remember {
+            get {
+                return ResourceManager.GetString("cb_Remember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 光子量 的本地化字符串。
+        /// </summary>
+        internal static string cb_scientific {
+            get {
+                return ResourceManager.GetString("cb_scientific", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 整合 的本地化字符串。
+        /// </summary>
+        internal static string clasi_conformity {
+            get {
+                return ResourceManager.GetString("clasi_conformity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 初始井 的本地化字符串。
+        /// </summary>
+        internal static string clasi_init {
+            get {
+                return ResourceManager.GetString("clasi_init", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 泳道 的本地化字符串。
+        /// </summary>
+        internal static string clasi_lanes {
+            get {
+                return ResourceManager.GetString("clasi_lanes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 条带 的本地化字符串。
+        /// </summary>
+        internal static string clasi_strips {
+            get {
+                return ResourceManager.GetString("clasi_strips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 显示 的本地化字符串。
+        /// </summary>
+        internal static string crownLabel1 {
+            get {
+                return ResourceManager.GetString("crownLabel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 忘记密码？点击找回 的本地化字符串。
+        /// </summary>
+        internal static string lab_forget_pass {
+            get {
+                return ResourceManager.GetString("lab_forget_pass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 提示 的本地化字符串。
+        /// </summary>
+        internal static string label_DeleteTips {
+            get {
+                return ResourceManager.GetString("label_DeleteTips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确认密码 的本地化字符串。
+        /// </summary>
+        internal static string label_enterPassword {
+            get {
+                return ResourceManager.GetString("label_enterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 语言 的本地化字符串。
+        /// </summary>
+        internal static string label_Language {
+            get {
+                return ResourceManager.GetString("label_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        internal static string label_password_formUserManage {
+            get {
+                return ResourceManager.GetString("label_password_formUserManage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 路径 的本地化字符串。
+        /// </summary>
+        internal static string label_path {
+            get {
+                return ResourceManager.GetString("label_path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 答案 的本地化字符串。
+        /// </summary>
+        internal static string label_re_Answer {
+            get {
+                return ResourceManager.GetString("label_re_Answer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        internal static string label_re_password {
+            get {
+                return ResourceManager.GetString("label_re_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密保问题 的本地化字符串。
+        /// </summary>
+        internal static string label_re_question {
+            get {
+                return ResourceManager.GetString("label_re_question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户名 的本地化字符串。
+        /// </summary>
+        internal static string label_re_userNma {
+            get {
+                return ResourceManager.GetString("label_re_userNma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户名 的本地化字符串。
+        /// </summary>
+        internal static string label_role_userName {
+            get {
+                return ResourceManager.GetString("label_role_userName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户名 的本地化字符串。
+        /// </summary>
+        internal static string label_Username_form_userManage {
+            get {
+                return ResourceManager.GetString("label_Username_form_userManage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户名 的本地化字符串。
+        /// </summary>
+        internal static string label1 {
+            get {
+                return ResourceManager.GetString("label1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 权限 的本地化字符串。
+        /// </summary>
+        internal static string label1_role {
+            get {
+                return ResourceManager.GetString("label1_role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 你的密码 的本地化字符串。
+        /// </summary>
+        internal static string label2 {
+            get {
+                return ResourceManager.GetString("label2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 模式 的本地化字符串。
+        /// </summary>
+        internal static string label2_mode {
+            get {
+                return ResourceManager.GetString("label2_mode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 登录 的本地化字符串。
+        /// </summary>
+        internal static string label4 {
+            get {
+                return ResourceManager.GetString("label4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密保问题 的本地化字符串。
+        /// </summary>
+        internal static string label5 {
+            get {
+                return ResourceManager.GetString("label5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 答案 的本地化字符串。
+        /// </summary>
+        internal static string label6 {
+            get {
+                return ResourceManager.GetString("label6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 泳道宽度(像素) 的本地化字符串。
+        /// </summary>
+        internal static string lb_lane_width {
+            get {
+                return ResourceManager.GetString("lb_lane_width", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 反式荧光 的本地化字符串。
+        /// </summary>
+        internal static string lb_top_info {
+            get {
+                return ResourceManager.GetString("lb_top_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 泳道分析 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_acidAnalyze {
+            get {
+                return ResourceManager.GetString("materialButton_acidAnalyze", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 数据分析 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_analyzedata {
+            get {
+                return ResourceManager.GetString("materialButton_analyzedata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 蛋白归一化 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_correction {
+            get {
+                return ResourceManager.GetString("materialButton_correction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 泳道波形图 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_curveimage {
+            get {
+                return ResourceManager.GetString("materialButton_curveimage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 图像处理 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_imageProcess {
+            get {
+                return ResourceManager.GetString("materialButton_imageProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 加载数据 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_LoadData {
+            get {
+                return ResourceManager.GetString("materialButton_LoadData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 操作日志 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_log {
+            get {
+                return ResourceManager.GetString("materialButton_log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 微孔版分析 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_miniAnalyze {
+            get {
+                return ResourceManager.GetString("materialButton_miniAnalyze", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 导出图像 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_outimage {
+            get {
+                return ResourceManager.GetString("materialButton_outimage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ROI分析 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_roiAnalyze {
+            get {
+                return ResourceManager.GetString("materialButton_roiAnalyze", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 系统操作 的本地化字符串。
+        /// </summary>
+        internal static string materialButton_setting {
+            get {
+                return ResourceManager.GetString("materialButton_setting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 统一泳道宽度 的本地化字符串。
+        /// </summary>
+        internal static string materialCheckbox1 {
+            get {
+                return ResourceManager.GetString("materialCheckbox1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 光/暗 主题 的本地化字符串。
+        /// </summary>
+        internal static string materialSwitch_UI {
+            get {
+                return ResourceManager.GetString("materialSwitch_UI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 查找泳道 的本地化字符串。
+        /// </summary>
+        internal static string mb_findLanes {
+            get {
+                return ResourceManager.GetString("mb_findLanes", resourceCulture);
             }
         }
         
@@ -237,6 +701,24 @@ namespace PBAnaly.Properties {
             get {
                 object obj = ResourceManager.GetObject("roi-select", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 设置 的本地化字符串。
+        /// </summary>
+        internal static string SettingForm {
+            get {
+                return ResourceManager.GetString("SettingForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册 的本地化字符串。
+        /// </summary>
+        internal static string SIGNIN_materialButton {
+            get {
+                return ResourceManager.GetString("SIGNIN_materialButton", resourceCulture);
             }
         }
         
@@ -256,16 +738,6 @@ namespace PBAnaly.Properties {
         internal static System.Drawing.Bitmap YellowHot_1 {
             get {
                 object obj = ResourceManager.GetObject("YellowHot_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap yto_icon_X_transit_time {
-            get {
-                object obj = ResourceManager.GetObject("yto-icon-X-transit_time", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

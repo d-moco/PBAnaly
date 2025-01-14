@@ -466,7 +466,10 @@
   <data name="label_Language" xml:space="preserve">
     <value>语言</value>
   </data>
-  <data name="mb_colonyCount" xml:space="preserve">
-    <value>菌落计数</value>
+  <data name="10矩形" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10矩形.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lb_lane_width" xml:space="preserve">
+    <value>泳道宽度(像素)</value>
   </data>
 </root>

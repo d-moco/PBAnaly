@@ -79,24 +79,24 @@ namespace PBAnaly.Module
             band_info = new List<_band_info>();
 
 
-            unsafe
-            {
-                fixed (byte* p = byte_image)
-                {
-                    proteinRect = dd.getProteinRectVC(p, (ushort)input_cn1.Width, (ushort)input_cn1.Height);
-                }
+            //unsafe
+            //{
+            //    fixed (byte* p = byte_image)
+            //    {
+            //        proteinRect = dd.getProteinRectVC(p, (ushort)input_cn1.Width, (ushort)input_cn1.Height);
+            //    }
 
-                byte[] bytes = util.ConvertUShortArrayToByteArrayComplete(whiteBackgroundImg_image);
+            //    byte[] bytes = util.ConvertUShortArrayToByteArrayComplete(whiteBackgroundImg_image);
 
 
-                fixed (byte* p = bytes)
-                {
-                    dd.getProteinBandsVC(p, 16, (ushort)input_cn1.Width, (ushort)input_cn1.Height, proteinRect, ref band_info);
-                }
-                dd.adjustBands(band_info, 10);
-                dd.molecularWeightResult(ref proteinRect, ref band_info);
+            //    fixed (byte* p = bytes)
+            //    {
+            //        dd.getProteinBandsVC(p, 16, (ushort)input_cn1.Width, (ushort)input_cn1.Height, proteinRect, ref band_info);
+            //    }
+            //    dd.adjustBands(band_info, 10);
+            //    dd.molecularWeightResult(ref proteinRect, ref band_info);
                 
-            }
+            //}
             Mat mat = new Mat();
             if (input_cn1.Channels() == 1) 
             {

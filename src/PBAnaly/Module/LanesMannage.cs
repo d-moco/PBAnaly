@@ -42,17 +42,23 @@ namespace PBAnaly.Module
         {
             public bool isSelect;//是否被选中
             public int colorIndex;
-            public int x;
-            public int y;
-            public int width;
-            public int height;
+            public RectVC rect;
             public _band_info band_Info;
         }
-
+        public enum CurLaneEnum 
+        {
+            None = 0,
+            FindLane,
+            AddLane
+        }
         public struct LanesAttribute 
         {
+            public CurLaneEnum laneEnum;
+            public bool isSameLineWidth;
+            public int ProteinRect_width;
             public bool showLanes;
             public bool showbands;
+
         }
         #endregion
         #region 参数
@@ -62,6 +68,7 @@ namespace PBAnaly.Module
         PBBiology pbb = new PBBiology();
         private Image<L16> image_L16;
         private byte[] image_byte;
+        private byte[] image_8bit_byte;
         private byte[] image_8bit_rgb_byte;
         private Image<Rgb24> image_rgb_24 = null;
         public bool IsActive { get; set; } // 当前窗口是否在活跃状态  用来判断是否需要操作
@@ -74,11 +81,74 @@ namespace PBAnaly.Module
         private Thread algThread;
         private bool isalgRun = false;
         private bool isUpdateAlg = false;
-        private Queue<band_infos> queueAlgAttribute = new Queue<band_infos>();
+        private Queue<LanesAttribute> queueAlgAttribute = new Queue<LanesAttribute>();
         private List<Lanes_info> lanes_Infos = new List<Lanes_info>();
 
         private List<System.Drawing.Color> laneColorList = new List<System.Drawing.Color>();// 泳道的颜色表
         private LanesAttribute lanesAttribute = new LanesAttribute();
+        #endregion
+
+
+        #region 构造函数
+        public bool ShowLanes 
+        {
+            get { return lanesAttribute.showLanes; }
+            set 
+            {
+                if (lanesAttribute.showLanes != value) 
+                {
+                    lanesAttribute.laneEnum = CurLaneEnum.None;
+                    lanesAttribute.showLanes = value;
+                    imagePanel.image_pl.Invalidate();
+                }
+            }
+        }
+        public bool IsSameLineWidth 
+        {
+            get { return lanesAttribute.isSameLineWidth; }
+            set
+            {
+                if (lanesAttribute.isSameLineWidth != value) 
+                {
+                    imagePaletteForm.nud_lane_fixedWidth.Enabled = value;
+                    lanesAttribute.laneEnum = CurLaneEnum.None;
+                    lanesAttribute.isSameLineWidth = value;
+                    LaneEnum = CurLaneEnum.FindLane;
+                }
+              
+            }
+        }
+        public int ProteinRect_Width
+        {
+            get { return lanesAttribute.ProteinRect_width; }
+            set
+            {
+                if (lanesAttribute.ProteinRect_width != value)
+                {
+                    lanesAttribute.laneEnum = CurLaneEnum.None;
+                    lanesAttribute.ProteinRect_width = value;
+                    LaneEnum = CurLaneEnum.FindLane;
+                }
+
+            }
+        }
+        public CurLaneEnum LaneEnum 
+        {
+            get { return lanesAttribute.laneEnum; }
+            set 
+            {
+                if (lanesAttribute.laneEnum != value) 
+                {
+                    lanesAttribute.laneEnum = value;
+                    bool fix = true;
+
+                    if (fix && isUpdateAlg) 
+                    {
+                        queueAlgAttribute.Enqueue(lanesAttribute);
+                    }
+                }
+            }
+        }
         #endregion
 
         public LanesMannage(string _path, ReaLTaiizor.Controls.Panel _pl_right, Dictionary<string, LanesMannage> lanesMannages) 
@@ -139,7 +209,7 @@ namespace PBAnaly.Module
             while (isalgRun)
             {
                 if (isUpdateAlg == false) continue;
-                band_infos? aatb = null;
+                LanesAttribute? aatb = null;
                 if (queueAlgAttribute.Count > 1)
                 {
                     while (queueAlgAttribute.Count > 1)
@@ -153,41 +223,53 @@ namespace PBAnaly.Module
                 }
                 if (aatb != null)
                 {
-                    ImageAlg((band_infos)aatb);
+                    ImageAlg((LanesAttribute)aatb);
 
                 }
                 Thread.Sleep(5);
             }
         }
 
-        private void ImageAlg(band_infos aatb)
+        private void ImageAlg(LanesAttribute aatb)
         {
+            switch (aatb.laneEnum)
+            {
+                case CurLaneEnum.None:
+                    break;
+                case CurLaneEnum.FindLane:
+                   
+                    byte[] gray = image_8bit_byte;
+                    unsafe
+                    {
+                        lanes_Infos.Clear();
+                        fixed (byte* data = gray)
+                        {
+                            var rectvc = pbb.getProteinRectVC(data, 8, (ushort)image_L16.Width, (ushort)image_L16.Height,aatb.ProteinRect_width, aatb.isSameLineWidth, 90);
+                            fixed (byte* data_16bit = image_byte) 
+                            {
+                                var pbands =  pbb.getProteinBandsVC(data_16bit, 16, (ushort)image_L16.Width, (ushort)image_L16.Height, rectvc);
+                                int index = 0;
+                                foreach (var item in rectvc)
+                                {
+                                    Lanes_info lanes_Info = new Lanes_info();
+                                    lanes_Info.rect = item;
+                                    lanes_Info.band_Info = pbands[index];
+                                    lanes_Infos.Add(lanes_Info);
+                                    index++;
+                                }
+                            }
+                        }
+                    }
 
-            //Mat image = new Mat(image_L16.Height,image_L16.Width,MatType.CV_8UC1);
-            //Marshal.Copy(image_8bit_byte,0,image.Data,image_8bit_byte.Length);
+                    break;
+                case CurLaneEnum.AddLane:
 
-            //Mat whiteBackgroundImg = new Mat();
-            //Scalar meanValue = Cv2.Mean(image);
-            //if (meanValue[0] < 10000)
-            //{
-            //    Cv2.BitwiseNot(image, whiteBackgroundImg);
-            //}
-            //else
-            //{
-            //    whiteBackgroundImg = image.Clone(); 
-            //}
+                    break;
+                default:
+                    break;
 
-            //List<RectVC> proteinRect = new List<RectVC>();
-            //// 算法使用的是8bit的图进行计算
-            //unsafe
-            //{
-            //    fixed (byte* p = image_8bit_byte) 
-            //    {
-            //        proteinRect = pbb.getProteinRectVC(p, (ushort)image_L16.Width, (ushort)image_L16.Height);
-            //    }
-
-
-            //}
+            }
+            imagePanel.image_pl.Invalidate();
         }
 
         private void InitColorList() 
@@ -218,6 +300,9 @@ namespace PBAnaly.Module
         /// </summary>
         private void Init()
         {
+            lanesAttribute.laneEnum = CurLaneEnum.None;
+            lanesAttribute.isSameLineWidth = false;
+            lanesAttribute.ProteinRect_width = 44;
             lanesAttribute.showLanes = true;
             lanesAttribute.showbands = true;
 
@@ -236,7 +321,10 @@ namespace PBAnaly.Module
 
 
             imagePaletteForm.mb_findLanes.Click += Mb_findLanes_Click;
-
+            imagePaletteForm.mb_addLanes.Click += Mb_addLanes_Click;
+            imagePaletteForm.cb_lane_width.CheckedChanged += Cb_lane_width_CheckedChanged;
+            imagePaletteForm.nud_lane_fixedWidth.ValueChanged += Nud_lane_fixedWidth_ValueChanged;
+            imagePaletteForm.cb_alwaysShowLane.CheckedChanged += Cb_alwaysShowLane_CheckedChanged;
             KeyboardListener.Register(OnKeyPressed); // 创建键盘钩子
         }
 
@@ -283,12 +371,13 @@ namespace PBAnaly.Module
             }
 
             image_8bit_rgb_byte = new byte[image_L16.Width * image_L16.Height * 3];
-          
+            image_8bit_byte = new byte[image_L16.Width * image_L16.Height];
             for (int i = 0; i < image_L16.Width * image_L16.Height; i++) 
             {
                 // 获取16位图像数据中的当前像素值
                 ushort pixel16bit = (ushort)(image_byte[i * 2] | (image_byte[i * 2 + 1] << 8));
                 byte gray = (byte)((pixel16bit / 65535.0) * 255) ;
+                image_8bit_byte[i] = gray;
                 // 将R、G、B分量存储到RGB格式的数组中
                 image_8bit_rgb_byte[i * 3] = gray;
                 image_8bit_rgb_byte[i * 3 + 1] = gray;
@@ -333,7 +422,7 @@ namespace PBAnaly.Module
             index = 0;
             foreach (var lanes in _lanes)
             {
-                System.Drawing.Rectangle rect = new System.Drawing.Rectangle(lanes.x,lanes.y,lanes.width,lanes.height);
+                System.Drawing.Rectangle rect = new System.Drawing.Rectangle(lanes.rect.X,lanes.rect.Y,lanes.rect.Width,lanes.rect.Height);
                 System.Drawing.Point topLeft = new System.Drawing.Point(rect.Left, rect.Top);
                 System.Drawing.Point topRight = new System.Drawing.Point(rect.Right, rect.Top);
                 System.Drawing.Point bottomLeft = new System.Drawing.Point(rect.Left, rect.Bottom);
@@ -371,7 +460,7 @@ namespace PBAnaly.Module
                 }
                 colorUpdateIndex.Add(index);
                 var color = laneColorList[index];
-                System.Drawing.Rectangle p = new System.Drawing.Rectangle(rect.x, rect.y, rect.width, rect.height);
+                System.Drawing.Rectangle p = new System.Drawing.Rectangle(rect.rect.X, rect.rect.Y, rect.rect.Width, rect.rect.Height);
                 
                 var r = ImageProcess.ConvertRealRectangleToPictureBox(p, imagePanel.image_pl);
                 if (lanesAttribute.showLanes) 
@@ -388,35 +477,39 @@ namespace PBAnaly.Module
 
                 int centerX = (int)(p.X + (p.Right - p.X) / 2.0);
                 int centerY = 0;
-                foreach (var item in rect.band_Info.band_point)
+                if (rect.band_Info != null) 
                 {
-                    if (item[0] == -1) continue;
-                    // 绘制十字
-                    centerY = p.Y + item[0];
-                    var p1 = new System.Drawing.Point(centerX - 5, centerY);
-                    var p2 = new System.Drawing.Point(centerX + 5, centerY);
-                    p1 = ImageProcess.ConvertRealToPictureBox(p1, imagePanel.image_pl);
-                    p2 = ImageProcess.ConvertRealToPictureBox(p2, imagePanel.image_pl);
-
-                    e.Graphics.DrawLine(Pens.Red, p1, p2);
-                    p1 = new System.Drawing.Point(centerX, centerY - 5);
-                    p2 = new System.Drawing.Point(centerX, centerY + 5);
-                    p1 = ImageProcess.ConvertRealToPictureBox(p1, imagePanel.image_pl);
-                    p2 = ImageProcess.ConvertRealToPictureBox(p2, imagePanel.image_pl);
-                    e.Graphics.DrawLine(Pens.Red, p1, p2);
-
-                    // 显示条带
-                    if (lanesAttribute.showbands)
+                    foreach (var item in rect.band_Info.band_point)
                     {
-                        p1 = new System.Drawing.Point(p.X, p.Top + item[1]);
-                        p2 = new System.Drawing.Point(p.Right, p.Top + item[2]);
+                        if (item[0] == -1) continue;
+                        // 绘制十字
+                        centerY = p.Y + item[0];
+                        var p1 = new System.Drawing.Point(centerX - 5, centerY);
+                        var p2 = new System.Drawing.Point(centerX + 5, centerY);
                         p1 = ImageProcess.ConvertRealToPictureBox(p1, imagePanel.image_pl);
                         p2 = ImageProcess.ConvertRealToPictureBox(p2, imagePanel.image_pl);
 
-                        e.Graphics.DrawRectangle(Pens.Blue,p1.X,p1.Y,p2.X - p1.X,p2.Y - p1.Y);
-                    }
+                        e.Graphics.DrawLine(Pens.Red, p1, p2);
+                        p1 = new System.Drawing.Point(centerX, centerY - 5);
+                        p2 = new System.Drawing.Point(centerX, centerY + 5);
+                        p1 = ImageProcess.ConvertRealToPictureBox(p1, imagePanel.image_pl);
+                        p2 = ImageProcess.ConvertRealToPictureBox(p2, imagePanel.image_pl);
+                        e.Graphics.DrawLine(Pens.Red, p1, p2);
 
+                        // 显示条带
+                        if (lanesAttribute.showbands)
+                        {
+                            p1 = new System.Drawing.Point(p.X, p.Top + item[1]);
+                            p2 = new System.Drawing.Point(p.Right, p.Top + item[2]);
+                            p1 = ImageProcess.ConvertRealToPictureBox(p1, imagePanel.image_pl);
+                            p2 = ImageProcess.ConvertRealToPictureBox(p2, imagePanel.image_pl);
+
+                            e.Graphics.DrawRectangle(Pens.Blue, p1.X, p1.Y, p2.X - p1.X, p2.Y - p1.Y);
+                        }
+
+                    }
                 }
+               
                 
                
                
@@ -506,52 +599,24 @@ namespace PBAnaly.Module
         #region imagePalette
         private void Mb_findLanes_Click(object sender, EventArgs e)
         {
-            byte[] gray = new byte[image_L16.Width * image_L16.Height];
-            for (int i = 0; i < image_L16.Width * image_L16.Height; i++)
-            {
-                // 获取16位图像数据中的当前像素值
-                ushort pixel16bit = (ushort)(image_byte[i * 2] | (image_byte[i * 2 + 1] << 8));
-                byte grayValue = (byte)((pixel16bit / 65535.0) * 255);
-                gray[i] = grayValue;
-            }
-            unsafe
-            {
-                fixed (byte* data = gray) 
-                {
-                    // 寻找泳道
-                    var proteinRect = pbb.getProteinRectVC(data, (ushort)image_L16.Width, (ushort)image_L16.Height);
-                    var band_info = new List<_band_info>();
-
-                    // 根据泳道找条带
-                    fixed (byte* p = image_byte)
-                    {
-                        pbb.getProteinBandsVC(p, 16, (ushort)image_L16.Width, (ushort)image_L16.Height, proteinRect, ref band_info);
-                    }
-                    pbb.adjustBands(band_info, 5);
-                    pbb.molecularWeightResult(ref proteinRect, ref band_info);
-                    lanes_Infos.Clear();
-                    int index  = 0;
-                    foreach (var item in proteinRect)
-                    {
-                       
-                        Lanes_info lanes_Info = new Lanes_info();
-                        if (index == 0) 
-                        {
-                            lanes_Info.isSelect = true;// 认为查找后第一个就是被选中的状态
-                        }
-                        lanes_Info.x = item.X;
-                        lanes_Info.y = item.Y; 
-                        lanes_Info.height = item.Height;
-                        lanes_Info.width = item.Width;
-                        lanes_Info.band_Info = band_info[index];
-                        lanes_Infos.Add(lanes_Info);
-                        index++;
-                    }
-
-                }
-            }
-
-            imagePanel.image_pl.Invalidate();
+            LaneEnum = CurLaneEnum.FindLane;
+        }
+        private void Mb_addLanes_Click(object sender, EventArgs e)
+        {
+            LaneEnum = CurLaneEnum.AddLane;
+        }
+        private void Cb_lane_width_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
+        {
+            IsSameLineWidth = imagePaletteForm.cb_lane_width.Checked;
+            
+        }
+        private void Nud_lane_fixedWidth_ValueChanged(object sender, EventArgs e)
+        {
+            ProteinRect_Width = (int)imagePaletteForm.nud_lane_fixedWidth.Value;
+        }
+        private void Cb_alwaysShowLane_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
+        {
+            ShowLanes = imagePaletteForm.cb_alwaysShowLane.Checked;
         }
         #endregion
 

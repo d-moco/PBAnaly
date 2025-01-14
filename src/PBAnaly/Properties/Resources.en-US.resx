@@ -318,7 +318,7 @@
   <data name="label_Language" xml:space="preserve">
     <value>Language:</value>
   </data>
-  <data name="mb_colonyCount" xml:space="preserve">
-    <value>Colony</value>
+  <data name="lb_lane_width" xml:space="preserve">
+    <value>LaneW</value>
   </data>
 </root>

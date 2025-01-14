@@ -353,6 +353,7 @@
             // 
             this.image_pl.ContextMenuStrip = this.ctms_strop;
             this.image_pl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.image_pl.Image = global::PBAnaly.Properties.Resources._10矩形;
             this.image_pl.Location = new System.Drawing.Point(0, 0);
             this.image_pl.Name = "image_pl";
             this.image_pl.Size = new System.Drawing.Size(223, 185);

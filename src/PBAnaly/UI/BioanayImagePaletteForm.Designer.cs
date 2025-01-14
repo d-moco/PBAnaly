@@ -559,7 +559,7 @@
             this.dtb_colorMax.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_colorMax.JumpToMouse = false;
             this.dtb_colorMax.Location = new System.Drawing.Point(52, 114);
-            this.dtb_colorMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtb_colorMax.Margin = new System.Windows.Forms.Padding(2);
             this.dtb_colorMax.Maximum = 100;
             this.dtb_colorMax.Minimum = 0;
             this.dtb_colorMax.MinimumSize = new System.Drawing.Size(35, 18);
@@ -584,7 +584,7 @@
             this.dtb_colorMin.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_colorMin.JumpToMouse = false;
             this.dtb_colorMin.Location = new System.Drawing.Point(52, 78);
-            this.dtb_colorMin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtb_colorMin.Margin = new System.Windows.Forms.Padding(2);
             this.dtb_colorMin.Maximum = 100;
             this.dtb_colorMin.Minimum = 0;
             this.dtb_colorMin.MinimumSize = new System.Drawing.Size(35, 18);
@@ -609,7 +609,7 @@
             this.dtb_opacity.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_opacity.JumpToMouse = false;
             this.dtb_opacity.Location = new System.Drawing.Point(52, 31);
-            this.dtb_opacity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtb_opacity.Margin = new System.Windows.Forms.Padding(2);
             this.dtb_opacity.Maximum = 100;
             this.dtb_opacity.Minimum = 0;
             this.dtb_opacity.MinimumSize = new System.Drawing.Size(35, 18);
@@ -659,7 +659,7 @@
             this.dtb_brightness.FillBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(99)))), ((int)(((byte)(50)))));
             this.dtb_brightness.JumpToMouse = false;
             this.dtb_brightness.Location = new System.Drawing.Point(52, 2);
-            this.dtb_brightness.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtb_brightness.Margin = new System.Windows.Forms.Padding(2);
             this.dtb_brightness.Maximum = 100;
             this.dtb_brightness.Minimum = 0;
             this.dtb_brightness.MinimumSize = new System.Drawing.Size(35, 18);
@@ -876,7 +876,7 @@
             this.ClientSize = new System.Drawing.Size(304, 495);
             this.Controls.Add(this.cll_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BioanayImagePaletteForm";
             this.Text = "BioanayImagePaletteForm";
             this.tableLayoutPanel3.ResumeLayout(false);
