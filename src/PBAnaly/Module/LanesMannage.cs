@@ -1,7 +1,9 @@
 ﻿using Aspose.Pdf.AI;
 using OpenCvSharp;
+using OpenCvSharp.Flann;
 using PBAnaly.UI;
 using PBBiologyVC;
+using ScottPlot;
 using SharpDX.D3DCompiler;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
@@ -83,7 +85,9 @@ namespace PBAnaly.Module
         private bool isUpdateAlg = false;
         private Queue<LanesAttribute> queueAlgAttribute = new Queue<LanesAttribute>();
         private List<Lanes_info> lanes_Infos = new List<Lanes_info>();
-
+        private bool isAddLine = false;
+        private System.Drawing.Rectangle curLanes ;
+        private System.Drawing.Point curPoint;
         private List<System.Drawing.Color> laneColorList = new List<System.Drawing.Color>();// 泳道的颜色表
         private LanesAttribute lanesAttribute = new LanesAttribute();
         #endregion
@@ -263,7 +267,20 @@ namespace PBAnaly.Module
 
                     break;
                 case CurLaneEnum.AddLane:
+                    unsafe
+                    {
+                        
+                        fixed (byte* data = image_byte)
+                        {
+                            RectVC rectVC = new RectVC(curLanes.X,curLanes.Y,curLanes.Width,curLanes.Height);
+                            _band_info ll = pbb.get_protein_lane_dataVC(data, 16, (ushort)image_L16.Width, (ushort)image_L16.Height, rectVC);
 
+                            Lanes_info lanes_Info = new Lanes_info();
+                            lanes_Info.rect = rectVC;
+                            lanes_Info.band_Info = ll;
+                            lanes_Infos.Add(lanes_Info);
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -521,6 +538,14 @@ namespace PBAnaly.Module
                 _Info.colorIndex = colorUpdateIndex[i];
                 lanes_Infos[i] = _Info;
             }
+
+            if (isAddLine) 
+            {
+               
+
+                var r = ImageProcess.ConvertRealRectangleToPictureBox(curLanes, imagePanel.image_pl);
+                e.Graphics.DrawRectangle(System.Drawing.Color.Red, r, false, 6);
+            }
         }
 
         private void Image_pl_MouseUp(object sender, MouseEventArgs e)
@@ -532,9 +557,18 @@ namespace PBAnaly.Module
         {
             System.Drawing.Point readLoction = ImageProcess.ConvertPictureBoxToReal(e.Location, imagePanel.image_pl);
             imagePanel.image_pl.Cursor = Cursors.Default;
-            if (IsPointInRectangles(readLoction, lanes_Infos, out var cner, out var curRect, out int index)) 
+            if (isAddLine) 
             {
-
+                int leftX = readLoction.X - lanesAttribute.ProteinRect_width / 2;
+                int leftY = (int)(image_L16.Height * 0.05);
+                int width = lanesAttribute.ProteinRect_width;
+                int height = (int)(image_L16.Height * 0.9);
+                curLanes = new System.Drawing.Rectangle(leftX, leftY, width, height);
+                imagePanel.image_pl.Invalidate();
+            }
+            else if (IsPointInRectangles(readLoction, lanes_Infos, out var cner, out var curRect, out int index)) 
+            {
+                
             }
 
         }
@@ -548,7 +582,14 @@ namespace PBAnaly.Module
         {
             System.Drawing.Point readLoction = ImageProcess.ConvertPictureBoxToReal(e.Location, imagePanel.image_pl);
             Wdb_title_Click(null, null);
-            if (IsPointInRectangles(readLoction, lanes_Infos, out var cner, out var curRect, out int index))
+            if (isAddLine) 
+            {
+                curPoint = readLoction;
+                isAddLine = false;
+                LaneEnum = CurLaneEnum.None;
+                LaneEnum = CurLaneEnum.AddLane;
+            }
+            else if (IsPointInRectangles(readLoction, lanes_Infos, out var cner, out var curRect, out int index))
             {
                 for (int i = 0; i < lanes_Infos.Count; i++) 
                 {
@@ -603,7 +644,7 @@ namespace PBAnaly.Module
         }
         private void Mb_addLanes_Click(object sender, EventArgs e)
         {
-            LaneEnum = CurLaneEnum.AddLane;
+            isAddLine = true;
         }
         private void Cb_lane_width_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {

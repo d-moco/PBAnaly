@@ -58,14 +58,12 @@ namespace PBBiologyVC {
 	public:
 		List<RectVC^>^ getProteinRectVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, int ProteinRect_width, bool keep_width, int ProteinRect_height_ratio);
 		List<_band_info^>^ getProteinBandsVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, List<RectVC^>^ lanes);
-		/*List<RectVC^>^ getProteinRectVC(System::Byte* mat,unsigned short width,unsigned short height);
-		void getProteinBandsVC(System::Byte* mat,int bit, unsigned short width, unsigned short height, List<RectVC^>^ lanes, List<_band_info^>^% band);
-		List<_band_info^>^ adjustBands(List<_band_info^>^ bands, int range);
-		void molecularWeightResult(List<RectVC^>^% lanes, List<_band_info^>^% bands);*/
+		void addProteinRectVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, List<RectVC^>^% proteinRect,int x, List<_band_info^>^% unadjustbands);
+		_band_info^ get_protein_lane_dataVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, RectVC^ lane);
 	private:
 		void PBBiology::band_InfoTo_band_info(std::vector<BandInfo> src, List<_band_info^>^% results);
-	/*	void _band_infoToBand_Info(std::vector<BandInfo>& dst, List<_band_info^>^ src);
-		void band_InfoTo_band_info(std::vector<BandInfo> src, List<_band_info^>^% results);*/
+		void PBBiology::_band_infoToBand_Info(std::vector<BandInfo>& bandinfo, List<_band_info^>^ bands);
+	
 	};
 }
 
