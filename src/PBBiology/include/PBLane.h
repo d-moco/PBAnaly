@@ -36,7 +36,8 @@ public:
 	std::vector<cv::Rect> getProteinRect(Mat src,int* ProteinRect_width,bool keep_width,int ProteinRect_height_ratio);
 	//添加泳道，proteinRect是当前泳道矩形，x是新添加泳道的中心x坐标，一般就是鼠标点击图形的x坐标,
 	//src是输入图形（CV_16UC1）,unadjustbands是未对齐条带信息，需要同步修改
-	void addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands);
+	//proteinRect在没有泳道时，会使用输入的ProteinRect_width 作为蛋白泳道宽度,ProteinRect_height_ratio作为高度比例，高度占图像高度百分之几，一般输入90
+	void addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands,int ProteinRect_width,int ProteinRect_height_ratio);
 	//删除泳道，proteinRect是当前泳道矩形，idx是删除泳道的下标序号,unadjustbands是未对齐条带信息，需要同步修改
 	void deleteProteinRect(std::vector<cv::Rect>& proteinRect,int idx,std::vector<BandInfo>& unadjustbands);
 	//计算单个泳道条带信息，src是输入图形（CV_16UC1），lane是泳道对应矩形，

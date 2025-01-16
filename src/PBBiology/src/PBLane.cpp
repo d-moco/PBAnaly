@@ -263,10 +263,19 @@ vector<std::array<int, 3>> PBLane::get_top_point(vector<unsigned short> rbuf, in
 {
 	vector<std::array<int, 2>> point;
 	vector<char> diff(rbuf.size());
+	vector<std::array<int, 3>> topPoint;
 
 	int maxValue = *max_element(rbuf.begin(), rbuf.end());
 	int minValue = *min_element(rbuf.begin(), rbuf.end());
+	if(maxValue - minValue < 65535/10)
+	{
+		return topPoint;
+	}
 	int limit = (maxValue - minValue) / 10;
+	if(limit < 65535/40)
+	{
+		limit = 65535/40;
+	}
 
 	for (int i = 0; i < rbuf.size() - 1; i++)
 	{
@@ -410,7 +419,7 @@ vector<std::array<int, 3>> PBLane::get_top_point(vector<unsigned short> rbuf, in
 	}
 	filterPoint.push_back(point[temp][0]);
 
-	vector<std::array<int, 3>> topPoint;
+	
 	if (filterPoint.size() < 3)
 	{
 		return topPoint;
@@ -536,13 +545,25 @@ std::vector<cv::Rect> PBLane::getProteinRect(Mat src,int* ProteinRect_width,bool
 	}
 	return proteinRect;
 }
-void PBLane::addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands)
+void PBLane::addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands,int ProteinRect_width,int ProteinRect_height_ratio)
 {
 	Rect new_proteinRect;
-	new_proteinRect.x = x - proteinRect[0].width/2;
-	new_proteinRect.y = proteinRect[0].y;
-	new_proteinRect.width = proteinRect[0].width;
-	new_proteinRect.height = proteinRect[0].height;
+	if(proteinRect.size() > 0)
+	{
+		new_proteinRect.x = x - proteinRect[0].width/2;
+		new_proteinRect.y = proteinRect[0].y;
+		new_proteinRect.width = proteinRect[0].width;
+		new_proteinRect.height = proteinRect[0].height;
+	}
+	else
+	{
+		int y_start = src.rows * (100 - ProteinRect_height_ratio) / 200;
+		new_proteinRect.x = x - ProteinRect_width/2;
+		new_proteinRect.y = y_start;
+		new_proteinRect.width = ProteinRect_width;
+		new_proteinRect.height = src.rows - y_start *  2;
+	}
+	
 	BandInfo band = get_protein_lane_data(src,new_proteinRect);
 
     for (auto it = proteinRect.begin(); it != proteinRect.end(); ++it) {
