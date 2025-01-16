@@ -1369,3 +1369,69 @@ Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs)
     cv::undistort(image, undistortedImage, cameraMatrix, distCoeffs);
     return undistortedImage;
 }
+
+Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray)
+{
+    Mat dst = Mat::zeros(Bgray.rows,Bgray.cols,CV_8UC3);
+    if(Rgray.type() != CV_8UC1 || Ggray.type() != CV_8UC1 || Bgray.type() != CV_8UC1)
+    {
+        std::cerr << "Error: Bgray||Ggray||Rgray not CV_8UC1!" << std::endl;
+        return dst;
+    }
+    if (Bgray.size() != Ggray.size() || Bgray.size() != Rgray.size()) {
+        std::cout << "Error: Images have different sizes!" << std::endl;
+        return dst;
+    }
+    
+    int size = Bgray.rows * Bgray.cols;
+    Mat channels[3] = {Bgray, Ggray, Rgray};
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(11, 11));
+    Point center(Bgray.cols / 2, Bgray.rows / 2);
+    for(int n = 0; n < 3; n++)
+    {
+        int pixel_count[256] = {0};
+        unsigned char* pixel_point = channels[n].data;
+        for (int n = 0; n < size; n++) {
+            pixel_count[*pixel_point++]++;
+        }
+        int value = defaultIsoData(pixel_count);
+        Mat binary;
+        threshold(channels[n], binary, value, 255, THRESH_BINARY);
+        Mat dilatedImage;
+        dilate(binary, dilatedImage, kernel);
+        std::vector<std::vector<Point>> contours;
+        std::vector<Vec4i> hierarchy;
+        findContours(dilatedImage, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+
+        Mat result = Mat::zeros(channels[n].size(), channels[n].type());
+
+
+        double minAvgDistance = DBL_MAX;
+        int closestContourIndex = -1;
+
+        for (int i = 0; i < contours.size(); i++) {
+            vector<Point>& contour = contours[i];
+            double area = contourArea(contour);
+            if (area <= 400) continue;
+
+            double totalDistance = 0.0;
+            int validPointCount = 0;
+            int jump_step = contour.size() / 50 + 1;
+            for (int j = 0; j < contour.size(); j += jump_step) {
+                double distance = norm(contour[j] - center);
+                totalDistance += distance;
+                validPointCount++;
+            }
+            double avgDistance = (validPointCount > 0) ? totalDistance / validPointCount : 0;
+            if (avgDistance < minAvgDistance) {
+                minAvgDistance = avgDistance;
+                closestContourIndex = i;
+            }
+        }
+        drawContours(result, contours, closestContourIndex, Scalar(255), FILLED);
+        channels[n].copyTo(result, result);
+        channels[n] = result.clone();
+    }
+    merge(channels, 3, dst);
+    return dst;
+}
