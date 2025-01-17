@@ -57,3 +57,6 @@ bool camera_calibration(Mat gray,cv::Size patternSize,float grid_size,cv::Mat& c
 //返回值是矫正后的图像，输入图像是什么格式，输出图像就是什么格式
 //注：相机标定功能得到的结果参数只能用于矫正和计算得到结果的输入图像分辨率一致的图
 Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs);
+//蛋白中心区域叠加成彩色图，Bgray为蓝色灯下灰度图，Ggray为绿色灯下灰度图，Rgray为红色灯下灰度图
+//返回三通道彩色处理图
+Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray);
