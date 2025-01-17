@@ -102,7 +102,7 @@ namespace PBBiologyVC
         return results;
     }
 
-    void PBBiology::addProteinRectVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, List<RectVC^>^% proteinRect, int x, List<_band_info^>^% unadjustbands)
+    void PBBiology::addProteinRectVC(System::Byte* mat, int bit, unsigned short width, unsigned short height , int ProteinRect_width, int ProteinRect_height_ratio, List<RectVC^>^% proteinRect, int x, List<_band_info^>^% unadjustbands)
     {
         if (bit != 16) return ;
         cv::Mat src;
@@ -122,7 +122,7 @@ namespace PBBiologyVC
         _band_infoToBand_Info(bandinfo, unadjustbands);
 
          
-        addProteinRect(rects,x,src, bandinfo);
+        addProteinRect(rects,x,src, bandinfo,  ProteinRect_width,  ProteinRect_height_ratio);
 
         band_InfoTo_band_info(bandinfo, unadjustbands);
 

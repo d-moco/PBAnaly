@@ -472,4 +472,7 @@
   <data name="lb_lane_width" xml:space="preserve">
     <value>泳道宽度(像素)</value>
   </data>
+  <data name="mb_colonyCount" xml:space="preserve">
+    <value>菌落计数</value>
+  </data>
 </root>

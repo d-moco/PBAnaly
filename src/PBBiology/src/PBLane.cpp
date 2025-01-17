@@ -543,7 +543,7 @@ std::vector<cv::Rect> getProteinRect(Mat src,int* ProteinRect_width,bool keep_wi
 	}
 	return proteinRect;
 }
-void PBLane::addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands,int ProteinRect_width,int ProteinRect_height_ratio)
+void addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands,int ProteinRect_width,int ProteinRect_height_ratio)
 {
 	Rect new_proteinRect;
 	if(proteinRect.size() > 0)

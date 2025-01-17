@@ -686,6 +686,15 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 菌落计数 的本地化字符串。
+        /// </summary>
+        internal static string mb_colonyCount {
+            get {
+                return ResourceManager.GetString("mb_colonyCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 查找泳道 的本地化字符串。
         /// </summary>
         internal static string mb_findLanes {

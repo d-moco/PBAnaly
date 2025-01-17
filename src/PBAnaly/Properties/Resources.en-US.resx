@@ -321,4 +321,7 @@
   <data name="lb_lane_width" xml:space="preserve">
     <value>LaneW</value>
   </data>
+  <data name="mb_colonyCount" xml:space="preserve">
+    <value>colony</value>
+  </data>
 </root>
