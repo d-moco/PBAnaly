@@ -47,10 +47,7 @@
             this.mb_deleteBands = new MaterialSkin.Controls.MaterialButton();
             this.mb_findBands = new MaterialSkin.Controls.MaterialButton();
             this.panel2 = new AntdUI.Panel();
-            this.nud_minBandHeight = new System.Windows.Forms.NumericUpDown();
             this.cb_alwaysShowBands = new AntdUI.Checkbox();
-            this.lb_minBandsHeightInfo = new AntdUI.Label();
-            this.checkbox2 = new AntdUI.Checkbox();
             this.collapse1.SuspendLayout();
             this.clasi_lanes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,7 +56,6 @@
             this.clasi_strips.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_minBandHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // collapse1
@@ -271,8 +267,7 @@
             // clasi_strips
             // 
             this.clasi_strips.Controls.Add(this.tableLayoutPanel2);
-            this.clasi_strips.Expand = true;
-            this.clasi_strips.Location = new System.Drawing.Point(18, 98);
+            this.clasi_strips.Location = new System.Drawing.Point(-268, -186);
             this.clasi_strips.Margin = new System.Windows.Forms.Padding(2);
             this.clasi_strips.Name = "clasi_strips";
             this.clasi_strips.Size = new System.Drawing.Size(268, 186);
@@ -379,10 +374,7 @@
             this.panel2.Back = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.SetColumnSpan(this.panel2, 4);
-            this.panel2.Controls.Add(this.checkbox2);
-            this.panel2.Controls.Add(this.nud_minBandHeight);
             this.panel2.Controls.Add(this.cb_alwaysShowBands);
-            this.panel2.Controls.Add(this.lb_minBandsHeightInfo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(84, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -392,57 +384,17 @@
             this.panel2.TabIndex = 4;
             this.panel2.Text = "panel2";
             // 
-            // nud_minBandHeight
-            // 
-            this.nud_minBandHeight.Location = new System.Drawing.Point(6, 34);
-            this.nud_minBandHeight.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.nud_minBandHeight.Name = "nud_minBandHeight";
-            this.nud_minBandHeight.Size = new System.Drawing.Size(76, 21);
-            this.nud_minBandHeight.TabIndex = 0;
-            this.nud_minBandHeight.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
             // cb_alwaysShowBands
             // 
             this.cb_alwaysShowBands.AutoCheck = true;
             this.cb_alwaysShowBands.BackColor = System.Drawing.Color.Transparent;
             this.cb_alwaysShowBands.Checked = true;
-            this.cb_alwaysShowBands.Location = new System.Drawing.Point(0, 72);
+            this.cb_alwaysShowBands.Location = new System.Drawing.Point(2, 29);
             this.cb_alwaysShowBands.Margin = new System.Windows.Forms.Padding(2);
             this.cb_alwaysShowBands.Name = "cb_alwaysShowBands";
             this.cb_alwaysShowBands.Size = new System.Drawing.Size(106, 18);
             this.cb_alwaysShowBands.TabIndex = 8;
             this.cb_alwaysShowBands.Text = "总是显示条带";
-            // 
-            // lb_minBandsHeightInfo
-            // 
-            this.lb_minBandsHeightInfo.BackColor = System.Drawing.Color.Transparent;
-            this.lb_minBandsHeightInfo.Font = new System.Drawing.Font("宋体", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_minBandsHeightInfo.Location = new System.Drawing.Point(0, 4);
-            this.lb_minBandsHeightInfo.Margin = new System.Windows.Forms.Padding(2);
-            this.lb_minBandsHeightInfo.Name = "lb_minBandsHeightInfo";
-            this.lb_minBandsHeightInfo.Size = new System.Drawing.Size(114, 25);
-            this.lb_minBandsHeightInfo.TabIndex = 7;
-            this.lb_minBandsHeightInfo.Text = "最小条带高度(%)";
-            // 
-            // checkbox2
-            // 
-            this.checkbox2.AutoCheck = true;
-            this.checkbox2.BackColor = System.Drawing.Color.Transparent;
-            this.checkbox2.Checked = true;
-            this.checkbox2.Location = new System.Drawing.Point(2, 99);
-            this.checkbox2.Margin = new System.Windows.Forms.Padding(2);
-            this.checkbox2.Name = "checkbox2";
-            this.checkbox2.Size = new System.Drawing.Size(137, 18);
-            this.checkbox2.TabIndex = 9;
-            this.checkbox2.Text = "开启条带浮动显示";
             // 
             // LanesImagePaletteForm
             // 
@@ -464,7 +416,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nud_minBandHeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -490,9 +441,6 @@
         public MaterialSkin.Controls.MaterialButton mb_deleteBands;
         public MaterialSkin.Controls.MaterialButton mb_findBands;
         private AntdUI.Panel panel2;
-        public System.Windows.Forms.NumericUpDown nud_minBandHeight;
         public AntdUI.Checkbox cb_alwaysShowBands;
-        private AntdUI.Label lb_minBandsHeightInfo;
-        public AntdUI.Checkbox checkbox2;
     }
 }

@@ -15,6 +15,7 @@ using System.ComponentModel.Design;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -54,7 +55,10 @@ namespace PBAnaly.Module
             None = 0,
             FindLane,
             AddLane,
-            DeleteLane
+            DeleteLane,
+            AddBands,
+            DeleteBands,
+            FindBands
         }
         public struct LanesAttribute 
         {
@@ -66,6 +70,8 @@ namespace PBAnaly.Module
             public bool showLanesWell;
             public bool showAlwayLanesWell;
             public System.Drawing.Point? laneWell;
+            public int curLaneIndex;
+            public int curBandIndex;
         }
         #endregion
         #region 参数
@@ -94,6 +100,9 @@ namespace PBAnaly.Module
         private bool isAddLine = false;
         private bool isDeleteLineOn = false;
         private bool isShowLanelWellOn = false;// 是否设定初始井
+        public bool isAddBandsOn = false;// 是否添加条带
+        public bool isDeleteBandsOn = false;//删除指定条带
+        public bool isFindBandsOn = false;//查找条带
         private System.Drawing.Point? laneWellPoint;//显示初始井的点
         private System.Drawing.Rectangle curLanes ;
         private System.Drawing.Point curPoint;
@@ -209,6 +218,19 @@ namespace PBAnaly.Module
                 {
                     LaneEnum = CurLaneEnum.None;
                     lanesAttribute.showAlwayLanesWell = value;
+                    imagePanel.image_pl.Invalidate();
+                }
+            }
+        }
+        public bool ShowBands 
+        {
+            get { return lanesAttribute.showbands; }
+            set
+            {
+                if (lanesAttribute.showbands != value)
+                {
+                    lanesAttribute.laneEnum = CurLaneEnum.None;
+                    lanesAttribute.showbands = value;
                     imagePanel.image_pl.Invalidate();
                 }
             }
@@ -346,6 +368,74 @@ namespace PBAnaly.Module
                 case CurLaneEnum.DeleteLane:
 
                     break;
+                case CurLaneEnum.AddBands:
+                    unsafe 
+                    {
+                        List<RectVC> rectVCs1 = new List<RectVC>();
+                        List<_band_info> unadjustbands =new List<_band_info>();
+                        foreach (var item in lanes_Infos)
+                        {
+                            rectVCs1.Add(item.rect);
+                            unadjustbands.Add(item.band_Info);
+                        }
+                        pbb.addProteinBandVC(ref rectVCs1, lanesAttribute.curLaneIndex,ref unadjustbands,curPoint.Y);
+
+                        lanes_Infos.Clear();
+                        int index = 0;
+                        foreach (var item in rectVCs1)
+                        {
+                            Lanes_info lanes_Info = new Lanes_info();
+                            lanes_Info.rect = item;
+                            lanes_Info.band_Info = unadjustbands[index];
+                            lanes_Infos.Add(lanes_Info);
+                            index++;
+                        }
+                    }
+                    break;
+                case CurLaneEnum.DeleteBands:
+                    List<_band_info> _unadjustbands = new List<_band_info>();
+                    foreach (var item in lanes_Infos)
+                    {
+                       
+                        _unadjustbands.Add(item.band_Info);
+                    }
+
+                    pbb.deleteProteinBandVC(lanesAttribute.curLaneIndex, ref _unadjustbands, lanesAttribute.curBandIndex);
+
+                    for (int i = 0; i < lanes_Infos.Count; i++)
+                    {
+                        Lanes_info _lane = lanes_Infos[i];
+                        _lane.band_Info = _unadjustbands[i];
+                        lanes_Infos[i] = _lane;
+                    }
+                  
+                    break;
+                case CurLaneEnum.FindBands:
+                    List<RectVC> rectVCs = new List<RectVC>();
+                    foreach (var item in lanes_Infos)
+                    {
+                        rectVCs.Add(item.rect);
+                    }
+                  
+                    unsafe
+                    {
+                        lanes_Infos.Clear();
+                        fixed (byte* data_16bit = image_byte)
+                        {
+                            var pbands = pbb.getProteinBandsVC(data_16bit, 16, (ushort)image_L16.Width, (ushort)image_L16.Height, rectVCs);
+                            int index = 0;
+                            foreach (var item in rectVCs)
+                            {
+                                Lanes_info lanes_Info = new Lanes_info();
+                                lanes_Info.rect = item;
+                                lanes_Info.band_Info = pbands[index];
+                                lanes_Infos.Add(lanes_Info);
+                                index++;
+                            }
+                        }
+                    }
+                    LaneEnum = CurLaneEnum.None;
+                    break;
                 default:
                     break;
 
@@ -387,6 +477,8 @@ namespace PBAnaly.Module
             lanesAttribute.showLanes = true;
             lanesAttribute.showbands = true;
 
+            imagePaletteForm.cb_alwaysShowBands.Checked = lanesAttribute.showbands;
+            imagePaletteForm.cb_alwaysShowLane.Checked = lanesAttribute.showLanes;
 
             imagePanel.image_pl.MouseDown += Image_pl_MouseDown;
             imagePanel.image_pl.DoubleClick += Image_pl_DoubleClick;
@@ -409,6 +501,9 @@ namespace PBAnaly.Module
             imagePaletteForm.cb_alwaysShowLane.CheckedChanged += Cb_alwaysShowLane_CheckedChanged;
             imagePaletteForm.mb_updateInitWell.Click += Mb_updateInitWell_Click;
             imagePaletteForm.mb_addBands.Click += Mb_addBands_Click;
+            imagePaletteForm.mb_deleteBands.Click += Mb_deleteBands_Click;
+            imagePaletteForm.cb_alwaysShowBands.CheckedChanged += Cb_alwaysShowBands_CheckedChanged;
+            imagePaletteForm.mb_findBands.Click += Mb_findBands_Click;
 
             neuronInitialWellsForm.cb_alwayShowWell.CheckedChanged += Cb_alwayShowWell_CheckedChanged;
             neuronInitialWellsForm.btn_CencalLaneWell.Click += Btn_CencalLaneWell_Click;
@@ -527,6 +622,26 @@ namespace PBAnaly.Module
                 }
                 index++;
 
+            }
+            return false;
+        }
+
+        private bool IsPointInLanesBandsRectangles(System.Drawing.Point point, Lanes_info _lanes,out int _index )
+        {
+            System.Drawing.Rectangle p = new System.Drawing.Rectangle(_lanes.rect.X, _lanes.rect.Y, _lanes.rect.Width, _lanes.rect.Height);
+            _index = 0;
+            foreach (var item in _lanes.band_Info.band_point)
+            {
+                var p1 = new System.Drawing.Point(p.X, p.Top + item[1]);
+                var p2 = new System.Drawing.Point(p.Right, p.Top + item[2]);
+                System.Drawing.Rectangle rect = new System.Drawing.Rectangle(p1,new System.Drawing.Size(p2.X - p1.X,p2.Y-p1.Y));
+                if (rect.Contains(point))
+                {
+                    imagePanel.image_pl.Cursor = Cursors.Hand;
+                   
+                    return true;
+                }
+                _index++;
             }
             return false;
         }
@@ -675,7 +790,18 @@ namespace PBAnaly.Module
             }
             else if (IsPointInRectangles(readLoction, lanes_Infos, out var cner, out var curRect, out int index)) 
             {
-                
+                if (isAddBandsOn)
+                {
+                    imagePanel.image_pl.Cursor = Cursors.IBeam;
+                }
+                else if (isDeleteBandsOn)
+                {
+                    if (IsPointInLanesBandsRectangles(readLoction, curRect, out var _index)) 
+                    {
+                        imagePanel.image_pl.Cursor = Cursors.SizeAll;
+                    }
+                      
+                }
             }
 
         }
@@ -704,10 +830,31 @@ namespace PBAnaly.Module
                     lanes_Infos.RemoveAt(index);
                     imagePanel.image_pl.Invalidate();
                 }
-                else if (isShowLanelWellOn) 
+                else if (isShowLanelWellOn)
                 {
-                    laneWellPoint = new System.Drawing.Point(curRect.rect.X + (curRect.rect.Width/3),readLoction.Y);
+                    laneWellPoint = new System.Drawing.Point(curRect.rect.X + (curRect.rect.Width / 3), readLoction.Y);
                     imagePanel.image_pl.Invalidate();
+                }
+                else if (isAddBandsOn) 
+                {
+                    LaneEnum = CurLaneEnum.None;
+                    lanesAttribute.curLaneIndex = index;
+                    curPoint = readLoction;
+                    LaneEnum = CurLaneEnum.AddBands;
+                    isAddBandsOn = false;
+                }
+                else if (isDeleteBandsOn)
+                {
+                    if (IsPointInLanesBandsRectangles(readLoction, curRect, out var _index))
+                    {
+                        LaneEnum = CurLaneEnum.None;
+                        lanesAttribute.curLaneIndex = index;
+                        lanesAttribute.curBandIndex = _index;
+                        imagePanel.image_pl.Cursor = Cursors.SizeAll;
+                        LaneEnum = CurLaneEnum.DeleteBands;
+                       
+                    }
+                    isDeleteBandsOn = false;
                 }
                 else
                 {
@@ -799,7 +946,19 @@ namespace PBAnaly.Module
 
         private void Mb_addBands_Click(object sender, EventArgs e)
         {
-           
+            isAddBandsOn = true;
+        }
+        private void Mb_deleteBands_Click(object sender, EventArgs e)
+        {
+            isDeleteBandsOn = true;
+        }
+        private void Cb_alwaysShowBands_CheckedChanged(object sender, BoolEventArgs e)
+        {
+            ShowBands = imagePaletteForm.cb_alwaysShowBands.Checked;
+        }
+        private void Mb_findBands_Click(object sender, EventArgs e)
+        {
+            LaneEnum = CurLaneEnum.FindBands;
         }
         #endregion
 

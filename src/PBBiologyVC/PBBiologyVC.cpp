@@ -94,7 +94,6 @@ namespace PBBiologyVC
         }
         std::vector<BandInfo> bandinfo = getProteinBands(src, rects);
 
-        bandinfo = adjustBands(bandinfo,100);
         List<_band_info^>^ results = gcnew List<_band_info^>();
         band_InfoTo_band_info(bandinfo, results);
 
@@ -178,6 +177,40 @@ namespace PBBiologyVC
             info->Minfo->Add(minfo);
         }
         return info;
+    }
+
+    void PBBiology::addProteinBandVC(List<RectVC^>^% lanes, int lanesIndex, List<_band_info^>^% unadjustbands, int y)
+    {
+        std::vector<cv::Rect> rects(lanes->Count);
+
+        for (size_t i = 0; i < lanes->Count; i++)
+        {
+            RectVC^ laneRect = lanes[i];
+            rects[i] = cv::Rect(laneRect->X, laneRect->Y, laneRect->Width, laneRect->Height);
+        }
+        std::vector<BandInfo> bandinfo(unadjustbands->Count);
+
+        _band_infoToBand_Info(bandinfo, unadjustbands);
+
+        addProteinBand(rects,lanesIndex, bandinfo,y);
+
+        band_InfoTo_band_info(bandinfo, unadjustbands);
+
+        lanes->Clear();
+        for (const auto& rect : rects) {
+            lanes->Add(gcnew RectVC(rect.x, rect.y, rect.width, rect.height));
+        }
+    }
+
+    void PBBiology::deleteProteinBandVC(int lanesIndex, List<_band_info^>^% unadjustbands, int bandsIndex)
+    {
+        std::vector<BandInfo> bandinfo(unadjustbands->Count);
+
+        _band_infoToBand_Info(bandinfo, unadjustbands);
+
+        deleteProteinBand(lanesIndex, bandinfo, bandsIndex);
+
+        band_InfoTo_band_info(bandinfo, unadjustbands);
     }
 
     void PBBiology::band_InfoTo_band_info(std::vector<BandInfo> src, List<_band_info^>^% results)

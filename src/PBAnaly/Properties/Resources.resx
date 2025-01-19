@@ -475,4 +475,31 @@
   <data name="mb_colonyCount" xml:space="preserve">
     <value>菌落计数</value>
   </data>
+  <data name="mb_addBands" xml:space="preserve">
+    <value>添加条带</value>
+  </data>
+  <data name="mb_deleteBands" xml:space="preserve">
+    <value>删除条带</value>
+  </data>
+  <data name="mb_findBands" xml:space="preserve">
+    <value>查找条带</value>
+  </data>
+  <data name="cb_alwaysShowBands" xml:space="preserve">
+    <value>总是显示条带</value>
+  </data>
+  <data name="mb_addLanes" xml:space="preserve">
+    <value>添加泳道</value>
+  </data>
+  <data name="mb_deleteLane" xml:space="preserve">
+    <value>删除泳道</value>
+  </data>
+  <data name="mb_updateInitWell" xml:space="preserve">
+    <value>修改初始井</value>
+  </data>
+  <data name="cb_lane_width" xml:space="preserve">
+    <value>统一泳道宽度</value>
+  </data>
+  <data name="cb_alwaysShowLane" xml:space="preserve">
+    <value>总是显示泳道</value>
+  </data>
 </root>

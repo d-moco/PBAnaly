@@ -256,7 +256,7 @@
     <value>Trans-fluorescence</value>
   </data>
   <data name="mb_findLanes" xml:space="preserve">
-    <value>FindLane</value>
+    <value>Find Lane</value>
   </data>
   <data name="label_path" xml:space="preserve">
     <value>path</value>
@@ -323,5 +323,32 @@
   </data>
   <data name="mb_colonyCount" xml:space="preserve">
     <value>colony</value>
+  </data>
+  <data name="mb_addBands" xml:space="preserve">
+    <value>Add Band</value>
+  </data>
+  <data name="mb_deleteBands" xml:space="preserve">
+    <value>Delete Band</value>
+  </data>
+  <data name="mb_findBands" xml:space="preserve">
+    <value>Find Band</value>
+  </data>
+  <data name="cb_alwaysShowBands" xml:space="preserve">
+    <value>Show Bands</value>
+  </data>
+  <data name="mb_addLanes" xml:space="preserve">
+    <value>Add Lane</value>
+  </data>
+  <data name="mb_deleteLane" xml:space="preserve">
+    <value>Delete Lane</value>
+  </data>
+  <data name="mb_updateInitWell" xml:space="preserve">
+    <value>Update Well</value>
+  </data>
+  <data name="cb_lane_width" xml:space="preserve">
+    <value>Lane-width</value>
+  </data>
+  <data name="cb_alwaysShowLane" xml:space="preserve">
+    <value>Show Lane</value>
   </data>
 </root>
