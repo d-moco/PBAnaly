@@ -157,6 +157,12 @@
     <Compile Include="UI\AnalyzeDataForm.Designer.cs">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LaneInitialWellsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LaneInitialWellsForm.Designer.cs">
+      <DependentUpon>LaneInitialWellsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LaneLineChartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,7 @@
     <Compile Include="UI\SystemSettingForm.Designer.cs">
       <DependentUpon>SystemSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\DrawComm.cs" />
     <Compile Include="Util\ViKeySoft.cs" />
     <EmbeddedResource Include="DataProcessForm.resx">
       <DependentUpon>DataProcessForm.cs</DependentUpon>
@@ -277,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AnalyzeDataForm.resx">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaneInitialWellsForm.resx">
+      <DependentUpon>LaneInitialWellsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LaneLineChartForm.resx">
       <DependentUpon>LaneLineChartForm.cs</DependentUpon>

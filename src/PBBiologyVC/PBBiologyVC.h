@@ -60,6 +60,8 @@ namespace PBBiologyVC {
 		List<_band_info^>^ getProteinBandsVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, List<RectVC^>^ lanes);
 		void addProteinRectVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, int ProteinRect_width, int ProteinRect_height_ratio, List<RectVC^>^% proteinRect,int x, List<_band_info^>^% unadjustbands);
 		_band_info^ get_protein_lane_dataVC(System::Byte* mat, int bit, unsigned short width, unsigned short height, RectVC^ lane);
+		void addProteinBandVC(List<RectVC^>^% lanes, int lanesIndex, List<_band_info^>^% unadjustbands, int y);
+		void deleteProteinBandVC(int lanesIndex, List<_band_info^>^% unadjustbands, int bandsIndex);
 	private:
 		void PBBiology::band_InfoTo_band_info(std::vector<BandInfo> src, List<_band_info^>^% results);
 		void PBBiology::_band_infoToBand_Info(std::vector<BandInfo>& bandinfo, List<_band_info^>^ bands);

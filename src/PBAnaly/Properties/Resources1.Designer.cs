@@ -317,6 +317,33 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 总是显示条带 的本地化字符串。
+        /// </summary>
+        internal static string cb_alwaysShowBands {
+            get {
+                return ResourceManager.GetString("cb_alwaysShowBands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 总是显示泳道 的本地化字符串。
+        /// </summary>
+        internal static string cb_alwaysShowLane {
+            get {
+                return ResourceManager.GetString("cb_alwaysShowLane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 统一泳道宽度 的本地化字符串。
+        /// </summary>
+        internal static string cb_lane_width {
+            get {
+                return ResourceManager.GetString("cb_lane_width", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 记住登录 的本地化字符串。
         /// </summary>
         internal static string cb_Remember {
@@ -686,6 +713,24 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 添加条带 的本地化字符串。
+        /// </summary>
+        internal static string mb_addBands {
+            get {
+                return ResourceManager.GetString("mb_addBands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 添加泳道 的本地化字符串。
+        /// </summary>
+        internal static string mb_addLanes {
+            get {
+                return ResourceManager.GetString("mb_addLanes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 菌落计数 的本地化字符串。
         /// </summary>
         internal static string mb_colonyCount {
@@ -695,11 +740,47 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 删除条带 的本地化字符串。
+        /// </summary>
+        internal static string mb_deleteBands {
+            get {
+                return ResourceManager.GetString("mb_deleteBands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 删除泳道 的本地化字符串。
+        /// </summary>
+        internal static string mb_deleteLane {
+            get {
+                return ResourceManager.GetString("mb_deleteLane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 查找条带 的本地化字符串。
+        /// </summary>
+        internal static string mb_findBands {
+            get {
+                return ResourceManager.GetString("mb_findBands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 查找泳道 的本地化字符串。
         /// </summary>
         internal static string mb_findLanes {
             get {
                 return ResourceManager.GetString("mb_findLanes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 修改初始井 的本地化字符串。
+        /// </summary>
+        internal static string mb_updateInitWell {
+            get {
+                return ResourceManager.GetString("mb_updateInitWell", resourceCulture);
             }
         }
         
