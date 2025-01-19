@@ -1,4 +1,5 @@
-﻿using Aspose.Pdf.AI;
+﻿using AntdUI;
+using Aspose.Pdf.AI;
 using OpenCvSharp;
 using OpenCvSharp.Flann;
 using PBAnaly.UI;
@@ -10,6 +11,7 @@ using SixLabors.ImageSharp.PixelFormats;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -51,7 +53,8 @@ namespace PBAnaly.Module
         {
             None = 0,
             FindLane,
-            AddLane
+            AddLane,
+            DeleteLane
         }
         public struct LanesAttribute 
         {
@@ -60,7 +63,9 @@ namespace PBAnaly.Module
             public int ProteinRect_width;
             public bool showLanes;
             public bool showbands;
-
+            public bool showLanesWell;
+            public bool showAlwayLanesWell;
+            public System.Drawing.Point? laneWell;
         }
         #endregion
         #region 参数
@@ -80,12 +85,16 @@ namespace PBAnaly.Module
         private ReaLTaiizor.Controls.Panel pl_right;
         private LanesImagePanel imagePanel = null;
         private LanesImagePaletteForm imagePaletteForm = null;
+        private LaneInitialWellsForm neuronInitialWellsForm = null;
         private Thread algThread;
         private bool isalgRun = false;
         private bool isUpdateAlg = false;
         private Queue<LanesAttribute> queueAlgAttribute = new Queue<LanesAttribute>();
         private List<Lanes_info> lanes_Infos = new List<Lanes_info>();
         private bool isAddLine = false;
+        private bool isDeleteLineOn = false;
+        private bool isShowLanelWellOn = false;// 是否设定初始井
+        private System.Drawing.Point? laneWellPoint;//显示初始井的点
         private System.Drawing.Rectangle curLanes ;
         private System.Drawing.Point curPoint;
         private List<System.Drawing.Color> laneColorList = new List<System.Drawing.Color>();// 泳道的颜色表
@@ -153,6 +162,57 @@ namespace PBAnaly.Module
                 }
             }
         }
+
+        public System.Drawing.Point? LaneWall 
+        {
+            get { return lanesAttribute.laneWell; }
+            set
+            {
+                bool fix = false;
+                if (lanesAttribute.laneWell == null) 
+                {
+                    fix = true;
+                    lanesAttribute.laneWell = value;
+                }
+                else if (lanesAttribute.laneWell.Value.X != value.Value.X || lanesAttribute.laneWell.Value.Y != value.Value.Y)
+                {
+                    fix = true;
+                    lanesAttribute.laneWell = value;
+                    
+                }
+                if (fix && isUpdateAlg)
+                {
+                    queueAlgAttribute.Enqueue(lanesAttribute);
+                }
+            }
+        }
+
+        public bool ShowLaneWallOn 
+        {
+            get { return lanesAttribute.showLanesWell; }
+            set
+            {
+                if (lanesAttribute.showLanesWell != value)
+                {
+                    LaneEnum = CurLaneEnum.None;
+                    lanesAttribute.showLanesWell = value;
+                    imagePanel.image_pl.Invalidate();
+                }
+            }
+        }
+        public bool ShowAlwayLanesWall
+        {
+            get { return lanesAttribute.showAlwayLanesWell; }
+            set
+            {
+                if (lanesAttribute.showAlwayLanesWell != value)
+                {
+                    LaneEnum = CurLaneEnum.None;
+                    lanesAttribute.showAlwayLanesWell = value;
+                    imagePanel.image_pl.Invalidate();
+                }
+            }
+        }
         #endregion
 
         public LanesMannage(string _path, ReaLTaiizor.Controls.Panel _pl_right, Dictionary<string, LanesMannage> lanesMannages) 
@@ -182,6 +242,7 @@ namespace PBAnaly.Module
             imagePaletteForm.BringToFront();
             imagePaletteForm.Show();
 
+            neuronInitialWellsForm = new LaneInitialWellsForm();
             InitColorList();
             Init();
             RefreshImage();// 初始化图像
@@ -264,7 +325,7 @@ namespace PBAnaly.Module
                             }
                         }
                     }
-
+                    LaneEnum = CurLaneEnum.None;
                     break;
                 case CurLaneEnum.AddLane:
                     unsafe
@@ -281,6 +342,9 @@ namespace PBAnaly.Module
                             lanes_Infos.Add(lanes_Info);
                         }
                     }
+                    break;
+                case CurLaneEnum.DeleteLane:
+
                     break;
                 default:
                     break;
@@ -339,13 +403,22 @@ namespace PBAnaly.Module
 
             imagePaletteForm.mb_findLanes.Click += Mb_findLanes_Click;
             imagePaletteForm.mb_addLanes.Click += Mb_addLanes_Click;
+            imagePaletteForm.mb_deleteLane.Click += Mb_deleteLane_Click;
             imagePaletteForm.cb_lane_width.CheckedChanged += Cb_lane_width_CheckedChanged;
             imagePaletteForm.nud_lane_fixedWidth.ValueChanged += Nud_lane_fixedWidth_ValueChanged;
             imagePaletteForm.cb_alwaysShowLane.CheckedChanged += Cb_alwaysShowLane_CheckedChanged;
+            imagePaletteForm.mb_updateInitWell.Click += Mb_updateInitWell_Click;
+            imagePaletteForm.mb_addBands.Click += Mb_addBands_Click;
+
+            neuronInitialWellsForm.cb_alwayShowWell.CheckedChanged += Cb_alwayShowWell_CheckedChanged;
+            neuronInitialWellsForm.btn_CencalLaneWell.Click += Btn_CencalLaneWell_Click;
+            neuronInitialWellsForm.btn_deleteLaneWell.Click += Btn_deleteLaneWell_Click;
+            neuronInitialWellsForm.btn_okLaneWell.Click += Btn_okLaneWell_Click;
+            neuronInitialWellsForm.FormClosing += NeuronInitialWellsForm_FormClosing;
             KeyboardListener.Register(OnKeyPressed); // 创建键盘钩子
         }
 
-       
+        
 
         private bool ReadTiff()
         {
@@ -480,8 +553,30 @@ namespace PBAnaly.Module
                 System.Drawing.Rectangle p = new System.Drawing.Rectangle(rect.rect.X, rect.rect.Y, rect.rect.Width, rect.rect.Height);
                 
                 var r = ImageProcess.ConvertRealRectangleToPictureBox(p, imagePanel.image_pl);
+                // 绘制编号
+                System.Drawing.Font l  = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+                SolidBrush solidBrush = new SolidBrush(color); 
+                
                 if (lanesAttribute.showLanes) 
                 {
+                    if (lanesAttribute.showLanesWell) 
+                    {
+                        if (lanesAttribute.laneWell != null) 
+                        {
+                            var r1 = ImageProcess.ConvertRealToPictureBox(lanesAttribute.laneWell.Value, imagePanel.image_pl);
+                            r.Y = r1.Y;
+                            r.Height = r.Height - r1.Y;
+                            if (lanesAttribute.showAlwayLanesWell) 
+                            {
+                                Pen pen = new Pen(System.Drawing.Color.Red,5);
+                                e.Graphics.DrawLine(pen, new System.Drawing.Point(r.X, r.Y-1), new System.Drawing.Point(r.X + r.Width, r.Y-1));
+                            }
+                           
+                        }
+                       
+                    }
+
+                    e.Graphics.DrawString("L" + index, l, solidBrush, new System.Drawing.RectangleF(r.X + r.Width / 3, r.Y - 20, r.Width + 10, 100));
                     if (rect.isSelect)
                     {
                         e.Graphics.DrawRectangle(color, r, false, 6);
@@ -546,6 +641,18 @@ namespace PBAnaly.Module
                 var r = ImageProcess.ConvertRealRectangleToPictureBox(curLanes, imagePanel.image_pl);
                 e.Graphics.DrawRectangle(System.Drawing.Color.Red, r, false, 6);
             }
+
+            if (isShowLanelWellOn) 
+            {
+                if (laneWellPoint != null) 
+                {
+                    var  p1 = ImageProcess.ConvertRealToPictureBox((System.Drawing.Point)laneWellPoint, imagePanel.image_pl);
+                  
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    Brush bush = new SolidBrush(System.Drawing.Color.Red);//填充的颜色                 
+                    e.Graphics.FillEllipse(bush, p1.X, p1.Y,10,10);//画椭圆的方法，x坐标、y坐标、宽、高，如果是100，则半径为50
+                }
+            }
         }
 
         private void Image_pl_MouseUp(object sender, MouseEventArgs e)
@@ -591,15 +698,30 @@ namespace PBAnaly.Module
             }
             else if (IsPointInRectangles(readLoction, lanes_Infos, out var cner, out var curRect, out int index))
             {
-                for (int i = 0; i < lanes_Infos.Count; i++) 
+                if (isDeleteLineOn)
                 {
-                    Lanes_info lanes = lanes_Infos[i];
-                    lanes.isSelect = false;
-                    lanes_Infos[i] = lanes;
+                    isDeleteLineOn = false;
+                    lanes_Infos.RemoveAt(index);
+                    imagePanel.image_pl.Invalidate();
                 }
-                curRect.isSelect = true;
-                lanes_Infos[index] = curRect;
-                imagePanel.image_pl.Invalidate();
+                else if (isShowLanelWellOn) 
+                {
+                    laneWellPoint = new System.Drawing.Point(curRect.rect.X + (curRect.rect.Width/3),readLoction.Y);
+                    imagePanel.image_pl.Invalidate();
+                }
+                else
+                {
+                    for (int i = 0; i < lanes_Infos.Count; i++)
+                    {
+                        Lanes_info lanes = lanes_Infos[i];
+                        lanes.isSelect = false;
+                        lanes_Infos[i] = lanes;
+                    }
+                    curRect.isSelect = true;
+                    lanes_Infos[index] = curRect;
+                    imagePanel.image_pl.Invalidate();
+                }
+               
             }
         }
         private void ImagePanel_FormClosed(object sender, FormClosedEventArgs e)
@@ -646,6 +768,10 @@ namespace PBAnaly.Module
         {
             isAddLine = true;
         }
+        private void Mb_deleteLane_Click(object sender, EventArgs e)
+        {
+            isDeleteLineOn = true;
+        }
         private void Cb_lane_width_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {
             IsSameLineWidth = imagePaletteForm.cb_lane_width.Checked;
@@ -658,6 +784,71 @@ namespace PBAnaly.Module
         private void Cb_alwaysShowLane_CheckedChanged(object sender, AntdUI.BoolEventArgs e)
         {
             ShowLanes = imagePaletteForm.cb_alwaysShowLane.Checked;
+        }
+        private void Mb_updateInitWell_Click(object sender, EventArgs e)
+        {
+            isShowLanelWellOn = true;
+            if (neuronInitialWellsForm != null) 
+            {
+                neuronInitialWellsForm.TopMost = true;
+                neuronInitialWellsForm.Show();
+            }
+            laneWellPoint = null;
+            ShowLaneWallOn = true;
+        }
+
+        private void Mb_addBands_Click(object sender, EventArgs e)
+        {
+           
+        }
+        #endregion
+
+        #region LaneInitialWells
+        private void NeuronInitialWellsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Btn_CencalLaneWell_Click(null,null);
+            e.Cancel = true;
+        }
+        private void Btn_okLaneWell_Click(object sender, EventArgs e)
+        {
+            if (neuronInitialWellsForm != null)
+            {
+                neuronInitialWellsForm.Hide();
+                
+            }
+            if (laneWellPoint != null) 
+            {
+                LaneWall = (System.Drawing.Point)laneWellPoint;
+                laneWellPoint = null;
+            }
+            
+            isShowLanelWellOn = false;
+        }
+
+        private void Btn_deleteLaneWell_Click(object sender, EventArgs e)
+        {
+            ShowLaneWallOn = false;
+            laneWellPoint = null;
+        }
+
+        private void Btn_CencalLaneWell_Click(object sender, EventArgs e)
+        {
+            if (neuronInitialWellsForm != null)
+            {
+                neuronInitialWellsForm.Hide();
+
+            }
+            if (laneWellPoint != null)
+            {
+                LaneWall = (System.Drawing.Point)laneWellPoint;
+                laneWellPoint = null;
+            }
+            isShowLanelWellOn = false;
+        }
+
+        private void Cb_alwayShowWell_CheckedChanged(object sender)
+        {
+            ShowAlwayLanesWall = neuronInitialWellsForm.cb_alwayShowWell.Checked;
         }
         #endregion
 
