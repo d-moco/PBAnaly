@@ -1385,8 +1385,9 @@ Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray)
     
     int size = Bgray.rows * Bgray.cols;
     Mat channels[3] = {Bgray, Ggray, Rgray};
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(11, 11));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(21, 21));
     Point center(Bgray.cols / 2, Bgray.rows / 2);
+    Mat result = Mat::zeros(channels[0].size(), channels[0].type());
     for(int n = 0; n < 3; n++)
     {
         int pixel_count[256] = {0};
@@ -1402,8 +1403,6 @@ Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray)
         std::vector<std::vector<Point>> contours;
         std::vector<Vec4i> hierarchy;
         findContours(dilatedImage, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-
-        Mat result = Mat::zeros(channels[n].size(), channels[n].type());
 
 
         double minAvgDistance = DBL_MAX;
@@ -1429,8 +1428,11 @@ Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray)
             }
         }
         drawContours(result, contours, closestContourIndex, Scalar(255), FILLED);
-        channels[n].copyTo(result, result);
-        channels[n] = result.clone();
+    }
+    for(int n = 0; n < 3; n++){
+        Mat temp;
+        channels[n].copyTo(temp, result);
+        channels[n] = temp.clone();
     }
     merge(channels, 3, dst);
     return dst;
