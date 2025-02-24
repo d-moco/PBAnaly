@@ -1370,7 +1370,7 @@ Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs)
     return undistortedImage;
 }
 
-Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray)
+Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray,Rect roi)
 {
     Mat dst = Mat::zeros(Bgray.rows,Bgray.cols,CV_8UC3);
     if(Rgray.type() != CV_8UC1 || Ggray.type() != CV_8UC1 || Bgray.type() != CV_8UC1)
@@ -1382,37 +1382,77 @@ Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray)
         std::cout << "Error: Images have different sizes!" << std::endl;
         return dst;
     }
-    
-    int size = Bgray.rows * Bgray.cols;
     Mat channels[3] = {Bgray, Ggray, Rgray};
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(21, 21));
-    Point center(Bgray.cols / 2, Bgray.rows / 2);
     Mat result = Mat::zeros(channels[0].size(), channels[0].type());
-    for(int n = 0; n < 3; n++)
+    if(roi.width == Bgray.cols && roi.height == Bgray.rows)
     {
+
+        int ddepth = CV_32F;
+        int scale = 1; 
+        int delta = 0; 
+        Mat grad_x_b, grad_y_b, grad_b;
+        Mat grad_x_g, grad_y_g, grad_g;
+        Mat grad_x_r, grad_y_r, grad_r;
+        Sobel(Bgray, grad_x_b, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Bgray, grad_y_b, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Ggray, grad_x_g, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Ggray, grad_y_g, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Rgray, grad_x_r, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Rgray, grad_y_r, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
+
+        Mat grad_b_magnitude, grad_g_magnitude, grad_r_magnitude;
+        magnitude(grad_x_b, grad_y_b, grad_b_magnitude);
+        magnitude(grad_x_g, grad_y_g, grad_g_magnitude);
+        magnitude(grad_x_r, grad_y_r, grad_r_magnitude);
+        Mat grad_combined = grad_b_magnitude + grad_g_magnitude + grad_r_magnitude;
+        Mat grad_display;
+        convertScaleAbs(grad_combined, grad_display);
+
         int pixel_count[256] = {0};
-        unsigned char* pixel_point = channels[n].data;
-        for (int n = 0; n < size; n++) {
+        unsigned char* pixel_point = grad_display.data;
+        for (int n = 0; n < Bgray.rows * Bgray.cols; n++) {
             pixel_count[*pixel_point++]++;
         }
-        int value = defaultIsoData(pixel_count);
+        int temp = 0;
+        int upperSize = 3000;
+        int max_val = 0;
+        int value = 255;
+        for (int i = 255; i > 0; i--)
+        {
+            temp += pixel_count[i];
+            if(temp > 0 && max_val == 0){
+                max_val = i;
+            }
+            if (temp > upperSize) {
+                value = i - 1;
+                break;
+            }
+        }
+        if(value > max_val - 5)
+        {
+            value = max_val - 5;
+        }else if(value < max_val - 10)
+        {
+            value = max_val - 10;
+        }
         Mat binary;
-        threshold(channels[n], binary, value, 255, THRESH_BINARY);
-        Mat dilatedImage;
-        dilate(binary, dilatedImage, kernel);
-        std::vector<std::vector<Point>> contours;
-        std::vector<Vec4i> hierarchy;
-        findContours(dilatedImage, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+        threshold(grad_display, binary, value, 255, THRESH_BINARY);
+        Mat kernel = getStructuringElement(MORPH_RECT, Size(11, 11));
+        Mat dilated;
+        cv::dilate(binary, dilated, kernel);
+        cv::erode(dilated, binary, kernel);
 
-
+        vector<vector<Point>> contours;
+        vector<Vec4i> hierarchy;
+        findContours(binary, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+        Point center(Bgray.cols / 2, Bgray.rows / 2);
         double minAvgDistance = DBL_MAX;
         int closestContourIndex = -1;
-
-        for (int i = 0; i < contours.size(); i++) {
+        for (size_t i = 0; i < contours.size(); i++) {
             vector<Point>& contour = contours[i];
             double area = contourArea(contour);
-            if (area <= 400) continue;
-
+            if (area <= 5000) continue;
+            
             double totalDistance = 0.0;
             int validPointCount = 0;
             int jump_step = contour.size() / 50 + 1;
@@ -1427,7 +1467,10 @@ Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray)
                 closestContourIndex = i;
             }
         }
-        drawContours(result, contours, closestContourIndex, Scalar(255), FILLED);
+        drawContours(result, contours, closestContourIndex, Scalar(255), FILLED);       
+    }
+    else{
+        rectangle(result, roi, Scalar(255), FILLED);
     }
     for(int n = 0; n < 3; n++){
         Mat temp;

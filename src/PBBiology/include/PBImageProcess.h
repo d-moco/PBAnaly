@@ -58,5 +58,6 @@ bool camera_calibration(Mat gray,cv::Size patternSize,float grid_size,cv::Mat& c
 //注：相机标定功能得到的结果参数只能用于矫正和计算得到结果的输入图像分辨率一致的图
 Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs);
 //蛋白中心区域叠加成彩色图，Bgray为蓝色灯下灰度图，Ggray为绿色灯下灰度图，Rgray为红色灯下灰度图
+//roi为手动标注区域，自动检测时 Rect roi = Rect(0,0,Bgray.cols,Bgray.rows)，否则直接按照roi区域进行标定叠加
 //返回三通道彩色处理图
-Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray);
+Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray,Rect roi);
