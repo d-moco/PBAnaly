@@ -407,6 +407,15 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 亮度 的本地化字符串。
+        /// </summary>
+        internal static string flb_brightness {
+            get {
+                return ResourceManager.GetString("flb_brightness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 忘记密码？点击找回 的本地化字符串。
         /// </summary>
         internal static string lab_forget_pass {

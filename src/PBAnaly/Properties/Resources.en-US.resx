@@ -133,7 +133,7 @@
     <value>Password</value>
   </data>
   <data name="btn_Frin_Password" xml:space="preserve">
-    <value>FIND</value>
+    <value>Find</value>
   </data>
   <data name="label4" xml:space="preserve">
     <value>Login</value>
@@ -350,5 +350,8 @@
   </data>
   <data name="cb_alwaysShowLane" xml:space="preserve">
     <value>Show Lane</value>
+  </data>
+  <data name="flb_brightness" xml:space="preserve">
+    <value>Brightness</value>
   </data>
 </root>
