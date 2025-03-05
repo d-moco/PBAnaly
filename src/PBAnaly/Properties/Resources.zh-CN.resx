@@ -351,4 +351,7 @@
   <data name="cb_alwaysShowLane" xml:space="preserve">
     <value>总是显示泳道</value>
   </data>
+  <data name="flb_brightness" xml:space="preserve">
+    <value>亮度</value>
+  </data>
 </root>
