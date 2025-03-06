@@ -335,6 +335,15 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 连续绘制 的本地化字符串。
+        /// </summary>
+        internal static string cb_continuous {
+            get {
+                return ResourceManager.GetString("cb_continuous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 统一泳道宽度 的本地化字符串。
         /// </summary>
         internal static string cb_lane_width {
@@ -358,6 +367,15 @@ namespace PBAnaly.Properties {
         internal static string cb_scientific {
             get {
                 return ResourceManager.GetString("cb_scientific", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 锐化 的本地化字符串。
+        /// </summary>
+        internal static string cb_sharpen {
+            get {
+                return ResourceManager.GetString("cb_sharpen", resourceCulture);
             }
         }
         
@@ -398,6 +416,33 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 图像调整 的本地化字符串。
+        /// </summary>
+        internal static string collapseItem1 {
+            get {
+                return ResourceManager.GetString("collapseItem1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ROI工具 的本地化字符串。
+        /// </summary>
+        internal static string collapseItem2 {
+            get {
+                return ResourceManager.GetString("collapseItem2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 标签工具 的本地化字符串。
+        /// </summary>
+        internal static string collapseItem3 {
+            get {
+                return ResourceManager.GetString("collapseItem3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 显示 的本地化字符串。
         /// </summary>
         internal static string crownLabel1 {
@@ -407,11 +452,38 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
+        ///   查找类似 修改 的本地化字符串。
+        /// </summary>
+        internal static string fb_fixSetting {
+            get {
+                return ResourceManager.GetString("fb_fixSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 亮度 的本地化字符串。
         /// </summary>
         internal static string flb_brightness {
             get {
                 return ResourceManager.GetString("flb_brightness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 色阶 的本地化字符串。
+        /// </summary>
+        internal static string foxLabel2 {
+            get {
+                return ResourceManager.GetString("foxLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 透明度 的本地化字符串。
+        /// </summary>
+        internal static string foxLabel3 {
+            get {
+                return ResourceManager.GetString("foxLabel3", resourceCulture);
             }
         }
         

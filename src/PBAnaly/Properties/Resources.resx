@@ -505,4 +505,36 @@
   <data name="flb_brightness" xml:space="preserve">
     <value>亮度</value>
   </data>
+  <data name="collapseItem1" xml:space="preserve">
+    <value>图像调整</value>
+    <comment>图像调整</comment>
+  </data>
+  <data name="collapseItem2" xml:space="preserve">
+    <value>ROI工具</value>
+    <comment>ROI工具</comment>
+  </data>
+  <data name="collapseItem3" xml:space="preserve">
+    <value>标签工具</value>
+    <comment>标签工具</comment>
+  </data>
+  <data name="foxLabel3" xml:space="preserve">
+    <value>透明度</value>
+    <comment>透明度</comment>
+  </data>
+  <data name="foxLabel2" xml:space="preserve">
+    <value>色阶</value>
+    <comment>色阶</comment>
+  </data>
+  <data name="cb_sharpen" xml:space="preserve">
+    <value>锐化</value>
+    <comment>锐化</comment>
+  </data>
+  <data name="cb_continuous" xml:space="preserve">
+    <value>连续绘制</value>
+    <comment>连续绘制</comment>
+  </data>
+  <data name="fb_fixSetting" xml:space="preserve">
+    <value>修改</value>
+    <comment>修改</comment>
+  </data>
 </root>
