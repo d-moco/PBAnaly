@@ -2,6 +2,7 @@
 using PBAnaly.Module;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -103,6 +104,21 @@ namespace PBAnaly.UI
 
 
         #region 对外方法
+        public void SaveImage(string imgPath) 
+        {
+            if (image_pl.InvokeRequired)
+            {
+                image_pl.Invoke(new MethodInvoker(() =>
+                {
+                    image_pl.SaveToImage(imgPath,System.Drawing.Imaging.ImageFormat.Bmp);
+                }));
+
+            }
+            else
+            {
+                image_pl.SaveToImage(imgPath, System.Drawing.Imaging.ImageFormat.Bmp);
+            }
+        }
         public void SetButtomLabel(string value) 
         {
             lb_size.Text = value;
@@ -261,7 +277,7 @@ namespace PBAnaly.UI
         {
             // 创建一个位图，其大小与panel相同
             Bitmap bitmap = new Bitmap(this.Width, this.Height);
-
+          
             // 将panel的视图渲染到位图上
             this.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, this.Width, this.Height));
 

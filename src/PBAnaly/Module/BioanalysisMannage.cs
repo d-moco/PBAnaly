@@ -96,6 +96,7 @@ namespace PBAnaly.Module
         public int Arrangement { get; set; } // 0:代表单张图 1:代表是合并图图但不做处理 2:代表是合并图 并且为处理图
         private Dictionary<string, BioanalysisMannage> bioanalysisMannages;
         public string path { get; set; }
+        public string curImagePath { get; private set; }
         private string mark_path;
         private string tif_marker_path;
         private string tif_org_path;
@@ -593,6 +594,7 @@ namespace PBAnaly.Module
                     if (tifFile.ToUpper().Contains("MARKER"))
                     {
                         tif_marker_path = tifFile;
+                        curImagePath = tif_marker_path;
                         image_mark_L16 = util.LoadTiffAsL16(tif_marker_path);
                         image_mark_byte = util.ConvertL16ImageToByteArray(image_mark_L16);
                         byte[] bytes = new byte[image_mark_byte.Length];
@@ -726,8 +728,11 @@ namespace PBAnaly.Module
                     switch (imagePanel.cbb_mode.Text)
                     {
                         case "merge":
-                            if (image_mark_and_org_rgb24 != null)
+                            if (image_mark_and_org_rgb24 != null) 
+                            {
                                 imagePanel.SetImage(image_mark_and_org_rgb24, colorbar_rgb24_image);
+                            }
+                                
                             break;
                         case "mark":
                             if (image_mark_rgb24 != null)
@@ -752,8 +757,10 @@ namespace PBAnaly.Module
                 switch (imagePanel.cbb_mode.Text)
                 {
                     case "merge":
-                        if (image_mark_and_org_rgb24 != null)
+                        if (image_mark_and_org_rgb24 != null) 
+                        {
                             imagePanel.SetImage(image_mark_and_org_rgb24, colorbar_rgb24_image);
+                        } 
                         break;
                     case "mark":
                         if (image_mark_rgb24 != null)
@@ -2881,7 +2888,14 @@ namespace PBAnaly.Module
             }
           
         }
-
+        public void SaveImage(string imgPath) 
+        {
+            imagePanel.image_pl.Invoke(new MethodInvoker(() =>
+            {
+                imagePanel.image_pl.Image.Save(imgPath);
+            }));
+           
+        }
         public Image3D GetBarImage 
         {
             get
