@@ -95,13 +95,14 @@ namespace PBAnaly
             FormGenerate_X = 0;
             FormGenerate_Y = 0;
 
-            if (GlobalData.GetProperty("Language") == "Chinese")
+            if (GlobalData.GetProperty("Language") == "English")
             {
-                SetLanguage("zh-CN");
+                SetLanguage("en-US");
             }
             else
             {
-                SetLanguage("en-US");
+                SetLanguage("zh-CN");
+              
             }
             // initPanel();
         }
