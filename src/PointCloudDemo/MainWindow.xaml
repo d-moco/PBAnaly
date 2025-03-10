@@ -1,0 +1,73 @@
+﻿<Window x:Class="PointCloudDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:h="http://helix-toolkit.org/wpf"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="3D Terrain Viewer" Height="800" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 3D Viewport -->
+        <h:HelixViewport3D Grid.Column="0" 
+                          ShowCoordinateSystem="True"
+                          ZoomExtentsWhenLoaded="True"
+                          Name="viewport3D">
+            <h:SunLight/>
+            <h:GridLinesVisual3D/>
+            <h:DefaultLights/>
+        </h:HelixViewport3D>
+
+        <!-- 增强的右侧控制面板 -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <GroupBox Header="Controls" Margin="0 0 0 10">
+                <StackPanel>
+                    <Button Content="Open TIFF File" 
+                            Click="OpenFile_Click"
+                            Margin="0 5"
+                            Padding="10 5"
+                            Visibility="Hidden"/>
+
+                    <CheckBox Name="cbTextureView" 
+                              Content="3D Texture View" 
+                              Margin="0 10"
+                              Checked="CbTextureView_Checked"
+                              Unchecked="CbTextureView_Unchecked"/>
+
+                    <TextBlock Text="Z-axis Scale:" Margin="0 10 0 5"/>
+                    <Slider Name="sliderZScale" 
+                            Minimum="0.01" 
+                            Maximum="2.0" 
+                            Value="0.1"
+                            TickFrequency="0.1"
+                            Margin="0 0 0 20"
+                            ValueChanged="SliderZScale_ValueChanged"/>
+
+                    <TextBlock Text="Smoothing:" Margin="0 10 0 5"/>
+                    <ComboBox Name="cbSmoothing" 
+                              SelectedIndex="0"
+                              SelectionChanged="CbSmoothing_SelectionChanged">
+                        <ComboBoxItem>No Smoothing</ComboBoxItem>
+                        <ComboBoxItem>2x2 Smoothing</ComboBoxItem>
+                        <ComboBoxItem>3x3 Smoothing</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Preview">
+                <StackPanel>
+                    <TextBlock Text="2D Preview:" Margin="0 10 0 5"/>
+                    <Image Name="imagePreview" 
+                           Stretch="Uniform"
+                           VerticalAlignment="Top"
+                           MouseMove="ImagePreview_MouseMove"/>
+                    <TextBlock Name="pixelInfo" Margin="0 5"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

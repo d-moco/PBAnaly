@@ -272,9 +272,9 @@
             this.DataProcess_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataProcess_panel.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.DataProcess_panel.Location = new System.Drawing.Point(4, 4);
-            this.DataProcess_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DataProcess_panel.Margin = new System.Windows.Forms.Padding(4);
             this.DataProcess_panel.Name = "DataProcess_panel";
-            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.DataProcess_panel.Padding = new System.Windows.Forms.Padding(8);
             this.tl_right_main_view.SetRowSpan(this.DataProcess_panel, 2);
             this.DataProcess_panel.Size = new System.Drawing.Size(799, 736);
             this.DataProcess_panel.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -288,7 +288,7 @@
             this.CompanyIcon_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CompanyIcon_pictureBox.Image = global::PBAnaly.Properties.Resources.京仪科技定稿_画板_1_副本2;
             this.CompanyIcon_pictureBox.Location = new System.Drawing.Point(4, 4);
-            this.CompanyIcon_pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CompanyIcon_pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.CompanyIcon_pictureBox.Name = "CompanyIcon_pictureBox";
             this.tableLayoutPanel1.SetRowSpan(this.CompanyIcon_pictureBox, 2);
             this.CompanyIcon_pictureBox.Size = new System.Drawing.Size(307, 120);
@@ -520,6 +520,7 @@
             this.materialButton_fakeColor.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
             this.materialButton_fakeColor.UseAccentColor = false;
             this.materialButton_fakeColor.UseVisualStyleBackColor = true;
+            this.materialButton_fakeColor.Click += new System.EventHandler(this.materialButton_fakeColor_Click);
             this.materialButton_fakeColor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_fakeColor_MouseMove);
             // 
             // materialButton_imageInfo
@@ -610,7 +611,7 @@
             this.pl_right.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
             this.pl_right.Location = new System.Drawing.Point(1125, 85);
             this.pl_right.Name = "pl_right";
-            this.pl_right.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pl_right.Padding = new System.Windows.Forms.Padding(6);
             this.tableLayoutPanel1.SetRowSpan(this.pl_right, 2);
             this.pl_right.Size = new System.Drawing.Size(518, 784);
             this.pl_right.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -622,11 +623,11 @@
             this.thunderLabel1.BackColor = System.Drawing.Color.Transparent;
             this.thunderLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.thunderLabel1.Location = new System.Drawing.Point(14, 8);
-            this.thunderLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thunderLabel1.Margin = new System.Windows.Forms.Padding(4);
             this.thunderLabel1.Name = "thunderLabel1";
             this.thunderLabel1.Size = new System.Drawing.Size(300, 24);
             this.thunderLabel1.TabIndex = 19;
-            this.thunderLabel1.Text = "PBAnaly v0.1.8rc1";
+            this.thunderLabel1.Text = "PBAnaly v0.1.8rc2";
             // 
             // MainForm
             // 
@@ -640,7 +641,7 @@
             this.DrawerAutoShow = true;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(4, 36, 4, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -11,6 +11,7 @@ using PBAnaly.UI;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -94,13 +95,14 @@ namespace PBAnaly
             FormGenerate_X = 0;
             FormGenerate_Y = 0;
 
-            if (GlobalData.GetProperty("Language") == "Chinese")
+            if (GlobalData.GetProperty("Language") == "English")
             {
-                SetLanguage("zh-CN");
+                SetLanguage("en-US");
             }
             else
             {
-                SetLanguage("en-US");
+                SetLanguage("zh-CN");
+              
             }
             // initPanel();
         }
@@ -1151,6 +1153,29 @@ namespace PBAnaly
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+        // 暂时用来显示3D图
+        private void materialButton_fakeColor_Click(object sender, EventArgs e)
+        {
+            foreach (var item in bioanalysisMannages)
+            {
+                if (item.Value.IsActive) 
+                {
+                    item.Value.GetImagePanel.SaveImage("tmp.bmp");
+                    // 启动 WPF EXE 并传递参数
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        FileName = "PointCloudDemo.exe", // WPF EXE 的路径
+                        Arguments = $"\"tmp.bmp\"", // 用双引号包裹参数（防止空格或特殊字符问题）
+                        UseShellExecute = false
+                    };
+
+                    Process.Start(startInfo);
+                }
+               
+            }
+
+           
         }
     }
 }
