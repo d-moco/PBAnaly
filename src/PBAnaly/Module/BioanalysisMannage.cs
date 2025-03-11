@@ -2866,6 +2866,29 @@ namespace PBAnaly.Module
         #endregion
         #endregion
         #region 对外接口
+        public void SaveMark(string path) 
+        {
+            if (image_mark_and_org_rgb24 != null)
+            {
+
+                image_mark_and_org_rgb24.SaveAsBmp(path);
+            }
+            
+        }
+        public void SavePseu(string path) 
+        {
+            if (image_org_rgb24 != null)
+            {
+
+                image_org_rgb24.SaveAsBmp(path);
+            }
+            else
+            {
+
+                image_org_L16.SaveAsBmp(path);
+            }
+        }
+       
         public BioanalyImagePanel GetImagePanel 
         {
             get { return imagePanel; }

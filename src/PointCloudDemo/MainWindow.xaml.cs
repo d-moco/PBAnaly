@@ -18,13 +18,20 @@ namespace PointCloudDemo
         private MeshGeometry3D terrainMesh;
         private ModelVisual3D terrainModel;
         private ushort[,] depthData;
+        private ushort[,] psurData = null;
         private ImageSource terrainTexture;
         private double zScale = 0.1;
 
         private int smoothingLevel = 0;
         private Vector3D[,] vertexNormals;
         private bool isShowingTerrain = false;
+        private byte[] psurByte = null;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path">图片路径</param>
+        /// <param name="type">类型: 0 生物分析 1:泳道</param>
         public MainWindow(string path)
         {
             InitializeComponent();
@@ -34,19 +41,35 @@ namespace PointCloudDemo
             {
                 try
                 {
-                    using (var bmp = new Bitmap(path))
+                    var v = path.Split(',');
+                    
+                    if (v[0] == "0") 
                     {
-                        // 加载2D预览图
-                        var bitmapImage = new BitmapImage();
-                        bitmapImage.BeginInit();
-                        bitmapImage.StreamSource = new MemoryStream(File.ReadAllBytes(path));
-                        bitmapImage.EndInit();
-                        imagePreview.Source = bitmapImage;
-                        terrainTexture = bitmapImage; // 保存为地形纹理
+                        // 先读融合图  用于显示
+                        string marge = v[1];
+                        
+                        string psue = v[2];
+                        psurData = ReadTiffData(psue);
+                        using (var bmp = new Bitmap(v[1]))
+                        {
+                            // 加载2D预览图
+                            var bitmapImage = new BitmapImage();
+                            bitmapImage.BeginInit();
+                            bitmapImage.StreamSource = new MemoryStream(File.ReadAllBytes(marge));
+                            bitmapImage.EndInit();
+                            imagePreview.Source = bitmapImage;
+                            terrainTexture = bitmapImage; // 保存为地形纹理
+                            
+                            ProcessTiffData(bmp);
+                            UpdateZScale();
+                            
+                        }
 
-                        ProcessTiffData(bmp);
-                        UpdateZScale();
+                       
+                       
                     }
+                  
+                    
                 }
                 catch (Exception ex)
                 {
@@ -66,13 +89,13 @@ namespace PointCloudDemo
                 Content = new Model3DGroup
                 {
                     Children =
-            {
-                new AmbientLight(Colors.White),
+                    {
+                        new AmbientLight(Colors.White),
                 new DirectionalLight(Colors.White, new Vector3D(1, -1, -1))
-            }
+                    }
                 }
             };
-
+            
             // 初始化点云和地形模型（不立即添加到视图）
             pointCloud = new PointsVisual3D
             {
@@ -136,22 +159,41 @@ namespace PointCloudDemo
 
             // 应用平滑处理
             ushort[,] smoothedData = ApplySmoothing(depthData, smoothingLevel);
-
+            ushort[,] smoothedPsurData = null;
+            if (psurData != null) 
+            {
+                smoothedPsurData = ApplySmoothing(psurData, smoothingLevel);
+            }
+            
             var positions = new List<Point3D>();
             var texCoords = new List<System.Windows.Point>();
             var indices = new List<int>();
             var normals = new List<Vector3D>();
-
+           
             // 生成顶点数据
             for (int y = 0; y < height; y += step)
             {
                 for (int x = 0; x < width; x += step)
                 {
-                    double z = smoothedData[x, y] * zScale;
+                    double z = 0;
+                    if (smoothedPsurData != null)
+                    {
+                        if (smoothedPsurData[x, y] > 0)
+                        {
+                            z = smoothedData[x, y] * zScale;
+                           
+                        }
+
+                    }
+                    else 
+                    {
+                        z = smoothedData[x, y] * zScale;
+                    }
                     positions.Add(new Point3D(x, height - y, z));
+
                     texCoords.Add(new System.Windows.Point(
                         (double)x / (width - 1),
-                        1.0 - (double)y / (height - 1) // 翻转V坐标匹配纹理
+                        (double)y / (height - 1)
                     ));
                 }
             }
@@ -209,7 +251,7 @@ namespace PointCloudDemo
                 vertexNormals[i0 % cols, i0 / cols] += normal;
                 vertexNormals[i1 % cols, i1 / cols] += normal;
                 vertexNormals[i2 % cols, i2 / cols] += normal;
-            }
+                        }
 
             // 标准化法线
             foreach (var normal in vertexNormals)
@@ -303,6 +345,9 @@ namespace PointCloudDemo
             {
                 try
                 {
+                    psurData = null;
+                    psurByte = null;
+                    
                     using (var bmp = new Bitmap(dialog.FileName))
                     {
                         // 加载2D预览图
@@ -329,7 +374,7 @@ namespace PointCloudDemo
             var width = bitmap.Width;
             var height = bitmap.Height;
             depthData = new ushort[width, height];
-
+            
             var rect = new System.Drawing.Rectangle(0, 0, width, height);
             BitmapData data = bitmap.LockBits(rect, ImageLockMode.ReadOnly, bitmap.PixelFormat);
 
@@ -353,6 +398,13 @@ namespace PointCloudDemo
                                 // 小端模式读取（低字节在前）
                                 depthData[x, y] = (ushort)(row[offset] | (row[offset + 1] << 8));
                             }
+                            else if (bytesPerPixel == 3) 
+                            {
+                                byte r = row[offset + 2];
+                                byte g = row[offset + 1];
+                                byte b = row[offset];
+                                depthData[x, y] = (ushort)((r + g + b) / 3);
+                            }
                             // 如果是32-bit ARGB（每像素4字节）
                             else if (bytesPerPixel == 4)
                             {
@@ -371,6 +423,64 @@ namespace PointCloudDemo
                 }
             }
             
+        }
+        private ushort[,] ReadTiffData(string path)
+        {
+            var bitmap = new Bitmap(path);
+
+            var width = bitmap.Width;
+            var height = bitmap.Height;
+
+            ushort[,] datas = new ushort[width , height];
+            var rect = new System.Drawing.Rectangle(0, 0, width, height);
+            BitmapData data = bitmap.LockBits(rect, ImageLockMode.ReadOnly, bitmap.PixelFormat);
+
+            unsafe
+            {
+                try
+                {
+                    byte* ptr = (byte*)data.Scan0;
+                    int bytesPerPixel = Image.GetPixelFormatSize(bitmap.PixelFormat) / 8;
+
+                    for (int y = 0; y < height; y++)
+                    {
+                        byte* row = ptr + y * data.Stride;
+                        for (int x = 0; x < width; x++)
+                        {
+                            int offset = x * bytesPerPixel;
+
+                            // 对于16-bit图像（每像素2字节），直接读取内存
+                            if (bytesPerPixel == 2)
+                            {
+                                // 小端模式读取（低字节在前）
+                                datas[x, y] = (ushort)(row[offset] | (row[offset + 1] << 8));
+                            }
+                            else if (bytesPerPixel == 3)
+                            {
+                                byte r = row[offset + 2];
+                                byte g = row[offset + 1];
+                                byte b = row[offset];
+                                datas[x, y] = (ushort)((r + g + b) / 3);
+                            }
+                            // 如果是32-bit ARGB（每像素4字节）
+                            else if (bytesPerPixel == 4)
+                            {
+                                // 取RGB分量的平均值作为深度
+                                byte r = row[offset + 2];
+                                byte g = row[offset + 1];
+                                byte b = row[offset];
+                                datas[x, y] = (ushort)((r + g + b) / 3);
+                            }
+                            
+                        }
+                    }
+                }
+                finally
+                {
+                    bitmap.UnlockBits(data);
+                }
+            }
+            return datas;
         }
 
         private void GeneratePointCloud()

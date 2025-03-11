@@ -22,7 +22,7 @@ int PBBiologyVC::PBImageProcessVC::render_process(System::Byte* pseImage, System
 
 		get_bgr_tab(colortype, bgr_tab, false);
 		pseudo_color_processing(cvPseImage, cvRenderpseImage, max, min, bgr_tab); // ×öÎ±²Ê ÄÃµ½Î±²ÊÍ¼
-
+		
 		Mat r = render_mask_image(cvmarkImage, cvRenderpseImage, brightness_offset, contrast_factor, opacity_factor);
 		int byteCount = r.rows * r.cols * r.channels();
 		cvtColor(r, r, COLOR_BGR2RGB);
@@ -37,7 +37,7 @@ int PBBiologyVC::PBImageProcessVC::render_process(System::Byte* pseImage, System
 		cvtColor(bgr_scale_img, bgr_scale_img, COLOR_BGR2RGB);
 		byteCount = bgr_scale_img.rows * bgr_scale_img.cols * bgr_scale_img.channels();
 		std::memcpy(colorBarImage, bgr_scale_img.data, byteCount);
-    
+		
 		return 1;
 }
 

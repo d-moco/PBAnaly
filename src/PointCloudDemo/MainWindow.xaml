@@ -31,6 +31,7 @@
                             Margin="0 5"
                             Padding="10 5"
                             Visibility="Hidden"/>
+                    <Button Content="Button" Click="OpenFile_Click"/>
 
                     <CheckBox Name="cbTextureView" 
                               Content="3D Texture View" 

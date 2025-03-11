@@ -17,6 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Resources;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -27,6 +28,8 @@ namespace PBAnaly
 {
     public partial class MainForm : MaterialForm
     {
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
         private MaterialSkinManager materialSkinManager;
         private SettingForm settingForm;
         private LoginForm loginForm;
@@ -944,6 +947,39 @@ namespace PBAnaly
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (true) 
+            {
+                Process[] processes = Process.GetProcessesByName("PointCloudDemo");
+                foreach (Process process in processes) 
+                {
+                    try
+                    {
+                        if (process.MainWindowHandle != IntPtr.Zero) 
+                        {
+                            SendMessage(process.MainWindowHandle, 0x0010,IntPtr.Zero, IntPtr.Zero);
+
+                            if (process.WaitForExit(3000)) 
+                            {
+
+                            }
+                            else
+                            {
+                                process.Kill();
+                            }
+                        }
+                        else
+                        {
+                            process.Kill();
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+            
             System.Environment.Exit(0);
         }
 
@@ -1161,12 +1197,16 @@ namespace PBAnaly
             {
                 if (item.Value.IsActive) 
                 {
-                    item.Value.GetImagePanel.SaveImage("tmp.bmp");
+                    // 获取mark图 存下来
+                    item.Value.SaveMark("tmp1.bmp");
+
+                    item.Value.SavePseu("tmp2.bmp");
+                    
                     // 启动 WPF EXE 并传递参数
                     ProcessStartInfo startInfo = new ProcessStartInfo
                     {
                         FileName = "PointCloudDemo.exe", // WPF EXE 的路径
-                        Arguments = $"\"tmp.bmp\"", // 用双引号包裹参数（防止空格或特殊字符问题）
+                        Arguments = $"\"0,tmp1.bmp,tmp2.bmp\"", // 用双引号包裹参数（防止空格或特殊字符问题）
                         UseShellExecute = false
                     };
 
