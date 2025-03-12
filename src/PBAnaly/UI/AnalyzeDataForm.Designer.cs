@@ -52,7 +52,6 @@
             this.miniToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.miniToolStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.miniToolStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.miniToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.miniToolStrip.Location = new System.Drawing.Point(91, 3);
             this.miniToolStrip.Name = "miniToolStrip";
@@ -66,7 +65,7 @@
             this.文件ToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.文件ToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.文件ToolStripMenuItem1.Name = "文件ToolStripMenuItem1";
-            this.文件ToolStripMenuItem1.Size = new System.Drawing.Size(62, 21);
+            this.文件ToolStripMenuItem1.Size = new System.Drawing.Size(44, 21);
             this.文件ToolStripMenuItem1.Text = "文件";
             // 
             // 选项ToolStripMenuItem1
@@ -74,7 +73,7 @@
             this.选项ToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.选项ToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.选项ToolStripMenuItem1.Name = "选项ToolStripMenuItem1";
-            this.选项ToolStripMenuItem1.Size = new System.Drawing.Size(62, 21);
+            this.选项ToolStripMenuItem1.Size = new System.Drawing.Size(44, 21);
             this.选项ToolStripMenuItem1.Text = "选项";
             // 
             // crownMenuStrip1
@@ -82,7 +81,6 @@
             this.crownMenuStrip1.BackColor = System.Drawing.Color.Gray;
             this.crownMenuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crownMenuStrip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.crownMenuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.crownMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.crownMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem1,
@@ -103,10 +101,10 @@
             this.metroPanel1.Controls.Add(this.crownLabel1);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.IsDerivedStyle = true;
-            this.metroPanel1.Location = new System.Drawing.Point(0, 37);
+            this.metroPanel1.Location = new System.Drawing.Point(0, 25);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(2047, 43);
+            this.metroPanel1.Size = new System.Drawing.Size(1404, 29);
             this.metroPanel1.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
             this.metroPanel1.StyleManager = null;
             this.metroPanel1.TabIndex = 3;
@@ -117,10 +115,9 @@
             // 
             this.crownLabel1.AutoSize = true;
             this.crownLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.crownLabel1.Location = new System.Drawing.Point(4, 13);
-            this.crownLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.crownLabel1.Location = new System.Drawing.Point(3, 9);
             this.crownLabel1.Name = "crownLabel1";
-            this.crownLabel1.Size = new System.Drawing.Size(44, 18);
+            this.crownLabel1.Size = new System.Drawing.Size(29, 12);
             this.crownLabel1.TabIndex = 0;
             this.crownLabel1.Text = "显示";
             // 
@@ -132,14 +129,13 @@
             this.tableLayoutPanel1.Controls.Add(this.metroPanel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 36);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2047, 1823);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1404, 764);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // panel1
@@ -149,11 +145,10 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
-            this.panel1.Location = new System.Drawing.Point(4, 85);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(3, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel1.Size = new System.Drawing.Size(2039, 1733);
+            this.panel1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Size = new System.Drawing.Size(1398, 704);
             this.panel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.panel1.TabIndex = 4;
             this.panel1.Text = "panel1";
@@ -162,26 +157,24 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 7);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(5, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(2023, 1719);
+            this.dataGridView1.Size = new System.Drawing.Size(1388, 694);
             this.dataGridView1.TabIndex = 0;
             // 
             // AnalyzeDataForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2055, 1864);
+            this.ClientSize = new System.Drawing.Size(1410, 791);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.MainMenuStrip = this.miniToolStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AnalyzeDataForm";
-            this.Padding = new System.Windows.Forms.Padding(4, 36, 4, 5);
+            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.Text = "AnalyzeDataForm";
             this.crownMenuStrip1.ResumeLayout(false);
             this.crownMenuStrip1.PerformLayout();

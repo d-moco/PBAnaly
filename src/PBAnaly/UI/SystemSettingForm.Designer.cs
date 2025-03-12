@@ -30,27 +30,27 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tab_Main = new System.Windows.Forms.TabControl();
-            this.tab_UserManage1 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btn_Min = new System.Windows.Forms.Button();
-            this.btn_Max = new System.Windows.Forms.Button();
-            this.btn_Close = new System.Windows.Forms.Button();
-            this.pnl_MainMenu = new System.Windows.Forms.Panel();
-            this.btn_SystemSetting = new System.Windows.Forms.Button();
-            this.btn_UserManager = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.tab_SystemSetting = new System.Windows.Forms.TabPage();
             this.panel_System = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbx_System_Language = new System.Windows.Forms.ComboBox();
             this.label_Language = new System.Windows.Forms.Label();
             this.btn_save_ZH_US = new System.Windows.Forms.Button();
+            this.tab_UserManage1 = new System.Windows.Forms.TabPage();
+            this.pnl_MainMenu = new System.Windows.Forms.Panel();
+            this.btn_SystemSetting = new System.Windows.Forms.Button();
+            this.btn_UserManager = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_Min = new System.Windows.Forms.Button();
+            this.btn_Max = new System.Windows.Forms.Button();
+            this.btn_Close = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tab_Main.SuspendLayout();
-            this.pnl_MainMenu.SuspendLayout();
             this.tab_SystemSetting.SuspendLayout();
             this.panel_System.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnl_MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,127 +77,6 @@
             this.tab_Main.SelectedIndex = 0;
             this.tab_Main.Size = new System.Drawing.Size(982, 636);
             this.tab_Main.TabIndex = 0;
-            // 
-            // tab_UserManage1
-            // 
-            this.tab_UserManage1.BackColor = System.Drawing.Color.White;
-            this.tab_UserManage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tab_UserManage1.Location = new System.Drawing.Point(22, 4);
-            this.tab_UserManage1.Name = "tab_UserManage1";
-            this.tab_UserManage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_UserManage1.Size = new System.Drawing.Size(956, 628);
-            this.tab_UserManage1.TabIndex = 0;
-            this.tab_UserManage1.Text = "用户管理";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 25);
-            this.label4.TabIndex = 456;
-            this.label4.Text = "System";
-            // 
-            // btn_Min
-            // 
-            this.btn_Min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Min.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Min.FlatAppearance.BorderSize = 0;
-            this.btn_Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Min.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_Min.Image = global::PBAnaly.Properties.Resources.最小化white;
-            this.btn_Min.Location = new System.Drawing.Point(1014, -1);
-            this.btn_Min.Name = "btn_Min";
-            this.btn_Min.Size = new System.Drawing.Size(44, 32);
-            this.btn_Min.TabIndex = 459;
-            this.btn_Min.UseVisualStyleBackColor = false;
-            this.btn_Min.Visible = false;
-            // 
-            // btn_Max
-            // 
-            this.btn_Max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Max.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Max.FlatAppearance.BorderSize = 0;
-            this.btn_Max.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Max.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_Max.Image = global::PBAnaly.Properties.Resources.最大化white;
-            this.btn_Max.Location = new System.Drawing.Point(1064, -1);
-            this.btn_Max.Name = "btn_Max";
-            this.btn_Max.Size = new System.Drawing.Size(44, 32);
-            this.btn_Max.TabIndex = 458;
-            this.btn_Max.UseVisualStyleBackColor = false;
-            this.btn_Max.Visible = false;
-            // 
-            // btn_Close
-            // 
-            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Close.FlatAppearance.BorderSize = 0;
-            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_Close.Image = global::PBAnaly.Properties.Resources.关闭White;
-            this.btn_Close.Location = new System.Drawing.Point(1114, -1);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(44, 32);
-            this.btn_Close.TabIndex = 457;
-            this.btn_Close.UseVisualStyleBackColor = false;
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            // 
-            // pnl_MainMenu
-            // 
-            this.pnl_MainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pnl_MainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnl_MainMenu.Controls.Add(this.btn_SystemSetting);
-            this.pnl_MainMenu.Controls.Add(this.btn_UserManager);
-            this.pnl_MainMenu.Controls.Add(this.panel4);
-            this.pnl_MainMenu.Location = new System.Drawing.Point(5, 3);
-            this.pnl_MainMenu.Name = "pnl_MainMenu";
-            this.pnl_MainMenu.Size = new System.Drawing.Size(191, 636);
-            this.pnl_MainMenu.TabIndex = 445;
-            // 
-            // btn_SystemSetting
-            // 
-            this.btn_SystemSetting.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_SystemSetting.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
-            this.btn_SystemSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine;
-            this.btn_SystemSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SystemSetting.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.btn_SystemSetting.Location = new System.Drawing.Point(1, 0);
-            this.btn_SystemSetting.Name = "btn_SystemSetting";
-            this.btn_SystemSetting.Size = new System.Drawing.Size(184, 50);
-            this.btn_SystemSetting.TabIndex = 1;
-            this.btn_SystemSetting.Text = "系统设置";
-            this.btn_SystemSetting.UseVisualStyleBackColor = false;
-            this.btn_SystemSetting.Click += new System.EventHandler(this.btn_SystemSetting_Click);
-            // 
-            // btn_UserManager
-            // 
-            this.btn_UserManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(56)))), ((int)(((byte)(83)))));
-            this.btn_UserManager.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
-            this.btn_UserManager.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine;
-            this.btn_UserManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_UserManager.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
-            this.btn_UserManager.ForeColor = System.Drawing.Color.White;
-            this.btn_UserManager.Location = new System.Drawing.Point(1, 49);
-            this.btn_UserManager.Name = "btn_UserManager";
-            this.btn_UserManager.Size = new System.Drawing.Size(184, 50);
-            this.btn_UserManager.TabIndex = 0;
-            this.btn_UserManager.Text = "用户管理";
-            this.btn_UserManager.UseVisualStyleBackColor = false;
-            this.btn_UserManager.Click += new System.EventHandler(this.btn_UserManager_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(56)))), ((int)(((byte)(83)))));
-            this.panel4.Location = new System.Drawing.Point(185, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 636);
-            this.panel4.TabIndex = 7;
             // 
             // tab_SystemSetting
             // 
@@ -268,6 +147,127 @@
             this.btn_save_ZH_US.UseVisualStyleBackColor = false;
             this.btn_save_ZH_US.Click += new System.EventHandler(this.btn_save_ZH_US_Click);
             // 
+            // tab_UserManage1
+            // 
+            this.tab_UserManage1.BackColor = System.Drawing.Color.White;
+            this.tab_UserManage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tab_UserManage1.Location = new System.Drawing.Point(22, 4);
+            this.tab_UserManage1.Name = "tab_UserManage1";
+            this.tab_UserManage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_UserManage1.Size = new System.Drawing.Size(956, 628);
+            this.tab_UserManage1.TabIndex = 0;
+            this.tab_UserManage1.Text = "用户管理";
+            // 
+            // pnl_MainMenu
+            // 
+            this.pnl_MainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnl_MainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pnl_MainMenu.Controls.Add(this.btn_SystemSetting);
+            this.pnl_MainMenu.Controls.Add(this.btn_UserManager);
+            this.pnl_MainMenu.Controls.Add(this.panel4);
+            this.pnl_MainMenu.Location = new System.Drawing.Point(5, 3);
+            this.pnl_MainMenu.Name = "pnl_MainMenu";
+            this.pnl_MainMenu.Size = new System.Drawing.Size(191, 636);
+            this.pnl_MainMenu.TabIndex = 445;
+            // 
+            // btn_SystemSetting
+            // 
+            this.btn_SystemSetting.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_SystemSetting.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.btn_SystemSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine;
+            this.btn_SystemSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SystemSetting.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
+            this.btn_SystemSetting.Location = new System.Drawing.Point(1, 0);
+            this.btn_SystemSetting.Name = "btn_SystemSetting";
+            this.btn_SystemSetting.Size = new System.Drawing.Size(184, 50);
+            this.btn_SystemSetting.TabIndex = 1;
+            this.btn_SystemSetting.Text = "系统设置";
+            this.btn_SystemSetting.UseVisualStyleBackColor = false;
+            this.btn_SystemSetting.Click += new System.EventHandler(this.btn_SystemSetting_Click);
+            // 
+            // btn_UserManager
+            // 
+            this.btn_UserManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(56)))), ((int)(((byte)(83)))));
+            this.btn_UserManager.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.btn_UserManager.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine;
+            this.btn_UserManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_UserManager.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold);
+            this.btn_UserManager.ForeColor = System.Drawing.Color.White;
+            this.btn_UserManager.Location = new System.Drawing.Point(1, 49);
+            this.btn_UserManager.Name = "btn_UserManager";
+            this.btn_UserManager.Size = new System.Drawing.Size(184, 50);
+            this.btn_UserManager.TabIndex = 0;
+            this.btn_UserManager.Text = "用户管理";
+            this.btn_UserManager.UseVisualStyleBackColor = false;
+            this.btn_UserManager.Click += new System.EventHandler(this.btn_UserManager_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(56)))), ((int)(((byte)(83)))));
+            this.panel4.Location = new System.Drawing.Point(185, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(3, 636);
+            this.panel4.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 25);
+            this.label4.TabIndex = 456;
+            this.label4.Text = "System";
+            // 
+            // btn_Min
+            // 
+            this.btn_Min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Min.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Min.FlatAppearance.BorderSize = 0;
+            this.btn_Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Min.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_Min.Image = global::PBAnaly.Properties.Resources.最小化white;
+            this.btn_Min.Location = new System.Drawing.Point(1014, -1);
+            this.btn_Min.Name = "btn_Min";
+            this.btn_Min.Size = new System.Drawing.Size(44, 32);
+            this.btn_Min.TabIndex = 459;
+            this.btn_Min.UseVisualStyleBackColor = false;
+            this.btn_Min.Visible = false;
+            // 
+            // btn_Max
+            // 
+            this.btn_Max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Max.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Max.FlatAppearance.BorderSize = 0;
+            this.btn_Max.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Max.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_Max.Image = global::PBAnaly.Properties.Resources.最大化white;
+            this.btn_Max.Location = new System.Drawing.Point(1064, -1);
+            this.btn_Max.Name = "btn_Max";
+            this.btn_Max.Size = new System.Drawing.Size(44, 32);
+            this.btn_Max.TabIndex = 458;
+            this.btn_Max.UseVisualStyleBackColor = false;
+            this.btn_Max.Visible = false;
+            // 
+            // btn_Close
+            // 
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.FlatAppearance.BorderSize = 0;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_Close.Image = global::PBAnaly.Properties.Resources.关闭White;
+            this.btn_Close.Location = new System.Drawing.Point(1114, -1);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(44, 32);
+            this.btn_Close.TabIndex = 457;
+            this.btn_Close.UseVisualStyleBackColor = false;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            // 
             // SystemSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -285,11 +285,11 @@
             this.Load += new System.EventHandler(this.SystemSettingForm_Load);
             this.panel1.ResumeLayout(false);
             this.tab_Main.ResumeLayout(false);
-            this.pnl_MainMenu.ResumeLayout(false);
             this.tab_SystemSetting.ResumeLayout(false);
             this.panel_System.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.pnl_MainMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

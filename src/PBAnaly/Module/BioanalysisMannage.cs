@@ -1,6 +1,5 @@
 ﻿using AntdUI;
 using MiniExcelLibs;
-using OpenCvSharp.Flann;
 using PBAnaly.UI;
 using PBBiologyVC;
 using ReaLTaiizor.Extension;
@@ -23,7 +22,7 @@ namespace PBAnaly.Module
     /// 生物分析 管理类
     /// </summary>
     public class BioanalysisMannage
-    {
+    {       
         #region 结构体
         public struct AlgAttribute
         {

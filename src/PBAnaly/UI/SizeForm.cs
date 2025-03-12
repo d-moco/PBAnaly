@@ -25,6 +25,7 @@ namespace PBAnaly.UI
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
+            GlobalData.PropertyChanged += OnGlobalDataPropertyChanged;
             string msg = "";
             if (GlobalData.GetProperty("Language") == "Chinese")
             {
@@ -55,7 +56,7 @@ namespace PBAnaly.UI
         ResourceManager resourceManager;
         private void SetLanguage(string cultureCode)
         {
-            resourceManager = new ResourceManager("PBAnaly.Properties.Resources", typeof(MainForm).Assembly);
+            resourceManager = new ResourceManager("PBAnaly.Properties.Resources", typeof(SizeForm).Assembly);
 
             // 设置当前线程的文化信息
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
@@ -89,6 +90,33 @@ namespace PBAnaly.UI
                 UpdateControlText(subControl);
             }
         }
+
+        #region OnGlobalDataPropertyChanged 处理全局属性更改事件
+        /// <summary> 
+        /// 处理全局属性更改事件
+        /// </summary>
+        /// <param name="name">发生变化的属性名</param>
+        /// <param name="value">更改的属性值</param>
+        private void OnGlobalDataPropertyChanged(string name, string value)
+        {
+            switch (name)
+            {
+                case "Language":
+                    if (GlobalData.GetProperty("Language") == "Chinese")
+                    {
+                        SetLanguage("zh-CN");
+                    }
+                    else
+                    {
+                        SetLanguage("en-US");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #endregion
 
         #endregion
 

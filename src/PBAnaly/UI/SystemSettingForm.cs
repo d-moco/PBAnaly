@@ -183,7 +183,7 @@ namespace PBAnaly.UI
         ResourceManager resourceManager;
         private void SetLanguage(string cultureCode)
         {
-            resourceManager = new ResourceManager("PBAnaly.Properties.Resources", typeof(MainForm).Assembly);
+            resourceManager = new ResourceManager("PBAnaly.Properties.Resources", typeof(SystemSettingForm).Assembly);
 
             // 设置当前线程的文化信息
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
