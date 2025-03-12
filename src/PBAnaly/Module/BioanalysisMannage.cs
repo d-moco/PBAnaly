@@ -2312,7 +2312,7 @@ namespace PBAnaly.Module
                     }
                     if (curpdinfovc.Count > 0)
                     {
-                        wandRectangle.Clear();
+                       //wandRectangle.Clear();
                         RectAttribute attribute = new RectAttribute();
                         attribute.rect = new System.Drawing.Rectangle(dst_x, dst_y, dst_w, dst_h);
                         attribute.pdinfovc = curpdinfovc;
