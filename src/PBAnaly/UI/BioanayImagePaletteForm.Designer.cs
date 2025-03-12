@@ -117,7 +117,7 @@
             this.fb_fixSetting.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.fb_fixSetting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
             this.fb_fixSetting.Location = new System.Drawing.Point(206, 46);
-            this.fb_fixSetting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fb_fixSetting.Margin = new System.Windows.Forms.Padding(4);
             this.fb_fixSetting.Name = "fb_fixSetting";
             this.fb_fixSetting.OverColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.fb_fixSetting.Size = new System.Drawing.Size(88, 46);
@@ -130,7 +130,7 @@
             this.foxLabel7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel7.Location = new System.Drawing.Point(180, 8);
-            this.foxLabel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foxLabel7.Margin = new System.Windows.Forms.Padding(4);
             this.foxLabel7.Name = "foxLabel7";
             this.foxLabel7.Size = new System.Drawing.Size(39, 28);
             this.foxLabel7.TabIndex = 4;
@@ -142,7 +142,7 @@
             this.foxLabel5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel5.Location = new System.Drawing.Point(4, 46);
-            this.foxLabel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foxLabel5.Margin = new System.Windows.Forms.Padding(4);
             this.foxLabel5.Name = "foxLabel5";
             this.foxLabel5.Size = new System.Drawing.Size(39, 28);
             this.foxLabel5.TabIndex = 2;
@@ -156,7 +156,7 @@
             this.foxLabel8.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.foxLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel8.Location = new System.Drawing.Point(4, 295);
-            this.foxLabel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foxLabel8.Margin = new System.Windows.Forms.Padding(4);
             this.foxLabel8.Name = "foxLabel8";
             this.foxLabel8.Size = new System.Drawing.Size(300, 28);
             this.foxLabel8.TabIndex = 34;
@@ -170,7 +170,7 @@
             this.flb_act_mm.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flb_act_mm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.flb_act_mm.Location = new System.Drawing.Point(139, 259);
-            this.flb_act_mm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flb_act_mm.Margin = new System.Windows.Forms.Padding(4);
             this.flb_act_mm.Name = "flb_act_mm";
             this.flb_act_mm.Size = new System.Drawing.Size(249, 28);
             this.flb_act_mm.TabIndex = 30;
@@ -182,7 +182,7 @@
             this.foxLabel4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel4.Location = new System.Drawing.Point(4, 4);
-            this.foxLabel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foxLabel4.Margin = new System.Windows.Forms.Padding(4);
             this.foxLabel4.Name = "foxLabel4";
             this.foxLabel4.Size = new System.Drawing.Size(39, 28);
             this.foxLabel4.TabIndex = 0;
@@ -220,7 +220,7 @@
             this.hpb_wand.Image = global::PBAnaly.Properties.Resources.魔术棒_魔法_魔术_一键;
             this.hpb_wand.ImageFit = AntdUI.TFit.Contain;
             this.hpb_wand.Location = new System.Drawing.Point(157, 4);
-            this.hpb_wand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hpb_wand.Margin = new System.Windows.Forms.Padding(4);
             this.hpb_wand.Name = "hpb_wand";
             this.hpb_wand.Size = new System.Drawing.Size(43, 42);
             this.hpb_wand.TabIndex = 14;
@@ -233,7 +233,7 @@
             this.hpb_xianduan.Image = global::PBAnaly.Properties.Resources.线段__1_;
             this.hpb_xianduan.ImageFit = AntdUI.TFit.Contain;
             this.hpb_xianduan.Location = new System.Drawing.Point(106, 4);
-            this.hpb_xianduan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hpb_xianduan.Margin = new System.Windows.Forms.Padding(4);
             this.hpb_xianduan.Name = "hpb_xianduan";
             this.hpb_xianduan.Size = new System.Drawing.Size(43, 42);
             this.hpb_xianduan.TabIndex = 13;
@@ -246,7 +246,7 @@
             this.hpb_circe.Image = global::PBAnaly.Properties.Resources.圆形;
             this.hpb_circe.ImageFit = AntdUI.TFit.Contain;
             this.hpb_circe.Location = new System.Drawing.Point(55, 4);
-            this.hpb_circe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hpb_circe.Margin = new System.Windows.Forms.Padding(4);
             this.hpb_circe.Name = "hpb_circe";
             this.hpb_circe.Size = new System.Drawing.Size(43, 42);
             this.hpb_circe.TabIndex = 0;
@@ -259,7 +259,7 @@
             this.hpb_rect.Image = global::PBAnaly.Properties.Resources._10矩形;
             this.hpb_rect.ImageFit = AntdUI.TFit.Contain;
             this.hpb_rect.Location = new System.Drawing.Point(4, 4);
-            this.hpb_rect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hpb_rect.Margin = new System.Windows.Forms.Padding(4);
             this.hpb_rect.Name = "hpb_rect";
             this.hpb_rect.Size = new System.Drawing.Size(43, 42);
             this.hpb_rect.TabIndex = 0;
@@ -280,7 +280,7 @@
             this.panel2.Controls.Add(this.foxLabel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 54);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(392, 186);
             this.panel2.TabIndex = 14;
@@ -298,7 +298,7 @@
             this.dtb_th.ColorF = System.Drawing.Color.Black;
             this.dtb_th.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dtb_th.Location = new System.Drawing.Point(52, 110);
-            this.dtb_th.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtb_th.Margin = new System.Windows.Forms.Padding(4);
             this.dtb_th.Name = "dtb_th";
             this.dtb_th.Size = new System.Drawing.Size(119, 28);
             this.dtb_th.TabIndex = 12;
@@ -310,7 +310,7 @@
             this.foxLabel10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel10.Location = new System.Drawing.Point(4, 106);
-            this.foxLabel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foxLabel10.Margin = new System.Windows.Forms.Padding(4);
             this.foxLabel10.Name = "foxLabel10";
             this.foxLabel10.Size = new System.Drawing.Size(39, 28);
             this.foxLabel10.TabIndex = 11;
@@ -328,7 +328,7 @@
             this.dtb_r.ColorF = System.Drawing.Color.Black;
             this.dtb_r.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dtb_r.Location = new System.Drawing.Point(216, 8);
-            this.dtb_r.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtb_r.Margin = new System.Windows.Forms.Padding(4);
             this.dtb_r.Name = "dtb_r";
             this.dtb_r.Size = new System.Drawing.Size(119, 28);
             this.dtb_r.TabIndex = 10;
@@ -346,7 +346,7 @@
             this.dtb_h.ColorF = System.Drawing.Color.Black;
             this.dtb_h.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dtb_h.Location = new System.Drawing.Point(52, 50);
-            this.dtb_h.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtb_h.Margin = new System.Windows.Forms.Padding(4);
             this.dtb_h.Name = "dtb_h";
             this.dtb_h.Size = new System.Drawing.Size(119, 28);
             this.dtb_h.TabIndex = 9;
@@ -364,7 +364,7 @@
             this.dtb_w.ColorF = System.Drawing.Color.Black;
             this.dtb_w.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dtb_w.Location = new System.Drawing.Point(51, 8);
-            this.dtb_w.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtb_w.Margin = new System.Windows.Forms.Padding(4);
             this.dtb_w.Name = "dtb_w";
             this.dtb_w.Size = new System.Drawing.Size(119, 28);
             this.dtb_w.TabIndex = 8;
@@ -376,7 +376,7 @@
             this.flb_info.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.flb_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.flb_info.Location = new System.Drawing.Point(2, 152);
-            this.flb_info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flb_info.Margin = new System.Windows.Forms.Padding(4);
             this.flb_info.Name = "flb_info";
             this.flb_info.Size = new System.Drawing.Size(334, 28);
             this.flb_info.TabIndex = 7;
@@ -386,7 +386,7 @@
             this.panel3.Controls.Add(this.cb_continuous);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(208, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(188, 42);
             this.panel3.TabIndex = 56;
@@ -398,7 +398,7 @@
             this.cb_continuous.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_continuous.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cb_continuous.Location = new System.Drawing.Point(0, 0);
-            this.cb_continuous.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_continuous.Margin = new System.Windows.Forms.Padding(4);
             this.cb_continuous.Name = "cb_continuous";
             this.cb_continuous.Size = new System.Drawing.Size(188, 42);
             this.cb_continuous.TabIndex = 55;
@@ -409,7 +409,7 @@
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
             this.collapseItem2.Expand = true;
             this.collapseItem2.Location = new System.Drawing.Point(28, 146);
-            this.collapseItem2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.collapseItem2.Margin = new System.Windows.Forms.Padding(4);
             this.collapseItem2.Name = "collapseItem2";
             this.collapseItem2.Size = new System.Drawing.Size(400, 274);
             this.collapseItem2.TabIndex = 1;
@@ -431,7 +431,7 @@
             "Pseudo",
             "Gray"});
             this.cb_colortable.Location = new System.Drawing.Point(4, 331);
-            this.cb_colortable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_colortable.Margin = new System.Windows.Forms.Padding(4);
             this.cb_colortable.Name = "cb_colortable";
             this.cb_colortable.Size = new System.Drawing.Size(127, 26);
             this.cb_colortable.TabIndex = 35;
@@ -488,7 +488,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.cb_sharpen, 2);
             this.cb_sharpen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_sharpen.Location = new System.Drawing.Point(109, 225);
-            this.cb_sharpen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_sharpen.Margin = new System.Windows.Forms.Padding(4);
             this.cb_sharpen.Name = "cb_sharpen";
             this.cb_sharpen.Size = new System.Drawing.Size(195, 26);
             this.cb_sharpen.TabIndex = 57;
@@ -498,7 +498,7 @@
             // 
             this.nud_opacity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nud_opacity.Location = new System.Drawing.Point(312, 48);
-            this.nud_opacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nud_opacity.Margin = new System.Windows.Forms.Padding(4);
             this.nud_opacity.Name = "nud_opacity";
             this.nud_opacity.Size = new System.Drawing.Size(76, 28);
             this.nud_opacity.TabIndex = 45;
@@ -507,7 +507,7 @@
             // 
             this.nud_brightness.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nud_brightness.Location = new System.Drawing.Point(312, 4);
-            this.nud_brightness.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nud_brightness.Margin = new System.Windows.Forms.Padding(4);
             this.nud_brightness.Name = "nud_brightness";
             this.nud_brightness.Size = new System.Drawing.Size(76, 28);
             this.nud_brightness.TabIndex = 44;
@@ -593,7 +593,7 @@
             this.hpb_line.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpb_line.Image = global::PBAnaly.Properties.Resources.线段;
             this.hpb_line.Location = new System.Drawing.Point(4, 259);
-            this.hpb_line.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hpb_line.Margin = new System.Windows.Forms.Padding(4);
             this.hpb_line.Name = "hpb_line";
             this.hpb_line.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hpb_line.Size = new System.Drawing.Size(67, 28);
@@ -654,7 +654,7 @@
             // nud_colorMax
             // 
             this.nud_colorMax.Location = new System.Drawing.Point(4, 4);
-            this.nud_colorMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nud_colorMax.Margin = new System.Windows.Forms.Padding(4);
             this.nud_colorMax.Name = "nud_colorMax";
             this.nud_colorMax.Size = new System.Drawing.Size(66, 28);
             this.nud_colorMax.TabIndex = 51;
@@ -675,7 +675,7 @@
             // nud_colorMin
             // 
             this.nud_colorMin.Location = new System.Drawing.Point(4, 4);
-            this.nud_colorMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nud_colorMin.Margin = new System.Windows.Forms.Padding(4);
             this.nud_colorMin.Name = "nud_colorMin";
             this.nud_colorMin.Size = new System.Drawing.Size(66, 28);
             this.nud_colorMin.TabIndex = 50;
@@ -686,7 +686,7 @@
             this.tableLayoutPanel2.SetColumnSpan(this.cb_scientific, 2);
             this.cb_scientific.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_scientific.Location = new System.Drawing.Point(4, 225);
-            this.cb_scientific.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_scientific.Margin = new System.Windows.Forms.Padding(4);
             this.cb_scientific.Name = "cb_scientific";
             this.cb_scientific.Size = new System.Drawing.Size(97, 26);
             this.cb_scientific.TabIndex = 54;
@@ -760,7 +760,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(392, 410);
             this.panel1.TabIndex = 0;
@@ -787,7 +787,7 @@
             // 
             this.collapseItem1.Controls.Add(this.tableLayoutPanel1);
             this.collapseItem1.Location = new System.Drawing.Point(-400, -454);
-            this.collapseItem1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.collapseItem1.Margin = new System.Windows.Forms.Padding(4);
             this.collapseItem1.Name = "collapseItem1";
             this.collapseItem1.Size = new System.Drawing.Size(400, 454);
             this.collapseItem1.TabIndex = 0;
@@ -802,7 +802,7 @@
             this.cll_panel.Items.Add(this.collapseItem2);
             this.cll_panel.Items.Add(this.collapseItem3);
             this.cll_panel.Location = new System.Drawing.Point(0, 0);
-            this.cll_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cll_panel.Margin = new System.Windows.Forms.Padding(4);
             this.cll_panel.Name = "cll_panel";
             this.cll_panel.Size = new System.Drawing.Size(456, 742);
             this.cll_panel.TabIndex = 1;
@@ -813,7 +813,7 @@
             // 
             this.collapseItem3.Controls.Add(this.tableLayoutPanel4);
             this.collapseItem3.Location = new System.Drawing.Point(-399, -248);
-            this.collapseItem3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.collapseItem3.Margin = new System.Windows.Forms.Padding(4);
             this.collapseItem3.Name = "collapseItem3";
             this.collapseItem3.Size = new System.Drawing.Size(399, 248);
             this.collapseItem3.TabIndex = 2;
@@ -849,7 +849,7 @@
             this.panel4.Controls.Add(this.foxLabel15);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(4, 54);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(391, 160);
             this.panel4.TabIndex = 15;
@@ -867,7 +867,7 @@
             this.dtb_textbox.ColorF = System.Drawing.Color.Black;
             this.dtb_textbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.dtb_textbox.Location = new System.Drawing.Point(76, 4);
-            this.dtb_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtb_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.dtb_textbox.Name = "dtb_textbox";
             this.dtb_textbox.Size = new System.Drawing.Size(119, 28);
             this.dtb_textbox.TabIndex = 8;
@@ -879,7 +879,7 @@
             this.foxLabel12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel12.Location = new System.Drawing.Point(2, 152);
-            this.foxLabel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foxLabel12.Margin = new System.Windows.Forms.Padding(4);
             this.foxLabel12.Name = "foxLabel12";
             this.foxLabel12.Size = new System.Drawing.Size(334, 28);
             this.foxLabel12.TabIndex = 7;
@@ -890,7 +890,7 @@
             this.foxLabel15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.foxLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(88)))), ((int)(((byte)(100)))));
             this.foxLabel15.Location = new System.Drawing.Point(4, 4);
-            this.foxLabel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foxLabel15.Margin = new System.Windows.Forms.Padding(4);
             this.foxLabel15.Name = "foxLabel15";
             this.foxLabel15.Size = new System.Drawing.Size(88, 28);
             this.foxLabel15.TabIndex = 0;
@@ -903,7 +903,7 @@
             this.ava_textbox.Image = global::PBAnaly.Properties.Resources.文本;
             this.ava_textbox.ImageFit = AntdUI.TFit.Contain;
             this.ava_textbox.Location = new System.Drawing.Point(4, 4);
-            this.ava_textbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ava_textbox.Margin = new System.Windows.Forms.Padding(4);
             this.ava_textbox.Name = "ava_textbox";
             this.ava_textbox.Size = new System.Drawing.Size(43, 42);
             this.ava_textbox.TabIndex = 0;

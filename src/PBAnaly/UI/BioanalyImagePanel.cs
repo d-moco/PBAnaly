@@ -91,7 +91,15 @@ namespace PBAnaly.UI
             string resourceText = resourceManager.GetString(control.Name);
             if (!string.IsNullOrEmpty(resourceText))
             {
-                control.Text = resourceText;
+                if (control.Name == "lb_top_info") 
+                {
+                    if(cb_scientific.Checked)
+                        control.Text = resourceText;
+                    else
+                        control.Text = "";
+                }
+                else
+                    control.Text = resourceText;
             }
 
             // 如果控件包含子控件，则递归更新子控件
