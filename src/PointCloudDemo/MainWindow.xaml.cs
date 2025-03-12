@@ -42,15 +42,20 @@ namespace PointCloudDemo
                 try
                 {
                     var v = path.Split(',');
-                    
+                    string languge = "0"; // 1是中文 0是英文
                     if (v[0] == "0") 
                     {
-                        // 先读融合图  用于显示
-                        string marge = v[1];
+                       
+                        languge = v[1];
                         
-                        string psue = v[2];
+                        // 先读融合图  用于显示
+                        string marge = v[2];
+                      
+                        string psue = v[3];
+                       
                         psurData = ReadTiffData(psue);
-                        using (var bmp = new Bitmap(v[1]))
+                    
+                        using (var bmp = new Bitmap(marge))
                         {
                             // 加载2D预览图
                             var bitmapImage = new BitmapImage();
@@ -68,15 +73,22 @@ namespace PointCloudDemo
                        
                        
                     }
-                  
-                    
+
+                    if (languge == "1") // 默认是英文不需要做处理
+                    {
+                        cbTextureView.Content = "3D 视图";
+                        tb_z_axis.Text = "Z 轴拉伸";
+                        tb_smoothing.Text = "滤波";
+                     //   gb_preview.Content = "预览";
+                        tb_2d_preview.Text = "2D 预览图";
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error loading file: {ex.Message}");
                 }
             }
-
+            this.Topmost = true;
         }
         private void InitializeVisuals()
         {

@@ -51,12 +51,7 @@
             this.materialButton_correction = new MaterialSkin.Controls.MaterialButton();
             this.flowLayoutPanel2 = new AntdUI.In.FlowLayoutPanel();
             this.materialButton_changeFormSize = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_imageChange = new MaterialSkin.Controls.MaterialButton();
             this.materialButton_fakeColor = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_imageInfo = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_resetImage = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_inverse = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton_save = new MaterialSkin.Controls.MaterialButton();
             this.pl_right = new ReaLTaiizor.Controls.Panel();
             this.thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             this.metroPanel_RightTop.SuspendLayout();
@@ -446,12 +441,7 @@
             // 
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.flowLayoutPanel2.Controls.Add(this.materialButton_changeFormSize);
-            this.flowLayoutPanel2.Controls.Add(this.materialButton_imageChange);
             this.flowLayoutPanel2.Controls.Add(this.materialButton_fakeColor);
-            this.flowLayoutPanel2.Controls.Add(this.materialButton_imageInfo);
-            this.flowLayoutPanel2.Controls.Add(this.materialButton_resetImage);
-            this.flowLayoutPanel2.Controls.Add(this.materialButton_inverse);
-            this.flowLayoutPanel2.Controls.Add(this.materialButton_save);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(315, 82);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -482,34 +472,14 @@
             this.materialButton_changeFormSize.Click += new System.EventHandler(this.materialButton_changeFormSize_Click);
             this.materialButton_changeFormSize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_changeFormSize_MouseMove);
             // 
-            // materialButton_imageChange
-            // 
-            this.materialButton_imageChange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_imageChange.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_imageChange.Depth = 0;
-            this.materialButton_imageChange.HighEmphasis = true;
-            this.materialButton_imageChange.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageChange.Icon")));
-            this.materialButton_imageChange.Location = new System.Drawing.Point(64, 0);
-            this.materialButton_imageChange.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_imageChange.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_imageChange.Name = "materialButton_imageChange";
-            this.materialButton_imageChange.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_imageChange.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_imageChange.TabIndex = 16;
-            this.materialButton_imageChange.Text = " ";
-            this.materialButton_imageChange.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_imageChange.UseAccentColor = false;
-            this.materialButton_imageChange.UseVisualStyleBackColor = true;
-            this.materialButton_imageChange.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_imageChange_MouseMove);
-            // 
             // materialButton_fakeColor
             // 
             this.materialButton_fakeColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialButton_fakeColor.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.materialButton_fakeColor.Depth = 0;
             this.materialButton_fakeColor.HighEmphasis = true;
-            this.materialButton_fakeColor.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_fakeColor.Icon")));
-            this.materialButton_fakeColor.Location = new System.Drawing.Point(128, 0);
+            this.materialButton_fakeColor.Icon = global::PBAnaly.Properties.Resources._3D;
+            this.materialButton_fakeColor.Location = new System.Drawing.Point(64, 0);
             this.materialButton_fakeColor.Margin = new System.Windows.Forms.Padding(0);
             this.materialButton_fakeColor.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton_fakeColor.Name = "materialButton_fakeColor";
@@ -522,87 +492,6 @@
             this.materialButton_fakeColor.UseVisualStyleBackColor = true;
             this.materialButton_fakeColor.Click += new System.EventHandler(this.materialButton_fakeColor_Click);
             this.materialButton_fakeColor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_fakeColor_MouseMove);
-            // 
-            // materialButton_imageInfo
-            // 
-            this.materialButton_imageInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_imageInfo.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_imageInfo.Depth = 0;
-            this.materialButton_imageInfo.HighEmphasis = true;
-            this.materialButton_imageInfo.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_imageInfo.Icon")));
-            this.materialButton_imageInfo.Location = new System.Drawing.Point(192, 0);
-            this.materialButton_imageInfo.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_imageInfo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_imageInfo.Name = "materialButton_imageInfo";
-            this.materialButton_imageInfo.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_imageInfo.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_imageInfo.TabIndex = 18;
-            this.materialButton_imageInfo.Text = " ";
-            this.materialButton_imageInfo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_imageInfo.UseAccentColor = false;
-            this.materialButton_imageInfo.UseVisualStyleBackColor = true;
-            this.materialButton_imageInfo.Click += new System.EventHandler(this.materialButton_imageInfo_Click);
-            this.materialButton_imageInfo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_imageInfo_MouseMove);
-            // 
-            // materialButton_resetImage
-            // 
-            this.materialButton_resetImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_resetImage.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_resetImage.Depth = 0;
-            this.materialButton_resetImage.HighEmphasis = true;
-            this.materialButton_resetImage.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_resetImage.Icon")));
-            this.materialButton_resetImage.Location = new System.Drawing.Point(256, 0);
-            this.materialButton_resetImage.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_resetImage.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_resetImage.Name = "materialButton_resetImage";
-            this.materialButton_resetImage.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_resetImage.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_resetImage.TabIndex = 19;
-            this.materialButton_resetImage.Text = " ";
-            this.materialButton_resetImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_resetImage.UseAccentColor = false;
-            this.materialButton_resetImage.UseVisualStyleBackColor = true;
-            this.materialButton_resetImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_resetImage_MouseMove);
-            // 
-            // materialButton_inverse
-            // 
-            this.materialButton_inverse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_inverse.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_inverse.Depth = 0;
-            this.materialButton_inverse.HighEmphasis = true;
-            this.materialButton_inverse.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_inverse.Icon")));
-            this.materialButton_inverse.Location = new System.Drawing.Point(320, 0);
-            this.materialButton_inverse.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_inverse.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_inverse.Name = "materialButton_inverse";
-            this.materialButton_inverse.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_inverse.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_inverse.TabIndex = 20;
-            this.materialButton_inverse.Text = " ";
-            this.materialButton_inverse.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_inverse.UseAccentColor = false;
-            this.materialButton_inverse.UseVisualStyleBackColor = true;
-            this.materialButton_inverse.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_inverse_MouseMove);
-            // 
-            // materialButton_save
-            // 
-            this.materialButton_save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton_save.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton_save.Depth = 0;
-            this.materialButton_save.HighEmphasis = true;
-            this.materialButton_save.Icon = ((System.Drawing.Image)(resources.GetObject("materialButton_save.Icon")));
-            this.materialButton_save.Location = new System.Drawing.Point(384, 0);
-            this.materialButton_save.Margin = new System.Windows.Forms.Padding(0);
-            this.materialButton_save.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton_save.Name = "materialButton_save";
-            this.materialButton_save.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton_save.Size = new System.Drawing.Size(64, 36);
-            this.materialButton_save.TabIndex = 21;
-            this.materialButton_save.Text = " ";
-            this.materialButton_save.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            this.materialButton_save.UseAccentColor = false;
-            this.materialButton_save.UseVisualStyleBackColor = true;
-            this.materialButton_save.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialButton_save_MouseMove);
             // 
             // pl_right
             // 
@@ -671,12 +560,7 @@
         private MaterialSkin.Controls.MaterialButton materialButton_analyzedata;
         private MaterialSkin.Controls.MaterialButton materialButton_outimage;
         private MaterialSkin.Controls.MaterialButton materialButton_changeFormSize;
-        private MaterialSkin.Controls.MaterialButton materialButton_save;
-        private MaterialSkin.Controls.MaterialButton materialButton_inverse;
-        private MaterialSkin.Controls.MaterialButton materialButton_resetImage;
-        private MaterialSkin.Controls.MaterialButton materialButton_imageInfo;
         private MaterialSkin.Controls.MaterialButton materialButton_fakeColor;
-        private MaterialSkin.Controls.MaterialButton materialButton_imageChange;
         private MaterialSkin.Controls.MaterialButton materialButton_miniAnalyze;
         private MaterialSkin.Controls.MaterialButton materialButton_roiAnalyze;
         private MaterialSkin.Controls.MaterialButton mb_colonyCount;

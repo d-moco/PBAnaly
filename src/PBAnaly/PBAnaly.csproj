@@ -418,6 +418,10 @@
       <Project>{c1dd8a06-7351-4c8d-bd7f-b2be76bb3903}</Project>
       <Name>PBBiologyVC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PointCloudDemo\PointCloudDemo.csproj">
+      <Project>{c0b22863-e234-4c91-ab94-83ca85b5e83f}</Project>
+      <Name>PointCloudDemo</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\C.png" />
@@ -517,6 +521,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GS-Analy.ico" />
+    <None Include="Resources\3D.png" />
     <None Include="Resources\登录-亮.png" />
     <None Include="Resources\添加用户.png" />
     <None Include="Resources\最小化white.png" />
