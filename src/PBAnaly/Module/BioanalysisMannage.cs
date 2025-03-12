@@ -158,6 +158,7 @@ namespace PBAnaly.Module
         private bool isCirDragging = false;
         public List<CirceAndInfo> CircleAndInfoList = new List<CirceAndInfo>();
         private CirceAndInfo oldCopyCircle;
+        private PolygonAndInfo oldPolygonAndInfoList;
         private System.Drawing.Point cirDragStart;
         private System.Drawing.Point circleCenter;
         private System.Drawing.Point circleRadio;
@@ -953,6 +954,38 @@ namespace PBAnaly.Module
             return result;
         }
 
+        private bool IsPointInPolygon(System.Drawing.Point testPoint, List<PolygonAndInfo> polygon, out Corner cner, out int index)
+        {
+            cner = Corner.None;
+            index = 0;
+            foreach (PolygonAndInfo polygonAndInfo in polygon) 
+            {
+                var points = polygonAndInfo.points;
+                bool result = false;
+                int j = points.Count - 1; // The last vertex is the 'previous' one to the first
+
+                for (int i = 0; i < points.Count; i++)
+                {
+                    if (points[i].Y < testPoint.Y && points[j].Y >= testPoint.Y || points[j].Y < testPoint.Y && points[i].Y >= testPoint.Y)
+                    {
+                        if (points[i].X + (testPoint.Y - points[i].Y) / (points[j].Y - points[i].Y) * (points[j].X - points[i].X) < testPoint.X)
+                        {
+                         
+                            imagePanel.image_pl.Cursor = Cursors.Hand;
+                            cner = Corner.drawMouse;
+                            result = !result;
+                            return true;
+                        }
+                    }
+                    j = i; // j is previous vertex to i
+                }
+                index++;
+            }
+
+           
+
+            return false;
+        }
 
         private unsafe CirceAndInfo UpdateCireInfo(float _max,float _min, CirceAndInfo rab,int radius,int _cirDragStartIndex=-1) 
         {
@@ -1486,6 +1519,7 @@ namespace PBAnaly.Module
                 {
                     foreach (var item1 in PolygonAndInfoList)
                     {
+                        isStart = 0;
                         foreach (var item in item1.points)
                         {
                             if (isStart == 0)
@@ -1498,29 +1532,31 @@ namespace PBAnaly.Module
                             point = curpoint;
                             isStart++;
                         }
-
-                    }
-                    if (curPolygonAndInfoList.pdinfovc != null)
-                    {
-
-                        string labelText = "";
-                        if (algAttribute.scientificON)
+                      
+                        if (item1.pdinfovc != null)
                         {
 
+                            string labelText = "";
+                            if (algAttribute.scientificON)
+                            {
 
-                            labelText = $"ROI:{index+1},AOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.AOD)},IOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.IOD)}," +
-                                       $"\r\nmaxOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.maxOD)},minOD:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.minOD)},Count:{util.GetscientificNotation(curPolygonAndInfoList.pdinfovc.Count)}";
+
+                                labelText = $"ROI:{index + 1},AOD:{util.GetscientificNotation(item1.pdinfovc.AOD)},IOD:{util.GetscientificNotation(item1.pdinfovc.IOD)}," +
+                                           $"\r\nmaxOD:{util.GetscientificNotation(item1.pdinfovc.maxOD)},minOD:{util.GetscientificNotation(item1.pdinfovc.minOD)},Count:{util.GetscientificNotation(item1.pdinfovc.Count)}";
+                            }
+                            else
+                            {
+                                labelText = $"ROI:{index + 1},AOD:{item1.pdinfovc.AOD},IOD:{item1.pdinfovc.IOD}," +
+                                           $"\r\nmaxOD:{item1.pdinfovc.maxOD},minOD:{item1.pdinfovc.minOD},Count:{item1.pdinfovc.Count}"; // 标签编号
+                            }
+                            Font font = new Font("Arial", 8); // 字体
+                            Brush brush = Brushes.Red; // 字体颜色
+                            System.Drawing.Point curpoint = ImageProcess.ConvertRealToPictureBox(item1.points[0], imagePanel.image_pl);
+                            g.DrawString(labelText, font, brush, curpoint.X - 10, curpoint.Y - 15);
                         }
-                        else
-                        {
-                            labelText = $"ROI:{index + 1},AOD:{curPolygonAndInfoList.pdinfovc.AOD},IOD:{curPolygonAndInfoList.pdinfovc.IOD}," +
-                                       $"\r\nmaxOD:{curPolygonAndInfoList.pdinfovc.maxOD},minOD:{curPolygonAndInfoList.pdinfovc.minOD},Count:{curPolygonAndInfoList.pdinfovc.Count}"; // 标签编号
-                        }
-                        Font font = new Font("Arial", 8); // 字体
-                        Brush brush = Brushes.Red; // 字体颜色
-                        System.Drawing.Point curpoint = ImageProcess.ConvertRealToPictureBox( curPolygonAndInfoList.points[0], imagePanel.image_pl);
-                        g.DrawString(labelText, font, brush, curpoint.X - 10, curpoint.Y - 15);
+
                     }
+                  
                 }
                 index++;
             }
@@ -2066,6 +2102,10 @@ namespace PBAnaly.Module
             {
 
             }
+            if (drawpolygon == false && IsPointInPolygon(readLoction, PolygonAndInfoList, out var cr5, out var index5)) 
+            {
+                
+            }
             else if (isStartCircleDragged)
             {
                 startPoint = readLoction;
@@ -2099,7 +2139,7 @@ namespace PBAnaly.Module
                     var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
                     if (value <= 10)
                     {
-                        PolygonAndInfoList.Clear();
+                       // PolygonAndInfoList.Clear();
                         lastPoint = firstPoint;
                         drawpolygon = false;
                         linepolygonON = false;
@@ -2122,7 +2162,7 @@ namespace PBAnaly.Module
                         {
                             foreach (var item in bioanalysisMannages)
                             {
-                                item.Value.PolygonAndInfoList.Clear();
+                               // item.Value.PolygonAndInfoList.Clear();
                                 item.Value.curPolygonAndInfoList.pdinfovc = null;
                                 Pseudo_infoVC curpdinfovc = null;
                                 unsafe
@@ -2136,7 +2176,15 @@ namespace PBAnaly.Module
                                 }
                                 item.Value.curPolygonAndInfoList.points = curPolygonAndInfoList.points;
                                 item.Value.curPolygonAndInfoList.pdinfovc = curpdinfovc;
-                                item.Value.PolygonAndInfoList.Add(item.Value.curPolygonAndInfoList);
+                                PolygonAndInfo pai = new PolygonAndInfo();
+                                pai.points = new List<System.Drawing.Point>();
+                                foreach (var ad in item.Value.curPolygonAndInfoList.points)
+                                {
+                                    pai.points.Add(ad);
+                                }
+                                pai.pdinfovc = new Pseudo_infoVC(item.Value.curPolygonAndInfoList.pdinfovc.maxOD, item.Value.curPolygonAndInfoList.pdinfovc.minOD, item.Value.curPolygonAndInfoList.pdinfovc.IOD,
+                                    item.Value.curPolygonAndInfoList.pdinfovc.Count, item.Value.curPolygonAndInfoList.pdinfovc.AOD);
+                                item.Value.PolygonAndInfoList.Add(pai);
                                 item.Value.imagePanel.image_pl.Invalidate();
                             }
                         }
@@ -2153,7 +2201,15 @@ namespace PBAnaly.Module
                                 }
                             }
                             curPolygonAndInfoList.pdinfovc = curpdinfovc;
-                            PolygonAndInfoList.Add(curPolygonAndInfoList);
+                            PolygonAndInfo pai = new PolygonAndInfo();
+                            pai.points = new List<System.Drawing.Point>();
+                            foreach (var ad in curPolygonAndInfoList.points)
+                            {
+                                pai.points.Add(ad);
+                            }
+                            pai.pdinfovc = new Pseudo_infoVC(curPolygonAndInfoList.pdinfovc.maxOD,curPolygonAndInfoList.pdinfovc.minOD,curPolygonAndInfoList.pdinfovc.IOD,
+                                curPolygonAndInfoList.pdinfovc.Count,curPolygonAndInfoList.pdinfovc.AOD);
+                            PolygonAndInfoList.Add(pai);
                             imagePanel.image_pl.Invalidate();
                         }
                         
@@ -2378,8 +2434,10 @@ namespace PBAnaly.Module
                     imagePanel.ctms_strop_copy.Enabled = false;
                     imagePanel.ctms_strop_delete.Enabled = false;
                 }
-                else if (drawpolygon==false &&  IsPointInPolygon(readLoction, curPolygonAndInfoList))
+                else if (drawpolygon==false && IsPointInPolygon(readLoction, PolygonAndInfoList, out var cr5, out var index5))
                 {
+                    curShapeIndex = index5;
+
                     curShape = ShapeForm.Polygon;
                     imagePanel.ctms_strop_delete.Enabled = true;
 
@@ -2398,6 +2456,8 @@ namespace PBAnaly.Module
                 case ShapeForm.Line:
                     break;
                 case ShapeForm.Polygon:
+                    oldPolygonAndInfoList = PolygonAndInfoList[curShapeIndex];
+                    curIsCopy = true;
                     break;
                 case ShapeForm.Rect:
                     oldCopyRect = rectangles[curShapeIndex];
@@ -2420,6 +2480,34 @@ namespace PBAnaly.Module
                 case ShapeForm.Line:
                     break;
                 case ShapeForm.Polygon:
+                    if (Arrangement == 2) 
+                    {
+                        foreach (var bms in bioanalysisMannages) 
+                        {
+                            PolygonAndInfo polygonAndInfo = new PolygonAndInfo();
+                            polygonAndInfo.points = new List<System.Drawing.Point>();
+                            foreach (var item in oldPolygonAndInfoList.points)
+                            {
+                                polygonAndInfo.points.Add(item);
+                            }
+                            polygonAndInfo.pdinfovc = new Pseudo_infoVC(oldPolygonAndInfoList.pdinfovc.maxOD, oldPolygonAndInfoList.pdinfovc.minOD, oldPolygonAndInfoList.pdinfovc.IOD,
+                                       oldPolygonAndInfoList.pdinfovc.Count, oldPolygonAndInfoList.pdinfovc.AOD);
+                            bms.Value.PolygonAndInfoList.Add(polygonAndInfo);
+                        }
+                    }
+                    else
+                    {
+                        PolygonAndInfo polygonAndInfo = new PolygonAndInfo();
+                        polygonAndInfo.points = new List<System.Drawing.Point>();
+                        foreach (var item in oldPolygonAndInfoList.points)
+                        {
+                            polygonAndInfo.points.Add(item);
+                        }
+                        polygonAndInfo.pdinfovc = new Pseudo_infoVC(oldPolygonAndInfoList.pdinfovc.maxOD, oldPolygonAndInfoList.pdinfovc.minOD, oldPolygonAndInfoList.pdinfovc.IOD,
+                                   oldPolygonAndInfoList.pdinfovc.Count, oldPolygonAndInfoList.pdinfovc.AOD);
+                        PolygonAndInfoList.Add(polygonAndInfo);
+                    }
+                      
                     break;
                 case ShapeForm.Rect:
                     System.Drawing.Rectangle rectangle = new System.Drawing.Rectangle(curShapePoint, new System.Drawing.Size(oldCopyRect.rect.Width,oldCopyRect.rect.Height));
@@ -2515,15 +2603,16 @@ namespace PBAnaly.Module
                     {
                         foreach (var item in bioanalysisMannages)
                         {
-                            item.Value.PolygonAndInfoList.Clear();
-                            if(item.Value.curPolygonAndInfoList.points!=null)
+                            //item.Value.PolygonAndInfoList.Clear();
+                            item.Value.PolygonAndInfoList.RemoveAt(curShapeIndex);
+                            if (item.Value.curPolygonAndInfoList.points!=null)
                                 item.Value.curPolygonAndInfoList.points.Clear();
                             item.Value.curPolygonAndInfoList.pdinfovc = null;
                         }
                     }
                     else
                     {
-                        PolygonAndInfoList.Clear();
+                        PolygonAndInfoList.RemoveAt(curShapeIndex);
                         curPolygonAndInfoList.points.Clear();
                         curPolygonAndInfoList.pdinfovc = null;
                     }
