@@ -469,34 +469,18 @@ namespace PBAnaly
 
                 if (GlobalData.GetProperty("Language") == "Chinese")
                 {
-                    this.btnStartUpToolTip.SetToolTip(btn, "适配窗口");
+                    this.btnStartUpToolTip.SetToolTip(btn, "多图分析");
                 }
                 else
                 {
-                    this.btnStartUpToolTip.SetToolTip(btn, "Adaptation window");
+                    this.btnStartUpToolTip.SetToolTip(btn, "Multi analysis");
                 }
 
                
             }
         }
 
-        private void materialButton_imageChange_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (sender is Button)
-            {
-                Button btn = sender as Button;
-
-                if (GlobalData.GetProperty("Language") == "Chinese")
-                {
-                    this.btnStartUpToolTip.SetToolTip(btn, "图像变换");
-                }
-                else
-                {
-                    this.btnStartUpToolTip.SetToolTip(btn, "Image transformation");
-                }
-                
-            }
-        }
+     
 
         private void materialButton_fakeColor_MouseMove(object sender, MouseEventArgs e)
         {
@@ -505,11 +489,11 @@ namespace PBAnaly
                 Button btn = sender as Button;
                 if (GlobalData.GetProperty("Language") == "Chinese")
                 {
-                    this.btnStartUpToolTip.SetToolTip(btn, "伪彩");
+                    this.btnStartUpToolTip.SetToolTip(btn, "3D");
                 }
                 else
                 {
-                    this.btnStartUpToolTip.SetToolTip(btn, "Image transformation");
+                    this.btnStartUpToolTip.SetToolTip(btn, "3D");
                 }
                 
             }
