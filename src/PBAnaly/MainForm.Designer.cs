@@ -516,7 +516,7 @@
             this.thunderLabel1.Name = "thunderLabel1";
             this.thunderLabel1.Size = new System.Drawing.Size(300, 24);
             this.thunderLabel1.TabIndex = 19;
-            this.thunderLabel1.Text = "PBAnaly v0.1.8rc4";
+            this.thunderLabel1.Text = "PBAnaly v0.1.8rc5";
             // 
             // MainForm
             // 
