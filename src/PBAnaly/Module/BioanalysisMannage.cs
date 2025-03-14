@@ -2976,7 +2976,19 @@ namespace PBAnaly.Module
                 image_org_L16.SaveAsBmp(path);
             }
         }
-       
+        public void SaveOrg(string path) 
+        {
+            if (image_org_L16 != null)
+            {
+
+                image_org_L16.SaveAsBmp(path);
+            }
+            else
+            {
+
+                image_org_L16.SaveAsBmp(path);
+            }
+        }
         public BioanalyImagePanel GetImagePanel 
         {
             get { return imagePanel; }

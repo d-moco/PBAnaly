@@ -1185,12 +1185,13 @@ namespace PBAnaly
                     item.Value.SaveMark("tmp1.bmp");
 
                     item.Value.SavePseu("tmp2.bmp");
+                    item.Value.SaveOrg("tmp3.bmp");
                     string langur = GlobalData.GetProperty("Language") == "English" ? "0" : "1";
                     // 启动 WPF EXE 并传递参数
                     ProcessStartInfo startInfo = new ProcessStartInfo
                     {
                         FileName = "PointCloudDemo.exe", // WPF EXE 的路径
-                        Arguments = $"\"0,{langur},tmp1.bmp,tmp2.bmp\"", // 用双引号包裹参数（防止空格或特殊字符问题）
+                        Arguments = $"\"0,{langur},tmp1.bmp,tmp2.bmp,tmp3.bmp\"", // 用双引号包裹参数（防止空格或特殊字符问题）
                         UseShellExecute = false
                     };
 

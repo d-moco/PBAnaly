@@ -19,6 +19,7 @@ namespace PointCloudDemo
         private ModelVisual3D terrainModel;
         private ushort[,] depthData;
         private ushort[,] psurData = null;
+        private ushort[,] orgData = null;
         private ImageSource terrainTexture;
         private double zScale = 0.1;
 
@@ -52,9 +53,9 @@ namespace PointCloudDemo
                         string marge = v[2];
                       
                         string psue = v[3];
-                       
+                        string org = v[4];
                         psurData = ReadTiffData(psue);
-                    
+                        orgData = ReadTiffData(org);
                         using (var bmp = new Bitmap(marge))
                         {
                             // 加载2D预览图
@@ -93,7 +94,7 @@ namespace PointCloudDemo
         private void InitializeVisuals()
         {
             // 设置3D视口背景
-            viewport3D.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(240, 240, 240));
+            viewport3D.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(55, 55, 55));
 
             // 创建灯光系统（保持原有代码）
             var lightVisual = new ModelVisual3D
@@ -172,8 +173,9 @@ namespace PointCloudDemo
             // 应用平滑处理
             ushort[,] smoothedData = ApplySmoothing(depthData, smoothingLevel);
             ushort[,] smoothedPsurData = null;
-            if (psurData != null) 
+            if (psurData != null)
             {
+                smoothedData = ApplySmoothing(orgData, smoothingLevel);
                 smoothedPsurData = ApplySmoothing(psurData, smoothingLevel);
             }
             
@@ -192,7 +194,7 @@ namespace PointCloudDemo
                     {
                         if (smoothedPsurData[x, y] > 0)
                         {
-                            z = smoothedData[x, y] * zScale;
+                            z = orgData[x, y] * zScale;
                            
                         }
 
