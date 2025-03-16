@@ -1,5 +1,6 @@
 ﻿using AntdUI;
 using MiniExcelLibs;
+using OfficeOpenXml;
 using PBAnaly.UI;
 using PBBiologyVC;
 using ReaLTaiizor.Extension;
@@ -13,6 +14,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Shell;
 using static PBAnaly.Module.BioanalysisMannage;
 
 namespace PBAnaly.Module
@@ -2733,6 +2735,13 @@ namespace PBAnaly.Module
                 if (saveFileDialog.ShowDialog()
                     == DialogResult.OK) 
                 {
+
+                    string password = Microsoft.VisualBasic.Interaction.InputBox("请输入加密密码:","文件加密","");
+                    if (string.IsNullOrEmpty(password))
+                    {
+                        MessageBox.Show("密码不能为空!");
+                        return;
+                    }
                     // 保存光子数到xlsx里  先保存矩形的
                     if (algAttribute.scientificON) 
                     {
@@ -2789,6 +2798,7 @@ namespace PBAnaly.Module
                                     return;
                                 }
                             }
+                           
                             MiniExcel.SaveAs(path, records);
                         }
                     }
@@ -2843,7 +2853,27 @@ namespace PBAnaly.Module
                                     return;
                                 }
                             }
-                            MiniExcel.SaveAs(path, records);
+                            string tmp = "tmpx.xlsx";
+                            if (File.Exists(tmp)) 
+                            {
+                                File.Delete(tmp);
+                            }
+                            MiniExcel.SaveAs(tmp, records);
+
+                            using (var excelPackage = new ExcelPackage(new FileInfo(tmp)))
+                            {
+                                // 设置加密参数
+                                excelPackage.Encryption.Algorithm = EncryptionAlgorithm.AES256;
+                                excelPackage.Encryption.Password = password;
+
+                                // 保存为最终加密文件
+                                excelPackage.SaveAs(new FileInfo(path));
+                            }
+
+                            // 清理临时文件
+                            File.Delete(tmp);
+
+                            
                         }
                     }
                     

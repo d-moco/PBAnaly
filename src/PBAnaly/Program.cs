@@ -6,6 +6,7 @@ using PBAnaly.Module;
 using PBAnaly.UI;
 using PBAnaly.LoginCommon;
 using PBAnaly.Assist;
+using OfficeOpenXml;
 namespace PBAnaly
 {
     public static class Global
@@ -49,7 +50,7 @@ namespace PBAnaly
         [STAThread]
         static void Main()
         {
-
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             const string appName = "PBAnaly";
             bool createdNew;
