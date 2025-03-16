@@ -124,7 +124,7 @@ namespace PBAnaly.LoginCommon
         #region btn_fix_role_Click 修改权限按钮
         private void btn_fix_role_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show($"确定要用户:{txt_UserName.Text}的权限吗?", "提示", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show($"确定要修改用户:{txt_UserName.Text}的权限吗?", "提示", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 try
