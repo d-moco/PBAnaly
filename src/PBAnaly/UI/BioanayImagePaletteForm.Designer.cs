@@ -407,8 +407,7 @@
             // collapseItem2
             // 
             this.collapseItem2.Controls.Add(this.tableLayoutPanel3);
-            this.collapseItem2.Expand = true;
-            this.collapseItem2.Location = new System.Drawing.Point(28, 146);
+            this.collapseItem2.Location = new System.Drawing.Point(-400, -274);
             this.collapseItem2.Margin = new System.Windows.Forms.Padding(4);
             this.collapseItem2.Name = "collapseItem2";
             this.collapseItem2.Size = new System.Drawing.Size(400, 274);
@@ -786,7 +785,8 @@
             // collapseItem1
             // 
             this.collapseItem1.Controls.Add(this.tableLayoutPanel1);
-            this.collapseItem1.Location = new System.Drawing.Point(-400, -454);
+            this.collapseItem1.Expand = true;
+            this.collapseItem1.Location = new System.Drawing.Point(28, 87);
             this.collapseItem1.Margin = new System.Windows.Forms.Padding(4);
             this.collapseItem1.Name = "collapseItem1";
             this.collapseItem1.Size = new System.Drawing.Size(400, 454);
@@ -812,10 +812,10 @@
             // collapseItem3
             // 
             this.collapseItem3.Controls.Add(this.tableLayoutPanel4);
-            this.collapseItem3.Location = new System.Drawing.Point(-399, -248);
+            this.collapseItem3.Location = new System.Drawing.Point(-400, -248);
             this.collapseItem3.Margin = new System.Windows.Forms.Padding(4);
             this.collapseItem3.Name = "collapseItem3";
-            this.collapseItem3.Size = new System.Drawing.Size(399, 248);
+            this.collapseItem3.Size = new System.Drawing.Size(400, 248);
             this.collapseItem3.TabIndex = 2;
             this.collapseItem3.Text = "标签工具";
             // 
@@ -838,7 +838,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(399, 248);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(400, 248);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // panel4
@@ -851,7 +851,7 @@
             this.panel4.Location = new System.Drawing.Point(4, 54);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(391, 160);
+            this.panel4.Size = new System.Drawing.Size(392, 160);
             this.panel4.TabIndex = 15;
             this.panel4.Text = "panel4";
             // 

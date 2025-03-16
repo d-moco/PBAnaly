@@ -1625,6 +1625,7 @@ namespace PBAnaly.Module
                     double deltaY = endPoint.Y - startPoint.Y;
                     var value = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
                     value = value * algAttribute.pixel_size;
+                    value += 4;
                     imagePaletteForm.flb_act_mm.Text = value.ToString() + " mm";
                     imagePaletteForm.flb_act_mm.Refresh();
                 }
