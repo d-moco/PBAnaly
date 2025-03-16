@@ -55,6 +55,31 @@ namespace PBAnaly.LoginCommon
             //// 遍历所有控件并更新文本
             foreach (Control control in this.Controls)
             {
+                if (control.Name == "dataGridView1")
+                {
+
+                    if (GlobalData.GetProperty("Language") == "Chinese")
+                    {
+                        dataGridView1.Columns["Column2"].HeaderText = "描述";
+                        dataGridView1.Columns["Column3"].HeaderText = "操作员";
+                        dataGridView1.Columns["Column4"].HeaderText = "工程师";
+                        dataGridView1.Columns["Column5"].HeaderText = "管理员";
+                        dataGridView1.Columns["Column6"].HeaderText = "超级管理员";
+
+                    }
+                    else 
+                    {
+                        this.Column2.HeaderText = "Description";
+                        this.Column3.HeaderText = "Operator";
+                        this.Column4.HeaderText = "Engineer";
+                        this.Column5.HeaderText = "Administrator";
+                        this.Column6.HeaderText = "SupperAdministrator";
+
+                    }
+
+
+
+                }
                 UpdateControlText(control);
             }
         }
