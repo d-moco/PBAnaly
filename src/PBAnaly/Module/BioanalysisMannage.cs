@@ -1,6 +1,7 @@
 ﻿using AntdUI;
 using MiniExcelLibs;
 using OfficeOpenXml;
+using PBAnaly.Assist;
 using PBAnaly.UI;
 using PBBiologyVC;
 using ReaLTaiizor.Extension;
@@ -2735,8 +2736,16 @@ namespace PBAnaly.Module
                 if (saveFileDialog.ShowDialog()
                     == DialogResult.OK) 
                 {
-
-                    string password = Microsoft.VisualBasic.Interaction.InputBox("请输入加密密码:","文件加密","");
+                    string password = "";
+                    if (GlobalData.GetProperty("Language") == "English") 
+                    {
+                        password = Microsoft.VisualBasic.Interaction.InputBox("Please enter the encryption password:", "File encryption", "");
+                    }
+                    else
+                    {
+                        password = Microsoft.VisualBasic.Interaction.InputBox("请输入加密密码:", "文件加密", "");
+                    }
+                        
                     if (string.IsNullOrEmpty(password))
                     {
                         MessageBox.Show("密码不能为空!");
