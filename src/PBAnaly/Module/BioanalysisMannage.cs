@@ -2796,6 +2796,23 @@ namespace PBAnaly.Module
                             }
                            
                             MiniExcel.SaveAs(path, records);
+                            string _pdfPath = directoryPath + "\\" + fileNameWithoutExtension + ".pdf";
+                            FileMethod.ConvertExcelToPdf(path, _pdfPath);
+
+                            var digitalSignature = new DigitalSignature(
+                                FileMethod.File2Bytes(_pdfPath),
+                                FileMethod.File2Bytes("logo.jpg"),
+                                "jingyi",
+                                FileMethod.File2Bytes("generate.pfx"),
+                                "Aa123456");
+                            var stream = digitalSignature.Signature();
+                            File.Delete(_pdfPath);
+                            using (var files = File.Create(_pdfPath))
+                            {
+                                stream.Seek(0, SeekOrigin.Begin);
+                                stream.CopyTo(files);
+                            }
+                            File.Delete(path);
                         }
                     }
                     else
@@ -2861,14 +2878,14 @@ namespace PBAnaly.Module
                                 FileMethod.File2Bytes("generate.pfx"),
                                 "Aa123456");
                             var stream = digitalSignature.Signature();
-
-                            using (var files = File.Create("12.pdf")) 
+                            File.Delete(_pdfPath);
+                            using (var files = File.Create(_pdfPath)) 
                             {
                                 stream.Seek(0, SeekOrigin.Begin);
                                 stream.CopyTo(files);
                             }
 
-                            
+                            File.Delete(path);
                         }
                     }
                     
