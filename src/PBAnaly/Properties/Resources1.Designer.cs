@@ -732,7 +732,7 @@ namespace PBAnaly.Properties {
         }
         
         /// <summary>
-        ///   查找类似 加载数据 的本地化字符串。
+        ///   查找类似 加载图像 的本地化字符串。
         /// </summary>
         internal static string materialButton_LoadData {
             get {

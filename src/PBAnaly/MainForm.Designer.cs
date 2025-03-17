@@ -216,7 +216,7 @@
             this.materialButton_LoadData.NoAccentTextColor = System.Drawing.Color.Empty;
             this.materialButton_LoadData.Size = new System.Drawing.Size(113, 82);
             this.materialButton_LoadData.TabIndex = 14;
-            this.materialButton_LoadData.Text = "加载数据";
+            this.materialButton_LoadData.Text = "加载图像";
             this.materialButton_LoadData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton_LoadData.UseAccentColor = false;
             this.materialButton_LoadData.UseVisualStyleBackColor = true;

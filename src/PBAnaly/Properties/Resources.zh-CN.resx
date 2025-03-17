@@ -343,7 +343,7 @@
     <value>打开当前帧</value>
   </data>
   <data name="materialButton_LoadData" xml:space="preserve">
-    <value>加载数据</value>
+    <value>加载图像</value>
   </data>
   <data name="label_re_userNma" xml:space="preserve">
     <value>用户名</value>
