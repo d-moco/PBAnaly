@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-//ÇøÓòÉú³¤Ëã·¨
+//åŒºåŸŸç”Ÿé•¿ç®—æ³•
 int RegionGrow(cv::Mat& src, cv::Mat& matDst, cv::Point2i pt, int th)
 {
 	cv::Point2i ptGrowing;
@@ -16,39 +16,39 @@ int RegionGrow(cv::Mat& src, cv::Mat& matDst, cv::Point2i pt, int th)
 	vcGrowPt.push_back(pt);
 	matDst.at<uchar>(pt.y, pt.x) = 255;
 
-	while (!vcGrowPt.empty())						//Éú³¤Õ»²»Îª¿ÕÔòÉú³¤
+	while (!vcGrowPt.empty())						//ç”Ÿé•¿æ ˆä¸ä¸ºç©ºåˆ™ç”Ÿé•¿
 	{
-		pt = vcGrowPt.back();						//È¡³öÒ»¸öÉú³¤µã
+		pt = vcGrowPt.back();						//å–å‡ºä¸€ä¸ªç”Ÿé•¿ç‚¹
 		vcGrowPt.pop_back();
 
-		std::vector<cv::Point2i> temp_vcGrowPt;						//ÁÙÊ±Éú³¤µãÕ»
-		int temp_vcGrowPt_size = 0;	//¿ÉÉú³¤·½ÏòÊıÁ¿£¬ÒòÎª´æÔÚ±»ÆäÓàÉú³¤µãÏÈÉú³¤Çé¿ö£¬²»¿ÉÖ±½ÓÊ¹ÓÃtemp_vcGrowPt.size()
+		std::vector<cv::Point2i> temp_vcGrowPt;						//ä¸´æ—¶ç”Ÿé•¿ç‚¹æ ˆ
+		int temp_vcGrowPt_size = 0;	//å¯ç”Ÿé•¿æ–¹å‘æ•°é‡ï¼Œå› ä¸ºå­˜åœ¨è¢«å…¶ä½™ç”Ÿé•¿ç‚¹å…ˆç”Ÿé•¿æƒ…å†µï¼Œä¸å¯ç›´æ¥ä½¿ç”¨temp_vcGrowPt.size()
 		nSrcValue = src.at<uchar>(pt.y, pt.x);
-		//·Ö±ğ¶Ô°Ë¸ö·½ÏòÉÏµÄµã½øĞĞÉú³¤
+		//åˆ†åˆ«å¯¹å…«ä¸ªæ–¹å‘ä¸Šçš„ç‚¹è¿›è¡Œç”Ÿé•¿
 		for (int i = 0; i < 8; ++i)
 		{
 			ptGrowing.x = pt.x + DIR[i][0];
 			ptGrowing.y = pt.y + DIR[i][1];
-			//¼ì²éÊÇ·ñÊÇ±ßÔµµã
+			//æ£€æŸ¥æ˜¯å¦æ˜¯è¾¹ç¼˜ç‚¹
 			if (ptGrowing.x < 0 || ptGrowing.y < 0 || ptGrowing.x >(src.cols - 1) || (ptGrowing.y > src.rows - 1))
 				continue;
 
-			nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);		//µ±Ç°´ıÉú³¤µãµÄ»Ò¶ÈÖµ
-			if (nGrowLable == 0)					//Èç¹û±ê¼Çµã»¹Ã»ÓĞ±»Éú³¤
+			nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);		//å½“å‰å¾…ç”Ÿé•¿ç‚¹çš„ç°åº¦å€¼
+			if (nGrowLable == 0)					//å¦‚æœæ ‡è®°ç‚¹è¿˜æ²¡æœ‰è¢«ç”Ÿé•¿
 			{
 				nCurValue = src.at<uchar>(ptGrowing.y, ptGrowing.x);
-				if (abs(nCurValue - nSrcValue) < th)					//ÔÚãĞÖµ·¶Î§ÄÚÔòÉú³¤
+				if (abs(nCurValue - nSrcValue) < th)					//åœ¨é˜ˆå€¼èŒƒå›´å†…åˆ™ç”Ÿé•¿
 				{
 					// matDst.at<uchar>(ptGrowing.y, ptGrowing.x) = 255;
 					temp_vcGrowPt_size++;
-					temp_vcGrowPt.push_back(ptGrowing);					//½«ÏÂÒ»¸öÉú³¤µãÑ¹ÈëÕ»ÖĞ
+					temp_vcGrowPt.push_back(ptGrowing);					//å°†ä¸‹ä¸€ä¸ªç”Ÿé•¿ç‚¹å‹å…¥æ ˆä¸­
 				}
 			}
 			else {
 				temp_vcGrowPt_size++;
 			}
 		}
-		//ÏàÁÚµÄÉú³¤µã²»ÊÇµ¥ÏòÉú³¤£¬ÔòÉú³¤µãÓĞĞ§
+		//ç›¸é‚»çš„ç”Ÿé•¿ç‚¹ä¸æ˜¯å•å‘ç”Ÿé•¿ï¼Œåˆ™ç”Ÿé•¿ç‚¹æœ‰æ•ˆ
 		if (temp_vcGrowPt_size >= 1) {
 			mat_cnt++;
 			matDst.at<uchar>(pt.y, pt.x) = 255;
@@ -56,43 +56,43 @@ int RegionGrow(cv::Mat& src, cv::Mat& matDst, cv::Point2i pt, int th)
 		}
 	}
 	return mat_cnt;
-	// bitwise_and(src, matDst, matDst); //ÓëÔËËã¿ÉÒÔ±£ÁôÔ­Í¼ÏñÊı¾İ
+	// bitwise_and(src, matDst, matDst); //ä¸è¿ç®—å¯ä»¥ä¿ç•™åŸå›¾åƒæ•°æ®
 }
 
-// ¶¨ÒåÄâºÏÔ²ĞÎµÄº¯Êı
+// å®šä¹‰æ‹Ÿåˆåœ†å½¢çš„å‡½æ•°
 void FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& Circle_R)
 {
-	//¶¨Òå¼ÆËãÖĞ¼ä±äÁ¿
-	double sumX1 = 0.0; //´ú±íXiµÄºÍ(´Ó1~n) £¬X1´ú±íXµÄ1´Î·½
+	//å®šä¹‰è®¡ç®—ä¸­é—´å˜é‡
+	double sumX1 = 0.0; //ä»£è¡¨Xiçš„å’Œ(ä»1~n) ï¼ŒX1ä»£è¡¨Xçš„1æ¬¡æ–¹
 	double sumY1 = 0.0;
-	double sumX2 = 0.0;	//´ú±í(Xi)^2µÄºÍ(i´Ó1~n)£¬X2´ú±íXµÄ¶ş´Î·½
+	double sumX2 = 0.0;	//ä»£è¡¨(Xi)^2çš„å’Œ(iä»1~n)ï¼ŒX2ä»£è¡¨Xçš„äºŒæ¬¡æ–¹
 	double sumY2 = 0.0;
 	double sumX3 = 0.0;
 	double sumY3 = 0.0;
 	double sumX1Y1 = 0.0;
 	double sumX1Y2 = 0.0;
 	double sumX2Y1 = 0.0;
-	const double N = (double)Circle_Data.size();//»ñµÃÊäÈëµãµÄ¸öÊı
+	const double N = (double)Circle_Data.size();//è·å¾—è¾“å…¥ç‚¹çš„ä¸ªæ•°
 
-	for (int i = 0; i < Circle_Data.size(); ++i)//±éÀú×éÖĞËùÓĞÊı¾İ
+	for (int i = 0; i < Circle_Data.size(); ++i)//éå†ç»„ä¸­æ‰€æœ‰æ•°æ®
 	{
 		double x = 0;
 		double y = 0;
-		x = Circle_Data[i].x;			//»ñµÃ×éÖĞµÚi¸öµãµÄx×ø±ê
-		y = Circle_Data[i].y;			//»ñµÃ×éÖĞµÚi¸öµãµÄy×ø±ê
-		double x2 = x * x;				//¼ÆËãx^2
-		double y2 = y * y;				//¼ÆËãy^2
-		double x3 = x2 * x;				//¼ÆËãx^3
-		double y3 = y2 * y;				//¼ÆËãy^3
-		double xy = x * y;				//¼ÆËãxy
-		double x1y2 = x * y2;			//¼ÆËãx*y^2
-		double x2y1 = x2 * y;			//¼ÆËãx^2*y
+		x = Circle_Data[i].x;			//è·å¾—ç»„ä¸­ç¬¬iä¸ªç‚¹çš„xåæ ‡
+		y = Circle_Data[i].y;			//è·å¾—ç»„ä¸­ç¬¬iä¸ªç‚¹çš„yåæ ‡
+		double x2 = x * x;				//è®¡ç®—x^2
+		double y2 = y * y;				//è®¡ç®—y^2
+		double x3 = x2 * x;				//è®¡ç®—x^3
+		double y3 = y2 * y;				//è®¡ç®—y^3
+		double xy = x * y;				//è®¡ç®—xy
+		double x1y2 = x * y2;			//è®¡ç®—x*y^2
+		double x2y1 = x2 * y;			//è®¡ç®—x^2*y
 
-		sumX1 += x;						//sumX=sumX+x;¼ÆËãx×ø±êµÄºÍ
-		sumY1 += y;						//sumY=sumY+y;¼ÆËãy×ø±êµÄºÍ
-		sumX2 += x2;					//¼ÆËãx^2µÄºÍ
-		sumY2 += y2;					//¼ÆËã¸÷¸öµãµÄy^2µÄºÍ
-		sumX3 += x3;					//¼ÆËãx^3µÄºÍ
+		sumX1 += x;						//sumX=sumX+x;è®¡ç®—xåæ ‡çš„å’Œ
+		sumY1 += y;						//sumY=sumY+y;è®¡ç®—yåæ ‡çš„å’Œ
+		sumX2 += x2;					//è®¡ç®—x^2çš„å’Œ
+		sumY2 += y2;					//è®¡ç®—å„ä¸ªç‚¹çš„y^2çš„å’Œ
+		sumX3 += x3;					//è®¡ç®—x^3çš„å’Œ
 		sumY3 += y3;
 		sumX1Y1 += xy;
 		sumX1Y2 += x1y2;
@@ -117,11 +117,11 @@ void FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& 
 
 int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& Circle_R, float thresh)
 {
-	// ¶¨ÒåRANSACµü´ú´ÎÊıºÍ×îĞ¡Ñù±¾Êı
+	// å®šä¹‰RANSACè¿­ä»£æ¬¡æ•°å’Œæœ€å°æ ·æœ¬æ•°
 	int iterations = 1000;
 	int min_samples = 3;
 
-	// Ê¹ÓÃRANSACËã·¨ÄâºÏÔ²ĞÎ
+	// ä½¿ç”¨RANSACç®—æ³•æ‹Ÿåˆåœ†å½¢
 	float best_radius = 0;
 	Point2f best_center;
 	std::vector<int> is_inlier(Circle_Data.size(), 0);
@@ -132,7 +132,7 @@ int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, f
 
 	while (sample_count < iterations)
 	{
-		// Ëæ»úÑ¡Ôñ×îĞ¡Ñù±¾Êı¸öµã
+		// éšæœºé€‰æ‹©æœ€å°æ ·æœ¬æ•°ä¸ªç‚¹
 		vector<Point> points;
 		for (int j = 0; j < min_samples; j++)
 		{
@@ -141,12 +141,12 @@ int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, f
 			points.push_back(point);
 		}
 
-		// Ê¹ÓÃ×îĞ¡¶ş³Ë·¨ÄâºÏÔ²ĞÎ
+		// ä½¿ç”¨æœ€å°äºŒä¹˜æ³•æ‹Ÿåˆåœ†å½¢
 		float radius;
 		Point2f center;
 		FitCircleCenter(points, center, radius);
 
-		// ¼ÆËãËùÓĞµãÓëÔ²Ö®¼äµÄ¾àÀë£¬ÒÔÈ·¶¨ÄÚµã
+		// è®¡ç®—æ‰€æœ‰ç‚¹ä¸åœ†ä¹‹é—´çš„è·ç¦»ï¼Œä»¥ç¡®å®šå†…ç‚¹
 		vector<Point2f> inliers;
 		for (int i = 0; i < Circle_Data.size(); i++)
 		{
@@ -160,28 +160,28 @@ int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, f
 				inliers.push_back(point);
 			}
 		}
-		// ¸üĞÂ×î¼ÑÄâºÏÔ²ĞÎ
+		// æ›´æ–°æœ€ä½³æ‹Ÿåˆåœ†å½¢
 		if (inliers.size() > max_inlier_num) {
 			max_inlier_num = inliers.size();
 			is_inlier = is_inlier_tmp;
 			best_radius = radius;
 			best_center = center;
 		}
-		//6. ¸üĞÂµü´úµÄ×î¼Ñ´ÎÊı
+		//6. æ›´æ–°è¿­ä»£çš„æœ€ä½³æ¬¡æ•°
 		if (inliers.size() == 0)
 		{
 			iterations = 1000;
 		}
 		else
 		{
-			double epsilon = 1.0 - double(inliers.size()) / (double)Circle_Data.size(); //Ò°Öµµã±ÈÀı
-			double p = 0.9;                                                //ËùÓĞÑù±¾ÖĞ´æÔÚ1¸öºÃÑù±¾µÄ¸ÅÂÊ
+			double epsilon = 1.0 - double(inliers.size()) / (double)Circle_Data.size(); //é‡å€¼ç‚¹æ¯”ä¾‹
+			double p = 0.9;                                                //æ‰€æœ‰æ ·æœ¬ä¸­å­˜åœ¨1ä¸ªå¥½æ ·æœ¬çš„æ¦‚ç‡
 			double s = 3.0;
 			iterations = int(std::log(1.0 - p) / std::log(1.0 - std::pow((1.0 - epsilon), s)));
 		}
 		sample_count++;
 	}
-	//7. »ùÓÚ×îÓÅµÄ½á¹ûËù¶ÔÓ¦µÄÄÚµã×ö×îÖÕÄâºÏ
+	//7. åŸºäºæœ€ä¼˜çš„ç»“æœæ‰€å¯¹åº”çš„å†…ç‚¹åšæœ€ç»ˆæ‹Ÿåˆ
 	std::vector<cv::Point2f> inliers;
 	inliers.reserve(max_inlier_num);
 	for (int i = 0; i < is_inlier.size(); i++)
@@ -297,9 +297,9 @@ int defaultIsoData(int* data)
 //	{
 //		return dst;
 //	}
-//	//brightness_offset:ÁÁ¶ÈÆ«ÒÆ·¶Î§ -255 µ½ +255
-//	//contrast_factor:¶Ô±È¶ÈÒò×Ó·¶Î§ 0.1 µ½ 3.0£¨1.0Îª²»±ä£©
-//	//opacity_factor:Í¸Ã÷¶ÈÒò×Ó·¶Î§ 0 µ½ 1£¨0ÎªÍ¸Ã÷£¬1Îª²»Í¸Ã÷£©
+//	//brightness_offset:äº®åº¦åç§»èŒƒå›´ -255 åˆ° +255
+//	//contrast_factor:å¯¹æ¯”åº¦å› å­èŒƒå›´ 0.1 åˆ° 3.0ï¼ˆ1.0ä¸ºä¸å˜ï¼‰
+//	//opacity_factor:é€æ˜åº¦å› å­èŒƒå›´ 0 åˆ° 1ï¼ˆ0ä¸ºé€æ˜ï¼Œ1ä¸ºä¸é€æ˜ï¼‰
 //
 //	Mat img8bit;
 //	src.convertTo(img8bit, CV_8UC1, 0.00390625);
@@ -311,7 +311,7 @@ int defaultIsoData(int* data)
 //	img_with_opacity.convertTo(img_with_opacity, CV_8UC1);
 //
 //	Mat img_with_opacity_rgb;
-//	cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // ½«µ¥Í¨µÀ»Ò¶ÈÍ¼Ïñ×ª»»ÎªÈıÍ¨µÀRGBÍ¼Ïñ
+//	cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // å°†å•é€šé“ç°åº¦å›¾åƒè½¬æ¢ä¸ºä¸‰é€šé“RGBå›¾åƒ
 //
 //	for (int y = 0; y < pseudoImg.rows; y++) {
 //		for (int x = 0; x < pseudoImg.cols; x++) {
@@ -424,30 +424,30 @@ Mat bgr_scale_image(Mat src, float maxVal, float minVal)
 
 //int blendImages(const Mat& src, const Mat& mark, const Mat& dst, double alpha)
 //{
-//	// ¼ì²éÊäÈëÍ¼ÏñµÄÀàĞÍºÍ´óĞ¡
+//	// æ£€æŸ¥è¾“å…¥å›¾åƒçš„ç±»å‹å’Œå¤§å°
 //	if (src.type() != CV_16UC1 || mark.type() != CV_8UC3)
 //	{
-//		return -1; // ´íÎó´¦Àí
+//		return -1; // é”™è¯¯å¤„ç†
 //	}
 //
-//	// ½« alpha ´Ó 0-100 µÄ·¶Î§×ª»»Îª 0-1
+//	// å°† alpha ä» 0-100 çš„èŒƒå›´è½¬æ¢ä¸º 0-1
 //	double alpha_normalized = alpha / 100.0;
 //
-//	// ½« src ´Ó 16 Î»×ª»»Îª 8 Î»
+//	// å°† src ä» 16 ä½è½¬æ¢ä¸º 8 ä½
 //	Mat src8U;
-//	src.convertTo(src8U, CV_8UC1, 1.0 / 256); // ½«16Î»ÖµËõ·Åµ½0-255·¶Î§
+//	src.convertTo(src8U, CV_8UC1, 1.0 / 256); // å°†16ä½å€¼ç¼©æ”¾åˆ°0-255èŒƒå›´
 //
-//	// ½« src8U ×ª»»Îª²ÊÉ«Í¼Ïñ£¬ÒÔ±ãÓë mark ÈÚºÏ
+//	// å°† src8U è½¬æ¢ä¸ºå½©è‰²å›¾åƒï¼Œä»¥ä¾¿ä¸ mark èåˆ
 //	Mat srcColor;
-//	cvtColor(src8U, srcColor, COLOR_GRAY2RGB); // ×ª»»Îª BGR ²ÊÉ«Í¼Ïñ
+//	cvtColor(src8U, srcColor, COLOR_GRAY2RGB); // è½¬æ¢ä¸º BGR å½©è‰²å›¾åƒ
 //
-//	// ´´½¨Ò»¸öÊä³öÍ¼Ïñ
+//	// åˆ›å»ºä¸€ä¸ªè¾“å‡ºå›¾åƒ
 //	Mat blended;
 //
-//	// Ê¹ÓÃ addWeighted ½øĞĞÈÚºÏ
+//	// ä½¿ç”¨ addWeighted è¿›è¡Œèåˆ
 //	addWeighted(srcColor, 1, mark,alpha_normalized, 0.0, blended);
 //	blended.copyTo(dst);
-//	return 1; // ³É¹¦
+//	return 1; // æˆåŠŸ
 //}
 
 
@@ -792,9 +792,9 @@ Mat render_mask_image(Mat src, Mat pseudoImg, int brightness_offset, double cont
     {
         return dst;
     }
-    //brightness_offset:ÁÁ¶ÈÆ«ÒÆ·¶Î§ -255 µ½ +255
-    //contrast_factor:¶Ô±È¶ÈÒò×Ó·¶Î§ 0.1 µ½ 3.0£¨1.0Îª²»±ä£©
-    //opacity_factor:Í¸Ã÷¶ÈÒò×Ó·¶Î§ 0 µ½ 1£¨0ÎªÍ¸Ã÷£¬1Îª²»Í¸Ã÷£©
+    //brightness_offset:äº®åº¦åç§»èŒƒå›´ -255 åˆ° +255
+    //contrast_factor:å¯¹æ¯”åº¦å› å­èŒƒå›´ 0.1 åˆ° 3.0ï¼ˆ1.0ä¸ºä¸å˜ï¼‰
+    //opacity_factor:é€æ˜åº¦å› å­èŒƒå›´ 0 åˆ° 1ï¼ˆ0ä¸ºé€æ˜ï¼Œ1ä¸ºä¸é€æ˜ï¼‰
 
     Mat img8bit;
     src.convertTo(img8bit, CV_8UC1, 0.00390625);
@@ -806,7 +806,7 @@ Mat render_mask_image(Mat src, Mat pseudoImg, int brightness_offset, double cont
     img_with_opacity.convertTo(img_with_opacity, CV_8UC1);
 
     Mat img_with_opacity_rgb;
-    cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // ½«µ¥Í¨µÀ»Ò¶ÈÍ¼Ïñ×ª»»ÎªÈıÍ¨µÀRGBÍ¼Ïñ
+    cvtColor(img_with_opacity, img_with_opacity_rgb, COLOR_GRAY2BGR);  // å°†å•é€šé“ç°åº¦å›¾åƒè½¬æ¢ä¸ºä¸‰é€šé“RGBå›¾åƒ
 
     for (int y = 0; y < pseudoImg.rows; y++) {
         for (int x = 0; x < pseudoImg.cols; x++) {
@@ -1110,7 +1110,8 @@ Mat bgr_scale_image(Mat src, float maxVal, float minVal, int scientific_flag)
     float rotia = 255.0 / (maxVal - minVal);
     Mat image = Mat(h + 2 * start, 3 * w, CV_8UC3);
     image.setTo(255);
-    src.copyTo(image(Rect(0, start, w, h)));
+    src.copyTo(image(Rect(0,start,w,h)));
+    cv::rectangle(image, Rect(0,start,w,h), cv::Scalar(0,0,0), 2);
 
     float diff = maxVal - minVal;
     int exponent = static_cast<int>(std::log10(diff));
@@ -1188,8 +1189,7 @@ Mat bgr_scale_image(Mat src, float maxVal, float minVal, int scientific_flag)
         std::ostringstream oss;
         if (tickData[i] == int(tickData[i])) {
             oss << static_cast<int>(tickData[i]);
-        }
-        else {
+        } else {
             oss.precision(1);
             oss << std::fixed << tickData[i];
         }
@@ -1212,58 +1212,271 @@ Mat get_photon_image(Mat src, float sec, float Wcm, float Hcm, float sr)
     return dst;
 }
 
-Mat get_magic_wand_image(Mat src, int x, int y, int th)
+Mat get_magic_wand_image(Mat src,int x,int y,float max,float min)
 {
     Mat matDst = cv::Mat::zeros(src.size(), CV_8UC1);
-    cv::Point2i pt(x, y);
-    cv::Point2i ptGrowing;
-    int nGrowLable = 0;
-    int nSrcValue = 0;
-    int nCurValue = 0;
-    int mat_cnt = 0;
-    int DIR[8][2] = { { -1, -1 }, { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 } };
-    std::vector<cv::Point2i> vcGrowPt;
-    vcGrowPt.push_back(pt);
-    matDst.at<uchar>(pt.y, pt.x) = 255;
-    nSrcValue = src.at<uchar>(pt.y, pt.x);
-    while (!vcGrowPt.empty())
+    cv::Point2i pt(x,y);
+    int w = src.cols;
+    int h = src.rows;
+    // int nSrcValue = src.at<uchar>(pt.y, pt.x);
+    int nSrcValue = src.data[pt.y * w + pt.x];
+    if(nSrcValue < min)
     {
-        pt = vcGrowPt.back();
-        vcGrowPt.pop_back();
+        return matDst;
+    }
 
-        std::vector<cv::Point2i> temp_vcGrowPt;
-        int temp_vcGrowPt_size = 0;
+    cv::Point2i ptGrowing;	
+	int nGrowLable = 0;	
+	int nCurValue = 0;	
+    int mat_cnt = 0;
+	int DIR[8][2] = { { -1, -1 }, { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 } };
+	std::vector<cv::Point2i> vcGrowPt;	
+	vcGrowPt.push_back(pt);	
+	// matDst.at<uchar>(pt.y, pt.x) = 255;	
+	matDst.data[pt.y * w + pt.x] = 255;	
+	while (!vcGrowPt.empty())						
+	{
+		pt = vcGrowPt.back();						
+		vcGrowPt.pop_back();
+
+		std::vector<cv::Point2i> temp_vcGrowPt;	
+		int temp_vcGrowPt_size = 0;	
         // nSrcValue = src.at<uchar>(pt.y, pt.x);
-        //·Ö±ğ¶Ô°Ë¸ö·½ÏòÉÏµÄµã½øĞĞÉú³¤
-        for (int i = 0; i < 8; ++i)
-        {
-            ptGrowing.x = pt.x + DIR[i][0];
-            ptGrowing.y = pt.y + DIR[i][1];
-            //¼ì²éÊÇ·ñÊÇ±ßÔµµã
-            if (ptGrowing.x < 0 || ptGrowing.y < 0 || ptGrowing.x >(src.cols - 1) || (ptGrowing.y > src.rows - 1))
-                continue;
+		//åˆ†åˆ«å¯¹å…«ä¸ªæ–¹å‘ä¸Šçš„ç‚¹è¿›è¡Œç”Ÿé•¿
+		for (int i = 0; i < 8; ++i)
+		{
+			ptGrowing.x = pt.x + DIR[i][0];
+			ptGrowing.y = pt.y + DIR[i][1];
+			//æ£€æŸ¥æ˜¯å¦æ˜¯è¾¹ç¼˜ç‚¹
+			if (ptGrowing.x < 0 || ptGrowing.y < 0 || ptGrowing.x >(src.cols - 1) || (ptGrowing.y > src.rows - 1))
+				continue;
 
-            nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);		//µ±Ç°´ıÉú³¤µãµÄ»Ò¶ÈÖµ
-            if (nGrowLable == 0)					//Èç¹û±ê¼Çµã»¹Ã»ÓĞ±»Éú³¤
-            {
-                nCurValue = src.at<uchar>(ptGrowing.y, ptGrowing.x);
-                if (abs(nCurValue - nSrcValue) < th)					//ÔÚãĞÖµ·¶Î§ÄÚÔòÉú³¤
-                {
-                    // matDst.at<uchar>(ptGrowing.y, ptGrowing.x) = 255;
-                    temp_vcGrowPt_size++;
-                    temp_vcGrowPt.push_back(ptGrowing);					//½«ÏÂÒ»¸öÉú³¤µãÑ¹ÈëÕ»ÖĞ
-                }
-            }
-            else {
-                temp_vcGrowPt_size++;
-            }
-        }
-        //ÏàÁÚµÄÉú³¤µã²»ÊÇµ¥ÏòÉú³¤£¬ÔòÉú³¤µãÓĞĞ§
-        if (temp_vcGrowPt_size >= 1) {
+			// nGrowLable = matDst.at<uchar>(ptGrowing.y, ptGrowing.x);
+			nGrowLable = matDst.data[ptGrowing.y * w + ptGrowing.x];		//å½“å‰å¾…ç”Ÿé•¿ç‚¹çš„ç°åº¦å€¼
+			if (nGrowLable == 0)					//å¦‚æœæ ‡è®°ç‚¹è¿˜æ²¡æœ‰è¢«ç”Ÿé•¿
+			{
+				nCurValue = src.data[ptGrowing.y * w + ptGrowing.x];
+				if (nCurValue >= min)					//åœ¨é˜ˆå€¼èŒƒå›´å†…åˆ™ç”Ÿé•¿
+				{
+					// matDst.at<uchar>(ptGrowing.y, ptGrowing.x) = 255;
+					temp_vcGrowPt_size++;
+					temp_vcGrowPt.push_back(ptGrowing);					//å°†ä¸‹ä¸€ä¸ªç”Ÿé•¿ç‚¹å‹å…¥æ ˆä¸­
+				}
+			}
+			else {
+				temp_vcGrowPt_size++;
+			}
+		}
+		//ç›¸é‚»çš„ç”Ÿé•¿ç‚¹ä¸æ˜¯å•å‘ç”Ÿé•¿ï¼Œåˆ™ç”Ÿé•¿ç‚¹æœ‰æ•ˆ
+		if (temp_vcGrowPt_size >= 1) {
             mat_cnt++;
-            matDst.at<uchar>(pt.y, pt.x) = 255;
-            vcGrowPt.insert(vcGrowPt.end(), temp_vcGrowPt.begin(), temp_vcGrowPt.end());
+			// matDst.at<uchar>(pt.y, pt.x) = 255;
+            matDst.data[pt.y * w + pt.x] = 255;	
+			vcGrowPt.insert(vcGrowPt.end(), temp_vcGrowPt.begin(), temp_vcGrowPt.end());
+		}
+	}
+    return matDst;
+}
+
+
+Mat SetSharpen(Mat src) 
+{
+    Mat blur_img, usm;
+
+    GaussianBlur(src,blur_img,Size(0,0),10);
+    usm = src + 0.5 * (src - blur_img);
+  
+    return usm;
+}
+bool camera_calibration(Mat gray,cv::Size patternSize,float grid_size,cv::Mat& cameraMatrix,cv::Mat& distCoeffs,float& pixel_size)
+{
+    if(gray.type() != CV_8UC1)
+    {
+        std::cerr << "Error: gray not CV_8UC1!" << std::endl;
+        return 0;
+    }
+    std::vector<cv::Point2f> corners;
+    bool found = cv::findChessboardCorners(gray, patternSize, corners,
+                                           cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE);
+
+    if (found) {
+        cv::cornerSubPix(gray, corners, cv::Size(3, 3), cv::Size(-1, -1),
+                         cv::TermCriteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 30, 0.1));
+    } else {
+        std::cerr << "Error: Chessboard corners not found!" << std::endl;
+        return 0;
+    }
+    std::vector<std::vector<cv::Point3f>> objectPoints;
+    std::vector<std::vector<cv::Point2f>> imagePoints;
+
+    std::vector<cv::Point3f> objPts;
+    for (int i = 0; i < patternSize.height; ++i) {
+        for (int j = 0; j < patternSize.width; ++j) {
+            objPts.push_back(cv::Point3f(j, i, 0.0f));
         }
     }
-    return matDst;
+    objectPoints.push_back(objPts);
+    imagePoints.push_back(corners);
+    cameraMatrix = cv::Mat::eye(3, 3, CV_64F);  // ç›¸æœºçŸ©é˜µåˆå§‹åŒ–
+    distCoeffs = cv::Mat::zeros(8, 1, CV_64F);  // ç•¸å˜ç³»æ•°åˆå§‹åŒ–
+    std::vector<cv::Mat> rvecs, tvecs;
+	int calibrationFlags = 0;
+	TermCriteria criteria = TermCriteria(TermCriteria::MAX_ITER + TermCriteria::EPS, 30, DBL_EPSILON);
+    cv::calibrateCamera(objectPoints, imagePoints, gray.size(), cameraMatrix, distCoeffs, rvecs, tvecs,calibrationFlags,criteria);
+
+    vector<Point2f> undistortedCorners;
+    undistortPoints(corners, undistortedCorners, cameraMatrix, distCoeffs);
+
+    std::vector<cv::Point3f> homogeneousPoints;
+    for (const auto& p : undistortedCorners) {
+        homogeneousPoints.push_back(cv::Point3f(p.x, p.y, 1.0f));  // å°† (x, y) è½¬æ¢ä¸º (x, y, 1)
+    }
+    std::vector<cv::Point2f> pixelPoints;
+    for (const auto& p : homogeneousPoints) {
+        cv::Mat pointMat = (cv::Mat_<double>(3, 1) << p.x, p.y, p.z);
+        cv::Mat transformedPoint = cameraMatrix * pointMat;
+        float x = transformedPoint.at<double>(0, 0) / transformedPoint.at<double>(2, 0);
+        float y = transformedPoint.at<double>(1, 0) / transformedPoint.at<double>(2, 0);
+        pixelPoints.push_back(cv::Point2f(x, y));
+    }
+    int numCols = patternSize.width;
+    int numRows = patternSize.height;
+    float meanSideLength = 0;
+    int num = 0;
+    for (int i = 0; i < (patternSize.height - 1); ++i) {
+        for (int j = 0; j < (patternSize.width - 1); ++j) {
+            int index = i * patternSize.width + j;
+            if (j + 1 < numCols) {
+                float width = static_cast<float>(norm(pixelPoints[index] - pixelPoints[index + 1]));
+                meanSideLength+=(width);
+                num++;
+            }
+            if (i + 1 < patternSize.height) {
+                float height = static_cast<float>(norm(pixelPoints[index] - pixelPoints[index + numCols]));
+                meanSideLength+=(height);
+                num++;
+            }
+        }
+    }
+    meanSideLength /= num;
+    pixel_size = grid_size/meanSideLength;
+    return 1;
+}
+
+Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs)
+{
+    cv::Mat undistortedImage;
+    cv::undistort(image, undistortedImage, cameraMatrix, distCoeffs);
+    return undistortedImage;
+}
+
+Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray,Rect roi)
+{
+    Mat dst = Mat::zeros(Bgray.rows,Bgray.cols,CV_8UC3);
+    if(Rgray.type() != CV_8UC1 || Ggray.type() != CV_8UC1 || Bgray.type() != CV_8UC1)
+    {
+        std::cerr << "Error: Bgray||Ggray||Rgray not CV_8UC1!" << std::endl;
+        return dst;
+    }
+    if (Bgray.size() != Ggray.size() || Bgray.size() != Rgray.size()) {
+        std::cout << "Error: Images have different sizes!" << std::endl;
+        return dst;
+    }
+    Mat channels[3] = {Bgray, Ggray, Rgray};
+    Mat result = Mat::zeros(channels[0].size(), channels[0].type());
+    if(roi.width == Bgray.cols && roi.height == Bgray.rows)
+    {
+
+        int ddepth = CV_32F;
+        int scale = 1; 
+        int delta = 0; 
+        Mat grad_x_b, grad_y_b, grad_b;
+        Mat grad_x_g, grad_y_g, grad_g;
+        Mat grad_x_r, grad_y_r, grad_r;
+        Sobel(Bgray, grad_x_b, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Bgray, grad_y_b, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Ggray, grad_x_g, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Ggray, grad_y_g, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Rgray, grad_x_r, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
+        Sobel(Rgray, grad_y_r, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
+
+        Mat grad_b_magnitude, grad_g_magnitude, grad_r_magnitude;
+        magnitude(grad_x_b, grad_y_b, grad_b_magnitude);
+        magnitude(grad_x_g, grad_y_g, grad_g_magnitude);
+        magnitude(grad_x_r, grad_y_r, grad_r_magnitude);
+        Mat grad_combined = grad_b_magnitude + grad_g_magnitude + grad_r_magnitude;
+        Mat grad_display;
+        convertScaleAbs(grad_combined, grad_display);
+
+        int pixel_count[256] = {0};
+        unsigned char* pixel_point = grad_display.data;
+        for (int n = 0; n < Bgray.rows * Bgray.cols; n++) {
+            pixel_count[*pixel_point++]++;
+        }
+        int temp = 0;
+        int upperSize = 3000;
+        int max_val = 0;
+        int value = 255;
+        for (int i = 255; i > 0; i--)
+        {
+            temp += pixel_count[i];
+            if(temp > 0 && max_val == 0){
+                max_val = i;
+            }
+            if (temp > upperSize) {
+                value = i - 1;
+                break;
+            }
+        }
+        if(value > max_val - 5)
+        {
+            value = max_val - 5;
+        }else if(value < max_val - 10)
+        {
+            value = max_val - 10;
+        }
+        Mat binary;
+        threshold(grad_display, binary, value, 255, THRESH_BINARY);
+        Mat kernel = getStructuringElement(MORPH_RECT, Size(11, 11));
+        Mat dilated;
+        cv::dilate(binary, dilated, kernel);
+        cv::erode(dilated, binary, kernel);
+
+        vector<vector<Point>> contours;
+        vector<Vec4i> hierarchy;
+        findContours(binary, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+        Point center(Bgray.cols / 2, Bgray.rows / 2);
+        double minAvgDistance = DBL_MAX;
+        int closestContourIndex = -1;
+        for (size_t i = 0; i < contours.size(); i++) {
+            vector<Point>& contour = contours[i];
+            double area = contourArea(contour);
+            if (area <= 5000) continue;
+            
+            double totalDistance = 0.0;
+            int validPointCount = 0;
+            int jump_step = contour.size() / 50 + 1;
+            for (int j = 0; j < contour.size(); j += jump_step) {
+                double distance = norm(contour[j] - center);
+                totalDistance += distance;
+                validPointCount++;
+            }
+            double avgDistance = (validPointCount > 0) ? totalDistance / validPointCount : 0;
+            if (avgDistance < minAvgDistance) {
+                minAvgDistance = avgDistance;
+                closestContourIndex = i;
+            }
+        }
+        drawContours(result, contours, closestContourIndex, Scalar(255), FILLED);       
+    }
+    else{
+        rectangle(result, roi, Scalar(255), FILLED);
+    }
+    for(int n = 0; n < 3; n++){
+        Mat temp;
+        channels[n].copyTo(temp, result);
+        channels[n] = temp.clone();
+    }
+    merge(channels, 3, dst);
+    return dst;
 }

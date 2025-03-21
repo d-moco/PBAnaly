@@ -41,6 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -57,6 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assist\DigitalSignature.cs" />
+    <Compile Include="Assist\FileMethod.cs" />
+    <Compile Include="Assist\GlobalData.cs" />
+    <Compile Include="Assist\OperatingRecord.cs" />
     <Compile Include="DataProcessForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +80,41 @@
     <Compile Include="LogForm.Designer.cs">
       <DependentUpon>LogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginCommon\AccessControl.cs" />
+    <Compile Include="LoginCommon\BackPassWordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\BackPassWordForm.Designer.cs">
+      <DependentUpon>BackPassWordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCommon\LastLogin.cs" />
+    <Compile Include="LoginCommon\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCommon\RegisterFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\RegisterFrom.Designer.cs">
+      <DependentUpon>RegisterFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCommon\RoleManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\RoleManageForm.Designer.cs">
+      <DependentUpon>RoleManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCommon\User.cs" />
+    <Compile Include="LoginCommon\UserManage.cs" />
+    <Compile Include="LoginCommon\UserManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginCommon\UserManageForm.Designer.cs">
+      <DependentUpon>UserManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginCommon\UserRole.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,12 +128,19 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Module\BioanalysisMannage.cs" />
+    <Compile Include="Module\ColonyMannage.cs" />
     <Compile Include="Module\ImageProcess.cs" />
-    <Compile Include="Module\ImageToolMannage.cs" />
+    <Compile Include="Module\KeyboardListener.cs" />
+    <Compile Include="Module\LanesMannage.cs" />
     <Compile Include="Module\PBAnalyCommMannager.cs" />
     <Compile Include="Module\util.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Read_Write_Log.cs" />
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
@@ -113,6 +160,30 @@
     <Compile Include="UI\AnalyzeDataForm.Designer.cs">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LaneInitialWellsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LaneInitialWellsForm.Designer.cs">
+      <DependentUpon>LaneInitialWellsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LaneLineChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LaneLineChartForm.Designer.cs">
+      <DependentUpon>LaneLineChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LanesImagePaletteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LanesImagePaletteForm.Designer.cs">
+      <DependentUpon>LanesImagePaletteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LanesImagePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LanesImagePanel.Designer.cs">
+      <DependentUpon>LanesImagePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\BioanalyImagePanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,29 +196,23 @@
     <Compile Include="UI\BioanayImagePaletteForm.Designer.cs">
       <DependentUpon>BioanayImagePaletteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\colorbarControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\colorbarControl.Designer.cs">
-      <DependentUpon>colorbarControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ImagePanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ImagePanel.Designer.cs">
-      <DependentUpon>ImagePanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ImagePanelUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ImagePanelUser.Designer.cs">
       <DependentUpon>ImagePanelUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ImageToolPaletteForm.cs">
+    <Compile Include="UI\LogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ImageToolPaletteForm.Designer.cs">
-      <DependentUpon>ImageToolPaletteForm.cs</DependentUpon>
+    <Compile Include="UI\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MultiImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MultiImageForm.Designer.cs">
+      <DependentUpon>MultiImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RowMergeView.cs">
       <SubType>Component</SubType>
@@ -155,6 +220,20 @@
     <Compile Include="UI\RowMergeView.designer.cs">
       <DependentUpon>RowMergeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SizeForm.Designer.cs">
+      <DependentUpon>SizeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SystemSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SystemSettingForm.Designer.cs">
+      <DependentUpon>SystemSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\DrawComm.cs" />
+    <Compile Include="Util\ViKeySoft.cs" />
     <EmbeddedResource Include="DataProcessForm.resx">
       <DependentUpon>DataProcessForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,22 +249,33 @@
     <EmbeddedResource Include="LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\BackPassWordForm.resx">
+      <DependentUpon>BackPassWordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\RegisterFrom.resx">
+      <DependentUpon>RegisterFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\RoleManageForm.resx">
+      <DependentUpon>RoleManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCommon\UserManageForm.resx">
+      <DependentUpon>UserManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,26 +288,41 @@
     <EmbeddedResource Include="UI\AnalyzeDataForm.resx">
       <DependentUpon>AnalyzeDataForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaneInitialWellsForm.resx">
+      <DependentUpon>LaneInitialWellsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaneLineChartForm.resx">
+      <DependentUpon>LaneLineChartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LanesImagePaletteForm.resx">
+      <DependentUpon>LanesImagePaletteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LanesImagePanel.resx">
+      <DependentUpon>LanesImagePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\BioanalyImagePanel.resx">
       <DependentUpon>BioanalyImagePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BioanayImagePaletteForm.resx">
       <DependentUpon>BioanayImagePaletteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\colorbarControl.resx">
-      <DependentUpon>colorbarControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ImagePanel.resx">
-      <DependentUpon>ImagePanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\ImagePanelUser.resx">
       <DependentUpon>ImagePanelUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ImageToolPaletteForm.resx">
-      <DependentUpon>ImageToolPaletteForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MultiImageForm.resx">
+      <DependentUpon>MultiImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RowMergeView.resx">
       <DependentUpon>RowMergeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SizeForm.resx">
+      <DependentUpon>SizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SystemSettingForm.resx">
+      <DependentUpon>SystemSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -234,11 +339,32 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Activiz.NET.x64">
+      <Version>5.8.0</Version>
+    </PackageReference>
     <PackageReference Include="AntdUI">
       <Version>1.6.14</Version>
     </PackageReference>
     <PackageReference Include="Aspose.PDF">
       <Version>24.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="ClosedXML">
+      <Version>0.104.2</Version>
+    </PackageReference>
+    <PackageReference Include="ClosedXML.Report">
+      <Version>0.2.11</Version>
+    </PackageReference>
+    <PackageReference Include="EPPlus">
+      <Version>7.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="GroupDocs.Conversion">
+      <Version>24.12.0</Version>
+    </PackageReference>
+    <PackageReference Include="Magick.NET-Q16-AnyCPU">
+      <Version>14.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Magick.NET.Core">
+      <Version>14.3.0</Version>
     </PackageReference>
     <PackageReference Include="MaterialSkin">
       <Version>0.2.1</Version>
@@ -279,11 +405,23 @@
     <PackageReference Include="ScottPlot.WinForms">
       <Version>5.0.43</Version>
     </PackageReference>
+    <PackageReference Include="SharpDX.D3DCompiler">
+      <Version>4.2.0</Version>
+    </PackageReference>
     <PackageReference Include="SixLabors.ImageSharp">
       <Version>2.1.9</Version>
     </PackageReference>
+    <PackageReference Include="Spire.PDF">
+      <Version>11.3.0</Version>
+    </PackageReference>
     <PackageReference Include="SunnyUI">
       <Version>3.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Buffers">
+      <Version>4.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.119</Version>
     </PackageReference>
     <PackageReference Include="System.Diagnostics.DiagnosticSource">
       <Version>8.0.1</Version>
@@ -299,6 +437,10 @@
     <ProjectReference Include="..\PBBiologyVC\PBBiologyVC.vcxproj">
       <Project>{c1dd8a06-7351-4c8d-bd7f-b2be76bb3903}</Project>
       <Name>PBBiologyVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PointCloudDemo\PointCloudDemo.csproj">
+      <Project>{c0b22863-e234-4c91-ab94-83ca85b5e83f}</Project>
+      <Name>PointCloudDemo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -399,6 +541,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GS-Analy.ico" />
+    <None Include="Resources\3D.png" />
+    <None Include="Resources\登录-亮.png" />
+    <None Include="Resources\添加用户.png" />
+    <None Include="Resources\最小化white.png" />
+    <None Include="Resources\最大化white.png" />
+    <None Include="Resources\关闭White.png" />
+    <None Include="Resources\文本.png" />
+    <None Include="Resources\数据报告 %281%29.png" />
+    <None Include="Resources\数据报告.png" />
     <None Include="Resources\线段 %281%29.png" />
     <None Include="Resources\魔术棒,魔法,魔术,一键.png" />
     <None Include="Resources\圆形.png" />
@@ -422,5 +573,6 @@
     <None Include="Resources\Black_Blue_0.bmp" />
     <None Include="Resources\京仪科技定稿_画板 1 副本2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

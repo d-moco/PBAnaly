@@ -104,7 +104,7 @@ namespace PBAnaly
             {
                 fixed (byte* p = byte_image)
                 {
-                    proteinRect = dd.getProteinRectVC(p, (ushort)input_cn1.Width, (ushort)input_cn1.Height);
+                   // proteinRect = dd.getProteinRectVC(p, (ushort)input_cn1.Width, (ushort)input_cn1.Height);
                 }
 
                 byte[] bytes = ConvertUShortArrayToByteArrayComplete(whiteBackgroundImg_image);
@@ -112,10 +112,10 @@ namespace PBAnaly
                
                 fixed (byte* p = bytes)
                 {
-                    dd.getProteinBandsVC(p, 16, (ushort)input_cn1.Width, (ushort)input_cn1.Height, proteinRect,ref band_info);
+                  //  dd.getProteinBandsVC(p, 16, (ushort)input_cn1.Width, (ushort)input_cn1.Height, proteinRect,ref band_info);
                 }
-                dd.adjustBands(band_info, 10);
-                dd.molecularWeightResult(ref proteinRect, ref band_info);
+               // dd.adjustBands(band_info, 10);
+                //dd.molecularWeightResult(ref proteinRect, ref band_info);
                 Console.WriteLine();
             }
 

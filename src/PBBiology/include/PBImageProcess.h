@@ -10,71 +10,54 @@ using namespace std;
 using namespace cv;
 
 
-//Éú³¤º¯Êı
+//ç”Ÿé•¿å‡½æ•°
 int RegionGrow(cv::Mat& src, cv::Mat& matDst, cv::Point2i pt, int th);
-//×îĞ¡¶ş³Ë·¨È¡Ô²
+//æœ€å°äºŒä¹˜æ³•å–åœ†
 void FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& Circle_R);
-//×îÓÅ×îĞ¡¶ş³Ë·¨È¡Ô²
+//æœ€ä¼˜æœ€å°äºŒä¹˜æ³•å–åœ†
 int RANSAC_FitCircleCenter(vector<Point>& Circle_Data, Point2f& Circle_Center, float& Circle_R, float thresh);
-//Éú³¤×îÓÅ×îĞ¡¶ş³Ë·¨È¡Ô²
+//ç”Ÿé•¿æœ€ä¼˜æœ€å°äºŒä¹˜æ³•å–åœ†
 void RANSAC_FitCircleCenter_with_throw(vector<Point>& Circle_Data, Point2f& Circle_Center, float& Circle_R);
-//¶şÖµ»¯ãĞÖµ¼ÆËã
+//äºŒå€¼åŒ–é˜ˆå€¼è®¡ç®—
 int IJIsoData(int* data);
 int defaultIsoData(int* data);
 
-////¸ù¾İmaskäÖÈ¾Í¼Ïñ
-////src¡¢mask£ºÊäÈëCV_16UC1Í¼Ïñ
-////dst£ºÊä³öCV_8UC3²ÊÉ«Í¼Ïñ
-////max¡¢min£ºmaskÏñËØÑ¡ÔñäÖÈ¾µÄ×î´ó×îĞ¡Öµ
-////color£ºÑÕÉ«ÀàĞÍ
-////reverse£ºÊÇ·ñ·´×ªÑÕÉ«
-//int render_mask_image(Mat src, Mat mask, Mat dst, float max, float min, ColorTable color, bool reverse);
-//
-///// <summary>
-///// ÈÚºÏÁ½ÕÅÍ¼
-///// </summary>
-///// <param name="src"></param>
-///// <param name="mark"></param>
-///// <param name="dst"></param>
-///// <param name="alpha"></param>
-/////  <returns></returns>
-//int blendImages(const Mat& src, const Mat& mark, const Mat& dst, double alpha);
-////int render_image(Mat src, Mat& dst, float max, float min, ColorTable color, bool reverse);
-////ºÏ³ÉäÖÈ¾Í¼Ïñ£¬srcÊÇÀÏÊóÍ¼£¬pseudoImgÊÇ¹â×ÓäÖÈ¾Í¼£¬brightness_offsetÁÁ¶È£¬contrast_factor¶Ô±È¶È£¬contrast_factorÍ¸Ã÷¶È£¬·µ»ØÈÚºÏÍ¼
-////brightness_offset:ÁÁ¶ÈÆ«ÒÆ·¶Î§ -255 µ½ +255
-////contrast_factor:¶Ô±È¶ÈÒò×Ó·¶Î§ 0.1 µ½ 3.0£¨1.0Îª²»±ä£©
-////opacity_factor:Í¸Ã÷¶ÈÒò×Ó·¶Î§ 0 µ½ 1£¨0ÎªÍ¸Ã÷£¬1Îª²»Í¸Ã÷£©
-//Mat render_mask_image(Mat src, Mat pseudoImg, int brightness_offset, double contrast_factor, double opacity_factor);
-////»ñÈ¡ÑÕÉ«±í£¬colorÑÕÉ«ÀàĞÍ£¬bgr_tabÊÇÓĞ¿Õ¼äµÄÑÕÉ«±íÖ¸Õë£¬reverseÊÇ·ñ·´×ª
-//void get_bgr_tab(ColorTable color, uint8_t(*bgr_tab)[3], bool reverse);
-////Éú²úÑÕÉ«±íµÄÖ±ÌõÍ¼£¬w=200,h_color=10ÊÇÒ»¸öÑÕÉ«¸ß£¬bgr_tabÊÇÓĞ¿Õ¼äµÄÑÕÉ«±íÖ¸Õë
-//Mat bgr_tab_image(int w, int h_onecolor, uint8_t(*bgr_tab)[3]);
-//int pseudo_color_processing(Mat src, Mat dst, float max, float min, uint8_t(*bgr_tab)[3]);
-//
-//// »ñµÃÑ¡ÖĞÇøÓòµÄ¹â×ÓÊı
-//PseudoInfo get_pseudo_info(Mat src,int x,int y,int w,int h,float max,float min);
-//
-//Mat bgr_scale_image(Mat src, float maxVal, float minVal);
 
 
-
-//ºÏ³ÉäÖÈ¾Í¼Ïñ£¬srcÊÇÀÏÊóÍ¼£¬pseudoImgÊÇ¹â×ÓäÖÈ¾Í¼£¬brightness_offsetÁÁ¶È£¬contrast_factor¶Ô±È¶È£¬contrast_factorÍ¸Ã÷¶È£¬·µ»ØÈÚºÏÍ¼
-//brightness_offset:ÁÁ¶ÈÆ«ÒÆ·¶Î§ -255 µ½ +255
-//contrast_factor:¶Ô±È¶ÈÒò×Ó·¶Î§ 0.1 µ½ 3.0£¨1.0Îª²»±ä£©
-//opacity_factor:Í¸Ã÷¶ÈÒò×Ó·¶Î§ 0 µ½ 1£¨0ÎªÍ¸Ã÷£¬1Îª²»Í¸Ã÷£©
+//åˆæˆæ¸²æŸ“å›¾åƒï¼Œsrcæ˜¯è€é¼ å›¾ï¼ŒpseudoImgæ˜¯å…‰å­æ¸²æŸ“å›¾ï¼Œbrightness_offsetäº®åº¦ï¼Œcontrast_factorå¯¹æ¯”åº¦ï¼Œcontrast_factoré€æ˜åº¦ï¼Œè¿”å›èåˆå›¾
+//brightness_offset:äº®åº¦åç§»èŒƒå›´ -255 åˆ° +255
+//contrast_factor:å¯¹æ¯”åº¦å› å­èŒƒå›´ 0.1 åˆ° 3.0ï¼ˆ1.0ä¸ºä¸å˜ï¼‰
+//opacity_factor:é€æ˜åº¦å› å­èŒƒå›´ 0 åˆ° 1ï¼ˆ0ä¸ºé€æ˜ï¼Œ1ä¸ºä¸é€æ˜ï¼‰
 Mat render_mask_image(Mat src, Mat pseudoImg, int brightness_offset, double contrast_factor, double opacity_factor);
-//»ñÈ¡ÑÕÉ«±í£¬colorÑÕÉ«ÀàĞÍ£¬bgr_tabÊÇÓĞ¿Õ¼äµÄÑÕÉ«±íÖ¸Õë£¬reverseÊÇ·ñ·´×ª
+//è·å–é¢œè‰²è¡¨ï¼Œcoloré¢œè‰²ç±»å‹ï¼Œbgr_tabæ˜¯æœ‰ç©ºé—´çš„é¢œè‰²è¡¨æŒ‡é’ˆï¼Œreverseæ˜¯å¦åè½¬
 void get_bgr_tab(ColorTable color, uint8_t(*bgr_tab)[3], bool reverse);
-//Éú²úÑÕÉ«±íµÄÖ±ÌõÍ¼£¬w=200,h_color=10ÊÇÒ»¸öÑÕÉ«¸ß£¬bgr_tabÊÇÓĞ¿Õ¼äµÄÑÕÉ«±íÖ¸Õë
+//ç”Ÿäº§é¢œè‰²è¡¨çš„ç›´æ¡å›¾ï¼Œw=200,h_color=10æ˜¯ä¸€ä¸ªé¢œè‰²é«˜ï¼Œbgr_tabæ˜¯æœ‰ç©ºé—´çš„é¢œè‰²è¡¨æŒ‡é’ˆ
 Mat bgr_tab_image(int w, int h_onecolor, uint8_t(*bgr_tab)[3]);
-//Í³¼Æ¼ÆËã½á¹û£¬srcÊÇÊäÈëÍ¼Ïñ£¬16bitµÄcountÍ¼»òÕßfloatµÄ¹â×Ó¼ÆËã½á¹ûÍ¼¶¼¿ÉÒÔÊäÈë£»maskÊÇÑÚÄ¤Í¼£»maxºÍminÊÇÉè¶¨µÄ´óĞ¡
+//ç»Ÿè®¡è®¡ç®—ç»“æœï¼Œsrcæ˜¯è¾“å…¥å›¾åƒï¼Œ16bitçš„countå›¾æˆ–è€…floatçš„å…‰å­è®¡ç®—ç»“æœå›¾éƒ½å¯ä»¥è¾“å…¥ï¼›maskæ˜¯æ©è†œå›¾ï¼›maxå’Œminæ˜¯è®¾å®šçš„å¤§å°
 PseudoInfo get_pseudo_info(Mat src, Mat mask, float max, float min);
-//Éú³É¹â×ÓäÖÈ¾Í¼£¬srcÊÇäÖÈ¾Ç°Í¼£¬dstÊÇäÖÈ¾ºóÍ¼£¬maxºÍminÊÇÉè¶¨µÄ´óĞ¡£¬bgr_tabÊÇÓĞ¿Õ¼äµÄÑÕÉ«±íÖ¸Õë
+//ç”Ÿæˆå…‰å­æ¸²æŸ“å›¾ï¼Œsrcæ˜¯æ¸²æŸ“å‰å›¾ï¼Œdstæ˜¯æ¸²æŸ“åå›¾ï¼Œmaxå’Œminæ˜¯è®¾å®šçš„å¤§å°ï¼Œbgr_tabæ˜¯æœ‰ç©ºé—´çš„é¢œè‰²è¡¨æŒ‡é’ˆ
 int pseudo_color_processing(Mat src, Mat dst, float max, float min, uint8_t(*bgr_tab)[3]);
-//Éú³É´ø±ê³ßµÄÖ±ÌõÍ¼£¬srcÊÇbgr_tab_imageÉú³ÉµÄÍ¼£¬maxValºÍminValÊÇÉè¶¨µÄ´óĞ¡£¬scientific_flagÊÇ·ñ¿ÆÑ§¼ÆÊı·¨
+//ç”Ÿæˆå¸¦æ ‡å°ºçš„ç›´æ¡å›¾ï¼Œsrcæ˜¯bgr_tab_imageç”Ÿæˆçš„å›¾ï¼ŒmaxValå’ŒminValæ˜¯è®¾å®šçš„å¤§å°ï¼Œscientific_flagæ˜¯å¦ç§‘å­¦è®¡æ•°æ³•
 Mat bgr_scale_image(Mat src, float maxVal, float minVal, int scientific_flag);
-//»ñÈ¡¹â×Ó¼ÆËãÍ¼£¬srcÊäÈëäÖÈ¾Ç°Ô­Ê¼Í¼£¬secÊÇÅÄÉãÃëÊı£¬Wcm=27ÊÇÊµ¼Ê¿í£¬Hcm=18ÊÇÊµ¼Ê¸ß£¬srÊÇÄ¬ÈÏ1.0£»·µ»ØCV_32FC1µÄ¸¡µã¹â×Ó½á¹ûÍ¼
+//è·å–å…‰å­è®¡ç®—å›¾ï¼Œsrcè¾“å…¥æ¸²æŸ“å‰åŸå§‹å›¾ï¼Œsecæ˜¯æ‹æ‘„ç§’æ•°ï¼ŒWcm=27æ˜¯å®é™…å®½ï¼ŒHcm=18æ˜¯å®é™…é«˜ï¼Œsræ˜¯é»˜è®¤1.0ï¼›è¿”å›CV_32FC1çš„æµ®ç‚¹å…‰å­ç»“æœå›¾
 Mat get_photon_image(Mat src, float sec, float Wcm, float Hcm, float sr);
-//Ä§Êõ°ô¹¦ÄÜ£¬srcÊÇ´¦Àí³É8bitµÄÍ¼£¬x,yÊÇµã»÷Î»ÖÃµÄ×ø±ê£¬
-//thÊÇÉè¶¨µÄÏñËØ²î£¨10»ò20Ö®ÀàµÄ£¬¿ÉÒÔÊµ¼Êµ÷Ò»ÏÂ£©£¬¾ÍÊÇºÍµã»÷Î»ÖÃµÄÏñËØ²îÔÚth·¶Î§ÄÚµÄÁ¬ÔÚÒ»ÆğµÄÏñËØ£¬¶¼»á±»¿òÑ¡
-Mat get_magic_wand_image(Mat src, int x, int y, int th);
+//é­”æœ¯æ£’åŠŸèƒ½ï¼Œsrcæ˜¯å¤„ç†æˆ8bitçš„å›¾ï¼Œx,yæ˜¯ç‚¹å‡»ä½ç½®çš„åæ ‡ï¼Œmaxå’Œminæ˜¯è®¾å®šçš„å¤§å°,maxå’Œminéœ€è¦æ³¨æ„é™¤ä»¥256ï¼Œä½¿ç”¨0-255æ•°æ®
+//ç‚¹å‡»ä½ç½®çš„åƒç´ å·®åœ¨[min,max]èŒƒå›´å†…çš„è¿åœ¨ä¸€èµ·çš„åƒç´ ï¼Œéƒ½ä¼šè¢«æ¡†é€‰
+Mat get_magic_wand_image(Mat src,int x,int y,float max,float min);
+
+
+// é”åŒ–
+Mat SetSharpen(Mat src);
+//ç›¸æœºæ ‡å®šåŠŸèƒ½ï¼Œgrayæ˜¯åŒ…å«å®Œæ•´æ£‹ç›˜æ ¼ç°åº¦å›¾åƒï¼ŒpatternSizeæ˜¯æ£‹ç›˜æ ¼å†…è§’ç‚¹çš„æ•°é‡ï¼ˆå‡å¦‚æ£‹ç›˜æ ¼çš„å°ºå¯¸æ˜¯9*7ï¼Œé‚£å†…è§’ç‚¹å°±æ˜¯8*6ï¼‰ï¼Œgrid_sizeæ˜¯æ¯ä¸ªæ ¼å­çš„ç‰©ç†å¤§å°
+//cameraMatrixå’ŒdistCoeffsæ˜¯åç»­å›¾åƒç•¸å˜çŸ«æ­£éœ€è¦çš„å‚æ•°ï¼Œæ ‡å®šä¸€æ¬¡åï¼Œé•œå¤´æ— å˜åŠ¨æƒ…å†µä¸‹ï¼Œåç»­å›¾åƒç›´æ¥ç”¨æ­¤å‚æ•°çŸ«æ­£å°±å¯ä»¥ï¼Œpixel_sizeæ˜¯çŸ«æ­£åæ¯ä¸ªpixelçš„ç‰©ç†å¤§å°
+//è¿”å›å€¼æ˜¯0è¡¨ç¤ºæ ‡å®šé”™è¯¯ï¼Œè¿”å›å€¼æ˜¯1è¡¨ç¤ºæ ‡å®šæ­£ç¡®
+//æ³¨ï¼šç›¸æœºæ ‡å®šåŠŸèƒ½å¾—åˆ°çš„ç»“æœå‚æ•°åªèƒ½ç”¨äºçŸ«æ­£å’Œè®¡ç®—å¾—åˆ°ç»“æœçš„è¾“å…¥å›¾åƒåˆ†è¾¨ç‡ä¸€è‡´çš„å›¾
+bool camera_calibration(Mat gray,cv::Size patternSize,float grid_size,cv::Mat& cameraMatrix,cv::Mat& distCoeffs,float& pixel_size);
+//å›¾åƒç•¸å˜çŸ«æ­£åŠŸèƒ½ï¼Œimageæ˜¯è¾“å…¥å›¾åƒï¼ˆæ— è¦æ±‚ï¼‰ï¼ŒcameraMatrixå’ŒdistCoeffsæ˜¯å›¾åƒç•¸å˜çŸ«æ­£çš„å‚æ•°
+//è¿”å›å€¼æ˜¯çŸ«æ­£åçš„å›¾åƒï¼Œè¾“å…¥å›¾åƒæ˜¯ä»€ä¹ˆæ ¼å¼ï¼Œè¾“å‡ºå›¾åƒå°±æ˜¯ä»€ä¹ˆæ ¼å¼
+//æ³¨ï¼šç›¸æœºæ ‡å®šåŠŸèƒ½å¾—åˆ°çš„ç»“æœå‚æ•°åªèƒ½ç”¨äºçŸ«æ­£å’Œè®¡ç®—å¾—åˆ°ç»“æœçš„è¾“å…¥å›¾åƒåˆ†è¾¨ç‡ä¸€è‡´çš„å›¾
+Mat distortion_correction(Mat image,cv::Mat cameraMatrix,cv::Mat distCoeffs);
+//è›‹ç™½ä¸­å¿ƒåŒºåŸŸå åŠ æˆå½©è‰²å›¾ï¼ŒBgrayä¸ºè“è‰²ç¯ä¸‹ç°åº¦å›¾ï¼ŒGgrayä¸ºç»¿è‰²ç¯ä¸‹ç°åº¦å›¾ï¼ŒRgrayä¸ºçº¢è‰²ç¯ä¸‹ç°åº¦å›¾
+//roiä¸ºæ‰‹åŠ¨æ ‡æ³¨åŒºåŸŸï¼Œè‡ªåŠ¨æ£€æµ‹æ—¶ Rect roi = Rect(0,0,Bgray.cols,Bgray.rows)ï¼Œå¦åˆ™ç›´æ¥æŒ‰ç…§roiåŒºåŸŸè¿›è¡Œæ ‡å®šå åŠ 
+//è¿”å›ä¸‰é€šé“å½©è‰²å¤„ç†å›¾
+Mat mid_img_merge_deal(Mat Bgray,Mat Ggray,Mat Rgray,Rect roi);

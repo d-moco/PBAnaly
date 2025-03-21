@@ -3,6 +3,10 @@ using System.Threading;
 using System.IO;
 using System.Windows.Forms;
 using PBAnaly.Module;
+using PBAnaly.UI;
+using PBAnaly.LoginCommon;
+using PBAnaly.Assist;
+using OfficeOpenXml;
 namespace PBAnaly
 {
     public static class Global
@@ -46,7 +50,7 @@ namespace PBAnaly
         [STAThread]
         static void Main()
         {
-
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             const string appName = "PBAnaly";
             bool createdNew;
@@ -59,22 +63,27 @@ namespace PBAnaly
                 MessageBox.Show("应用程序已经在运行。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-#if true
-            string macAddress =util.GetMotherboardSerial();
-            if (macAddress == "PM00P0209N000037" || macAddress == "07D4822_M81D023244" || macAddress == "YQ1711233HY01423" || macAddress == "S312NXCV0056AZMB" || macAddress == "PM82L0235P000452"|| macAddress == "MP2M55J0" || macAddress == "S936NXCV000SJ2MB"|| macAddress == "S730NXCV009371MB")
+
+
+            if (Util.ViKeySoft.Instance.CheckViKey() == true) 
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                var login = new LoginForm();
-                login.StartPosition = FormStartPosition.CenterScreen;
-                Application.Run(login);
-                
-            }
-            else 
-            {
-                MessageBox.Show("你没有权限");
+                MessageBox.Show("你没有权限，请检查加密狗是否插入","警告");
                 return;
             }
+            Util.ViKeySoft.Instance.Uninitializatio();
+#if true
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            //数据库操作
+            string dbPath = "UserManage.db";
+            string connectionString = $"Data Source={dbPath};Version=3;";
+            UserManage.ConnectDb();
+            GlobalData.LoadGlobalPropertyFromDb();
+            //AccessControl.LoadConfig();//加载权限
+            var login = new LoginForm();
+            login.StartPosition = FormStartPosition.CenterScreen;
+            Application.Run(new MainForm());
 #endif
 
         }

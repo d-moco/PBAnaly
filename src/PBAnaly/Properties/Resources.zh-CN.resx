@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="materialButton_miniAnalyze" xml:space="preserve">
+    <value>微孔版分析</value>
+  </data>
+  <data name="label_re_question" xml:space="preserve">
+    <value>密保问题</value>
+  </data>
+  <data name="ab_next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="btn_editRole_head" xml:space="preserve">
+    <value>修改权限</value>
+  </data>
+  <data name="ab_one" xml:space="preserve">
+    <value>第一幅</value>
+  </data>
+  <data name="SIGNIN_materialButton" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="btn_UserManager" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="materialCheckbox1" xml:space="preserve">
+    <value>统一泳道宽度</value>
+  </data>
+  <data name="materialSwitch_UI" xml:space="preserve">
+    <value>光/暗 主题</value>
+  </data>
+  <data name="cb_lane_width" xml:space="preserve">
+    <value>统一泳道宽度</value>
+  </data>
+  <data name="materialButton_setting" xml:space="preserve">
+    <value>系统操作</value>
+  </data>
+  <data name="label_Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="clasi_conformity" xml:space="preserve">
+    <value>整合</value>
+  </data>
+  <data name="label_path" xml:space="preserve">
+    <value>路径</value>
+  </data>
+  <data name="btn_back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="ab_saveTif" xml:space="preserve">
+    <value>另存为单帧TIF</value>
+  </data>
+  <data name="label5" xml:space="preserve">
+    <value>密保问题</value>
+  </data>
+  <data name="mb_addBands" xml:space="preserve">
+    <value>添加条带</value>
+  </data>
+  <data name="btn_delete_user" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="label2_mode" xml:space="preserve">
+    <value>模式</value>
+  </data>
+  <data name="btn_Login" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="mb_deleteBands" xml:space="preserve">
+    <value>删除条带</value>
+  </data>
+  <data name="collapseItem1" xml:space="preserve">
+    <value>图像调整</value>
+  </data>
+  <data name="btn_edit_password_role" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="materialButton_log" xml:space="preserve">
+    <value>操作日志</value>
+  </data>
+  <data name="cb_Remember" xml:space="preserve">
+    <value>记住本次登录</value>
+  </data>
+  <data name="label_role_userName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="btn_ok" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="materialButton_acidAnalyze" xml:space="preserve">
+    <value>泳道分析</value>
+  </data>
+  <data name="ab_last" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="collapseItem3" xml:space="preserve">
+    <value>标签工具</value>
+  </data>
+  <data name="cb_sharpen" xml:space="preserve">
+    <value>锐化</value>
+  </data>
+  <data name="materialButton_correction" xml:space="preserve">
+    <value>蛋白归一化</value>
+  </data>
+  <data name="materialButton_curveimage" xml:space="preserve">
+    <value>泳道波形图</value>
+  </data>
+  <data name="materialButton_outimage" xml:space="preserve">
+    <value>导出图像</value>
+  </data>
+  <data name="materialButton_analyzedata" xml:space="preserve">
+    <value>数据分析</value>
+  </data>
+  <data name="foxLabel2" xml:space="preserve">
+    <value>色阶</value>
+  </data>
+  <data name="mb_colonyCount" xml:space="preserve">
+    <value>菌落计数</value>
+  </data>
+  <data name="btn_SystemSetting" xml:space="preserve">
+    <value>系统设置</value>
+  </data>
+  <data name="fb_fixSetting" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="lb_lane_width" xml:space="preserve">
+    <value>泳道宽度(像素)</value>
+  </data>
+  <data name="materialButton_imageProcess" xml:space="preserve">
+    <value>图像处理</value>
+  </data>
+  <data name="btn_delete_role" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="btn_role_save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="foxLabel3" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="btn_FixPassword" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="crownLabel1" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="btn_role_manage" xml:space="preserve">
+    <value>权限管理</value>
+  </data>
+  <data name="materialButton_roiAnalyze" xml:space="preserve">
+    <value>ROI分析</value>
+  </data>
+  <data name="clasi_lanes" xml:space="preserve">
+    <value>泳道</value>
+  </data>
+  <data name="SettingForm" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="label_re_Answer" xml:space="preserve">
+    <value>答案</value>
+  </data>
+  <data name="ab_atLast" xml:space="preserve">
+    <value>最后</value>
+  </data>
+  <data name="mb_deleteLane" xml:space="preserve">
+    <value>删除泳道</value>
+  </data>
+  <data name="mb_findLanes" xml:space="preserve">
+    <value>查找泳道</value>
+  </data>
+  <data name="clasi_strips" xml:space="preserve">
+    <value>条带</value>
+  </data>
+  <data name="flb_brightness" xml:space="preserve">
+    <value>亮度</value>
+  </data>
+  <data name="btn_fix_role" xml:space="preserve">
+    <value>修改权限</value>
+  </data>
+  <data name="mb_findBands" xml:space="preserve">
+    <value>查找条带</value>
+  </data>
+  <data name="clasi_init" xml:space="preserve">
+    <value>初始井</value>
+  </data>
+  <data name="label_enterPassword" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="cb_alwaysShowLane" xml:space="preserve">
+    <value>总是显示泳道</value>
+  </data>
+  <data name="label4" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="label_password_formUserManage" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="btn_re_register" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="label6" xml:space="preserve">
+    <value>答案</value>
+  </data>
+  <data name="btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="lab_forget_pass" xml:space="preserve">
+    <value>忘记密码？点击找回</value>
+  </data>
+  <data name="label1_role" xml:space="preserve">
+    <value>权限</value>
+  </data>
+  <data name="label2" xml:space="preserve">
+    <value>你的密码</value>
+  </data>
+  <data name="label_Username_form_userManage" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="collapseItem2" xml:space="preserve">
+    <value>ROI工具</value>
+  </data>
+  <data name="ab_close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="btn_back_form_re" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="ab_open_cur_tif" xml:space="preserve">
+    <value>打开当前帧</value>
+  </data>
+  <data name="materialButton_LoadData" xml:space="preserve">
+    <value>加载图像</value>
+  </data>
+  <data name="label_re_userNma" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="mb_addLanes" xml:space="preserve">
+    <value>添加泳道</value>
+  </data>
+  <data name="btn_Frin_Password" xml:space="preserve">
+    <value>找回</value>
+  </data>
+  <data name="cb_alwaysShowBands" xml:space="preserve">
+    <value>总是显示条带</value>
+  </data>
+  <data name="cb_continuous" xml:space="preserve">
+    <value>连续绘制</value>
+  </data>
+  <data name="mb_updateInitWell" xml:space="preserve">
+    <value>修改初始井</value>
+  </data>
+  <data name="label_re_password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="label_DeleteTips" xml:space="preserve">
+    <value>选中表格中一行删掉即可</value>
+  </data>
+  <data name="lb_top_info" xml:space="preserve">
+    <value>Trans-fluorescence</value>
+  </data>
+  <data name="cb_scientific" xml:space="preserve">
+    <value>光子量</value>
+  </data>
+  <data name="label1" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+</root>

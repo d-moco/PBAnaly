@@ -9,54 +9,54 @@
 using namespace std;
 using namespace cv;
 
-class PBLane
-{
-public:
-	PBLane();
-	~PBLane();
 
-private:
-	//Ó¾µÀ¹ıÂË´¦Àíº¯Êı
-	//¸ù¾İÊäÈëËùÓĞÀàËÆÓ¾µÀµÄÖĞĞÄXÖá×ø±ê£¨groupsX£©£¬ÒÔ¼°Ó¾µÀµÄ×îĞ¡×î´ó¾àÀë£¨minDifference/maxDifference£©£¬¹ıÂËµô²»ºÏ¹æµÄÓ¾µÀ
-	std::vector<int> processArray(std::vector<int>& groupsX, int minDifference, int maxDifference);
+std::vector<int> processArray(std::vector<int>& groupsX, int minDifference, int maxDifference);
 
-	//¿í¶È/*Á÷*/¼ÆËãº¯Êı£¬ÓÃÀ´¼ÆËã¼ì²âÓ¾µÀ¿í¶ÈÁ÷
-	vector<int> get_bar_num(vector<unsigned char> buf);
+vector<int> get_bar_num(vector<unsigned char> buf);
 
-	//Ó¾µÀ¼ì²â²¹È«º¯Êı
-	//¸ù¾İÓ¾µÀÎ»ÖÃ£¨processX£©ºÍÓ¾µÀ¼ä¾àÀë£¨meanW£©£¬´ÓÍ¼Ïñ£¨src£©ÖĞ¼ì²âÁÙ½üÀàÓ¾µÀÎ»ÖÃÊÇ·ñ·ûºÏÓ¾µÀÌØĞÔ£¨Ó¾µÀÄÚÁ½ÌõÏñËØµÄ¿í¶ÈÁ÷Ó¦ÀàËÆÇÒ´æÔÚÌõ´ø£©
-	std::vector<int> checkArray(std::vector<int>& processX, Mat src, int start_y, int end_y, int meanW);
+std::vector<int> checkArray(std::vector<int>& processX, Mat src, int start_y, int end_y, int meanW);
 
-	//Ìõ´øĞÅÏ¢¼ÆËãº¯Êı£¬ÊäÈë8bitÊı×é£¨rbuf£©ÒÔ¼°¹ıÂË·¶Î§£¨range£©£¨´Ë·¶Î§ÄÚ½ö±£ÁôÒ»¸ö·Ö×Ó£©
-	vector<std::array<int, 3>> get_top_point(vector<unsigned char> rbuf, int range);
+vector<std::array<int, 3>> get_top_point(vector<unsigned short> rbuf, int range);
 
-	//µ¥¸öÓ¾µÀÖĞÌõ´øĞÅÏ¢¼ÆËã£¨Ìõ´øÎ»ÖÃµÈ£©
-	BandInfo get_protein_lane_data(Mat src, Rect lane);
-	static bool myCompare(const int& a, const int& b);
-	static bool myCompare2(const std::array<int, 4>& a, const std::array<int, 4>& b);
+static bool myCompare(const int& a, const int& b);
+static bool myCompare2(const std::array<int, 4>& a, const std::array<int, 4>& b);
 
 
-public:
-	//º¯Êı£º»ñµÃÍ¼ÏñÖĞÓ¾µÀÎ»ÖÃ
-	//src£ºÊäÈëÍ¼Ïñ£¬ĞèÊÇ8bitµ¥Í¨µÀÍ¼Ïñ
-	//·µ»ØÖµ£ºÓ¾µÀ¾ØĞÎÎ»ÖÃĞÅÏ¢
-	std::vector<cv::Rect> getProteinRect(Mat src);
 
-	////º¯Êı£º»ñµÃÍ¼ÏñÖĞÓ¾µÀ¶ÔÓ¦µÄÌõ´øĞÅÏ¢
-	////src£ºÊäÈëÍ¼Ïñ£¬ĞèÊÇ16bitµ¥Í¨µÀÍ¼Ïñ
-	////lanes£ºÓ¾µÀ¾ØĞÎÎ»ÖÃĞÅÏ¢
-	////·µ»ØÖµ£º¶ÔÓ¦Ìõ´øÎ»ÖÃĞÅÏ¢
-	std::vector<BandInfo> getProteinBands(Mat src, std::vector<cv::Rect> lanes);
+// std::vector<cv::Rect> getProteinRect(Mat src);
+//è·å¾—è›‹ç™½æ³³é“ä½ç½®ï¼Œsrcæ˜¯ç°åº¦å›¾åƒCV_8UC1ï¼Œ*ProteinRect_width æ˜¯è›‹ç™½æ³³é“å®½åº¦ï¼ˆkeep_width = 1æ—¶ï¼Œè¾“å…¥å›ºå®šå®½åº¦ï¼›keep_width = 0æ—¶,è¾“å‡ºè®¡ç®—å¾—åˆ°å®½åº¦ï¼‰ï¼Œ
+//ProteinRect_height_ratioé«˜åº¦æ¯”ä¾‹ï¼Œé«˜åº¦å å›¾åƒé«˜åº¦ç™¾åˆ†ä¹‹å‡ ï¼Œä¸€èˆ¬è¾“å…¥90
+//è¿”å›æ‰€æœ‰è›‹ç™½æ³³é“çŸ©å½¢
+std::vector<cv::Rect> getProteinRect(Mat src,int* ProteinRect_width,bool keep_width,int ProteinRect_height_ratio);
+//æ·»åŠ æ³³é“ï¼ŒproteinRectæ˜¯å½“å‰æ³³é“çŸ©å½¢ï¼Œxæ˜¯æ–°æ·»åŠ æ³³é“çš„ä¸­å¿ƒxåæ ‡ï¼Œä¸€èˆ¬å°±æ˜¯é¼ æ ‡ç‚¹å‡»å›¾å½¢çš„xåæ ‡,
+//srcæ˜¯è¾“å…¥å›¾å½¢ï¼ˆCV_16UC1ï¼‰,unadjustbandsæ˜¯æœªå¯¹é½æ¡å¸¦ä¿¡æ¯ï¼Œéœ€è¦åŒæ­¥ä¿®æ”¹
+//proteinRectåœ¨æ²¡æœ‰æ³³é“æ—¶ï¼Œä¼šä½¿ç”¨è¾“å…¥çš„ProteinRect_width ä½œä¸ºè›‹ç™½æ³³é“å®½åº¦,ProteinRect_height_ratioä½œä¸ºé«˜åº¦æ¯”ä¾‹ï¼Œé«˜åº¦å å›¾åƒé«˜åº¦ç™¾åˆ†ä¹‹å‡ ï¼Œä¸€èˆ¬è¾“å…¥90
+void addProteinRect(std::vector<cv::Rect>& proteinRect,int x,Mat src,std::vector<BandInfo>& unadjustbands,int ProteinRect_width,int ProteinRect_height_ratio);
+//åˆ é™¤æ³³é“ï¼ŒproteinRectæ˜¯å½“å‰æ³³é“çŸ©å½¢ï¼Œidxæ˜¯åˆ é™¤æ³³é“çš„ä¸‹æ ‡åºå·,unadjustbandsæ˜¯æœªå¯¹é½æ¡å¸¦ä¿¡æ¯ï¼Œéœ€è¦åŒæ­¥ä¿®æ”¹
+void deleteProteinRect(std::vector<cv::Rect>& proteinRect,int idx,std::vector<BandInfo>& unadjustbands);
+//è®¡ç®—å•ä¸ªæ³³é“æ¡å¸¦ä¿¡æ¯ï¼Œsrcæ˜¯è¾“å…¥å›¾å½¢ï¼ˆCV_16UC1ï¼‰ï¼Œlaneæ˜¯æ³³é“å¯¹åº”çŸ©å½¢ï¼Œ
+//è¿”å›BandInfoæ¡å¸¦ç»“æœ
+BandInfo get_protein_lane_data(Mat src,Rect lane);
+//è·å¾—æ‰€æœ‰æ³³é“æœªå¯¹é½çš„æ¡å¸¦ç»“æœï¼Œsrcæ˜¯è¾“å…¥å›¾å½¢ï¼ˆCV_16UC1ï¼‰ï¼Œlaneæ˜¯æ³³é“å¯¹åº”çŸ©å½¢
+//è¿”å›æ‰€æœ‰æ³³é“æœªå¯¹é½çš„æ¡å¸¦ç»“æœ
+std::vector<BandInfo> getProteinBands(Mat src,std::vector<cv::Rect> lanes);
+//ä¿®æ”¹æ³³é“å®½åº¦å’Œé«˜åº¦å’Œå·²ç»è®¡ç®—å‡ºçš„æœªå¯¹é½æ¡å¸¦ä¿¡æ¯ï¼Œsrcæ˜¯è¾“å…¥å›¾å½¢ï¼ˆCV_16UC1ï¼‰ï¼ŒproteinRectæ˜¯å½“å‰æ³³é“çŸ©å½¢ï¼Œ
+//ProteinRect_widthæ˜¯æ–°çš„è›‹ç™½æ³³é“å®½åº¦,ProteinRect_height_ratioæ˜¯æ–°çš„é«˜åº¦æ¯”ä¾‹ï¼Œé«˜åº¦å å›¾åƒé«˜åº¦ç™¾åˆ†ä¹‹å‡ ï¼Œä¸€èˆ¬è¾“å…¥90
+//unadjustbandsæ˜¯æœªå¯¹é½çš„æ‰€æœ‰æ³³é“æ¡å¸¦ä¿¡æ¯
+//è¾“å…¥çš„æ¡å¸¦å¿…é¡»æ˜¯æœªå¯¹é½çš„ï¼Œè°ƒæ•´åæ•°æ®éœ€è¦é‡æ–°å¯¹é½å’Œè®¡ç®—åˆ†å­é‡ï¼ˆè°ƒç”¨adjustBandså’ŒmolecularWeightResultï¼‰
+void modifyProteinRectAndBands(Mat src,std::vector<cv::Rect>& proteinRect,int ProteinRect_width,int ProteinRect_height_ratio,std::vector<BandInfo>& unadjustbands);
+//æ ¹æ®é¼ æ ‡ç‚¹å‡»å›¾å½¢çš„åæ ‡ï¼Œè¾“å‡ºå½“å‰ä½ç½®çš„æ³³é“ä¸‹æ ‡å’Œæ¡å¸¦ä¸‹æ ‡
+//lanesæ˜¯æ³³é“ä¿¡æ¯ï¼Œbandsæ˜¯å¯¹åº”æ¡å¸¦ä¿¡æ¯ï¼ˆä¸å…³å¿ƒå¯¹é½æˆ–è€…æœªå¯¹é½ï¼‰ï¼Œxã€yæ˜¯åæ ‡ï¼ŒlanesIndexæ˜¯ä¼ å›é¼ æ ‡ç‚¹å‡»ä½ç½®çš„æ³³é“ä¸‹æ ‡ï¼ŒbandsIndexæ˜¯é¼ æ ‡ç‚¹å‡»ä½ç½®çš„æ¡å¸¦ä¸‹æ ‡
+void getLaneBandsIndex(std::vector<cv::Rect> lanes,std::vector<BandInfo> bands,int x,int y,int* lanesIndex,int* bandsIndex);
+//æ ¹æ®é¼ æ ‡ç‚¹å‡»å›¾å½¢çš„åæ ‡æ·»åŠ æ¡å¸¦,lanesæ˜¯æ³³é“ä¿¡æ¯ï¼ŒlanesIndexæ˜¯é¼ æ ‡ç‚¹å‡»ä½ç½®æ˜¯ç¬¬å‡ æ¡æ³³é“ï¼Œunadjustbandsæ˜¯æœªå¯¹é½çš„æ‰€æœ‰æ³³é“æ¡å¸¦ä¿¡æ¯ï¼ŒåŸå§‹é¼ æ ‡ç‚¹å‡»ä½ç½®çš„yåæ ‡
+//è¾“å…¥çš„æ¡å¸¦å¿…é¡»æ˜¯æœªå¯¹é½çš„ï¼Œè°ƒæ•´åæ•°æ®éœ€è¦é‡æ–°å¯¹é½å’Œè®¡ç®—åˆ†å­é‡ï¼ˆè°ƒç”¨adjustBandså’ŒmolecularWeightResultï¼‰
+void addProteinBand(std::vector<cv::Rect> lanes,int lanesIndex,std::vector<BandInfo>& unadjustbands,int y);
+//æ ¹æ®é¼ æ ‡ç‚¹å‡»å›¾å½¢çš„åæ ‡åˆ é™¤æ¡å¸¦,lanesIndexæ˜¯é¼ æ ‡ç‚¹å‡»ä½ç½®æ˜¯ç¬¬å‡ æ¡æ³³é“ï¼Œunadjustbandsæ˜¯æœªå¯¹é½çš„æ‰€æœ‰æ³³é“æ¡å¸¦ä¿¡æ¯ï¼ŒbandsIndexæ˜¯é¼ æ ‡ç‚¹å‡»ä½ç½®æ˜¯ç¬¬å‡ ä¸ªæ¡å¸¦
+//è¾“å…¥çš„æ¡å¸¦å¿…é¡»æ˜¯æœªå¯¹é½çš„ï¼Œè°ƒæ•´åæ•°æ®éœ€è¦é‡æ–°å¯¹é½å’Œè®¡ç®—åˆ†å­é‡ï¼ˆè°ƒç”¨adjustBandså’ŒmolecularWeightResultï¼‰
+void deleteProteinBand(int lanesIndex,std::vector<BandInfo>& unadjustbands,int bandsIndex);
+//å¯¹é½æ‰€æœ‰æ³³é“çš„æ¡å¸¦ç»“æœï¼Œunadjustbandsæ˜¯æ‰€æœ‰æ³³é“çš„æ¡å¸¦ç»“æœï¼Œrangeæ˜¯æ¡å¸¦ä¸­å¿ƒåœ¨å¤šå°‘åƒç´ èŒƒå›´å†…å±äºåŒä¸€ç±»å‹æ¡å¸¦ï¼Œä¸€èˆ¬å†™10
+//è¿”å›å¯¹é½åçš„æ‰€æœ‰æ³³é“çš„æ¡å¸¦ç»“æœï¼ˆæœªè®¡ç®—åˆ†å­é‡ï¼‰
+std::vector<BandInfo> adjustBands(std::vector<BandInfo> unadjustbands, int range);
+//è®¡ç®—å¾—åˆ°åˆ†å­é‡ç»“æœ
+void molecularWeightResult(std::vector<cv::Rect> lanes,std::vector<BandInfo>& bands);
 
-	////º¯Êı£ºÌõ´ø·Ö×ÓÆ¥ÅäÅÅĞòº¯Êı
-	////bands£ºËùÓĞÌõ´øÎ»ÖÃĞÅÏ¢
-	////range£ºYÖá²îÔÚrange·¶Î§ÄÚµÄ±íÊ¾ºÍÓ¾µÀ1Æ¥Åä
-	////·µ»ØÖµ£º½á¹ûĞŞ¸ÄÔÚbandsÖĞ
-	void adjustBands(std::vector<BandInfo>& bands, int range);
-
-
-	////º¯Êı£º¼ÆËãËùÓĞÌõ´øµÄ·Ö×ÓĞÅÏ¢
-	////lanes£ºÊäÈëÓ¾µÀĞÅÏ¢
-	////bands£ºÊäÈëÌõ´øĞÅÏ¢£¬¶ÔÓ¦Êä³öµÄ·Ö×ÓĞÅÏ¢ÔÚÕâ¸ö½á¹¹ÌåÖĞ
-	void molecularWeightResult(std::vector<cv::Rect> lanes, std::vector<BandInfo>& bands);
-};

@@ -92,6 +92,12 @@ namespace PBAnaly.Module
             Image<L16> image = Image.Load<L16>(filePath);
             return image;
         }
+        public static Image<L8> LoadTiffAsL8(string filePath)
+        {
+            // 加载图像并确保其为16位灰度图像
+            Image<L8> image = Image.Load<L8>(filePath);
+            return image;
+        }
         public static byte[] ConvertL16ImageToByteArray(Image<L16> image)
         {
             int width = image.Width;
@@ -113,6 +119,39 @@ namespace PBAnaly.Module
             return pixels;
         }
 
+        public static byte[] ConvertL8ImageToByteArray(Image<L8> image)
+        {
+            int width = image.Width;
+            int height = image.Height;
+            byte[] pixels = new byte[width * height * sizeof(byte)];
+
+            int index = 0;
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    // 直接访问每个像素的值并转换为 byte[]
+                    byte pixelValue = image[x, y].PackedValue;
+                    BitConverter.GetBytes(pixelValue).CopyTo(pixels, index);
+                    index += sizeof(byte);
+                }
+            }
+
+            return pixels;
+        }
+
+        public static ushort[] ConvertL16ImageToUShortArray(Image<L16> image)
+        {
+            var byteArray  = ConvertL16ImageToByteArray(image);
+            ushort[] ushortArray = new ushort[byteArray.Length / 2];
+            for (int i = 0; i < byteArray.Length; i += 2)
+            {
+                // 使用BitConverter来确保字节正确地转换为ushort
+                ushortArray[i / 2] = BitConverter.ToUInt16(byteArray, i);
+            }
+
+            return ushortArray;
+        }
         public static Bitmap ConvertL16ToBitmap(Image<L16> image)
         {
             using (var ms = new MemoryStream())

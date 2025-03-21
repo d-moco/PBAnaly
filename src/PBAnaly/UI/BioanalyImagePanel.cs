@@ -1,14 +1,19 @@
-﻿using PBAnaly.Module;
+﻿using PBAnaly.Assist;
+using PBAnaly.Module;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -43,18 +48,121 @@ namespace PBAnaly.UI
             pl_bg_panel.Width = pl_panel_image.Width;
             pl_bg_panel.Height = pl_panel_image.Height;
             CenterPictureBox();
-
+           
             image_pl.MouseWheel += Image_pl_MouseWheel;
+
+            GlobalData.PropertyChanged += OnGlobalDataPropertyChanged;
+            if (GlobalData.GetProperty("Language") == "Chinese")
+            {
+                SetLanguage("zh-CN");
+            }
+            else
+            {
+                SetLanguage("en-US");
+            }
         }
 
-       
+        #region 中英文切换
+        ResourceManager resourceManager;
+        private void SetLanguage(string cultureCode)
+        {
+            resourceManager = new ResourceManager("PBAnaly.Properties.Resources", typeof(BioanalyImagePanel).Assembly);
+
+            // 设置当前线程的文化信息
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
+
+            // 更新所有控件的文本
+            UpdateControlsText();
+        }
+
+        // 更新所有控件的文本
+        private void UpdateControlsText()
+        {
+            //// 遍历所有控件并更新文本
+            foreach (Control control in this.Controls)
+            {
+                UpdateControlText(control);
+            }
+        }
+        // 更新单个控件的文本
+        private void UpdateControlText(Control control)
+        {
+            //// 直接通过控件的 Name 属性获取资源字符串
+            string resourceText = resourceManager.GetString(control.Name);
+            if (!string.IsNullOrEmpty(resourceText))
+            {
+                if (control.Name == "lb_top_info") 
+                {
+                    if(cb_scientific.Checked)
+                        control.Text = resourceText;
+                    else
+                        control.Text = "";
+                }
+                else
+                    control.Text = resourceText;
+            }
+
+            // 如果控件包含子控件，则递归更新子控件
+            foreach (Control subControl in control.Controls)
+            {
+                UpdateControlText(subControl);
+            }
+        }
+
+        #region OnGlobalDataPropertyChanged 处理全局属性更改事件
+        /// <summary> 
+        /// 处理全局属性更改事件
+        /// </summary>
+        /// <param name="name">发生变化的属性名</param>
+        /// <param name="value">更改的属性值</param>
+        private void OnGlobalDataPropertyChanged(string name, string value)
+        {
+            switch (name)
+            {
+                case "Language":
+                    if (GlobalData.GetProperty("Language") == "Chinese")
+                    {
+                        SetLanguage("zh-CN");
+                    }
+                    else
+                    {
+                        SetLanguage("en-US");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #endregion
+
+        #endregion
+
 
         #region 对外方法
+        public void SaveImage(string imgPath) 
+        {
+            if (image_pl.InvokeRequired)
+            {
+                image_pl.Invoke(new MethodInvoker(() =>
+                {
+                    image_pl.SaveToImage(imgPath,System.Drawing.Imaging.ImageFormat.Bmp);
+                }));
+
+            }
+            else
+            {
+                image_pl.SaveToImage(imgPath, System.Drawing.Imaging.ImageFormat.Bmp);
+            }
+        }
         public void SetButtomLabel(string value) 
         {
             lb_size.Text = value;
         }
-
+        public void SetButtomName(string value)
+        {
+            lb_name.Text = value;
+        }
         public void SetImage(Image<L16> image) 
         {
             if (image_pl.InvokeRequired) 
@@ -171,12 +279,12 @@ namespace PBAnaly.UI
         #endregion
 
         #region 事件
-        private void ava_auto_Click(object sender, EventArgs e)
+        public void ava_auto_Click(object sender, EventArgs e)
         {
-           
+            //pl_panel_image.Back = System.Drawing.Color.Gray;
             pl_bg_panel.Location = new System.Drawing.Point(pl_panel_image.Location.X, pl_panel_image.Location.Y);
-            pl_bg_panel.Width = pl_panel_image.Width;
-            pl_bg_panel.Height = pl_panel_image.Height;
+            pl_bg_panel.Width = pl_panel_image.Width - 10;
+            pl_bg_panel.Height = pl_panel_image.Height -10;
             CenterPictureBox();
         }
         private void ava__zoom_in_Click(object sender, EventArgs e)
@@ -200,6 +308,45 @@ namespace PBAnaly.UI
                ZoomPictureBox(1 / ZoomFactor);
             }
         }
+
+        private void ava_save_Click(object sender, EventArgs e)
+        {
+            // 创建一个位图，其大小与panel相同
+            Bitmap bitmap = new Bitmap(this.Width, this.Height);
+          
+            // 将panel的视图渲染到位图上
+            this.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, this.Width, this.Height));
+
+            // 弹出保存文件对话框
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog()) 
+            {
+                saveFileDialog.Title = "保存Panel图像";
+                saveFileDialog.Filter = "PNG 图片|*.png|JPEG 图片|*.jpg|BMP 图片|*.bmp";
+                if (saveFileDialog.ShowDialog()
+                    == DialogResult.OK) 
+                {
+                    // 根据文件扩展名选择格式
+                    System.Drawing.Imaging.ImageFormat format = System.Drawing.Imaging.ImageFormat.Bmp;
+                    switch (System.IO.Path.GetExtension(saveFileDialog.FileName).ToLower())
+                    {
+                        case ".jpg":
+                            format = System.Drawing.Imaging.ImageFormat.Jpeg;
+                            break;
+                        case ".bmp":
+                            format = System.Drawing.Imaging.ImageFormat.Bmp;
+                            break;
+                    }
+                    bitmap.Save(saveFileDialog.FileName, format); // 保存图像到文件
+                }
+            }
+        }
+        private void BioanalyImagePanel_SizeChanged(object sender, EventArgs e)
+        {
+            pl_bg_panel.Location = new System.Drawing.Point(pl_panel_image.Location.X, pl_panel_image.Location.Y);
+            pl_bg_panel.Width = pl_panel_image.Width;
+            pl_bg_panel.Height = pl_panel_image.Height;
+            CenterPictureBox();
+        }
         #endregion
 
         #region 方法
@@ -221,10 +368,10 @@ namespace PBAnaly.UI
             currentZoom *= factor;
             int w = (int)(pl_bg_panel.Width * factor);
             int h = (int)(pl_bg_panel.Height * factor);
-            if (w < pl_panel_image.Width || h < pl_panel_image.Height) 
+            if (w < pl_panel_image.Width - 50 || h < pl_panel_image.Height - 50)
             {
-                w = pl_panel_image.Width;
-                h = pl_panel_image.Height;
+                w = pl_panel_image.Width ;
+                h = pl_panel_image.Height ;
             }
 
             if (w > pl_panel_image.Width * 5 || h > pl_panel_image.Height * 5)
